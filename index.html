@@ -5,15 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>龚著登 - 电商视觉设计师作品集</title>
 
-<link href="https://fonts.font.im/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<!-- 极致预加载优化 -->
+<link rel="preconnect" href="https://fonts.font.im" crossorigin>
+<link rel="dns-prefetch" href="https://fonts.font.im">
+<!-- 预加载首屏关键资源 -->
+<link rel="preload" href="https://fonts.font.im/css2?family=Inter:wght@300;400;600;800&display=swap" as="style">
+<link rel="preload" href="images/avatar.webp" as="image">
+
+<!-- 字体优化：swap模式，不阻塞渲染 -->
+<link href="https://fonts.font.im/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.font.im/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet"></noscript>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
+/* 字体回退优化，避免FOIT */
 body{
-  font-family:'Inter',sans-serif;
+  font-family:'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background: linear-gradient(120deg,#f6f9ff,#eef2ff);
   color:#111;
   scroll-behavior: smooth;
+  /* 硬件加速优化 */
+  transform: translateZ(0);
+  will-change: scroll-position;
 }
 
 .container{
@@ -29,6 +42,8 @@ nav{
   background: rgba(255,255,255,0.95);
   border-bottom:1px solid rgba(0,0,0,0.08);
   z-index:100;
+  /* 导航栏硬件加速 */
+  transform: translateZ(0);
 }
 .nav{
   display:flex;
@@ -51,7 +66,7 @@ nav{
   text-decoration:none;
   color:#666;
   font-size:15px;
-  transition: color 0.2s;
+  transition: color 0.15s;
   white-space:nowrap;
 }
 .nav a:hover{color:#ff3d81;}
@@ -70,7 +85,7 @@ nav{
   overflow:hidden;
   box-shadow:0 10px 30px rgba(0,0,0,0.1);
   cursor:pointer;
-  transition:0.3s;
+  transition:transform 0.2s, box-shadow 0.2s;
 }
 .avatar-box:hover{
   transform:scale(1.03);
@@ -129,7 +144,7 @@ nav{
   border-radius:30px;
   text-decoration:none;
   font-weight:600;
-  transition:0.3s;
+  transition:transform 0.2s, box-shadow 0.2s;
   font-size:15px;
   border:none;
   cursor:pointer;
@@ -138,7 +153,6 @@ nav{
   transform: translateY(-3px);
 }
 
-/* 查看作品按钮 */
 .btn-primary{
   background: linear-gradient(135deg,#ff7a18,#ff3d81);
   color:#fff;
@@ -148,7 +162,6 @@ nav{
   box-shadow:0 12px 35px rgba(255,61,129,0.4);
 }
 
-/* 加微信按钮 */
 .btn-wx{
   background: linear-gradient(135deg,#07C160,#06AF55);
   color:#fff;
@@ -158,7 +171,6 @@ nav{
   box-shadow:0 12px 35px rgba(7,193,96,0.4);
 }
 
-/* 站酷主页按钮 */
 .btn-zcool{
   background: linear-gradient(135deg,#FF6700,#FF8C00);
   color:#fff;
@@ -194,42 +206,70 @@ nav{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
   gap:30px;
+  /* 网格硬件加速 */
+  transform: translateZ(0);
 }
 .card{
   background:#fff;
   border-radius:20px;
   overflow:hidden;
   box-shadow:0 8px 25px rgba(0,0,0,0.08);
-  transition:0.4s;
+  transition:transform 0.2s, box-shadow 0.2s;
   height:100%;
   display:flex;
   flex-direction:column;
+  cursor:pointer;
 }
 .card:hover{
   transform:translateY(-8px) scale(1.02);
   box-shadow:0 15px 35px rgba(0,0,0,0.12);
 }
+
+/* 核心：正方形缩略图容器 */
 .card-img-box{
-  /* 适配长图：去掉固定高度，改为根据内容自动撑开 */
+  aspect-ratio: 1/1; /* 强制1:1正方形 */
   overflow:hidden;
-  display:flex;
-  align-items:flex-start;
+  background:#f8f9fa;
 }
 .card-img{
   width:100%;
-  /* 关键：长图用object-fit:contain，完整显示，不会被拉伸 */
-  object-fit:contain;
-  background:#f8f9fa;
-  transition:0.5s;
+  height:100%;
+  object-fit:cover; /* 裁剪中心部分作为缩略图 */
+  transition:transform 0.3s;
+  /* 骨架屏加载 */
+  background: linear-gradient(90deg,#f0f0f0 25%,#e0e0e0 50%,#f0f0f0 75%);
+  background-size:200% 100%;
+  animation: skeleton-loading 1.2s infinite linear;
 }
-.card:hover .card-img{transform:scale(1.03);}
+@keyframes skeleton-loading{
+  0%{background-position:200% 0;}
+  100%{background-position:-200% 0;}
+}
+.card-img.loaded{
+  animation:none;
+  background:none;
+}
+.card:hover .card-img{transform:scale(1.08);}
+
 /* 视频播放器样式 */
 .card-video{
   width:100%;
-  height:220px;
+  aspect-ratio: 16/9;
   object-fit:cover;
   background:#000;
+  /* 移动端内联播放，不自动全屏 */
+  playsinline: true;
+  webkit-playsinline: true;
+  /* 骨架屏加载 */
+  background: linear-gradient(90deg,#f0f0f0 25%,#e0e0e0 50%,#f0f0f0 75%);
+  background-size:200% 100%;
+  animation: skeleton-loading 1.2s infinite linear;
 }
+.card-video.loaded{
+  animation:none;
+  background:#000;
+}
+
 .card .info{padding:20px;flex:1;}
 .card .title{
   font-weight:600;
@@ -240,11 +280,6 @@ nav{
   font-size:14px;
   color:#666;
   line-height:1.5;
-}
-.card .stats{
-  margin-top:12px;
-  font-size:13px;
-  color:#999;
 }
 
 .about{
@@ -287,13 +322,14 @@ nav{
   width:100%;height:100%;
   background:rgba(0,0,0,0.85);
   display:flex;
-  align-items:center;
+  align-items:flex-start;
   justify-content:center;
   z-index:9999;
   opacity:0;
   visibility:hidden;
-  transition:0.3s;
-  padding:20px;
+  transition:opacity 0.2s, visibility 0.2s;
+  padding:40px 20px;
+  overflow:auto;
 }
 .modal.active{
   opacity:1;
@@ -314,7 +350,7 @@ nav{
   color:#999;
   font-size:24px;
   cursor:pointer;
-  transition:0.2s;
+  transition:color 0.15s;
 }
 .modal-close:hover{color:#ff3d81;}
 .modal-title{
@@ -347,7 +383,7 @@ nav{
   border-radius:8px;
   cursor:pointer;
   font-size:14px;
-  transition:0.2s;
+  transition:background 0.15s;
 }
 .copy-btn:hover{background:#06AF55;}
 .copy-success{
@@ -357,18 +393,14 @@ nav{
   display:none;
 }
 
-/* 图片放大预览（适配长图：可左右滑动） */
-.img-preview-modal{
-  align-items:center;
-  justify-content:center;
-  overflow:auto;
-}
+/* 长图预览弹窗 */
 .img-preview-modal .preview-img{
   max-width:100%;
-  max-height:100%;
   width:auto;
   height:auto;
   border-radius:10px;
+  /* 长图硬件加速 */
+  transform: translateZ(0);
 }
 
 footer{
@@ -380,8 +412,14 @@ footer{
   border-top:1px solid rgba(0,0,0,0.05);
 }
 
-/* 响应式适配（核心优化部分） */
+/* 响应式适配 + 移动端性能优化 */
 @media(max-width:768px){
+  /* 移动端禁用hover动画，减少重绘 */
+  .card:hover{transform:none; box-shadow:0 8px 25px rgba(0,0,0,0.08);}
+  .card:hover .card-img{transform:none;}
+  .btn:hover{transform:none;}
+  .avatar-box:hover{transform:none; box-shadow:0 10px 30px rgba(0,0,0,0.1);}
+
   .nav{
     flex-direction:column;
     gap:15px;
@@ -421,8 +459,6 @@ footer{
   }
   
   .grid{grid-template-columns:1fr;gap:25px;}
-  .card-video{height:200px;}
-  
   .modal-content{padding:30px 20px;}
 }
 </style>
@@ -448,7 +484,7 @@ footer{
 
 <section class="hero">
   <div class="avatar-box" onclick="previewImg(this)">
-    <img src="images/avatar.jpg" alt="龚著登 个人头像" class="avatar">
+    <img src="images/avatar.webp" alt="龚著登 个人头像" class="avatar" loading="eager" decoding="async">
   </div>
   <div class="hero-info">
     <h1>龚著登<br><span>电商视觉设计师</span></h1>
@@ -461,11 +497,10 @@ footer{
       <div class="info-item"><i>📍</i> 广东省深圳市</div>
     </div>
 
-    <!-- 三个核心按钮 -->
     <div class="btn-group">
       <a href="#detail" class="btn btn-primary">📁 查看我的作品</a>
       <button class="btn btn-wx" onclick="openWxModal()">📩 扫码加我微信</button>
-      <a href="https://www.zcool.com.cn/u/23450553" class="btn btn-zcool" target="_blank">🎨 站酷主页</a>
+      <a href="https://www.zcool.com.cn/u/23450553" class="btn btn-zcool" target="_blank" rel="noopener">🎨 站酷主页</a>
     </div>
   </div>
 </section>
@@ -474,48 +509,240 @@ footer{
   <div id="detail" class="works-section">
     <h3>详情页设计</h3>
     <div class="grid">
-      <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/detail/1.jpg" class="card-img"></div><div class="info"><div class="title">智能扫地机器人详情页</div><div class="product-desc">突出智能导航、吸力、续航，场景化展示提升转化</div></div></div>
-      <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/detail/2.jpg" class="card-img"></div><div class="info"><div class="title">保湿精华液详情页</div><div class="product-desc">成分可视化、功效对比，强化补水卖点</div></div></div>
-      <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/detail/3.jpg" class="card-img"></div><div class="info"><div class="title">多功能收纳柜详情页</div><div class="product-desc">空间利用率、材质安全、安装便捷</div></div></div>
-      <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/detail/4.jpg" class="card-img"></div><div class="info"><div class="title">户外运动手表详情页</div><div class="product-desc">防水、续航、多运动模式，专业属性强化</div></div></div>
-      <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/detail/5.jpg" class="card-img"></div><div class="info"><div class="title">家用空气炸锅详情页</div><div class="product-desc">无油健康、智能温控、大容量设计</div></div></div>
-      <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/detail/6.jpg" class="card-img"></div><div class="info"><div class="title">儿童绘本详情页</div><div class="product-desc">护眼印刷、趣味互动、分龄阅读体系</div></div></div>
+      <div class="card" onclick="previewImg(this)">
+        <div class="card-img-box">
+          <img src="images/detail/1_thumb.webp" data-full-src="images/detail/1.webp" class="card-img" loading="lazy" decoding="async" alt="智能扫地机器人详情页">
+        </div>
+        <div class="info">
+          <div class="title">智能扫地机器人详情页</div>
+          <div class="product-desc">突出智能导航、吸力、续航，场景化展示提升转化</div>
+        </div>
+      </div>
+      <div class="card" onclick="previewImg(this)">
+        <div class="card-img-box">
+          <img src="images/detail/2_thumb.webp" data-full-src="images/detail/2.webp" class="card-img" loading="lazy" decoding="async" alt="保湿精华液详情页">
+        </div>
+        <div class="info">
+          <div class="title">保湿精华液详情页</div>
+          <div class="product-desc">成分可视化、功效对比，强化补水卖点</div>
+        </div>
+      </div>
+      <div class="card" onclick="previewImg(this)">
+        <div class="card-img-box">
+          <img src="images/detail/3_thumb.webp" data-full-src="images/detail/3.webp" class="card-img" loading="lazy" decoding="async" alt="多功能收纳柜详情页">
+        </div>
+        <div class="info">
+          <div class="title">多功能收纳柜详情页</div>
+          <div class="product-desc">空间利用率、材质安全、安装便捷</div>
+        </div>
+      </div>
+      <div class="card" onclick="previewImg(this)">
+        <div class="card-img-box">
+          <img src="images/detail/4_thumb.webp" data-full-src="images/detail/4.webp" class="card-img" loading="lazy" decoding="async" alt="户外运动手表详情页">
+        </div>
+        <div class="info">
+          <div class="title">户外运动手表详情页</div>
+          <div class="product-desc">防水、续航、多运动模式，专业属性强化</div>
+        </div>
+      </div>
+      <div class="card" onclick="previewImg(this)">
+        <div class="card-img-box">
+          <img src="images/detail/5_thumb.webp" data-full-src="images/detail/5.webp" class="card-img" loading="lazy" decoding="async" alt="家用空气炸锅详情页">
+        </div>
+        <div class="info">
+          <div class="title">家用空气炸锅详情页</div>
+          <div class="product-desc">无油健康、智能温控、大容量设计</div>
+        </div>
+      </div>
+      <div class="card" onclick="previewImg(this)">
+        <div class="card-img-box">
+          <img src="images/detail/6_thumb.webp" data-full-src="images/detail/6.webp" class="card-img" loading="lazy" decoding="async" alt="儿童绘本详情页">
+        </div>
+        <div class="info">
+          <div class="title">儿童绘本详情页</div>
+          <div class="product-desc">护眼印刷、趣味互动、分龄阅读体系</div>
+        </div>
+      </div>
     </div>
   </div>
 
   <div id="main" class="works-section">
     <h3>主图设计</h3>
     <div class="grid">
-      <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/main/1.jpg" class="card-img"></div><div class="info"><div class="title">无线蓝牙耳机主图</div><div class="product-desc">高对比背景，突出降噪、续航、无感延迟</div></div></div>
-      <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/main/2.jpg" class="card-img"></div><div class="info"><div class="title">即食螺蛳粉主图</div><div class="product-desc">食欲感特写，料足、酸辣鲜香</div></div></div>
-      <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/main/3.jpg" class="card-img"></div><div class="info"><div class="title">夏季冰丝T恤主图</div><div class="product-desc">面料质感+凉感卖点，舒适版型</div></div></div>
-      <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/main/4.jpg" class="card-img"></div><div class="info"><div class="title">车载香薰主图</div><div class="product-desc">轻奢质感、持久留香、除异味</div></div></div>
-      <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/main/5.jpg" class="card-img"></div><div class="info"><div class="title">家用除螨仪主图</div><div class="product-desc">高频拍打、紫外线杀菌、大吸力</div></div></div>
-      <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/main/6.jpg" class="card-img"></div><div class="info"><div class="title">宠物冻干零食主图</div><div class="product-desc">纯肉无添加、增肥发腮、多种口味</div></div></div>
+      <div class="card" onclick="previewImg(this)">
+        <div class="card-img-box">
+          <img src="images/main/1_thumb.webp" data-full-src="images/main/1.webp" class="card-img" loading="lazy" decoding="async" alt="无线蓝牙耳机主图">
+        </div>
+        <div class="info">
+          <div class="title">无线蓝牙耳机主图</div>
+          <div class="product-desc">高对比背景，突出降噪、续航、无感延迟</div>
+        </div>
+      </div>
+      <div class="card" onclick="previewImg(this)">
+        <div class="card-img-box">
+          <img src="images/main/2_thumb.webp" data-full-src="images/main/2.webp" class="card-img" loading="lazy" decoding="async" alt="即食螺蛳粉主图">
+        </div>
+        <div class="info">
+          <div class="title">即食螺蛳粉主图</div>
+          <div class="product-desc">食欲感特写，料足、酸辣鲜香</div>
+        </div>
+      </div>
+      <div class="card" onclick="previewImg(this)">
+        <div class="card-img-box">
+          <img src="images/main/3_thumb.webp" data-full-src="images/main/3.webp" class="card-img" loading="lazy" decoding="async" alt="夏季冰丝T恤主图">
+        </div>
+        <div class="info">
+          <div class="title">夏季冰丝T恤主图</div>
+          <div class="product-desc">面料质感+凉感卖点，舒适版型</div>
+        </div>
+      </div>
+      <div class="card" onclick="previewImg(this)">
+        <div class="card-img-box">
+          <img src="images/main/4_thumb.webp" data-full-src="images/main/4.webp" class="card-img" loading="lazy" decoding="async" alt="车载香薰主图">
+        </div>
+        <div class="info">
+          <div class="title">车载香薰主图</div>
+          <div class="product-desc">轻奢质感、持久留香、除异味</div>
+        </div>
+      </div>
+      <div class="card" onclick="previewImg(this)">
+        <div class="card-img-box">
+          <img src="images/main/5_thumb.webp" data-full-src="images/main/5.webp" class="card-img" loading="lazy" decoding="async" alt="家用除螨仪主图">
+        </div>
+        <div class="info">
+          <div class="title">家用除螨仪主图</div>
+          <div class="product-desc">高频拍打、紫外线杀菌、大吸力</div>
+        </div>
+      </div>
+      <div class="card" onclick="previewImg(this)">
+        <div class="card-img-box">
+          <img src="images/main/6_thumb.webp" data-full-src="images/main/6.webp" class="card-img" loading="lazy" decoding="async" alt="宠物冻干零食主图">
+        </div>
+        <div class="info">
+          <div class="title">宠物冻干零食主图</div>
+          <div class="product-desc">纯肉无添加、增肥发腮、多种口味</div>
+        </div>
+      </div>
     </div>
   </div>
 
   <div id="render" class="works-section">
     <h3>C4D产品渲染</h3>
     <div class="grid">
-      <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/render/1.jpg" class="card-img"></div><div class="info"><div class="title">智能手表渲染</div><div class="product-desc">真实材质光影，多角度展示质感</div></div></div>
-      <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/render/2.jpg" class="card-img"></div><div class="info"><div class="title">北欧风茶几渲染</div><div class="product-desc">场景化搭配，自然光还原质感</div></div></div>
-      <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/render/3.jpg" class="card-img"></div><div class="info"><div class="title">口红管体渲染</div><div class="product-desc">金属质感、丝绒质地，高端视觉</div></div></div>
-      <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/render/4.jpg" class="card-img"></div><div class="info"><div class="title">电竞鼠标渲染</div><div class="product-desc">人体工学、RGB灯效、防滑纹理</div></div></div>
-      <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/render/5.jpg" class="card-img"></div><div class="info"><div class="title">保温杯渲染</div><div class="product-desc">316不锈钢、长效保温、便携设计</div></div></div>
-      <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/render/6.jpg" class="card-img"></div><div class="info"><div class="title">香水瓶渲染</div><div class="product-desc">玻璃通透感、轻奢瓶身、光影层次</div></div></div>
+      <div class="card" onclick="previewImg(this)">
+        <div class="card-img-box">
+          <img src="images/render/1_thumb.webp" data-full-src="images/render/1.webp" class="card-img" loading="lazy" decoding="async" alt="智能手表渲染">
+        </div>
+        <div class="info">
+          <div class="title">智能手表渲染</div>
+          <div class="product-desc">真实材质光影，多角度展示质感</div>
+        </div>
+      </div>
+      <div class="card" onclick="previewImg(this)">
+        <div class="card-img-box">
+          <img src="images/render/2_thumb.webp" data-full-src="images/render/2.webp" class="card-img" loading="lazy" decoding="async" alt="北欧风茶几渲染">
+        </div>
+        <div class="info">
+          <div class="title">北欧风茶几渲染</div>
+          <div class="product-desc">场景化搭配，自然光还原质感</div>
+        </div>
+      </div>
+      <div class="card" onclick="previewImg(this)">
+        <div class="card-img-box">
+          <img src="images/render/3_thumb.webp" data-full-src="images/render/3.webp" class="card-img" loading="lazy" decoding="async" alt="口红管体渲染">
+        </div>
+        <div class="info">
+          <div class="title">口红管体渲染</div>
+          <div class="product-desc">金属质感、丝绒质地，高端视觉</div>
+        </div>
+      </div>
+      <div class="card" onclick="previewImg(this)">
+        <div class="card-img-box">
+          <img src="images/render/4_thumb.webp" data-full-src="images/render/4.webp" class="card-img" loading="lazy" decoding="async" alt="电竞鼠标渲染">
+        </div>
+        <div class="info">
+          <div class="title">电竞鼠标渲染</div>
+          <div class="product-desc">人体工学、RGB灯效、防滑纹理</div>
+        </div>
+      </div>
+      <div class="card" onclick="previewImg(this)">
+        <div class="card-img-box">
+          <img src="images/render/5_thumb.webp" data-full-src="images/render/5.webp" class="card-img" loading="lazy" decoding="async" alt="保温杯渲染">
+        </div>
+        <div class="info">
+          <div class="title">保温杯渲染</div>
+          <div class="product-desc">316不锈钢、长效保温、便携设计</div>
+        </div>
+      </div>
+      <div class="card" onclick="previewImg(this)">
+        <div class="card-img-box">
+          <img src="images/render/6_thumb.webp" data-full-src="images/render/6.webp" class="card-img" loading="lazy" decoding="async" alt="香水瓶渲染">
+        </div>
+        <div class="info">
+          <div class="title">香水瓶渲染</div>
+          <div class="product-desc">玻璃通透感、轻奢瓶身、光影层次</div>
+        </div>
+      </div>
     </div>
   </div>
 
   <div id="ai" class="works-section">
     <h3>AI视觉合成</h3>
     <div class="grid">
-      <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/ai/1.jpg" class="card-img"></div><div class="info"><div class="title">户外露营场景合成</div><div class="product-desc">沉浸式场景，降低实拍成本</div></div></div>
-      <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/ai/2.jpg" class="card-img"></div><div class="info"><div class="title">模特穿搭合成</div><div class="product-desc">多风格模特，快速出图</div></div></div>
-      <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/ai/3.jpg" class="card-img"></div><div class="info"><div class="title">饮品创意合成</div><div class="product-desc">梦幻渐变，年轻时尚视觉</div></div></div>
-      <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/ai/4.jpg" class="card-img"></div><div class="info"><div class="title">智能家居场景合成</div><div class="product-desc">全屋智能联动，科技感氛围</div></div></div>
-      <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/ai/5.jpg" class="card-img"></div><div class="info"><div class="title">美妆产品场景合成</div><div class="product-desc">高级感背景，突出产品质感</div></div></div>
-      <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/ai/6.jpg" class="card-img"></div><div class="info"><div class="title">宠物用品场景合成</div><div class="product-desc">温馨居家氛围，宠物互动感</div></div></div>
+      <div class="card" onclick="previewImg(this)">
+        <div class="card-img-box">
+          <img src="images/ai/1_thumb.webp" data-full-src="images/ai/1.webp" class="card-img" loading="lazy" decoding="async" alt="户外露营场景合成">
+        </div>
+        <div class="info">
+          <div class="title">户外露营场景合成</div>
+          <div class="product-desc">沉浸式场景，降低实拍成本</div>
+        </div>
+      </div>
+      <div class="card" onclick="previewImg(this)">
+        <div class="card-img-box">
+          <img src="images/ai/2_thumb.webp" data-full-src="images/ai/2.webp" class="card-img" loading="lazy" decoding="async" alt="模特穿搭合成">
+        </div>
+        <div class="info">
+          <div class="title">模特穿搭合成</div>
+          <div class="product-desc">多风格模特，快速出图</div>
+        </div>
+      </div>
+      <div class="card" onclick="previewImg(this)">
+        <div class="card-img-box">
+          <img src="images/ai/3_thumb.webp" data-full-src="images/ai/3.webp" class="card-img" loading="lazy" decoding="async" alt="饮品创意合成">
+        </div>
+        <div class="info">
+          <div class="title">饮品创意合成</div>
+          <div class="product-desc">梦幻渐变，年轻时尚视觉</div>
+        </div>
+      </div>
+      <div class="card" onclick="previewImg(this)">
+        <div class="card-img-box">
+          <img src="images/ai/4_thumb.webp" data-full-src="images/ai/4.webp" class="card-img" loading="lazy" decoding="async" alt="智能家居场景合成">
+        </div>
+        <div class="info">
+          <div class="title">智能家居场景合成</div>
+          <div class="product-desc">全屋智能联动，科技感氛围</div>
+        </div>
+      </div>
+      <div class="card" onclick="previewImg(this)">
+        <div class="card-img-box">
+          <img src="images/ai/5_thumb.webp" data-full-src="images/ai/5.webp" class="card-img" loading="lazy" decoding="async" alt="美妆产品场景合成">
+        </div>
+        <div class="info">
+          <div class="title">美妆产品场景合成</div>
+          <div class="product-desc">高级感背景，突出产品质感</div>
+        </div>
+      </div>
+      <div class="card" onclick="previewImg(this)">
+        <div class="card-img-box">
+          <img src="images/ai/6_thumb.webp" data-full-src="images/ai/6.webp" class="card-img" loading="lazy" decoding="async" alt="宠物用品场景合成">
+        </div>
+        <div class="info">
+          <div class="title">宠物用品场景合成</div>
+          <div class="product-desc">温馨居家氛围，宠物互动感</div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -523,7 +750,7 @@ footer{
     <h3>视频作品（产品动画/三维场景）</h3>
     <div class="grid">
       <div class="card">
-        <video class="card-video" controls poster="images/video/1.jpg">
+        <video class="card-video" controls poster="images/video/1.webp" preload="none" loading="lazy" playsinline webkit-playsinline>
           <source src="videos/1.mp4" type="video/mp4">
           您的浏览器不支持MP4视频播放
         </video>
@@ -533,7 +760,7 @@ footer{
         </div>
       </div>
       <div class="card">
-        <video class="card-video" controls poster="images/video/2.jpg">
+        <video class="card-video" controls poster="images/video/2.webp" preload="none" loading="lazy" playsinline webkit-playsinline>
           <source src="videos/2.mp4" type="video/mp4">
           您的浏览器不支持MP4视频播放
         </video>
@@ -543,7 +770,7 @@ footer{
         </div>
       </div>
       <div class="card">
-        <video class="card-video" controls poster="images/video/3.jpg">
+        <video class="card-video" controls poster="images/video/3.webp" preload="none" loading="lazy" playsinline webkit-playsinline>
           <source src="videos/3.mp4" type="video/mp4">
           您的浏览器不支持MP4视频播放
         </video>
@@ -553,7 +780,7 @@ footer{
         </div>
       </div>
       <div class="card">
-        <video class="card-video" controls poster="images/video/4.jpg">
+        <video class="card-video" controls poster="images/video/4.webp" preload="none" loading="lazy" playsinline webkit-playsinline>
           <source src="videos/4.mp4" type="video/mp4">
           您的浏览器不支持MP4视频播放
         </video>
@@ -563,7 +790,7 @@ footer{
         </div>
       </div>
       <div class="card">
-        <video class="card-video" controls poster="images/video/5.jpg">
+        <video class="card-video" controls poster="images/video/5.webp" preload="none" loading="lazy" playsinline webkit-playsinline>
           <source src="videos/5.mp4" type="video/mp4">
           您的浏览器不支持MP4视频播放
         </video>
@@ -573,7 +800,7 @@ footer{
         </div>
       </div>
       <div class="card">
-        <video class="card-video" controls poster="images/video/6.jpg">
+        <video class="card-video" controls poster="images/video/6.webp" preload="none" loading="lazy" playsinline webkit-playsinline>
           <source src="videos/6.mp4" type="video/mp4">
           您的浏览器不支持MP4视频播放
         </video>
@@ -613,8 +840,7 @@ footer{
   <div class="modal-content">
     <span class="modal-close" onclick="closeWxModal()">&times;</span>
     <h3 class="modal-title">扫码加我微信</h3>
-    <!-- 替换成你的微信二维码图片 -->
-    <img src="images/wechat-qrcode.jpg" alt="微信二维码" class="wx-qrcode">
+    <img src="images/wechat-qrcode.webp" alt="微信二维码" class="wx-qrcode" loading="lazy" decoding="async">
     <div class="wx-id">
       微信号：<span id="wxId">gongshuai8</span>
       <button class="copy-btn" onclick="copyWxId()">复制微信号</button>
@@ -623,10 +849,10 @@ footer{
   </div>
 </div>
 
-<!-- 图片放大预览弹窗 -->
+<!-- 长图预览弹窗 -->
 <div class="modal img-preview-modal" id="imgPreviewModal">
   <span class="modal-close" onclick="closeImgModal()">&times;</span>
-  <img src="" class="preview-img" id="previewImg">
+  <img src="" class="preview-img" id="previewImg" decoding="async">
 </div>
 
 <script>
@@ -653,13 +879,14 @@ function copyWxId(){
   });
 }
 
-// 图片放大预览（适配长图）
+// 核心：点击加载完整长图预览
 function previewImg(el){
   const img=el.querySelector('img');
   if(!img)return;
   const modal=document.getElementById('imgPreviewModal');
   const previewImg=document.getElementById('previewImg');
-  previewImg.src=img.src;
+  // 优先加载data-full-src里的完整长图，没有则用src
+  previewImg.src=img.dataset.fullSrc || img.src;
   previewImg.alt=img.alt;
   modal.classList.add('active');
   document.body.style.overflow='hidden';
@@ -685,6 +912,24 @@ document.addEventListener('keydown', function(e){
     closeWxModal();
     closeImgModal();
   }
+});
+
+// 图片加载完成后移除骨架屏
+document.addEventListener('DOMContentLoaded', function(){
+  const images=document.querySelectorAll('.card-img');
+  images.forEach(img=>{
+    img.onload=function(){
+      this.classList.add('loaded');
+    };
+    if(img.complete) img.classList.add('loaded');
+  });
+
+  const videos=document.querySelectorAll('.card-video');
+  videos.forEach(video=>{
+    video.onloadeddata=function(){
+      this.classList.add('loaded');
+    };
+  });
 });
 </script>
 
