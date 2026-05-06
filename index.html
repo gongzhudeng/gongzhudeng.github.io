@@ -70,9 +70,10 @@ section{
   align-items:center;
   gap:40px;
 }
+/* 核心修改：放大电脑端头像尺寸 */
 .avatar-box{
-  flex:0 0 200px;
-  height:200px;
+  flex:0 0 280px; /* 从200px改为280px */
+  height:280px;    /* 从200px改为280px */
   border-radius:20px;
   overflow:hidden;
   box-shadow:0 10px 30px rgba(0,0,0,0.1);
@@ -188,16 +189,28 @@ section{
   border-radius:3px;
 }
 
-.works-section{margin-bottom:80px;}
+.works-section{
+  margin-bottom:80px;
+  /* 核心修改：确保每个作品板块居中 */
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
 .works-section h3{
   font-size:22px;
   margin-bottom:20px;
   color:#333;
+  /* 补充：标题也居中（可选，根据需求） */
+  text-align: left; /* 如需标题居中可改为 center */
 }
+/* 核心修改：优化grid布局，确保内容居中且适配 */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
   gap:30px;
+  /* 确保grid容器本身居中 */
+  justify-items: center;
+  width: 100%;
 }
 .card{
   background:#fff;
@@ -209,6 +222,9 @@ section{
   display:flex;
   flex-direction:column;
   cursor:pointer;
+  /* 确保卡片占满grid项宽度 */
+  width: 100%;
+  max-width: 380px; /* 可选：限制卡片最大宽度，避免过宽 */
 }
 .card:hover{
   transform:translateY(-8px) scale(1.02);
@@ -360,7 +376,7 @@ section{
   border-radius: 0;
 }
 #avatarImg{
-  max-width: 300px;
+  max-width: 380px; /* 同步放大头像弹窗尺寸 */
   border-radius: 20px;
   object-fit: cover;
 }
@@ -459,6 +475,7 @@ footer{
     text-align:center;
     gap:30px;
   }
+  /* 移动端头像适配 */
   .avatar-box{flex:0 0 160px;height:160px;}
   .hero h1{font-size:36px;}
   .hero-desc{font-size:16px;}
