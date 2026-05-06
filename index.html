@@ -58,7 +58,7 @@ nav{
 }
 .nav a:hover{color:#ff3d81;}
 
-/* 🔧 修复：导航跳转自动往上偏移80px，不被顶部导航挡住 */
+/* 导航跳转偏移量 */
 section{
   scroll-margin-top: 80px;
 }
@@ -353,12 +353,24 @@ section{
 }
 .small-modal .modal-close{color:#999;}
 
+/* 🔧 修复：头像弹窗去掉白背景和边框，单独设置大小 */
+#avatarModal .modal-content{
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+#avatarImg{
+  max-width: 300px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
 /* 详情页长图弹窗：顶端距离当前屏幕顶部100px */
 .img-preview-modal .preview-img{
   display: block;
-  margin: 100px auto 50px auto; /* 顶部100px，底部50px */
-  width: 700px !important;
-  max-width: 90%;
+  margin: 100px auto 50px auto;
+  width: 750px !important;
+  max-width: 95%;
   height: auto !important;
   border-radius: 10px;
 }
@@ -465,6 +477,11 @@ footer{
   
   .grid{grid-template-columns:1fr;gap:25px;}
   .small-modal .modal-content{padding:30px 20px;}
+  
+  /* 手机端头像再缩小一点 */
+  #avatarImg{
+    max-width: 250px;
+  }
   
   /* 手机端详情页顶端距离屏幕顶部50px */
   .img-preview-modal .preview-img{
@@ -852,7 +869,7 @@ footer{
   </div>
 </div>
 
-<!-- 🔧 修复：头像弹窗加上modal-content容器，和微信弹窗一样居中 -->
+<!-- 头像预览弹窗 -->
 <div class="modal small-modal" id="avatarModal">
   <span class="modal-close" onclick="closeAvatarModal()">&times;</span>
   <div class="modal-content">
@@ -873,7 +890,7 @@ footer{
 </div>
 
 <script>
-// 打开微信弹窗（永远当前屏幕正中间）
+// 打开微信弹窗
 function openWxModal(){
   document.getElementById('wxModal').classList.add('active');
   document.body.style.overflow = 'hidden';
@@ -896,7 +913,7 @@ function copyWxId(){
   });
 }
 
-// 预览头像（永远当前屏幕正中间）
+// 预览头像
 function previewAvatar(el){
   const img = el.querySelector('img');
   const modal = document.getElementById('avatarModal');
@@ -912,7 +929,7 @@ function closeAvatarModal(){
   document.body.style.overflow = 'auto';
 }
 
-// 预览详情页长图（顶端距离当前屏幕顶部100px）
+// 预览详情页长图
 function previewDetail(el){
   const img=el.querySelector('img');
   if(!img)return;
@@ -931,7 +948,7 @@ function closeImgModal(){
   document.body.style.overflow = 'auto';
 }
 
-// 打开视频弹窗（永远当前屏幕正中间）
+// 打开视频弹窗
 function openVideoModal(videoSrc){
   const modal = document.getElementById('videoModal');
   const video = document.getElementById('previewVideo');
