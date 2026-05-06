@@ -5,26 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>龚著登 - 电商视觉设计师作品集</title>
 
-<!-- 极致预加载优化 -->
 <link rel="preconnect" href="https://fonts.font.im" crossorigin>
 <link rel="dns-prefetch" href="https://fonts.font.im">
-<!-- 预加载首屏关键资源 -->
 <link rel="preload" href="https://fonts.font.im/css2?family=Inter:wght@300;400;600;800&display=swap" as="style">
 <link rel="preload" href="images/avatar.webp" as="image">
 
-<!-- 字体优化：swap模式，不阻塞渲染 -->
 <link href="https://fonts.font.im/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.font.im/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet"></noscript>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-/* 字体回退优化，避免FOIT */
 body{
   font-family:'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background: linear-gradient(120deg,#f6f9ff,#eef2ff);
   color:#111;
   scroll-behavior: smooth;
-  /* 硬件加速优化 */
   transform: translateZ(0);
   will-change: scroll-position;
 }
@@ -42,7 +37,6 @@ nav{
   background: rgba(255,255,255,0.95);
   border-bottom:1px solid rgba(0,0,0,0.08);
   z-index:100;
-  /* 导航栏硬件加速 */
   transform: translateZ(0);
 }
 .nav{
@@ -206,7 +200,6 @@ nav{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
   gap:30px;
-  /* 网格硬件加速 */
   transform: translateZ(0);
 }
 .card{
@@ -225,18 +218,17 @@ nav{
   box-shadow:0 15px 35px rgba(0,0,0,0.12);
 }
 
-/* 核心：正方形缩略图容器 */
+/* 正方形缩略图容器 */
 .card-img-box{
-  aspect-ratio: 1/1; /* 强制1:1正方形 */
+  aspect-ratio: 1/1;
   overflow:hidden;
   background:#f8f9fa;
 }
 .card-img{
   width:100%;
   height:100%;
-  object-fit:cover; /* 裁剪中心部分作为缩略图 */
+  object-fit:cover;
   transition:transform 0.3s;
-  /* 骨架屏加载 */
   background: linear-gradient(90deg,#f0f0f0 25%,#e0e0e0 50%,#f0f0f0 75%);
   background-size:200% 100%;
   animation: skeleton-loading 1.2s infinite linear;
@@ -257,10 +249,8 @@ nav{
   aspect-ratio: 16/9;
   object-fit:cover;
   background:#000;
-  /* 移动端内联播放，不自动全屏 */
   playsinline: true;
   webkit-playsinline: true;
-  /* 骨架屏加载 */
   background: linear-gradient(90deg,#f0f0f0 25%,#e0e0e0 50%,#f0f0f0 75%);
   background-size:200% 100%;
   animation: skeleton-loading 1.2s infinite linear;
@@ -315,20 +305,20 @@ nav{
   background: linear-gradient(90deg,#ff7a18,#ff3d81);
 }
 
-/* 通用弹窗样式 */
+/* 通用弹窗样式（核心修复：永久屏幕居中） */
 .modal{
   position:fixed;
   top:0;left:0;
   width:100%;height:100%;
   background:rgba(0,0,0,0.85);
   display:flex;
-  align-items:flex-start;
-  justify-content:center;
+  align-items:center; /* 垂直居中 */
+  justify-content:center; /* 水平居中 */
   z-index:9999;
   opacity:0;
   visibility:hidden;
   transition:opacity 0.2s, visibility 0.2s;
-  padding:40px 20px;
+  padding:20px;
   overflow:auto;
 }
 .modal.active{
@@ -393,13 +383,12 @@ nav{
   display:none;
 }
 
-/* 长图预览弹窗 */
+/* 长图预览弹窗（核心修复：大小适配电脑+手机） */
 .img-preview-modal .preview-img{
-  max-width:100%;
+  max-width:600px; /* 电脑端最大宽度600px，刚好能看清一页 */
   width:auto;
   height:auto;
   border-radius:10px;
-  /* 长图硬件加速 */
   transform: translateZ(0);
 }
 
@@ -412,9 +401,8 @@ footer{
   border-top:1px solid rgba(0,0,0,0.05);
 }
 
-/* 响应式适配 + 移动端性能优化 */
+/* 响应式适配 */
 @media(max-width:768px){
-  /* 移动端禁用hover动画，减少重绘 */
   .card:hover{transform:none; box-shadow:0 8px 25px rgba(0,0,0,0.08);}
   .card:hover .card-img{transform:none;}
   .btn:hover{transform:none;}
@@ -460,6 +448,11 @@ footer{
   
   .grid{grid-template-columns:1fr;gap:25px;}
   .modal-content{padding:30px 20px;}
+
+  /* 手机端长图最大宽度90%，左右留边距 */
+  .img-preview-modal .preview-img{
+    max-width:90%;
+  }
 }
 </style>
 </head>
@@ -511,11 +504,11 @@ footer{
     <div class="grid">
       <div class="card" onclick="previewImg(this)">
         <div class="card-img-box">
-          <img src="images/detail/1_thumb.webp" data-full-src="images/detail/1.webp" class="card-img" loading="lazy" decoding="async" alt="智能扫地机器人详情页">
+          <img src="images/detail/1_thumb.webp" data-full-src="images/detail/1.webp" class="card-img" loading="lazy" decoding="async" alt="手持小风扇详情页">
         </div>
         <div class="info">
-          <div class="title">智能扫地机器人详情页</div>
-          <div class="product-desc">突出智能导航、吸力、续航，场景化展示提升转化</div>
+          <div class="title">手持小风扇详情页</div>
+          <div class="product-desc">100档无极调速，24小时续航，极速降温体验</div>
         </div>
       </div>
       <div class="card" onclick="previewImg(this)">
@@ -879,13 +872,12 @@ function copyWxId(){
   });
 }
 
-// 核心：点击加载完整长图预览
+// 点击加载完整长图预览
 function previewImg(el){
   const img=el.querySelector('img');
   if(!img)return;
   const modal=document.getElementById('imgPreviewModal');
   const previewImg=document.getElementById('previewImg');
-  // 优先加载data-full-src里的完整长图，没有则用src
   previewImg.src=img.dataset.fullSrc || img.src;
   previewImg.alt=img.alt;
   modal.classList.add('active');
