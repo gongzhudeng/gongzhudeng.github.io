@@ -302,35 +302,50 @@ nav{
   background: linear-gradient(90deg,#ff7a18,#ff3d81);
 }
 
-/* 🔧 核心修复：弹窗+长图预览 */
+/* 🔧 终极修复：弹窗绝对屏幕居中 + 滑动正常 */
 .modal{
   position:fixed;
   top:0;left:0;
-  width:100%;height:100%;
+  width:100vw;height:100vh; /* 强制等于视口大小 */
   background:rgba(0,0,0,0.85);
-  display:flex;
-  align-items:center; /* 永远垂直居中 */
-  justify-content:center; /* 永远水平居中 */
   z-index:9999;
   opacity:0;
   visibility:hidden;
   transition:opacity 0.25s ease;
-  overflow-y:auto; /* 允许长图上下滚动 */
-  padding:40px 20px;
+  overflow-y:auto; /* 允许弹窗整体滚动 */
+  overflow-x:hidden;
+  padding:20px;
 }
 .modal.active{
   opacity:1;
   visibility:visible;
 }
-.modal-content{
+
+/* 小弹窗（微信/头像）：永远屏幕正中间 */
+.small-modal .modal-content{
+  margin: auto; /* 自动上下左右居中 */
+  position:relative;
+  top:50%;
+  transform: translateY(-50%);
   background:#fff;
   border-radius:20px;
   padding:40px;
   max-width:400px;
   width:100%;
   text-align:center;
-  position:relative;
 }
+
+/* 长图弹窗：从顶部开始显示 + 可自由滑动 */
+.img-preview-modal .preview-img{
+  display:block;
+  margin:0 auto; /* 水平居中 */
+  width:700px !important; /* 固定宽度清晰显示 */
+  max-width:100%; /* 手机端自适应 */
+  height:auto !important;
+  border-radius:10px;
+  object-fit:contain;
+}
+
 .modal-close{
   position:absolute;
   top:15px;right:20px;
@@ -378,16 +393,6 @@ nav{
   font-size:14px;
   margin-top:10px;
   display:none;
-}
-
-/* 🔧 核心修复：详情页长图固定700px宽度，清晰可见 */
-.img-preview-modal .preview-img{
-  width:700px !important; /* 固定宽度，文字清晰 */
-  max-width:90%; /* 手机端自适应 */
-  height:auto !important;
-  border-radius:10px;
-  object-fit:contain;
-  transform: translateZ(0);
 }
 
 footer{
@@ -445,7 +450,7 @@ footer{
   }
   
   .grid{grid-template-columns:1fr;gap:25px;}
-  .modal-content{padding:30px 20px;}
+  .small-modal .modal-content{padding:30px 20px;}
 }
 </style>
 </head>
@@ -821,8 +826,8 @@ footer{
 
 </div>
 
-<!-- 微信二维码弹窗 -->
-<div class="modal" id="wxModal">
+<!-- 微信二维码弹窗（小弹窗类） -->
+<div class="modal small-modal" id="wxModal">
   <div class="modal-content">
     <span class="modal-close" onclick="closeWxModal()">&times;</span>
     <h3 class="modal-title">扫码加我微信</h3>
@@ -835,7 +840,7 @@ footer{
   </div>
 </div>
 
-<!-- 长图预览弹窗 -->
+<!-- 长图预览弹窗（长图类） -->
 <div class="modal img-preview-modal" id="imgPreviewModal">
   <span class="modal-close" onclick="closeImgModal()">&times;</span>
   <img src="" class="preview-img" id="previewImg" decoding="async">
@@ -846,6 +851,8 @@ footer{
 function openWxModal(){
   document.getElementById('wxModal').classList.add('active');
   document.body.style.overflow = 'hidden';
+  // 滚动到弹窗顶部
+  document.getElementById('wxModal').scrollTop = 0;
 }
 
 // 关闭微信弹窗
@@ -871,11 +878,12 @@ function previewImg(el){
   if(!img)return;
   const modal=document.getElementById('imgPreviewModal');
   const previewImg=document.getElementById('previewImg');
-  // 优先加载data-full-src里的完整长图，没有则用src
   previewImg.src=img.dataset.fullSrc || img.src;
   previewImg.alt=img.alt;
   modal.classList.add('active');
   document.body.style.overflow='hidden';
+  // 关键：打开时自动滚动到弹窗顶部，从详情页开头看起
+  modal.scrollTop = 0;
 }
 
 // 关闭图片预览
