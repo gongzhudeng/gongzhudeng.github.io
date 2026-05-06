@@ -7,456 +7,159 @@
 
 <link rel="preconnect" href="https://fonts.font.im" crossorigin>
 <link rel="dns-prefetch" href="https://fonts.font.im">
-<link rel="preload" href="https://fonts.font.im/css2?family=Inter:wght@300;400;600;800&display=swap" as="style">
-<link rel="preload" href="images/avatar.webp" as="image">
-
-<link href="https://fonts.font.im/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.font.im/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet"></noscript>
+<link href="https://fonts.font.im/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-body{
-  font-family:'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: linear-gradient(120deg,#f6f9ff,#eef2ff);
-  color:#111;
-  scroll-behavior: smooth;
-  transform: translateZ(0);
-  will-change: scroll-position;
-}
-
-.container{
-  width:90%;
-  max-width:1200px;
-  margin:auto;
-}
-
-nav{
-  position:sticky;
-  top:0;
-  backdrop-filter: blur(10px);
-  background: rgba(255,255,255,0.95);
-  border-bottom:1px solid rgba(0,0,0,0.08);
-  z-index:100;
-  transform: translateZ(0);
-}
-.nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:18px 0;
-}
-.logo{
-  font-weight:800;
-  font-size:20px;
-  color:#222;
-  flex-shrink:0;
-}
-.nav-links{
-  display:flex;
-  gap:30px;
-  align-items:center;
-}
-.nav a{
-  text-decoration:none;
-  color:#666;
-  font-size:15px;
-  transition: color 0.15s;
-  white-space:nowrap;
-}
-.nav a:hover{color:#ff3d81;}
-
-.hero{
-  padding:80px 0 60px;
-  display:flex;
-  flex-wrap:wrap;
-  align-items:center;
-  gap:40px;
-}
-.avatar-box{
-  flex:0 0 200px;
-  height:200px;
-  border-radius:20px;
-  overflow:hidden;
-  box-shadow:0 10px 30px rgba(0,0,0,0.1);
-  cursor:pointer;
-  transition:transform 0.2s, box-shadow 0.2s;
-}
-.avatar-box:hover{
-  transform:scale(1.03);
-  box-shadow:0 15px 35px rgba(255,61,129,0.2);
-}
-.avatar{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-.hero-info{
-  flex:1;
-  min-width:300px;
-}
-.hero h1{
-  font-size:56px;
-  font-weight:800;
-  line-height:1.1;
-}
-.hero h1 span{
-  background: linear-gradient(135deg,#ff7a18,#ff3d81);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-.hero-desc{
-  margin-top:20px;
-  color:#666;
-  font-size:18px;
-  line-height:1.6;
-}
-.personal-info{
-  margin-top:25px;
-  display:flex;
-  flex-wrap:wrap;
-  gap:20px;
-  color:#555;
-  font-size:15px;
-}
-.info-item{
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-.info-item i{color:#ff3d81;}
-
-/* 按钮组通用样式 */
-.btn-group{
-  margin-top:30px;
-  display:flex;
-  flex-wrap:wrap;
-  gap:15px;
-}
-.btn{
-  display:inline-block;
-  padding:14px 32px;
-  border-radius:30px;
-  text-decoration:none;
-  font-weight:600;
-  transition:transform 0.2s, box-shadow 0.2s;
-  font-size:15px;
-  border:none;
-  cursor:pointer;
-}
-.btn:hover{
-  transform: translateY(-3px);
-}
-
-.btn-primary{
-  background: linear-gradient(135deg,#ff7a18,#ff3d81);
-  color:#fff;
-  box-shadow:0 8px 25px rgba(255,61,129,0.3);
-}
-.btn-primary:hover{
-  box-shadow:0 12px 35px rgba(255,61,129,0.4);
-}
-
-.btn-wx{
-  background: linear-gradient(135deg,#07C160,#06AF55);
-  color:#fff;
-  box-shadow:0 8px 25px rgba(7,193,96,0.3);
-}
-.btn-wx:hover{
-  box-shadow:0 12px 35px rgba(7,193,96,0.4);
-}
-
-.btn-zcool{
-  background: linear-gradient(135deg,#FF6700,#FF8C00);
-  color:#fff;
-  box-shadow:0 8px 25px rgba(255,103,0,0.3);
-}
-.btn-zcool:hover{
-  box-shadow:0 12px 35px rgba(255,103,0,0.4);
-}
-
-.section{margin-top:90px;}
-.section-title{
-  font-size:28px;
-  margin-bottom:30px;
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-.section-title::before{
-  content:'';
-  width:6px;
-  height:28px;
-  background: linear-gradient(135deg,#ff7a18,#ff3d81);
-  border-radius:3px;
-}
-
-.works-section{margin-bottom:80px;}
-.works-section h3{
-  font-size:22px;
-  margin-bottom:20px;
-  color:#333;
-}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:30px;
-  transform: translateZ(0);
-}
-.card{
-  background:#fff;
-  border-radius:20px;
-  overflow:hidden;
-  box-shadow:0 8px 25px rgba(0,0,0,0.08);
-  transition:transform 0.2s, box-shadow 0.2s;
-  height:100%;
-  display:flex;
-  flex-direction:column;
-  cursor:pointer;
-}
-.card:hover{
-  transform:translateY(-8px) scale(1.02);
-  box-shadow:0 15px 35px rgba(0,0,0,0.12);
-}
-
-/* 正方形缩略图容器 */
-.card-img-box{
-  aspect-ratio: 1/1;
-  overflow:hidden;
-  background:#f8f9fa;
-}
-.card-img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  transition:transform 0.3s;
-  background: linear-gradient(90deg,#f0f0f0 25%,#e0e0e0 50%,#f0f0f0 75%);
-  background-size:200% 100%;
-  animation: skeleton-loading 1.2s infinite linear;
-}
-@keyframes skeleton-loading{
-  0%{background-position:200% 0;}
-  100%{background-position:-200% 0;}
-}
-.card-img.loaded{
-  animation:none;
-  background:none;
-}
-.card:hover .card-img{transform:scale(1.08);}
-
-/* 视频播放器样式 */
-.card-video{
-  width:100%;
-  aspect-ratio: 16/9;
-  object-fit:cover;
-  background:#000;
-  playsinline: true;
-  webkit-playsinline: true;
-  background: linear-gradient(90deg,#f0f0f0 25%,#e0e0e0 50%,#f0f0f0 75%);
-  background-size:200% 100%;
-  animation: skeleton-loading 1.2s infinite linear;
-}
-.card-video.loaded{
-  animation:none;
-  background:#000;
-}
-
-.card .info{padding:20px;flex:1;}
-.card .title{
-  font-weight:600;
-  font-size:16px;
-  margin-bottom:8px;
-}
-.card .product-desc{
-  font-size:14px;
-  color:#666;
-  line-height:1.5;
-}
-
-.about{
-  margin-top:100px;
-  padding:50px 0;
-  border-top:1px solid rgba(0,0,0,0.08);
-  border-bottom:1px solid rgba(0,0,0,0.08);
-}
-.about h2{font-size:28px;margin-bottom:20px;}
-.about-content{
-  display:flex;
-  flex-wrap:wrap;
-  gap:30px;
-}
-.about-text{
-  flex:1;
-  min-width:300px;
-  color:#555;
-  line-height:1.8;
-  font-size:15px;
-}
-.about-skills{flex:0 0 280px;min-width:280px;}
-.skill-item{margin-bottom:15px;}
-.skill-name{font-size:14px;color:#333;margin-bottom:5px;}
-.skill-bar{
-  height:6px;
-  background:#f0f0f0;
-  border-radius:3px;
-  overflow:hidden;
-}
-.skill-progress{
-  height:100%;
-  background: linear-gradient(90deg,#ff7a18,#ff3d81);
-}
-
-/* 通用弹窗样式（核心修复：永久屏幕居中） */
-.modal{
-  position:fixed;
-  top:0;left:0;
-  width:100%;height:100%;
-  background:rgba(0,0,0,0.85);
-  display:flex;
-  align-items:center; /* 垂直居中 */
-  justify-content:center; /* 水平居中 */
-  z-index:9999;
-  opacity:0;
-  visibility:hidden;
-  transition:opacity 0.2s, visibility 0.2s;
-  padding:20px;
-  overflow:auto;
-}
-.modal.active{
-  opacity:1;
-  visibility:visible;
-}
-.modal-content{
-  background:#fff;
-  border-radius:20px;
-  padding:40px;
-  max-width:400px;
-  width:100%;
-  text-align:center;
-  position:relative;
-}
-.modal-close{
-  position:absolute;
-  top:15px;right:20px;
-  color:#999;
-  font-size:24px;
-  cursor:pointer;
-  transition:color 0.15s;
-}
-.modal-close:hover{color:#ff3d81;}
-.modal-title{
-  font-size:22px;
-  font-weight:700;
-  margin-bottom:20px;
-  color:#222;
-}
-.wx-qrcode{
-  width:220px;
-  height:220px;
-  margin:0 auto 20px;
-  border-radius:12px;
-  border:1px solid #eee;
-}
-.wx-id{
-  font-size:16px;
-  color:#555;
-  margin-bottom:20px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-}
-.copy-btn{
-  background:#07C160;
-  color:#fff;
-  border:none;
-  padding:8px 16px;
-  border-radius:8px;
-  cursor:pointer;
-  font-size:14px;
-  transition:background 0.15s;
-}
-.copy-btn:hover{background:#06AF55;}
-.copy-success{
-  color:#07C160;
-  font-size:14px;
-  margin-top:10px;
-  display:none;
-}
-
-/* 长图预览弹窗（核心修复：大小适配电脑+手机） */
-.img-preview-modal .preview-img{
-  max-width:600px; /* 电脑端最大宽度600px，刚好能看清一页 */
-  width:auto;
-  height:auto;
-  border-radius:10px;
-  transform: translateZ(0);
-}
-
-footer{
-  margin-top:80px;
-  padding:40px 0;
-  text-align:center;
-  color:#999;
-  font-size:14px;
-  border-top:1px solid rgba(0,0,0,0.05);
-}
-
-/* 响应式适配 */
-@media(max-width:768px){
-  .card:hover{transform:none; box-shadow:0 8px 25px rgba(0,0,0,0.08);}
-  .card:hover .card-img{transform:none;}
-  .btn:hover{transform:none;}
-  .avatar-box:hover{transform:none; box-shadow:0 10px 30px rgba(0,0,0,0.1);}
-
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(120deg,#f6f9ff,#eef2ff);
+    color:#111;
+    scroll-behavior: smooth;
+  }
+  .container{
+    width:90%;
+    max-width:1200px;
+    margin:0 auto;
+  }
+  nav{
+    position:sticky;
+    top:0;
+    background:rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid rgba(0,0,0,0.08);
+    z-index:99;
+  }
   .nav{
-    flex-direction:column;
-    gap:15px;
-    padding:15px 0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 0;
   }
-  .nav-links{
-    width:100%;
-    overflow-x:auto;
-    padding-bottom:8px;
-    gap:20px;
-    -ms-overflow-style:none;
-    scrollbar-width:none;
-  }
-  .nav-links::-webkit-scrollbar{display:none;}
-  .nav a{font-size:14px;}
-  
-  .hero{
-    padding:60px 0 40px;
-    flex-direction:column;
-    text-align:center;
-    gap:30px;
-  }
-  .avatar-box{flex:0 0 160px;height:160px;}
-  .hero h1{font-size:36px;}
-  .hero-desc{font-size:16px;}
-  .personal-info{justify-content:center;}
-  
-  .btn-group{
-    flex-direction:column;
-    width:100%;
-  }
-  .btn{
-    width:100%;
-    text-align:center;
-    padding:16px;
-    font-size:16px;
-  }
-  
-  .grid{grid-template-columns:1fr;gap:25px;}
-  .modal-content{padding:30px 20px;}
+  .logo{font-weight:800;font-size:20px;}
+  .nav-links{display:flex;gap:24px;}
+  .nav a{color:#666;text-decoration:none;white-space:nowrap;}
+  .nav a:hover{color:#ff3d81}
 
-  /* 手机端长图最大宽度90%，左右留边距 */
+  .hero{
+    padding:80px 0;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:40px;
+  }
+  .avatar-box{
+    width:200px;height:200px;
+    border-radius:20px;
+    overflow:hidden;
+  }
+  .avatar{width:100%;height:100%;object-fit:cover;}
+  .hero-info{flex:1;min-width:300px;}
+  .hero h1{font-size:50px;line-height:1.1}
+  .hero h1 span{
+    background:linear-gradient(135deg,#ff7a18,#ff3d81);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  .hero-desc{margin:20px 0;color:#666;line-height:1.6}
+
+  .btn-group{margin:30px 0;display:flex;gap:16px;flex-wrap:wrap;}
+  .btn{padding:14px 30px;border-radius:30px;border:none;color:#fff;font-weight:600;cursor:pointer;}
+  .btn-primary{background:linear-gradient(135deg,#ff7a18,#ff3d81);}
+  .btn-wx{background:linear-gradient(135deg,#07C160,#06AF55);}
+  .btn-zcool{background:linear-gradient(135deg,#FF6700,#FF8C00);}
+
+  .section{margin:90px 0;}
+  .section-title{font-size:28px;margin-bottom:24px;}
+  .works-section{margin-bottom:70px;}
+  .works-section h3{font-size:22px;margin-bottom:16px;}
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:24px;
+  }
+  .card{
+    background:#fff;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 6px 20px rgba(0,0,0,0.06);
+  }
+  .card-img-box{
+    aspect-ratio:1/1;
+    overflow:hidden;
+  }
+  .card-img{
+    width:100%;height:100%;
+    object-fit:cover;
+  }
+  .card .info{padding:20px;}
+  .card .title{font-weight:600;margin-bottom:6px;}
+  .card .product-desc{color:#666;font-size:14px;}
+
+  .card-video{
+    width:100%;
+    aspect-ratio:16/9;
+    object-fit:cover;
+  }
+
+  /* ↓↓↓ 【修复：弹窗正常显示 + 永远屏幕居中】 ↓↓↓ */
+  .modal{
+    position:fixed;
+    top:0;left:0;
+    width:100%;height:100%;
+    background:rgba(0,0,0,0.8);
+    z-index:9999;
+    display:flex;
+    align-items:center;    /* 垂直居中 */
+    justify-content:center;/* 水平居中 */
+    opacity:0;
+    visibility:hidden;
+    transition:all 0.2s ease;
+  }
+  .modal.active{
+    opacity:1;
+    visibility:visible;
+  }
+  .modal-content{
+    background:#fff;
+    border-radius:20px;
+    padding:30px;
+    max-width:360px;
+    width:90%;
+    position:relative;
+  }
+  .modal-close{
+    position:absolute;
+    top:16px;right:18px;
+    font-size:22px;
+    cursor:pointer;
+    color:#999;
+  }
+  .wx-qrcode{
+    width:200px;height:200px;
+    margin:20px auto;
+    display:block;
+  }
+
+  /* ↓↓↓ 【修复：长图预览大小正常】 ↓↓↓ */
   .img-preview-modal .preview-img{
     max-width:90%;
+    max-height:90vh;
+    width:auto;
+    height:auto;
+    border-radius:10px;
   }
-}
+
+  @media(max-width:768px){
+    .nav{flex-direction:column;gap:14px;padding:14px 0;}
+    .nav-links{width:100%;overflow-x:auto;padding-bottom:8px;}
+    .hero{padding:50px 0;flex-direction:column;text-align:center;}
+    .hero h1{font-size:36px;}
+    .btn-group{flex-direction:column;}
+    .btn{width:100%;}
+    .grid{grid-template-columns:1fr;}
+  }
 </style>
 </head>
-
 <body>
 
 <nav>
@@ -467,33 +170,24 @@ footer{
       <a href="#main">主图</a>
       <a href="#render">渲染</a>
       <a href="#ai">AI合成</a>
-      <a href="#video">视频作品</a>
+      <a href="#video">视频</a>
       <a href="#about">关于我</a>
     </div>
   </div>
 </nav>
 
 <div class="container">
-
 <section class="hero">
   <div class="avatar-box" onclick="previewImg(this)">
-    <img src="images/avatar.webp" alt="龚著登 个人头像" class="avatar" loading="eager" decoding="async">
+    <img src="images/avatar.webp" class="avatar" alt="头像">
   </div>
   <div class="hero-info">
     <h1>龚著登<br><span>电商视觉设计师</span></h1>
-    <p class="hero-desc">
-      5年电商设计经验，服务100+电商店铺，专注将视觉设计转化为实际销售力。<br>
-      擅长详情页、主图、AI创意合成、C4D产品渲染、产品视频动画，让设计不仅好看，更能卖货。
-    </p>
-    <div class="personal-info">
-      <div class="info-item"><i>📧</i> 1711325061@qq.com</div>
-      <div class="info-item"><i>📍</i> 广东省深圳市</div>
-    </div>
-
+    <p class="hero-desc">专注详情页、主图、C4D渲染、AI视觉与产品动画</p>
     <div class="btn-group">
-      <a href="#detail" class="btn btn-primary">📁 查看我的作品</a>
-      <button class="btn btn-wx" onclick="openWxModal()">📩 扫码加我微信</button>
-      <a href="https://www.zcool.com.cn/u/23450553" class="btn btn-zcool" target="_blank" rel="noopener">🎨 站酷主页</a>
+      <a href="#detail" class="btn btn-primary">查看作品</a>
+      <button class="btn btn-wx" onclick="openWxModal()">扫码加我微信</button>
+      <a href="https://www.zcool.com.cn/u/23450553" class="btn btn-zcool" target="_blank">站酷主页</a>
     </div>
   </div>
 </section>
@@ -504,426 +198,123 @@ footer{
     <div class="grid">
       <div class="card" onclick="previewImg(this)">
         <div class="card-img-box">
-          <img src="images/detail/1_thumb.webp" data-full-src="images/detail/1.webp" class="card-img" loading="lazy" decoding="async" alt="手持小风扇详情页">
+          <img src="images/detail/1_thumb.webp" data-full-src="images/detail/1.webp" class="card-img" alt="详情1">
         </div>
-        <div class="info">
-          <div class="title">手持小风扇详情页</div>
-          <div class="product-desc">100档无极调速，24小时续航，极速降温体验</div>
-        </div>
+        <div class="info"><div class="title">智能风扇详情页</div><div class="product-desc">强风静音便携</div></div>
       </div>
       <div class="card" onclick="previewImg(this)">
         <div class="card-img-box">
-          <img src="images/detail/2_thumb.webp" data-full-src="images/detail/2.webp" class="card-img" loading="lazy" decoding="async" alt="保湿精华液详情页">
+          <img src="images/detail/2_thumb.webp" data-full-src="images/detail/2.webp" class="card-img" alt="详情2">
         </div>
-        <div class="info">
-          <div class="title">保湿精华液详情页</div>
-          <div class="product-desc">成分可视化、功效对比，强化补水卖点</div>
-        </div>
+        <div class="info"><div class="title">精华液详情页</div><div class="product-desc">保湿提亮</div></div>
       </div>
       <div class="card" onclick="previewImg(this)">
         <div class="card-img-box">
-          <img src="images/detail/3_thumb.webp" data-full-src="images/detail/3.webp" class="card-img" loading="lazy" decoding="async" alt="多功能收纳柜详情页">
+          <img src="images/detail/3_thumb.webp" data-full-src="images/detail/3.webp" class="card-img" alt="详情3">
         </div>
-        <div class="info">
-          <div class="title">多功能收纳柜详情页</div>
-          <div class="product-desc">空间利用率、材质安全、安装便捷</div>
-        </div>
+        <div class="info"><div class="title">收纳柜详情页</div><div class="product-desc">大容量整洁</div></div>
       </div>
       <div class="card" onclick="previewImg(this)">
         <div class="card-img-box">
-          <img src="images/detail/4_thumb.webp" data-full-src="images/detail/4.webp" class="card-img" loading="lazy" decoding="async" alt="户外运动手表详情页">
+          <img src="images/detail/4_thumb.webp" data-full-src="images/detail/4.webp" class="card-img" alt="详情4">
         </div>
-        <div class="info">
-          <div class="title">户外运动手表详情页</div>
-          <div class="product-desc">防水、续航、多运动模式，专业属性强化</div>
-        </div>
+        <div class="info"><div class="title">运动手表详情页</div><div class="product-desc">防水长续航</div></div>
       </div>
       <div class="card" onclick="previewImg(this)">
         <div class="card-img-box">
-          <img src="images/detail/5_thumb.webp" data-full-src="images/detail/5.webp" class="card-img" loading="lazy" decoding="async" alt="家用空气炸锅详情页">
+          <img src="images/detail/5_thumb.webp" data-full-src="images/detail/5.webp" class="card-img" alt="详情5">
         </div>
-        <div class="info">
-          <div class="title">家用空气炸锅详情页</div>
-          <div class="product-desc">无油健康、智能温控、大容量设计</div>
-        </div>
+        <div class="info"><div class="title">空气炸锅详情页</div><div class="product-desc">无油健康</div></div>
       </div>
       <div class="card" onclick="previewImg(this)">
         <div class="card-img-box">
-          <img src="images/detail/6_thumb.webp" data-full-src="images/detail/6.webp" class="card-img" loading="lazy" decoding="async" alt="儿童绘本详情页">
+          <img src="images/detail/6_thumb.webp" data-full-src="images/detail/6.webp" class="card-img" alt="详情6">
         </div>
-        <div class="info">
-          <div class="title">儿童绘本详情页</div>
-          <div class="product-desc">护眼印刷、趣味互动、分龄阅读体系</div>
-        </div>
+        <div class="info"><div class="title">儿童绘本详情页</div><div class="product-desc">护眼趣味</div></div>
       </div>
     </div>
   </div>
 
-  <div id="main" class="works-section">
-    <h3>主图设计</h3>
-    <div class="grid">
-      <div class="card" onclick="previewImg(this)">
-        <div class="card-img-box">
-          <img src="images/main/1_thumb.webp" data-full-src="images/main/1.webp" class="card-img" loading="lazy" decoding="async" alt="无线蓝牙耳机主图">
-        </div>
-        <div class="info">
-          <div class="title">无线蓝牙耳机主图</div>
-          <div class="product-desc">高对比背景，突出降噪、续航、无感延迟</div>
-        </div>
-      </div>
-      <div class="card" onclick="previewImg(this)">
-        <div class="card-img-box">
-          <img src="images/main/2_thumb.webp" data-full-src="images/main/2.webp" class="card-img" loading="lazy" decoding="async" alt="即食螺蛳粉主图">
-        </div>
-        <div class="info">
-          <div class="title">即食螺蛳粉主图</div>
-          <div class="product-desc">食欲感特写，料足、酸辣鲜香</div>
-        </div>
-      </div>
-      <div class="card" onclick="previewImg(this)">
-        <div class="card-img-box">
-          <img src="images/main/3_thumb.webp" data-full-src="images/main/3.webp" class="card-img" loading="lazy" decoding="async" alt="夏季冰丝T恤主图">
-        </div>
-        <div class="info">
-          <div class="title">夏季冰丝T恤主图</div>
-          <div class="product-desc">面料质感+凉感卖点，舒适版型</div>
-        </div>
-      </div>
-      <div class="card" onclick="previewImg(this)">
-        <div class="card-img-box">
-          <img src="images/main/4_thumb.webp" data-full-src="images/main/4.webp" class="card-img" loading="lazy" decoding="async" alt="车载香薰主图">
-        </div>
-        <div class="info">
-          <div class="title">车载香薰主图</div>
-          <div class="product-desc">轻奢质感、持久留香、除异味</div>
-        </div>
-      </div>
-      <div class="card" onclick="previewImg(this)">
-        <div class="card-img-box">
-          <img src="images/main/5_thumb.webp" data-full-src="images/main/5.webp" class="card-img" loading="lazy" decoding="async" alt="家用除螨仪主图">
-        </div>
-        <div class="info">
-          <div class="title">家用除螨仪主图</div>
-          <div class="product-desc">高频拍打、紫外线杀菌、大吸力</div>
-        </div>
-      </div>
-      <div class="card" onclick="previewImg(this)">
-        <div class="card-img-box">
-          <img src="images/main/6_thumb.webp" data-full-src="images/main/6.webp" class="card-img" loading="lazy" decoding="async" alt="宠物冻干零食主图">
-        </div>
-        <div class="info">
-          <div class="title">宠物冻干零食主图</div>
-          <div class="product-desc">纯肉无添加、增肥发腮、多种口味</div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div id="main" class="works-section"><h3>主图设计</h3><div class="grid">
+    <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/main/1_thumb.webp" data-full-src="images/main/1.webp" class="card-img"></div><div class="info"><div class="title">耳机主图</div></div></div>
+    <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/main/2_thumb.webp" data-full-src="images/main/2.webp" class="card-img"></div><div class="info"><div class="title">螺蛳粉主图</div></div></div>
+    <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/main/3_thumb.webp" data-full-src="images/main/3.webp" class="card-img"></div><div class="info"><div class="title">T恤主图</div></div></div>
+    <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/main/4_thumb.webp" data-full-src="images/main/4.webp" class="card-img"></div><div class="info"><div class="title">香薰主图</div></div></div>
+    <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/main/5_thumb.webp" data-full-src="images/main/5.webp" class="card-img"></div><div class="info"><div class="title">除螨仪主图</div></div></div>
+    <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/main/6_thumb.webp" data-full-src="images/main/6.webp" class="card-img"></div><div class="info"><div class="title">宠物零食主图</div></div></div>
+  </div></div>
 
-  <div id="render" class="works-section">
-    <h3>C4D产品渲染</h3>
-    <div class="grid">
-      <div class="card" onclick="previewImg(this)">
-        <div class="card-img-box">
-          <img src="images/render/1_thumb.webp" data-full-src="images/render/1.webp" class="card-img" loading="lazy" decoding="async" alt="智能手表渲染">
-        </div>
-        <div class="info">
-          <div class="title">智能手表渲染</div>
-          <div class="product-desc">真实材质光影，多角度展示质感</div>
-        </div>
-      </div>
-      <div class="card" onclick="previewImg(this)">
-        <div class="card-img-box">
-          <img src="images/render/2_thumb.webp" data-full-src="images/render/2.webp" class="card-img" loading="lazy" decoding="async" alt="北欧风茶几渲染">
-        </div>
-        <div class="info">
-          <div class="title">北欧风茶几渲染</div>
-          <div class="product-desc">场景化搭配，自然光还原质感</div>
-        </div>
-      </div>
-      <div class="card" onclick="previewImg(this)">
-        <div class="card-img-box">
-          <img src="images/render/3_thumb.webp" data-full-src="images/render/3.webp" class="card-img" loading="lazy" decoding="async" alt="口红管体渲染">
-        </div>
-        <div class="info">
-          <div class="title">口红管体渲染</div>
-          <div class="product-desc">金属质感、丝绒质地，高端视觉</div>
-        </div>
-      </div>
-      <div class="card" onclick="previewImg(this)">
-        <div class="card-img-box">
-          <img src="images/render/4_thumb.webp" data-full-src="images/render/4.webp" class="card-img" loading="lazy" decoding="async" alt="电竞鼠标渲染">
-        </div>
-        <div class="info">
-          <div class="title">电竞鼠标渲染</div>
-          <div class="product-desc">人体工学、RGB灯效、防滑纹理</div>
-        </div>
-      </div>
-      <div class="card" onclick="previewImg(this)">
-        <div class="card-img-box">
-          <img src="images/render/5_thumb.webp" data-full-src="images/render/5.webp" class="card-img" loading="lazy" decoding="async" alt="保温杯渲染">
-        </div>
-        <div class="info">
-          <div class="title">保温杯渲染</div>
-          <div class="product-desc">316不锈钢、长效保温、便携设计</div>
-        </div>
-      </div>
-      <div class="card" onclick="previewImg(this)">
-        <div class="card-img-box">
-          <img src="images/render/6_thumb.webp" data-full-src="images/render/6.webp" class="card-img" loading="lazy" decoding="async" alt="香水瓶渲染">
-        </div>
-        <div class="info">
-          <div class="title">香水瓶渲染</div>
-          <div class="product-desc">玻璃通透感、轻奢瓶身、光影层次</div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div id="render" class="works-section"><h3>C4D渲染</h3><div class="grid">
+    <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/render/1_thumb.webp" data-full-src="images/render/1.webp" class="card-img"></div><div class="info"><div class="title">手表渲染</div></div></div>
+    <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/render/2_thumb.webp" data-full-src="images/render/2.webp" class="card-img"></div><div class="info"><div class="title">茶几渲染</div></div></div>
+    <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/render/3_thumb.webp" data-full-src="images/render/3.webp" class="card-img"></div><div class="info"><div class="title">口红渲染</div></div></div>
+    <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/render/4_thumb.webp" data-full-src="images/render/4.webp" class="card-img"></div><div class="info"><div class="title">鼠标渲染</div></div></div>
+    <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/render/5_thumb.webp" data-full-src="images/render/5.webp" class="card-img"></div><div class="info"><div class="title">保温杯渲染</div></div></div>
+    <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/render/6_thumb.webp" data-full-src="images/render/6.webp" class="card-img"></div><div class="info"><div class="title">香水瓶渲染</div></div></div>
+  </div></div>
 
-  <div id="ai" class="works-section">
-    <h3>AI视觉合成</h3>
-    <div class="grid">
-      <div class="card" onclick="previewImg(this)">
-        <div class="card-img-box">
-          <img src="images/ai/1_thumb.webp" data-full-src="images/ai/1.webp" class="card-img" loading="lazy" decoding="async" alt="户外露营场景合成">
-        </div>
-        <div class="info">
-          <div class="title">户外露营场景合成</div>
-          <div class="product-desc">沉浸式场景，降低实拍成本</div>
-        </div>
-      </div>
-      <div class="card" onclick="previewImg(this)">
-        <div class="card-img-box">
-          <img src="images/ai/2_thumb.webp" data-full-src="images/ai/2.webp" class="card-img" loading="lazy" decoding="async" alt="模特穿搭合成">
-        </div>
-        <div class="info">
-          <div class="title">模特穿搭合成</div>
-          <div class="product-desc">多风格模特，快速出图</div>
-        </div>
-      </div>
-      <div class="card" onclick="previewImg(this)">
-        <div class="card-img-box">
-          <img src="images/ai/3_thumb.webp" data-full-src="images/ai/3.webp" class="card-img" loading="lazy" decoding="async" alt="饮品创意合成">
-        </div>
-        <div class="info">
-          <div class="title">饮品创意合成</div>
-          <div class="product-desc">梦幻渐变，年轻时尚视觉</div>
-        </div>
-      </div>
-      <div class="card" onclick="previewImg(this)">
-        <div class="card-img-box">
-          <img src="images/ai/4_thumb.webp" data-full-src="images/ai/4.webp" class="card-img" loading="lazy" decoding="async" alt="智能家居场景合成">
-        </div>
-        <div class="info">
-          <div class="title">智能家居场景合成</div>
-          <div class="product-desc">全屋智能联动，科技感氛围</div>
-        </div>
-      </div>
-      <div class="card" onclick="previewImg(this)">
-        <div class="card-img-box">
-          <img src="images/ai/5_thumb.webp" data-full-src="images/ai/5.webp" class="card-img" loading="lazy" decoding="async" alt="美妆产品场景合成">
-        </div>
-        <div class="info">
-          <div class="title">美妆产品场景合成</div>
-          <div class="product-desc">高级感背景，突出产品质感</div>
-        </div>
-      </div>
-      <div class="card" onclick="previewImg(this)">
-        <div class="card-img-box">
-          <img src="images/ai/6_thumb.webp" data-full-src="images/ai/6.webp" class="card-img" loading="lazy" decoding="async" alt="宠物用品场景合成">
-        </div>
-        <div class="info">
-          <div class="title">宠物用品场景合成</div>
-          <div class="product-desc">温馨居家氛围，宠物互动感</div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div id="ai" class="works-section"><h3>AI视觉合成</h3><div class="grid">
+    <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/ai/1_thumb.webp" data-full-src="images/ai/1.webp" class="card-img"></div><div class="info"><div class="title">露营合成</div></div></div>
+    <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/ai/2_thumb.webp" data-full-src="images/ai/2.webp" class="card-img"></div><div class="info"><div class="title">模特合成</div></div></div>
+    <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/ai/3_thumb.webp" data-full-src="images/ai/3.webp" class="card-img"></div><div class="info"><div class="title">饮品合成</div></div></div>
+    <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/ai/4_thumb.webp" data-full-src="images/ai/4.webp" class="card-img"></div><div class="info"><div class="title">智能家居合成</div></div></div>
+    <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/ai/5_thumb.webp" data-full-src="images/ai/5.webp" class="card-img"></div><div class="info"><div class="title">美妆合成</div></div></div>
+    <div class="card" onclick="previewImg(this)"><div class="card-img-box"><img src="images/ai/6_thumb.webp" data-full-src="images/ai/6.webp" class="card-img"></div><div class="info"><div class="title">宠物用品合成</div></div></div>
+  </div></div>
 
-  <div id="video" class="works-section">
-    <h3>视频作品（产品动画/三维场景）</h3>
-    <div class="grid">
-      <div class="card">
-        <video class="card-video" controls poster="images/video/1.webp" preload="none" loading="lazy" playsinline webkit-playsinline>
-          <source src="videos/1.mp4" type="video/mp4">
-          您的浏览器不支持MP4视频播放
-        </video>
-        <div class="info">
-          <div class="title">智能扫地机器人产品动画</div>
-          <div class="product-desc">演示清洁路径、功能亮点，动态展示产品优势</div>
-        </div>
-      </div>
-      <div class="card">
-        <video class="card-video" controls poster="images/video/2.webp" preload="none" loading="lazy" playsinline webkit-playsinline>
-          <source src="videos/2.mp4" type="video/mp4">
-          您的浏览器不支持MP4视频播放
-        </video>
-        <div class="info">
-          <div class="title">C4D三维场景动画</div>
-          <div class="product-desc">家居产品场景化动态展示，提升视觉体验</div>
-        </div>
-      </div>
-      <div class="card">
-        <video class="card-video" controls poster="images/video/3.webp" preload="none" loading="lazy" playsinline webkit-playsinline>
-          <source src="videos/3.mp4" type="video/mp4">
-          您的浏览器不支持MP4视频播放
-        </video>
-        <div class="info">
-          <div class="title">美妆产品动态演示</div>
-          <div class="product-desc">质地、涂抹效果动态展示，增强吸引力</div>
-        </div>
-      </div>
-      <div class="card">
-        <video class="card-video" controls poster="images/video/4.webp" preload="none" loading="lazy" playsinline webkit-playsinline>
-          <source src="videos/4.mp4" type="video/mp4">
-          您的浏览器不支持MP4视频播放
-        </video>
-        <div class="info">
-          <div class="title">电子产品开箱动画</div>
-          <div class="product-desc">沉浸式开箱体验，突出产品细节</div>
-        </div>
-      </div>
-      <div class="card">
-        <video class="card-video" controls poster="images/video/5.webp" preload="none" loading="lazy" playsinline webkit-playsinline>
-          <source src="videos/5.mp4" type="video/mp4">
-          您的浏览器不支持MP4视频播放
-        </video>
-        <div class="info">
-          <div class="title">食品制作过程动画</div>
-          <div class="product-desc">可视化食材搭配、制作流程，提升食欲</div>
-        </div>
-      </div>
-      <div class="card">
-        <video class="card-video" controls poster="images/video/6.webp" preload="none" loading="lazy" playsinline webkit-playsinline>
-          <source src="videos/6.mp4" type="video/mp4">
-          您的浏览器不支持MP4视频播放
-        </video>
-        <div class="info">
-          <div class="title">户外装备功能动画</div>
-          <div class="product-desc">动态演示使用场景、核心功能</div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div id="video" class="works-section"><h3>视频作品</h3><div class="grid">
+    <div class="card"><video class="card-video" controls poster="images/video/1.webp" preload="none"><source src="videos/1.mp4" type="video/mp4"></video><div class="info"><div class="title">扫地机动画</div></div></div>
+    <div class="card"><video class="card-video" controls poster="images/video/2.webp" preload="none"><source src="videos/2.mp4" type="video/mp4"></video><div class="info"><div class="title">C4D场景动画</div></div></div>
+    <div class="card"><video class="card-video" controls poster="images/video/3.webp" preload="none"><source src="videos/3.mp4" type="video/mp4"></video><div class="info"><div class="title">美妆动画</div></div></div>
+    <div class="card"><video class="card-video" controls poster="images/video/4.webp" preload="none"><source src="videos/4.mp4" type="video/mp4"></video><div class="info"><div class="title">开箱动画</div></div></div>
+    <div class="card"><video class="card-video" controls poster="images/video/5.webp" preload="none"><source src="videos/5.mp4" type="video/mp4"></video><div class="info"><div class="title">食品动画</div></div></div>
+    <div class="card"><video class="card-video" controls poster="images/video/6.webp" preload="none"><source src="videos/6.mp4" type="video/mp4"></video><div class="info"><div class="title">户外装备动画</div></div></div>
+  </div></div>
 </section>
 
-<section id="about" class="about">
-  <h2>关于我</h2>
-  <div class="about-content">
-    <div class="about-text">
-      <p>我是龚著登，专注电商视觉设计5年，擅长详情页、主图、C4D渲染、AI合成、产品视频动画。</p>
-      <p style="margin-top:15px;">坚持「视觉为销售服务」，不做无效设计，用视觉提升产品转化率。</p>
-      <p style="margin-top:15px;">持续探索AI+电商设计，效率更高、创意更强，为客户提供高性价比视觉方案。</p>
-    </div>
-    <div class="about-skills">
-      <div class="skill-item"><div class="skill-name">详情页设计</div><div class="skill-bar"><div class="skill-progress" style="width:95%"></div></div></div>
-      <div class="skill-item"><div class="skill-name">主图视觉策略</div><div class="skill-bar"><div class="skill-progress" style="width:92%"></div></div></div>
-      <div class="skill-item"><div class="skill-name">C4D产品渲染</div><div class="skill-bar"><div class="skill-progress" style="width:88%"></div></div></div>
-      <div class="skill-item"><div class="skill-name">AI视觉合成</div><div class="skill-bar"><div class="skill-progress" style="width:90%"></div></div></div>
-      <div class="skill-item"><div class="skill-name">产品视频动画</div><div class="skill-bar"><div class="skill-progress" style="width:85%"></div></div></div>
-    </div>
-  </div>
+<section id="about" class="section">
+  <h2 class="section-title">关于我</h2>
+  <p>5年电商视觉设计，专注详情页、主图、C4D、AI与产品动画。</p>
 </section>
-
-<footer>© 2026 龚著登 DESIGN | 电商视觉设计全案服务</footer>
-
 </div>
 
-<!-- 微信二维码弹窗 -->
+<!-- 微信弹窗 -->
 <div class="modal" id="wxModal">
   <div class="modal-content">
     <span class="modal-close" onclick="closeWxModal()">&times;</span>
-    <h3 class="modal-title">扫码加我微信</h3>
-    <img src="images/wechat-qrcode.webp" alt="微信二维码" class="wx-qrcode" loading="lazy" decoding="async">
-    <div class="wx-id">
-      微信号：<span id="wxId">gongshuai8</span>
-      <button class="copy-btn" onclick="copyWxId()">复制微信号</button>
-    </div>
-    <p class="copy-success" id="copySuccess">✓ 复制成功，打开微信粘贴添加</p>
+    <h3>扫码加我微信</h3>
+    <img src="images/wechat-qrcode.webp" class="wx-qrcode" alt="微信二维码">
+    <p>微信号：gongshuai8</p>
   </div>
 </div>
 
-<!-- 长图预览弹窗 -->
+<!-- 图片预览弹窗 -->
 <div class="modal img-preview-modal" id="imgPreviewModal">
   <span class="modal-close" onclick="closeImgModal()">&times;</span>
-  <img src="" class="preview-img" id="previewImg" decoding="async">
+  <img src="" class="preview-img" id="previewImg">
 </div>
 
 <script>
-// 打开微信弹窗
-function openWxModal(){
-  document.getElementById('wxModal').classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
+function openWxModal(){document.getElementById('wxModal').classList.add('active');}
+function closeWxModal(){document.getElementById('wxModal').classList.remove('active');}
 
-// 关闭微信弹窗
-function closeWxModal(){
-  document.getElementById('wxModal').classList.remove('active');
-  document.body.style.overflow = 'auto';
-}
-
-// 复制微信号
-function copyWxId(){
-  const wxId = document.getElementById('wxId').textContent;
-  navigator.clipboard.writeText(wxId).then(() => {
-    document.getElementById('copySuccess').style.display = 'block';
-    setTimeout(() => {
-      document.getElementById('copySuccess').style.display = 'none';
-    }, 2000);
-  });
-}
-
-// 点击加载完整长图预览
 function previewImg(el){
-  const img=el.querySelector('img');
-  if(!img)return;
-  const modal=document.getElementById('imgPreviewModal');
-  const previewImg=document.getElementById('previewImg');
-  previewImg.src=img.dataset.fullSrc || img.src;
-  previewImg.alt=img.alt;
-  modal.classList.add('active');
-  document.body.style.overflow='hidden';
+  const img = el.querySelector('img');
+  const full = img.dataset.fullSrc || img.src;
+  document.getElementById('previewImg').src = full;
+  document.getElementById('imgPreviewModal').classList.add('active');
 }
-
-// 关闭图片预览
 function closeImgModal(){
   document.getElementById('imgPreviewModal').classList.remove('active');
-  document.body.style.overflow='auto';
 }
 
-// 点击弹窗空白处关闭
-document.getElementById('wxModal').addEventListener('click', function(e){
-  if(e.target === this) closeWxModal();
-});
-document.getElementById('imgPreviewModal').addEventListener('click', function(e){
-  if(e.target === this) closeImgModal();
-});
-
-// 按ESC键关闭所有弹窗
-document.addEventListener('keydown', function(e){
-  if(e.key === 'Escape'){
-    closeWxModal();
-    closeImgModal();
-  }
-});
-
-// 图片加载完成后移除骨架屏
-document.addEventListener('DOMContentLoaded', function(){
-  const images=document.querySelectorAll('.card-img');
-  images.forEach(img=>{
-    img.onload=function(){
-      this.classList.add('loaded');
-    };
-    if(img.complete) img.classList.add('loaded');
-  });
-
-  const videos=document.querySelectorAll('.card-video');
-  videos.forEach(video=>{
-    video.onloadeddata=function(){
-      this.classList.add('loaded');
-    };
-  });
-});
+document.querySelectorAll('.modal').forEach(m => {
+  m.addEventListener('click', e => {
+    if(e.target === m) {
+      closeWxModal(); closeImgModal();
+    }
+  })
+})
 </script>
-
 </body>
 </html>
