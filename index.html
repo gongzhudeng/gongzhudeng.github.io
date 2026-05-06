@@ -58,6 +58,11 @@ nav{
 }
 .nav a:hover{color:#ff3d81;}
 
+/* 🔧 修复：导航跳转自动往上偏移80px，不被顶部导航挡住 */
+section{
+  scroll-margin-top: 80px;
+}
+
 .hero{
   padding:80px 0 60px;
   display:flex;
@@ -305,7 +310,7 @@ nav{
   background: linear-gradient(90deg,#ff7a18,#ff3d81);
 }
 
-/* 🔧 终极修复：所有弹窗100%基于当前屏幕定位 */
+/* 通用弹窗基础样式 */
 .modal{
   position: fixed;
   top: 0; left: 0;
@@ -351,7 +356,7 @@ nav{
 /* 详情页长图弹窗：顶端距离当前屏幕顶部100px */
 .img-preview-modal .preview-img{
   display: block;
-  margin: 120px auto 50px auto; /* 顶部120px，底部50px */
+  margin: 100px auto 50px auto; /* 顶部100px，底部50px */
   width: 700px !important;
   max-width: 90%;
   height: auto !important;
@@ -461,9 +466,9 @@ footer{
   .grid{grid-template-columns:1fr;gap:25px;}
   .small-modal .modal-content{padding:30px 20px;}
   
-  /* 手机端详情页顶端距离屏幕顶部60px */
+  /* 手机端详情页顶端距离屏幕顶部50px */
   .img-preview-modal .preview-img{
-    margin: 60px auto 30px auto;
+    margin: 50px auto 30px auto;
   }
 }
 </style>
@@ -847,10 +852,12 @@ footer{
   </div>
 </div>
 
-<!-- 头像预览弹窗 -->
+<!-- 🔧 修复：头像弹窗加上modal-content容器，和微信弹窗一样居中 -->
 <div class="modal small-modal" id="avatarModal">
   <span class="modal-close" onclick="closeAvatarModal()">&times;</span>
-  <img src="" class="preview-img" id="avatarImg" decoding="async">
+  <div class="modal-content">
+    <img src="" class="preview-img" id="avatarImg" decoding="async">
+  </div>
 </div>
 
 <!-- 详情页长图预览弹窗 -->
@@ -915,7 +922,6 @@ function previewDetail(el){
   previewImg.alt=img.alt;
   modal.classList.add('active');
   document.body.style.overflow='hidden';
-  // 自动滚动到弹窗顶部
   modal.scrollTop = 0;
 }
 
