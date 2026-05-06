@@ -16,13 +16,12 @@ body{
   background: linear-gradient(120deg,#f6f9ff,#eef2ff);
   color:#111;
   scroll-behavior: smooth;
-  transform: translateZ(0);
 }
 
 .container{
   width:90%;
   max-width:1200px;
-  margin:auto;
+  margin:0 auto;
 }
 
 nav{
@@ -31,8 +30,7 @@ nav{
   backdrop-filter: blur(10px);
   background: rgba(255,255,255,0.95);
   border-bottom:1px solid rgba(0,0,0,0.08);
-  z-index:100;
-  transform: translateZ(0);
+  z-index:99;
 }
 .nav{
   display:flex;
@@ -195,7 +193,6 @@ nav{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
   gap:30px;
-  transform: translateZ(0);
 }
 .card{
   background:#fff;
@@ -308,70 +305,69 @@ nav{
   background: linear-gradient(90deg,#ff7a18,#ff3d81);
 }
 
-/* 🔧 通用弹窗基础样式 */
+/* 🔧 终极修复：所有弹窗100%基于当前屏幕定位 */
 .modal{
-  position:fixed;
-  top:0;left:0;
-  width:100vw;height:100vh;
-  background:rgba(0,0,0,0.85);
-  z-index:9999;
-  opacity:0;
-  visibility:hidden;
-  transition:opacity 0.25s ease;
-  overflow-y:auto;
-  padding:20px;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.85);
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease;
+  overflow-y: auto;
 }
 .modal.active{
-  opacity:1;
-  visibility:visible;
+  opacity: 1;
+  visibility: visible;
 }
+
+/* 关闭按钮：永远在屏幕右上角 */
 .modal-close{
-  position:fixed;
-  top:15px;right:20px;
-  color:#fff;
-  font-size:30px;
-  cursor:pointer;
-  transition:color 0.15s;
-  z-index:10000;
+  position: fixed;
+  top: 20px; right: 20px;
+  color: #fff;
+  font-size: 36px;
+  cursor: pointer;
+  transition: color 0.15s;
+  z-index: 10000;
 }
 .modal-close:hover{color:#ff3d81;}
 
-/* 🔧 小弹窗（微信/头像/视频）：永远固定屏幕正中间 */
+/* 小弹窗（微信/头像）：永远在当前屏幕正中间 */
 .small-modal .modal-content{
-  position:absolute;
-  top:50%;left:50%;
-  transform:translate(-50%,-50%);
-  background:#fff;
-  border-radius:20px;
-  padding:40px;
-  max-width:400px;
-  width:100%;
-  text-align:center;
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
 }
 .small-modal .modal-close{color:#999;}
 
-/* 🔧 详情页长图弹窗：以图片顶端为基准计算 */
+/* 详情页长图弹窗：顶端距离当前屏幕顶部100px */
 .img-preview-modal .preview-img{
-  display:block;
-  margin:0 auto;
-  width:700px !important;
-  max-width:100%;
-  height:auto !important;
-  border-radius:10px;
-  object-fit:contain;
+  display: block;
+  margin: 120px auto 50px auto; /* 顶部120px，底部50px */
+  width: 700px !important;
+  max-width: 90%;
+  height: auto !important;
+  border-radius: 10px;
 }
 
-/* 视频弹窗 */
+/* 视频弹窗：永远在当前屏幕正中间 */
 .video-modal .preview-video{
-  position:absolute;
-  top:50%;left:50%;
-  transform:translate(-50%,-50%);
-  max-width:90%;
-  max-height:90vh;
-  width:auto;
-  height:auto;
-  border-radius:10px;
-  object-fit:contain;
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 90%;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  border-radius: 10px;
 }
 
 .wx-qrcode{
@@ -464,10 +460,14 @@ footer{
   
   .grid{grid-template-columns:1fr;gap:25px;}
   .small-modal .modal-content{padding:30px 20px;}
+  
+  /* 手机端详情页顶端距离屏幕顶部60px */
+  .img-preview-modal .preview-img{
+    margin: 60px auto 30px auto;
+  }
 }
 </style>
 </head>
-
 <body>
 
 <nav>
@@ -835,8 +835,8 @@ footer{
 
 <!-- 微信二维码弹窗 -->
 <div class="modal small-modal" id="wxModal">
+  <span class="modal-close" onclick="closeWxModal()">&times;</span>
   <div class="modal-content">
-    <span class="modal-close" onclick="closeWxModal()">&times;</span>
     <h3 class="modal-title">扫码加我微信</h3>
     <img src="images/wechat-qrcode.webp" alt="微信二维码" class="wx-qrcode" loading="lazy" decoding="async">
     <div class="wx-id">
@@ -866,10 +866,7 @@ footer{
 </div>
 
 <script>
-// 🔧 唯一需要改的地方：只控制详情页长图的顶端位置
-const DETAIL_TOP_OFFSET = 100; // 图片顶端距离屏幕顶部100px，所有图都一样
-
-// 打开微信弹窗
+// 打开微信弹窗（永远当前屏幕正中间）
 function openWxModal(){
   document.getElementById('wxModal').classList.add('active');
   document.body.style.overflow = 'hidden';
@@ -892,7 +889,7 @@ function copyWxId(){
   });
 }
 
-// 预览头像
+// 预览头像（永远当前屏幕正中间）
 function previewAvatar(el){
   const img = el.querySelector('img');
   const modal = document.getElementById('avatarModal');
@@ -908,7 +905,7 @@ function closeAvatarModal(){
   document.body.style.overflow = 'auto';
 }
 
-// 🔧 核心修复：以图片顶端为基准计算
+// 预览详情页长图（顶端距离当前屏幕顶部100px）
 function previewDetail(el){
   const img=el.querySelector('img');
   if(!img)return;
@@ -918,14 +915,8 @@ function previewDetail(el){
   previewImg.alt=img.alt;
   modal.classList.add('active');
   document.body.style.overflow='hidden';
-  
-  // 等图片加载完成后，让图片顶端距离屏幕顶部100px
-  previewImg.onload = function(){
-    modal.scrollTo({
-      top: DETAIL_TOP_OFFSET,
-      behavior: 'instant'
-    });
-  }
+  // 自动滚动到弹窗顶部
+  modal.scrollTop = 0;
 }
 
 // 关闭详情页弹窗
@@ -934,7 +925,7 @@ function closeImgModal(){
   document.body.style.overflow = 'auto';
 }
 
-// 打开视频弹窗
+// 打开视频弹窗（永远当前屏幕正中间）
 function openVideoModal(videoSrc){
   const modal = document.getElementById('videoModal');
   const video = document.getElementById('previewVideo');
