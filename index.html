@@ -239,7 +239,7 @@ nav{
 }
 .card:hover .card-img{transform:scale(1.08);}
 
-/* 视频封面样式（隐藏原生播放器） */
+/* 视频封面样式 */
 .card-video-cover{
   width:100%;
   aspect-ratio:1/1;
@@ -315,9 +315,6 @@ nav{
   width:100vw;height:100vh;
   background:rgba(0,0,0,0.85);
   z-index:9999;
-  display:flex;
-  align-items:center;
-  justify-content:center;
   opacity:0;
   visibility:hidden;
   transition:opacity 0.25s ease;
@@ -329,7 +326,7 @@ nav{
   visibility:visible;
 }
 .modal-close{
-  position:absolute;
+  position:fixed;
   top:15px;right:20px;
   color:#fff;
   font-size:30px;
@@ -339,19 +336,21 @@ nav{
 }
 .modal-close:hover{color:#ff3d81;}
 
-/* 🔧 小弹窗（微信/头像）：永远固定屏幕正中间，独立控制 */
+/* 🔧 小弹窗（微信/头像/视频）：永远固定屏幕正中间 */
 .small-modal .modal-content{
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
   background:#fff;
   border-radius:20px;
   padding:40px;
   max-width:400px;
   width:100%;
   text-align:center;
-  position:relative;
 }
 .small-modal .modal-close{color:#999;}
 
-/* 🔧 详情页长图弹窗：单独控制起始位置 */
+/* 🔧 详情页长图弹窗：以图片顶端为基准计算 */
 .img-preview-modal .preview-img{
   display:block;
   margin:0 auto;
@@ -362,10 +361,11 @@ nav{
   object-fit:contain;
 }
 
-/* 🔧 视频弹窗：和图片弹窗统一效果 */
+/* 视频弹窗 */
 .video-modal .preview-video{
-  display:block;
-  margin:0 auto;
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
   max-width:90%;
   max-height:90vh;
   width:auto;
@@ -833,7 +833,7 @@ footer{
 
 </div>
 
-<!-- 微信二维码弹窗（小弹窗类） -->
+<!-- 微信二维码弹窗 -->
 <div class="modal small-modal" id="wxModal">
   <div class="modal-content">
     <span class="modal-close" onclick="closeWxModal()">&times;</span>
@@ -847,13 +847,13 @@ footer{
   </div>
 </div>
 
-<!-- 头像预览弹窗（小弹窗类） -->
+<!-- 头像预览弹窗 -->
 <div class="modal small-modal" id="avatarModal">
   <span class="modal-close" onclick="closeAvatarModal()">&times;</span>
   <img src="" class="preview-img" id="avatarImg" decoding="async">
 </div>
 
-<!-- 详情页长图预览弹窗（独立控制） -->
+<!-- 详情页长图预览弹窗 -->
 <div class="modal img-preview-modal" id="imgPreviewModal">
   <span class="modal-close" onclick="closeImgModal()">&times;</span>
   <img src="" class="preview-img" id="previewImg" decoding="async">
@@ -866,10 +866,10 @@ footer{
 </div>
 
 <script>
-// 🔧 唯一需要改的地方：只控制详情页长图的起始位置
-const DETAIL_TOP_RATIO = 0.65; // 改这个数字，只影响详情页，不影响微信、头像、视频
+// 🔧 唯一需要改的地方：只控制详情页长图的顶端位置
+const DETAIL_TOP_OFFSET = 100; // 图片顶端距离屏幕顶部100px，所有图都一样
 
-// 打开微信弹窗（永远固定居中）
+// 打开微信弹窗
 function openWxModal(){
   document.getElementById('wxModal').classList.add('active');
   document.body.style.overflow = 'hidden';
@@ -892,7 +892,7 @@ function copyWxId(){
   });
 }
 
-// 预览头像（永远固定居中）
+// 预览头像
 function previewAvatar(el){
   const img = el.querySelector('img');
   const modal = document.getElementById('avatarModal');
@@ -908,7 +908,7 @@ function closeAvatarModal(){
   document.body.style.overflow = 'auto';
 }
 
-// 预览详情页长图（单独控制起始位置）
+// 🔧 核心修复：以图片顶端为基准计算
 function previewDetail(el){
   const img=el.querySelector('img');
   if(!img)return;
@@ -919,10 +919,10 @@ function previewDetail(el){
   modal.classList.add('active');
   document.body.style.overflow='hidden';
   
-  // 等图片加载完成后，按设定比例定位
+  // 等图片加载完成后，让图片顶端距离屏幕顶部100px
   previewImg.onload = function(){
     modal.scrollTo({
-      top: window.innerHeight * DETAIL_TOP_RATIO,
+      top: DETAIL_TOP_OFFSET,
       behavior: 'instant'
     });
   }
@@ -934,7 +934,7 @@ function closeImgModal(){
   document.body.style.overflow = 'auto';
 }
 
-// 打开视频弹窗（永远固定居中）
+// 打开视频弹窗
 function openVideoModal(videoSrc){
   const modal = document.getElementById('videoModal');
   const video = document.getElementById('previewVideo');
@@ -944,17 +944,17 @@ function openVideoModal(videoSrc){
   video.play();
 }
 
-// 关闭视频弹窗（自动暂停视频）
+// 关闭视频弹窗
 function closeVideoModal(){
   const modal = document.getElementById('videoModal');
   const video = document.getElementById('previewVideo');
   video.pause();
-  video.src = ''; // 清空src，停止后台播放
+  video.src = '';
   modal.classList.remove('active');
   document.body.style.overflow = 'auto';
 }
 
-// 点击弹窗空白处关闭
+// 点击空白处关闭
 document.getElementById('wxModal').addEventListener('click', function(e){
   if(e.target === this) closeWxModal();
 });
@@ -968,7 +968,7 @@ document.getElementById('videoModal').addEventListener('click', function(e){
   if(e.target === this) closeVideoModal();
 });
 
-// 按ESC键关闭所有弹窗
+// ESC键关闭
 document.addEventListener('keydown', function(e){
   if(e.key === 'Escape'){
     closeWxModal();
@@ -978,7 +978,7 @@ document.addEventListener('keydown', function(e){
   }
 });
 
-// 图片加载完成后移除骨架屏
+// 图片加载完成移除骨架屏
 document.addEventListener('DOMContentLoaded', function(){
   const images=document.querySelectorAll('.card-img, .card-video-cover');
   images.forEach(img=>{
