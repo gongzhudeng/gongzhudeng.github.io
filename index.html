@@ -70,10 +70,9 @@ section{
   align-items:center;
   gap:40px;
 }
-/* 核心修改：放大电脑端头像尺寸 */
 .avatar-box{
-  flex:0 0 280px; /* 从200px改为280px */
-  height:280px;    /* 从200px改为280px */
+  flex:0 0 280px;
+  height:280px;
   border-radius:20px;
   overflow:hidden;
   box-shadow:0 10px 30px rgba(0,0,0,0.1);
@@ -191,7 +190,6 @@ section{
 
 .works-section{
   margin-bottom:80px;
-  /* 核心修改：确保每个作品板块居中 */
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -200,15 +198,11 @@ section{
   font-size:22px;
   margin-bottom:20px;
   color:#333;
-  /* 补充：标题也居中（可选，根据需求） */
-  text-align: left; /* 如需标题居中可改为 center */
 }
-/* 核心修改：优化grid布局，确保内容居中且适配 */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
   gap:30px;
-  /* 确保grid容器本身居中 */
   justify-items: center;
   width: 100%;
 }
@@ -222,9 +216,8 @@ section{
   display:flex;
   flex-direction:column;
   cursor:pointer;
-  /* 确保卡片占满grid项宽度 */
   width: 100%;
-  max-width: 380px; /* 可选：限制卡片最大宽度，避免过宽 */
+  max-width: 380px;
 }
 .card:hover{
   transform:translateY(-8px) scale(1.02);
@@ -355,7 +348,7 @@ section{
 }
 .modal-close:hover{color:#ff3d81;}
 
-/* 小弹窗（微信/头像）：永远在当前屏幕正中间 */
+/* 小弹窗（微信/头像/单张图）：永远在当前屏幕正中间 */
 .small-modal .modal-content{
   position: fixed;
   top: 50%; left: 50%;
@@ -369,19 +362,22 @@ section{
 }
 .small-modal .modal-close{color:#999;}
 
-/* 🔧 修复：头像弹窗去掉白背景和边框，单独设置大小 */
-#avatarModal .modal-content{
+/* 头像/单张图弹窗：透明背景 */
+#avatarModal .modal-content,
+#singleImgModal .modal-content{
   background: transparent;
   padding: 0;
   border-radius: 0;
 }
-#avatarImg{
-  max-width: 380px; /* 同步放大头像弹窗尺寸 */
+#avatarImg,
+#singleImg{
+  max-width: 380px;
+  max-height: 90vh;
   border-radius: 20px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
-/* 详情页长图弹窗：顶端距离当前屏幕顶部100px */
+/* 🔧 详情页长图弹窗：保持原来的顶部对齐，完全不变 */
 .img-preview-modal .preview-img{
   display: block;
   margin: 100px auto 50px auto;
@@ -475,7 +471,6 @@ footer{
     text-align:center;
     gap:30px;
   }
-  /* 移动端头像适配 */
   .avatar-box{flex:0 0 160px;height:160px;}
   .hero h1{font-size:36px;}
   .hero-desc{font-size:16px;}
@@ -495,8 +490,9 @@ footer{
   .grid{grid-template-columns:1fr;gap:25px;}
   .small-modal .modal-content{padding:30px 20px;}
   
-  /* 手机端头像再缩小一点 */
-  #avatarImg{
+  /* 手机端头像/单张图大小 */
+  #avatarImg,
+  #singleImg{
     max-width: 250px;
   }
   
@@ -552,6 +548,7 @@ footer{
   <div id="detail" class="works-section">
     <h3>详情页设计</h3>
     <div class="grid">
+      <!-- 详情页：保持原来的previewDetail，顶部对齐 -->
       <div class="card" onclick="previewDetail(this)">
         <div class="card-img-box">
           <img src="images/detail/1_thumb.webp" data-full-src="images/detail/1.webp" class="card-img" loading="lazy" decoding="async" alt="手持小风扇详情页">
@@ -612,7 +609,8 @@ footer{
   <div id="main" class="works-section">
     <h3>主图设计</h3>
     <div class="grid">
-      <div class="card" onclick="previewDetail(this)">
+      <!-- 主图：改成previewSingleImg，屏幕正中间 -->
+      <div class="card" onclick="previewSingleImg(this)">
         <div class="card-img-box">
           <img src="images/main/1_thumb.webp" data-full-src="images/main/1.webp" class="card-img" loading="lazy" decoding="async" alt="无线蓝牙耳机主图">
         </div>
@@ -621,7 +619,7 @@ footer{
           <div class="product-desc">高对比背景，突出降噪、续航、无感延迟</div>
         </div>
       </div>
-      <div class="card" onclick="previewDetail(this)">
+      <div class="card" onclick="previewSingleImg(this)">
         <div class="card-img-box">
           <img src="images/main/2_thumb.webp" data-full-src="images/main/2.webp" class="card-img" loading="lazy" decoding="async" alt="即食螺蛳粉主图">
         </div>
@@ -630,7 +628,7 @@ footer{
           <div class="product-desc">食欲感特写，料足、酸辣鲜香</div>
         </div>
       </div>
-      <div class="card" onclick="previewDetail(this)">
+      <div class="card" onclick="previewSingleImg(this)">
         <div class="card-img-box">
           <img src="images/main/3_thumb.webp" data-full-src="images/main/3.webp" class="card-img" loading="lazy" decoding="async" alt="夏季冰丝T恤主图">
         </div>
@@ -639,7 +637,7 @@ footer{
           <div class="product-desc">面料质感+凉感卖点，舒适版型</div>
         </div>
       </div>
-      <div class="card" onclick="previewDetail(this)">
+      <div class="card" onclick="previewSingleImg(this)">
         <div class="card-img-box">
           <img src="images/main/4_thumb.webp" data-full-src="images/main/4.webp" class="card-img" loading="lazy" decoding="async" alt="车载香薰主图">
         </div>
@@ -648,7 +646,7 @@ footer{
           <div class="product-desc">轻奢质感、持久留香、除异味</div>
         </div>
       </div>
-      <div class="card" onclick="previewDetail(this)">
+      <div class="card" onclick="previewSingleImg(this)">
         <div class="card-img-box">
           <img src="images/main/5_thumb.webp" data-full-src="images/main/5.webp" class="card-img" loading="lazy" decoding="async" alt="家用除螨仪主图">
         </div>
@@ -657,7 +655,7 @@ footer{
           <div class="product-desc">高频拍打、紫外线杀菌、大吸力</div>
         </div>
       </div>
-      <div class="card" onclick="previewDetail(this)">
+      <div class="card" onclick="previewSingleImg(this)">
         <div class="card-img-box">
           <img src="images/main/6_thumb.webp" data-full-src="images/main/6.webp" class="card-img" loading="lazy" decoding="async" alt="宠物冻干零食主图">
         </div>
@@ -672,7 +670,8 @@ footer{
   <div id="render" class="works-section">
     <h3>C4D产品渲染</h3>
     <div class="grid">
-      <div class="card" onclick="previewDetail(this)">
+      <!-- 渲染：改成previewSingleImg，屏幕正中间 -->
+      <div class="card" onclick="previewSingleImg(this)">
         <div class="card-img-box">
           <img src="images/render/1_thumb.webp" data-full-src="images/render/1.webp" class="card-img" loading="lazy" decoding="async" alt="智能手表渲染">
         </div>
@@ -681,7 +680,7 @@ footer{
           <div class="product-desc">真实材质光影，多角度展示质感</div>
         </div>
       </div>
-      <div class="card" onclick="previewDetail(this)">
+      <div class="card" onclick="previewSingleImg(this)">
         <div class="card-img-box">
           <img src="images/render/2_thumb.webp" data-full-src="images/render/2.webp" class="card-img" loading="lazy" decoding="async" alt="北欧风茶几渲染">
         </div>
@@ -690,7 +689,7 @@ footer{
           <div class="product-desc">场景化搭配，自然光还原质感</div>
         </div>
       </div>
-      <div class="card" onclick="previewDetail(this)">
+      <div class="card" onclick="previewSingleImg(this)">
         <div class="card-img-box">
           <img src="images/render/3_thumb.webp" data-full-src="images/render/3.webp" class="card-img" loading="lazy" decoding="async" alt="口红管体渲染">
         </div>
@@ -699,7 +698,7 @@ footer{
           <div class="product-desc">金属质感、丝绒质地，高端视觉</div>
         </div>
       </div>
-      <div class="card" onclick="previewDetail(this)">
+      <div class="card" onclick="previewSingleImg(this)">
         <div class="card-img-box">
           <img src="images/render/4_thumb.webp" data-full-src="images/render/4.webp" class="card-img" loading="lazy" decoding="async" alt="电竞鼠标渲染">
         </div>
@@ -708,7 +707,7 @@ footer{
           <div class="product-desc">人体工学、RGB灯效、防滑纹理</div>
         </div>
       </div>
-      <div class="card" onclick="previewDetail(this)">
+      <div class="card" onclick="previewSingleImg(this)">
         <div class="card-img-box">
           <img src="images/render/5_thumb.webp" data-full-src="images/render/5.webp" class="card-img" loading="lazy" decoding="async" alt="保温杯渲染">
         </div>
@@ -717,7 +716,7 @@ footer{
           <div class="product-desc">316不锈钢、长效保温、便携设计</div>
         </div>
       </div>
-      <div class="card" onclick="previewDetail(this)">
+      <div class="card" onclick="previewSingleImg(this)">
         <div class="card-img-box">
           <img src="images/render/6_thumb.webp" data-full-src="images/render/6.webp" class="card-img" loading="lazy" decoding="async" alt="香水瓶渲染">
         </div>
@@ -732,7 +731,8 @@ footer{
   <div id="ai" class="works-section">
     <h3>AI视觉合成</h3>
     <div class="grid">
-      <div class="card" onclick="previewDetail(this)">
+      <!-- AI合成：改成previewSingleImg，屏幕正中间 -->
+      <div class="card" onclick="previewSingleImg(this)">
         <div class="card-img-box">
           <img src="images/ai/1_thumb.webp" data-full-src="images/ai/1.webp" class="card-img" loading="lazy" decoding="async" alt="户外露营场景合成">
         </div>
@@ -741,7 +741,7 @@ footer{
           <div class="product-desc">沉浸式场景，降低实拍成本</div>
         </div>
       </div>
-      <div class="card" onclick="previewDetail(this)">
+      <div class="card" onclick="previewSingleImg(this)">
         <div class="card-img-box">
           <img src="images/ai/2_thumb.webp" data-full-src="images/ai/2.webp" class="card-img" loading="lazy" decoding="async" alt="模特穿搭合成">
         </div>
@@ -750,7 +750,7 @@ footer{
           <div class="product-desc">多风格模特，快速出图</div>
         </div>
       </div>
-      <div class="card" onclick="previewDetail(this)">
+      <div class="card" onclick="previewSingleImg(this)">
         <div class="card-img-box">
           <img src="images/ai/3_thumb.webp" data-full-src="images/ai/3.webp" class="card-img" loading="lazy" decoding="async" alt="饮品创意合成">
         </div>
@@ -759,7 +759,7 @@ footer{
           <div class="product-desc">梦幻渐变，年轻时尚视觉</div>
         </div>
       </div>
-      <div class="card" onclick="previewDetail(this)">
+      <div class="card" onclick="previewSingleImg(this)">
         <div class="card-img-box">
           <img src="images/ai/4_thumb.webp" data-full-src="images/ai/4.webp" class="card-img" loading="lazy" decoding="async" alt="智能家居场景合成">
         </div>
@@ -768,7 +768,7 @@ footer{
           <div class="product-desc">全屋智能联动，科技感氛围</div>
         </div>
       </div>
-      <div class="card" onclick="previewDetail(this)">
+      <div class="card" onclick="previewSingleImg(this)">
         <div class="card-img-box">
           <img src="images/ai/5_thumb.webp" data-full-src="images/ai/5.webp" class="card-img" loading="lazy" decoding="async" alt="美妆产品场景合成">
         </div>
@@ -777,7 +777,7 @@ footer{
           <div class="product-desc">高级感背景，突出产品质感</div>
         </div>
       </div>
-      <div class="card" onclick="previewDetail(this)">
+      <div class="card" onclick="previewSingleImg(this)">
         <div class="card-img-box">
           <img src="images/ai/6_thumb.webp" data-full-src="images/ai/6.webp" class="card-img" loading="lazy" decoding="async" alt="宠物用品场景合成">
         </div>
@@ -894,7 +894,15 @@ footer{
   </div>
 </div>
 
-<!-- 详情页长图预览弹窗 -->
+<!-- 🔧 新增：单张图预览弹窗（主图/渲染/AI），和头像完全一样 -->
+<div class="modal small-modal" id="singleImgModal">
+  <span class="modal-close" onclick="closeSingleImgModal()">&times;</span>
+  <div class="modal-content">
+    <img src="" class="preview-img" id="singleImg" decoding="async">
+  </div>
+</div>
+
+<!-- 详情页长图预览弹窗（完全不变） -->
 <div class="modal img-preview-modal" id="imgPreviewModal">
   <span class="modal-close" onclick="closeImgModal()">&times;</span>
   <img src="" class="preview-img" id="previewImg" decoding="async">
@@ -946,7 +954,25 @@ function closeAvatarModal(){
   document.body.style.overflow = 'auto';
 }
 
-// 预览详情页长图
+// 🔧 新增：预览单张图（主图/渲染/AI），屏幕正中间
+function previewSingleImg(el){
+  const img=el.querySelector('img');
+  if(!img)return;
+  const modal=document.getElementById('singleImgModal');
+  const singleImg=document.getElementById('singleImg');
+  singleImg.src=img.dataset.fullSrc || img.src;
+  singleImg.alt=img.alt;
+  modal.classList.add('active');
+  document.body.style.overflow='hidden';
+}
+
+// 关闭单张图弹窗
+function closeSingleImgModal(){
+  document.getElementById('singleImgModal').classList.remove('active');
+  document.body.style.overflow = 'auto';
+}
+
+// 预览详情页长图（完全不变）
 function previewDetail(el){
   const img=el.querySelector('img');
   if(!img)return;
@@ -992,6 +1018,9 @@ document.getElementById('wxModal').addEventListener('click', function(e){
 document.getElementById('avatarModal').addEventListener('click', function(e){
   if(e.target === this) closeAvatarModal();
 });
+document.getElementById('singleImgModal').addEventListener('click', function(e){
+  if(e.target === this) closeSingleImgModal();
+});
 document.getElementById('imgPreviewModal').addEventListener('click', function(e){
   if(e.target === this) closeImgModal();
 });
@@ -1004,6 +1033,7 @@ document.addEventListener('keydown', function(e){
   if(e.key === 'Escape'){
     closeWxModal();
     closeAvatarModal();
+    closeSingleImgModal();
     closeImgModal();
     closeVideoModal();
   }
