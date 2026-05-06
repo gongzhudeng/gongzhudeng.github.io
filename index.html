@@ -62,9 +62,18 @@ nav{
   background: rgba(255,61,129,0.1);
   color:#ff3d81;
 }
-/* 🔧 导航跳转精准定位：屏幕顶部和标题留20px空隙 */
+/* 🔧 导航跳转精准修复：增加偏移量，标题完全不被挡住 */
 section{
-  scroll-margin-top: 78px;
+  /* 电脑端不动 */
+section{
+  scroll-margin-top: 140px;
+}
+
+/* 👇 手机端单独偏移量，你只改这里！ */
+@media(max-width:768px){
+  section{
+    scroll-margin-top: 110px; /* 手机导航偏移，自己改大改小 */
+  }
 }
 
 .hero{
@@ -380,10 +389,10 @@ section{
   object-fit: contain;
 }
 
-/* 🔧 单张图（主图/渲染/AI）：按比例铺满屏幕 */
+/* 🔧 电脑端主图/渲染/AI放大，手机端保持不变 */
 #singleImg{
-  max-width: 85%;
-  max-height: 90vh;
+  max-width: 92%;
+  max-height: 95vh;
   width: auto;
   height: auto;
   border-radius: 10px;
@@ -515,7 +524,7 @@ footer{
     max-width: 250px;
   }
   
-  /* 🔧 手机端单张图：90%屏幕宽度 */
+  /* 手机端单张图：保持90%不变 */
   #singleImg{
     max-width: 90%;
   }
