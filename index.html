@@ -9,6 +9,9 @@
 <link rel="dns-prefetch" href="https://fonts.font.im">
 <link href="https://fonts.font.im/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
+<!-- 🔧 浏览器标签页图标：根目录放favicon.ico自动生效，没有则显示默认图标 -->
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
@@ -16,6 +19,15 @@ body{
   background: linear-gradient(120deg,#f6f9ff,#eef2ff);
   color:#111;
   scroll-behavior: smooth;
+}
+
+/* 🔧 图标通用样式：和文字垂直居中对齐 */
+.icon{
+  width:1em;
+  height:1em;
+  vertical-align:-0.15em;
+  display:inline-block;
+  object-fit:contain;
 }
 
 .container{
@@ -53,7 +65,7 @@ nav{
   text-decoration:none;
   color:#666;
   font-size:14px;
-  transition: all 0.2s;
+  transition: all 0.2;
   white-space:nowrap;
   padding:8px 14px;
   border-radius:20px;
@@ -62,9 +74,28 @@ nav{
   background: rgba(255,61,129,0.1);
   color:#ff3d81;
 }
-/* 🔧 导航跳转精准定位：屏幕顶部和标题留20px空隙 */
-section{
-  scroll-margin-top: 78px;
+
+/* ======================================
+✅ 已替换为代码2的导航偏移修复方案
+======================================= */
+.works-section, .about{
+  position:relative;
+}
+.works-section::before,
+.about::before{
+  content:'';
+  display:block;
+  height:90px;
+  margin-top:-90px;
+  visibility:hidden;
+}
+
+@media(max-width:768px){
+  .works-section::before,
+  .about::before{
+    height:80px;
+    margin-top:-80px;
+  }
 }
 
 .hero{
@@ -556,14 +587,29 @@ footer{
       擅长详情页、主图、AI创意合成、C4D产品渲染、产品视频动画，让设计不仅好看，更能卖货。
     </p>
     <div class="personal-info">
-      <div class="info-item"><i>📧</i> 1711325061@qq.com</div>
-      <div class="info-item"><i>📍</i> 广东省深圳市</div>
+      <div class="info-item">
+        <img src="icons/email.svg" alt="📧" class="icon">
+        1711325061@qq.com
+      </div>
+      <div class="info-item">
+        <img src="icons/location.svg" alt="📍" class="icon">
+        广东省深圳市
+      </div>
     </div>
 
     <div class="btn-group">
-      <a href="#detail" class="btn btn-primary">📁 查看我的作品</a>
-      <button class="btn btn-wx" onclick="openWxModal()">📩 扫码加我微信</button>
-      <a href="https://www.zcool.com.cn/u/23450553" class="btn btn-zcool" target="_blank" rel="noopener">🎨 站酷主页</a>
+      <a href="#detail" class="btn btn-primary">
+        <img src="icons/folder.svg" alt="📁" class="icon">
+        查看我的作品
+      </a>
+      <button class="btn btn-wx" onclick="openWxModal()">
+        <img src="icons/wechat.svg" alt="📩" class="icon">
+        扫码加我微信
+      </button>
+      <a href="https://www.zcool.com.cn/u/23450553" class="btn btn-zcool" target="_blank" rel="noopener">
+        <img src="icons/zcool.svg" alt="🎨" class="icon">
+        站酷主页
+      </a>
     </div>
   </div>
 </section>
@@ -902,7 +948,10 @@ footer{
       微信号：<span id="wxId">gongshuai8</span>
       <button class="copy-btn" onclick="copyWxId()">复制微信号</button>
     </div>
-    <p class="copy-success" id="copySuccess">✓ 复制成功，打开微信粘贴添加</p>
+    <p class="copy-success" id="copySuccess">
+      <img src="icons/check.svg" alt="✓" class="icon">
+      复制成功，打开微信粘贴添加
+    </p>
   </div>
 </div>
 
