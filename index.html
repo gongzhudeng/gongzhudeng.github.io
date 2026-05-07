@@ -9,7 +9,7 @@
 <link rel="dns-prefetch" href="https://fonts.font.im">
 <link href="https://fonts.font.im/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
-<!-- 🔧 浏览器标签页图标：根目录放favicon.ico自动生效，没有则显示默认图标 -->
+<!-- 浏览器标签页图标：根目录放favicon.ico自动生效，没有则显示默认图标 -->
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 
 <style>
@@ -21,7 +21,7 @@ body{
   scroll-behavior: smooth;
 }
 
-/* 🔧 图标通用样式：和文字垂直居中对齐 */
+/* 图标通用样式：和文字垂直居中对齐 */
 .icon{
   width:1em;
   height:1em;
@@ -65,7 +65,7 @@ nav{
   text-decoration:none;
   color:#666;
   font-size:14px;
-  transition: all 0.2;
+  transition: all 0.2s;
   white-space:nowrap;
   padding:8px 14px;
   border-radius:20px;
@@ -76,7 +76,7 @@ nav{
 }
 
 /* ======================================
-✅ 已替换为代码2的导航偏移修复方案
+✅ 导航偏移修复：电脑端90px，手机端90px（再往下移10px）
 ======================================= */
 .works-section, .about{
   position:relative;
@@ -93,8 +93,8 @@ nav{
 @media(max-width:768px){
   .works-section::before,
   .about::before{
-    height:80px;
-    margin-top:-80px;
+    height:90px; /* 🔧 手机端再往下移10px，彻底解决偏上 */
+    margin-top:-90px;
   }
 }
 
@@ -411,7 +411,7 @@ nav{
   object-fit: contain;
 }
 
-/* 🔧 单张图（主图/渲染/AI）：按比例铺满屏幕 */
+/* 单张图（主图/渲染/AI）：按比例铺满屏幕 */
 #singleImg{
   max-width: 85%;
   max-height: 90vh;
@@ -546,7 +546,7 @@ footer{
     max-width: 250px;
   }
   
-  /* 🔧 手机端单张图：90%屏幕宽度 */
+  /* 手机端单张图：90%屏幕宽度 */
   #singleImg{
     max-width: 90%;
   }
@@ -1108,8 +1108,12 @@ document.addEventListener('keydown', function(e){
   }
 });
 
-// 图片加载完成移除骨架屏
+// 页面加载完成后执行
 document.addEventListener('DOMContentLoaded', function(){
+  // ✅ 强制滚动到最顶部，解决默认跳到详情页的问题
+  window.scrollTo(0, 0);
+  
+  // 图片加载完成移除骨架屏
   const images=document.querySelectorAll('.card-img, .card-video-cover');
   images.forEach(img=>{
     img.onload=function(){
