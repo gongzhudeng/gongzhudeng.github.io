@@ -2,13 +2,13 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>龚著登 - 电商视觉设计师</title>
 <link rel="icon" href="favicon.ico">
 
 <link rel="preconnect" href="https://fonts.font.im" crossorigin>
 <link rel="dns-prefetch" href="https://fonts.font.im">
-<link href="https://fonts.font.im/css2?family=Inter,wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.font.im/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -58,7 +58,7 @@ nav{
   text-decoration:none;
   color:#999;
   font-size:14px;
-  font-weight:50;
+  font-weight:500;
   transition: all 0.2s;
   white-space:nowrap;
 }
@@ -175,11 +175,10 @@ nav{
   justify-content: flex-end;
   position: relative;
   max-width: 1000px;
-  /* 👇 已精准加入照片四周距离控制，直接改数字即可 */
-  margin-right: 00px;   /* 照片距离页面右侧的距离 */
-  margin-top: 00px;    /* 照片距离上方的距离 */
-  margin-bottom: 0px; /* 照片距离下方的距离 */
-  margin-left: 0;      /* 照片左侧距离 */
+  margin-right: 00px;
+  margin-top: 00px;
+  margin-bottom: 0px;
+  margin-left: 0;
 }
 .hero-image::after {
   content: '';
@@ -276,17 +275,20 @@ nav{
   display:flex;
   gap:12px;
   margin-bottom:32px;
-  flex-wrap:wrap;
+  flex-wrap:nowrap;
+  overflow-x:auto;
+  padding-bottom:4px;
 }
 .tab-btn{
-  padding:8px 20px;
+  padding:8px 14px;
   border-radius:20px;
   background: rgba(255,255,255,0.05);
   color:#999;
   border:none;
-  font-size:14px;
+  font-size:13px;
   cursor:pointer;
   transition:all 0.2s;
+  white-space:nowrap;
 }
 .tab-btn.active, .tab-btn:hover{
   background: rgba(255,77,79,0.15);
@@ -418,7 +420,7 @@ nav{
 /* 专业领域 - 修改为5列 + 新增红色图标样式 */
 .skills-grid{
   display:grid;
-  grid-template-columns:repeat(5, 1fr); /* 从4列改为5列 */
+  grid-template-columns:repeat(5, 1fr);
   gap:24px;
 }
 .skill-card{
@@ -442,7 +444,7 @@ nav{
 .skill-icon.green{background:rgba(0,200,100,0.1);color:#00c864;}
 .skill-icon.blue{background:rgba(0,120,255,0.1);color:#0078ff;}
 .skill-icon.purple{background:rgba(150,0,255,0.1);color:#9600ff;}
-.skill-icon.red{background:rgba(255,77,79,0.1);color:#ff4d4f;} /* 新增红色图标样式 */
+.skill-icon.red{background:rgba(255,77,79,0.1);color:#ff4d4f;}
 
 .skill-title{
   font-weight:600;
@@ -522,14 +524,12 @@ footer{
 .social-link img {
   width: 20px;
   height: 20px;
-  /* 移除黑白滤镜，显示SVG原有彩色 */
   transition: filter 0.2s;
 }
 .social-link:hover{
   background:#ff4d4f;
 }
 .social-link:hover img {
-  /* hover时只保证白色显示，不影响原有彩色 */
   filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
 }
 
@@ -603,11 +603,6 @@ footer{
   object-fit: contain;
   border-radius: 8px;
 }
-@media(max-width:768px){
-  .detail-modal-content{
-    margin: 50px auto 30px auto;
-  }
-}
 
 /* 微信弹窗样式 */
 .small-modal .modal-content{
@@ -656,11 +651,25 @@ footer{
   border-radius: 12px;
 }
 
-/* 移动端适配优化 */
+/* ====================== 手机端 最终完整修复区（电脑完全不动） ====================== */
 @media(max-width: 768px) {
+  /* 禁止左右滑动、彻底锁死横向滚动 */
+  html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+  }
+
+  /* 首页顶部增加距离 */
+  .hero {
+    padding-top: 80px !important;
+    padding-bottom: 40px !important;
+  }
+
+  /* 首页布局 */
   .hero-content {
     flex-direction: column;
     gap: 40px;
+    width: 100%;
   }
   .hero-text {
     flex: none;
@@ -672,16 +681,71 @@ footer{
   .hero-image{
     margin-right: 0;
     margin-top: 0;
+    width: 100%;
+    max-width: 280px;
   }
+
+  /* 导航栏修复，不拥挤、联系我正常显示 */
+  .nav {
+    padding: 12px 0;
+  }
+  .nav-links {
+    gap: 12px;
+  }
+  .nav-links a {
+    font-size: 13px;
+  }
+
+  /* ✅ 作品卡片：手机端一行显示2个 */
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  /* ✅ 分类标签：一行全部显示5个，不换行 */
+  .works-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 8px;
+  }
+  .tab-btn {
+    padding: 7px 12px;
+    font-size: 12px;
+  }
+
+  /* 技能板块2列 */
   .skills-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  /* 视频板块单列 */
   .video-grid {
     grid-template-columns: 1fr;
   }
+
+  /* ✅ 页脚全部居中，不挤左边 */
   .footer-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 30px;
+    text-align: center;
+  }
+  .footer-col {
+    width: 100%;
+  }
+  .footer-links {
+    list-style: none;
+    padding: 0;
+  }
+  .social-links {
+    justify-content: center;
+  }
+  .contact-item {
+    justify-content: center;
+  }
+
+  /* ✅ 只改这里：了解我 图标+文字强制一行，不换行 */
+  .hero-buttons {
+    flex-wrap: nowrap;
   }
 }
 </style>
