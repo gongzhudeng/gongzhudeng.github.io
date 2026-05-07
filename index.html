@@ -93,8 +93,8 @@ nav{
 @media(max-width:768px){
   .works-section::before,
   .about::before{
-    height:90px; /* 🔧 手机端再往下移10px，彻底解决偏上 */
-    margin-top:-90px;
+    height:100px; /* 🔧 手机端再往下移10px，彻底解决偏上 */
+    margin-top:-100px;
   }
 }
 
@@ -1110,8 +1110,6 @@ document.addEventListener('keydown', function(e){
 
 // 页面加载完成后执行
 document.addEventListener('DOMContentLoaded', function(){
-  // ✅ 强制滚动到最顶部，解决默认跳到详情页的问题
-  window.scrollTo(0, 0);
   
   // 图片加载完成移除骨架屏
   const images=document.querySelectorAll('.card-img, .card-video-cover');
