@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>龚著登 - 电商视觉设计师</title>
 <link rel="icon" href="favicon.ico">
 
@@ -58,7 +58,7 @@ nav{
   text-decoration:none;
   color:#999;
   font-size:14px;
-  font-weight:500;
+  font-weight:50;
   transition: all 0.2s;
   white-space:nowrap;
 }
@@ -175,10 +175,11 @@ nav{
   justify-content: flex-end;
   position: relative;
   max-width: 1000px;
-  margin-right: 00px;
-  margin-top: 00px;
-  margin-bottom: 0px;
-  margin-left: 0;
+  /* 👇 已精准加入照片四周距离控制，直接改数字即可 */
+  margin-right: 00px;   /* 照片距离页面右侧的距离 */
+  margin-top: 00px;    /* 照片距离上方的距离 */
+  margin-bottom: 0px; /* 照片距离下方的距离 */
+  margin-left: 0;      /* 照片左侧距离 */
 }
 .hero-image::after {
   content: '';
@@ -275,20 +276,17 @@ nav{
   display:flex;
   gap:12px;
   margin-bottom:32px;
-  flex-wrap:nowrap;
-  overflow-x:auto;
-  padding-bottom:4px;
+  flex-wrap:wrap;
 }
 .tab-btn{
-  padding:8px 14px;
+  padding:8px 20px;
   border-radius:20px;
   background: rgba(255,255,255,0.05);
   color:#999;
   border:none;
-  font-size:13px;
+  font-size:14px;
   cursor:pointer;
   transition:all 0.2s;
-  white-space:nowrap;
 }
 .tab-btn.active, .tab-btn:hover{
   background: rgba(255,77,79,0.15);
@@ -307,6 +305,7 @@ nav{
   overflow:hidden;
   transition:transform 0.2s, box-shadow 0.2s;
   cursor:pointer;
+  position: relative; /* 新增：为视频卡片的播放按钮/时长定位 */
 }
 .card:hover{
   transform:translateY(-6px);
@@ -368,21 +367,28 @@ nav{
   height:100%;
   object-fit:cover;
 }
-.video-play{
+/* 统一视频播放按钮样式（新增通用类） */
+.video-play-card {
   position:absolute;
   top:50%;
   left:50%;
   transform:translate(-50%,-50%);
-  width:60px;
-  height:60px;
+  width:40px;
+  height:40px;
   border-radius:50%;
   background:rgba(0,0,0,0.6);
   display:flex;
   align-items:center;
   justify-content:center;
   color:#fff;
-  font-size:24px;
+  font-size:16px;
   transition:transform 0.2s;
+  z-index: 2;
+}
+.video-main .video-play {
+  width:60px;
+  height:60px;
+  font-size:24px;
 }
 .video-side{
   display:flex;
@@ -406,6 +412,18 @@ nav{
   height:40px;
   font-size:16px;
 }
+/* 统一视频时长样式（新增通用类） */
+.video-duration-card {
+  position:absolute;
+  bottom:10px;
+  right:10px;
+  background:rgba(0,0,0,0.7);
+  color:#fff;
+  padding:2px 8px;
+  border-radius:4px;
+  font-size:12px;
+  z-index: 2;
+}
 .video-duration{
   position:absolute;
   bottom:10px;
@@ -420,7 +438,7 @@ nav{
 /* 专业领域 - 修改为5列 + 新增红色图标样式 */
 .skills-grid{
   display:grid;
-  grid-template-columns:repeat(5, 1fr);
+  grid-template-columns:repeat(5, 1fr); /* 从4列改为5列 */
   gap:24px;
 }
 .skill-card{
@@ -444,7 +462,7 @@ nav{
 .skill-icon.green{background:rgba(0,200,100,0.1);color:#00c864;}
 .skill-icon.blue{background:rgba(0,120,255,0.1);color:#0078ff;}
 .skill-icon.purple{background:rgba(150,0,255,0.1);color:#9600ff;}
-.skill-icon.red{background:rgba(255,77,79,0.1);color:#ff4d4f;}
+.skill-icon.red{background:rgba(255,77,79,0.1);color:#ff4d4f;} /* 新增红色图标样式 */
 
 .skill-title{
   font-weight:600;
@@ -524,12 +542,14 @@ footer{
 .social-link img {
   width: 20px;
   height: 20px;
+  /* 移除黑白滤镜，显示SVG原有彩色 */
   transition: filter 0.2s;
 }
 .social-link:hover{
   background:#ff4d4f;
 }
 .social-link:hover img {
+  /* hover时只保证白色显示，不影响原有彩色 */
   filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
 }
 
@@ -603,6 +623,11 @@ footer{
   object-fit: contain;
   border-radius: 8px;
 }
+@media(max-width:768px){
+  .detail-modal-content{
+    margin: 50px auto 30px auto;
+  }
+}
 
 /* 微信弹窗样式 */
 .small-modal .modal-content{
@@ -651,25 +676,12 @@ footer{
   border-radius: 12px;
 }
 
-/* ====================== 手机端 最终完整修复区（电脑完全不动） ====================== */
+/* 移动端适配优化（重点修改） */
 @media(max-width: 768px) {
-  /* 禁止左右滑动、彻底锁死横向滚动 */
-  html, body {
-    overflow-x: hidden !important;
-    width: 100% !important;
-  }
-
-  /* 首页顶部增加距离 */
-  .hero {
-    padding-top: 80px !important;
-    padding-bottom: 40px !important;
-  }
-
-  /* 首页布局 */
+  /* 首页适配 */
   .hero-content {
     flex-direction: column;
     gap: 40px;
-    width: 100%;
   }
   .hero-text {
     flex: none;
@@ -681,71 +693,64 @@ footer{
   .hero-image{
     margin-right: 0;
     margin-top: 0;
-    width: 100%;
-    max-width: 280px;
   }
 
-  /* 导航栏修复，不拥挤、联系我正常显示 */
-  .nav {
-    padding: 12px 0;
-  }
-  .nav-links {
-    gap: 12px;
-  }
-  .nav-links a {
-    font-size: 13px;
-  }
-
-  /* ✅ 作品卡片：手机端一行显示2个 */
+  /* 精选作品：手机端一行2列，默认显示2个 */
   .grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+    grid-template-columns: repeat(2, 1fr) !important; /* 强制2列 */
+    gap: 16px !important;
   }
 
-  /* ✅ 分类标签：一行全部显示5个，不换行 */
-  .works-tabs {
-    flex-wrap: nowrap;
+  /* 专业领域：手机端横向滚动，显示5个 */
+  .skills-grid {
+    display: flex !important;
     overflow-x: auto;
-    gap: 8px;
+    padding-bottom: 10px;
+    gap: 16px;
+    grid-template-columns: none !important;
   }
-  .tab-btn {
-    padding: 7px 12px;
+  .skill-card {
+    flex: 0 0 calc(20% - 12px); /* 5个均分宽度 */
+    min-width: 120px; /* 最小宽度保证不挤 */
+    padding: 16px 12px;
+  }
+  .skill-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+  .skill-title {
+    font-size: 14px;
+  }
+  .skill-desc {
     font-size: 12px;
   }
 
-  /* 技能板块2列 */
-  .skills-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  /* 视频板块单列 */
+  /* 视频板块：手机端默认布局适配 */
   .video-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
 
-  /* ✅ 页脚全部居中，不挤左边 */
+  /* 页脚适配 */
   .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
-    text-align: center;
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
   }
-  .footer-col {
-    width: 100%;
-  }
-  .footer-links {
-    list-style: none;
-    padding: 0;
-  }
-  .social-links {
-    justify-content: center;
-  }
-  .contact-item {
-    justify-content: center;
-  }
+}
 
-  /* ✅ 只改这里：了解我 图标+文字强制一行，不换行 */
-  .hero-buttons {
-    flex-wrap: nowrap;
+/* 非移动端样式保护（防止影响PC端） */
+@media(min-width: 769px) {
+  .grid {
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr)) !important;
+  }
+  .skills-grid {
+    grid-template-columns:repeat(5, 1fr) !important;
+  }
+  .video-grid {
+    grid-template-columns:2fr 1fr !important;
+  }
+  .footer-grid {
+    grid-template-columns:2fr 1fr 1fr 1fr !important;
   }
 }
 </style>
@@ -781,7 +786,8 @@ footer{
         <div class="hero-buttons">
           <a href="#works" class="btn btn-primary">查看作品</a>
           <a href="#video" class="btn btn-secondary">视频作品</a>
-          <button class="btn btn-icon" onclick="scrollToWorks()">▶</button>
+          <!-- 修改：跳转至关于我（footer的contact） -->
+          <button class="btn btn-icon" onclick="scrollToAboutMe()">▶</button>
           <span class="btn-text">了解我</span>
         </div>
       </div>
@@ -848,7 +854,7 @@ footer{
   </div>
 </section>
 
-<!-- 视频作品 → 完全不变 -->
+<!-- 视频作品 → 修复播放按钮和时长显示 -->
 <section id="video" class="section">
   <div class="container">
     <div class="section-header">
@@ -866,13 +872,44 @@ footer{
       </div>
     </div>
     
+    <!-- 修改：视频卡片添加播放按钮和时长 -->
     <div class="grid" id="allVideos" style="display:none;">
-      <div class="card" onclick="openVideoModal('videos/1.mp4')"><div class="card-img-box"><img src="images/video/1_thumb.webp" class="card-img"></div><div class="card-info">智能扫地机器人动画</div></div>
-      <div class="card" onclick="openVideoModal('videos/2.mp4')"><div class="card-img-box"><img src="images/video/2_thumb.webp" class="card-img"></div><div class="card-info">C4D三维场景动画</div></div>
-      <div class="card" onclick="openVideoModal('videos/3.mp4')"><div class="card-img-box"><img src="images/video/3_thumb.webp" class="card-img"></div><div class="card-info">美妆产品动态演示</div></div>
-      <div class="card" onclick="openVideoModal('videos/4.mp4')"><div class="card-img-box"><img src="images/video/4_thumb.webp" class="card-img"></div><div class="card-info">电子产品开箱动画</div></div>
-      <div class="card" onclick="openVideoModal('videos/5.mp4')"><div class="card-img-box"><img src="images/video/5_thumb.webp" class="card-img"></div><div class="card-info">食品制作过程动画</div></div>
-      <div class="card" onclick="openVideoModal('videos/6.mp4')"><div class="card-img-box"><img src="images/video/6_thumb.webp" class="card-img"></div><div class="card-info">户外装备功能动画</div></div>
+      <div class="card" onclick="openVideoModal('videos/1.mp4')">
+        <div class="card-img-box"><img src="images/video/1_thumb.webp" class="card-img"></div>
+        <div class="video-play-card">▶</div>
+        <div class="video-duration-card">01:28</div>
+        <div class="card-info">智能扫地机器人动画</div>
+      </div>
+      <div class="card" onclick="openVideoModal('videos/2.mp4')">
+        <div class="card-img-box"><img src="images/video/2_thumb.webp" class="card-img"></div>
+        <div class="video-play-card">▶</div>
+        <div class="video-duration-card">00:45</div>
+        <div class="card-info">C4D三维场景动画</div>
+      </div>
+      <div class="card" onclick="openVideoModal('videos/3.mp4')">
+        <div class="card-img-box"><img src="images/video/3_thumb.webp" class="card-img"></div>
+        <div class="video-play-card">▶</div>
+        <div class="video-duration-card">00:38</div>
+        <div class="card-info">美妆产品动态演示</div>
+      </div>
+      <div class="card" onclick="openVideoModal('videos/4.mp4')">
+        <div class="card-img-box"><img src="images/video/4_thumb.webp" class="card-img"></div>
+        <div class="video-play-card">▶</div>
+        <div class="video-duration-card">00:52</div>
+        <div class="card-info">电子产品开箱动画</div>
+      </div>
+      <div class="card" onclick="openVideoModal('videos/5.mp4')">
+        <div class="card-img-box"><img src="images/video/5_thumb.webp" class="card-img"></div>
+        <div class="video-play-card">▶</div>
+        <div class="video-duration-card">01:05</div>
+        <div class="card-info">食品制作过程动画</div>
+      </div>
+      <div class="card" onclick="openVideoModal('videos/6.mp4')">
+        <div class="card-img-box"><img src="images/video/6_thumb.webp" class="card-img"></div>
+        <div class="video-play-card">▶</div>
+        <div class="video-duration-card">00:49</div>
+        <div class="card-info">户外装备功能动画</div>
+      </div>
     </div>
   </div>
 </section>
@@ -927,10 +964,17 @@ footer{
 <div class="modal video-modal" id="videoModal"><span class="modal-close" onclick="closeVideoModal()">&times;</span><video id="previewVideo" controls></video></div>
 
 <script>
-// 基础滚动
-function scrollToWorks(){document.getElementById('works').scrollIntoView({behavior:'smooth'});}
+// 新增：跳转至关于我（页脚）
+function scrollToAboutMe(){
+  document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+}
 
-// 作品筛选
+// 基础滚动（保留，兼容其他调用）
+function scrollToWorks(){
+  document.getElementById('works').scrollIntoView({behavior:'smooth'});
+}
+
+// 修复：作品筛选逻辑（按分类单独计数，解决收起后消失问题）
 let showAllWorks = false;
 let currentCategory='all';
 function filterWorks(category){
@@ -945,23 +989,38 @@ function filterWorks(category){
   document.getElementById('showAllBtn').style.display='inline-flex';
   document.getElementById('showLessBtn').style.display='none';
 
+  // 修复：按分类单独计数（手机端显示2个，PC端显示4个）
   let count = 0;
+  const showCount = window.innerWidth <= 768 ? 2 : 4; // 手机端显示2个，PC端4个
   items.forEach(i=>{ 
     if(i.dataset.category===category || category==='all'){
-      if(count<4) i.style.display='block';
+      if(count < showCount){
+        i.style.display='block';
+      }
       count++;
     }
   });
 }
 
-// 展开/收起作品
+// 修复：展开/收起作品逻辑（按分类计数）
 function toggleWorks(){
   showAllWorks = !showAllWorks;
   const items = document.querySelectorAll('.work-item');
+  // 先筛选当前分类的所有项
+  const currentItems = Array.from(items).filter(i => 
+    currentCategory === 'all' || i.dataset.category === currentCategory
+  );
+  // 手机端默认显示2个，PC端4个
+  const showCount = window.innerWidth <= 768 ? 2 : 4;
+
   items.forEach(i=>{
     if(currentCategory === 'all' || i.dataset.category === currentCategory){
-      i.style.display = showAllWorks ? 'block' : (Array.from(items).indexOf(i)<4 ? 'block' : 'none');
-    }else i.style.display = 'none';
+      i.style.display = showAllWorks 
+        ? 'block' 
+        : (currentItems.indexOf(i) < showCount ? 'block' : 'none');
+    }else{
+      i.style.display = 'none';
+    }
   });
   document.getElementById('showAllBtn').style.display = showAllWorks ? 'none' : 'inline-flex';
   document.getElementById('showLessBtn').style.display = showAllWorks ? 'inline-flex' : 'none';
@@ -1039,6 +1098,11 @@ window.addEventListener('scroll', function() {
     nav.style.background = 'rgba(15,15,19,0.95)';
     nav.style.borderBottom = '1px solid rgba(255,255,255,0.05)';
   }
+});
+
+// 窗口大小变化时重新筛选（适配手机/PC切换）
+window.addEventListener('resize', function() {
+  filterWorks(currentCategory);
 });
 
 // 初始化
