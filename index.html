@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> <!-- 禁止缩放+横向滚动 -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>龚著登 - 电商视觉设计师</title>
 <link rel="icon" href="favicon.ico">
 
@@ -13,7 +13,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 html, body{
-  overflow-x: hidden; /* 全局禁止横向滚动 */
+  overflow-x: hidden;
 }
 body{
   font-family:'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -178,11 +178,10 @@ nav{
   justify-content: flex-end;
   position: relative;
   max-width: 1000px;
-  /* 👇 已精准加入照片四周距离控制，直接改数字即可 */
-  margin-right: 00px;   /* 照片距离页面右侧的距离 */
-  margin-top: 00px;    /* 照片距离上方的距离 */
-  margin-bottom: 0px; /* 照片距离下方的距离 */
-  margin-left: 0;      /* 照片左侧距离 */
+  margin-right: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 0;
 }
 .hero-image::after {
   content: '';
@@ -309,7 +308,7 @@ nav{
   overflow:hidden;
   transition:transform 0.2s, box-shadow 0.2s;
   cursor:pointer;
-  position: relative; /* 新增：为视频卡片的播放按钮/时长定位 */
+  position: relative;
 }
 .card:hover{
   transform:translateY(-6px);
@@ -371,7 +370,6 @@ nav{
   height:100%;
   object-fit:cover;
 }
-/* 统一视频播放按钮样式（新增通用类） */
 .video-play-card {
   position:absolute;
   top:50%;
@@ -416,7 +414,6 @@ nav{
   height:40px;
   font-size:16px;
 }
-/* 统一视频时长样式（新增通用类） */
 .video-duration-card {
   position:absolute;
   bottom:10px;
@@ -439,10 +436,10 @@ nav{
   font-size:12px;
 }
 
-/* 专业领域 - 修改为5列 + 新增红色图标样式 */
+/* 专业领域 */
 .skills-grid{
   display:grid;
-  grid-template-columns:repeat(5, 1fr); /* 从4列改为5列 */
+  grid-template-columns:repeat(5, 1fr);
   gap:24px;
 }
 .skill-card{
@@ -466,7 +463,7 @@ nav{
 .skill-icon.green{background:rgba(0,200,100,0.1);color:#00c864;}
 .skill-icon.blue{background:rgba(0,120,255,0.1);color:#0078ff;}
 .skill-icon.purple{background:rgba(150,0,255,0.1);color:#9600ff;}
-.skill-icon.red{background:rgba(255,77,79,0.1);color:#ff4d4f;} /* 新增红色图标样式 */
+.skill-icon.red{background:rgba(255,77,79,0.1);color:#ff4d4f;}
 
 .skill-title{
   font-weight:600;
@@ -479,7 +476,7 @@ nav{
   color:#999;
 }
 
-/* 页脚 - 社交图标去掉黑白滤镜，显示彩色 */
+/* 页脚 */
 footer{
   background:#121218;
   padding:60px 0 30px;
@@ -546,14 +543,12 @@ footer{
 .social-link img {
   width: 20px;
   height: 20px;
-  /* 移除黑白滤镜，显示SVG原有彩色 */
   transition: filter 0.2s;
 }
 .social-link:hover{
   background:#ff4d4f;
 }
 .social-link:hover img {
-  /* hover时只保证白色显示，不影响原有彩色 */
   filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
 }
 
@@ -565,7 +560,7 @@ footer{
   font-size:13px;
 }
 
-/* 原始弹窗样式（给主图/渲染/AIGC用） */
+/* 弹窗样式 */
 .modal{
   position: fixed;
   top: 0; left: 0;
@@ -601,7 +596,6 @@ footer{
   border-radius: 8px;
 }
 
-/* 详情页独立弹窗（只给详情页用） */
 .detail-modal{
   position: fixed;
   top: 0; left: 0;
@@ -633,7 +627,6 @@ footer{
   }
 }
 
-/* 微信弹窗样式 */
 .small-modal .modal-content{
   background:#1a1a24;
   border-radius:20px;
@@ -673,7 +666,6 @@ footer{
   margin-top:10px;
   display:none;
 }
-/* 视频弹窗 */
 .video-modal video{
   max-width: 90%;
   max-height: 85vh;
@@ -682,7 +674,7 @@ footer{
 
 /* 移动端适配优化（全部修复完成） */
 @media(max-width: 768px) {
-  /* 1. 全局禁止横向滚动（核心修复） */
+  /* 1. 全局禁止横向滚动 */
   html, body{
     overflow-x: hidden !important;
     width: 100% !important;
@@ -692,7 +684,7 @@ footer{
     max-width: 100% !important;
   }
 
-  /* 2. 顶部导航栏修复：文字显示不全 */
+  /* 2. 顶部导航栏修复 */
   .nav{
     padding: 14px 0 !important;
   }
@@ -740,7 +732,7 @@ footer{
     flex-shrink: 0 !important;
   }
 
-  /* 5. 作品/视频板块：强制一行2个，默认显示2个 */
+  /* 5. 作品/视频板块：强制一行2个 */
   .grid {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 16px !important;
@@ -756,7 +748,7 @@ footer{
     gap: 16px !important;
   }
 
-  /* 6. 专业领域：手机端横向滚动，显示5个 */
+  /* 6. 专业领域：手机端横向滚动 */
   .skills-grid {
     display: flex !important;
     overflow-x: auto;
@@ -765,8 +757,8 @@ footer{
     grid-template-columns: none !important;
   }
   .skill-card {
-    flex: 0 0 calc(20% - 12px); /* 5个均分宽度 */
-    min-width: 120px; /* 最小宽度保证不挤 */
+    flex: 0 0 calc(20% - 12px);
+    min-width: 120px;
     padding: 16px 12px;
   }
   .skill-icon {
@@ -781,7 +773,7 @@ footer{
     font-size: 12px;
   }
 
-  /* 7. 页脚修复：全部内容居中对齐 */
+  /* 7. 页脚修复：全部内容居中 + 快速导航圆点居中 */
   .footer-grid {
     grid-template-columns: 1fr !important;
     gap: 30px !important;
@@ -796,6 +788,29 @@ footer{
   .social-links{
     justify-content: center !important;
   }
+  /* 修复快速导航圆点居中 */
+  .footer-links li{
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+  .footer-links li::before{
+    content: '•' !important;
+    color: #fff !important;
+    font-size: 16px !important;
+  }
+
+  /* 8. 手机端个人照片周围距离设为0 */
+  .hero-image{
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .hero-image img{
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 0 !important; /* 可选：如果不需要圆角可以去掉 */
+  }
 
   /* 首页适配 */
   .hero-content {
@@ -809,13 +824,9 @@ footer{
   .hero-text h1 {
     font-size: 36px;
   }
-  .hero-image{
-    margin-right: 0;
-    margin-top: 0;
-  }
 }
 
-/* 非移动端样式保护（防止影响PC端） */
+/* 非移动端样式保护（PC端完全恢复原样） */
 @media(min-width: 769px) {
   .grid {
     grid-template-columns:repeat(auto-fit,minmax(280px,1fr)) !important;
@@ -828,6 +839,7 @@ footer{
   }
   .video-side{
     flex-direction: column !important;
+    gap:24px !important;
   }
   .footer-grid {
     grid-template-columns:2fr 1fr 1fr 1fr !important;
@@ -841,6 +853,20 @@ footer{
   }
   .social-links{
     justify-content: flex-start !important;
+  }
+  /* PC端快速导航恢复原样 */
+  .footer-links li{
+    display: block !important;
+  }
+  .footer-links li::before{
+    content: none !important;
+  }
+  /* PC端个人照片恢复原有间距 */
+  .hero-image{
+    margin-right: 0px !important;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+    margin-left: 0 !important;
   }
 }
 </style>
@@ -888,7 +914,7 @@ footer{
   </div>
 </section>
 
-<!-- 精选作品：全统一 缩略图+大图 -->
+<!-- 精选作品 -->
 <section id="works" class="section">
   <div class="container">
     <div class="section-header">
@@ -908,7 +934,7 @@ footer{
     </div>
     
     <div class="grid" id="worksGrid">
-      <!-- 详情页设计 → 使用独立点击事件 -->
+      <!-- 详情页设计 -->
       <div class="card work-item" data-category="detail" onclick="previewDetailImage(this)"><div class="card-img-box"><img src="images/detail/1_thumb.webp" data-full-src="images/detail/1.webp" class="card-img"></div><div class="card-info"><div class="card-title">手持小风扇详情页</div><div class="card-stats"><div class="stat">👁️ 28.6w</div><div class="stat">❤️ 5.2w</div></div></div></div>
       <div class="card work-item" data-category="detail" onclick="previewDetailImage(this)"><div class="card-img-box"><img src="images/detail/2_thumb.webp" data-full-src="images/detail/2.webp" class="card-img"></div><div class="card-info"><div class="card-title">保湿精华液详情页</div><div class="card-stats"><div class="stat">👁️ 32.1w</div><div class="stat">❤️ 6.8w</div></div></div></div>
       <div class="card work-item" data-category="detail" onclick="previewDetailImage(this)"><div class="card-img-box"><img src="images/detail/3_thumb.webp" data-full-src="images/detail/3.webp" class="card-img"></div><div class="card-info"><div class="card-title">多功能收纳柜详情页</div><div class="card-stats"><div class="stat">👁️ 25.7w</div><div class="stat">❤️ 4.9w</div></div></div></div>
@@ -916,7 +942,7 @@ footer{
       <div class="card work-item detail-more" data-category="detail" onclick="previewDetailImage(this)" style="display:none;"><div class="card-img-box"><img src="images/detail/5_thumb.webp" data-full-src="images/detail/5.webp" class="card-img"></div><div class="card-info"><div class="card-title">家用空气炸锅详情页</div><div class="card-stats"><div class="stat">👁️ 29.3w</div><div class="stat">❤️ 5.8w</div></div></div></div>
       <div class="card work-item detail-more" data-category="detail" onclick="previewDetailImage(this)" style="display:none;"><div class="card-img-box"><img src="images/detail/6_thumb.webp" data-full-src="images/detail/6.webp" class="card-img"></div><div class="card-info"><div class="card-title">儿童绘本详情页</div><div class="card-stats"><div class="stat">👁️ 22.8w</div><div class="stat">❤️ 4.1w</div></div></div></div>
 
-      <!-- 主图设计 → 保持原来的点击事件 -->
+      <!-- 主图设计 -->
       <div class="card work-item" data-category="main" onclick="previewImage(this)"><div class="card-img-box"><img src="images/main/1_thumb.webp" data-full-src="images/main/1.webp" class="card-img"></div><div class="card-info"><div class="card-title">无线蓝牙耳机主图</div><div class="card-stats"><div class="stat">👁️ 42.7w</div><div class="stat">❤️ 9.5w</div></div></div></div>
       <div class="card work-item" data-category="main" onclick="previewImage(this)"><div class="card-img-box"><img src="images/main/2_thumb.webp" data-full-src="images/main/2.webp" class="card-img"></div><div class="card-info"><div class="card-title">即食螺蛳粉主图</div><div class="card-stats"><div class="stat">👁️ 56.3w</div><div class="stat">❤️ 12.4w</div></div></div></div>
       <div class="card work-item" data-category="main" onclick="previewImage(this)"><div class="card-img-box"><img src="images/main/3_thumb.webp" data-full-src="images/main/3.webp" class="card-img"></div><div class="card-info"><div class="card-title">夏季冰丝T恤主图</div><div class="card-stats"><div class="stat">👁️ 38.2w</div><div class="stat">❤️ 8.1w</div></div></div></div>
@@ -924,7 +950,7 @@ footer{
       <div class="card work-item main-more" data-category="main" onclick="previewImage(this)" style="display:none;"><div class="card-img-box"><img src="images/main/5_thumb.webp" data-full-src="images/main/5.webp" class="card-img"></div><div class="card-info"><div class="card-title">家用除螨仪主图</div><div class="card-stats"><div class="stat">👁️ 27.9w</div><div class="stat">❤️ 5.3w</div></div></div></div>
       <div class="card work-item main-more" data-category="main" onclick="previewImage(this)" style="display:none;"><div class="card-img-box"><img src="images/main/6_thumb.webp" data-full-src="images/main/6.webp" class="card-img"></div><div class="card-info"><div class="card-title">宠物冻干零食主图</div><div class="card-stats"><div class="stat">👁️ 34.6w</div><div class="stat">❤️ 7.9w</div></div></div></div>
 
-      <!-- C4D产品渲染 → 保持原来的点击事件 -->
+      <!-- C4D产品渲染 -->
       <div class="card work-item" data-category="render" onclick="previewImage(this)"><div class="card-img-box"><img src="images/render/1_thumb.webp" data-full-src="images/render/1.webp" class="card-img"></div><div class="card-info"><div class="card-title">智能手表渲染</div><div class="card-stats"><div class="stat">👁️ 39.8w</div><div class="stat">❤️ 8.7w</div></div></div></div>
       <div class="card work-item" data-category="render" onclick="previewImage(this)"><div class="card-img-box"><img src="images/render/2_thumb.webp" data-full-src="images/render/2.webp" class="card-img"></div><div class="card-info"><div class="card-title">北欧风茶几渲染</div><div class="card-stats"><div class="stat">👁️ 26.4w</div><div class="stat">❤️ 5.6w</div></div></div></div>
       <div class="card work-item" data-category="render" onclick="previewImage(this)"><div class="card-img-box"><img src="images/render/3_thumb.webp" data-full-src="images/render/3.webp" class="card-img"></div><div class="card-info"><div class="card-title">口红管体渲染</div><div class="card-stats"><div class="stat">👁️ 41.2w</div><div class="stat">❤️ 9.3w</div></div></div></div>
@@ -932,7 +958,7 @@ footer{
       <div class="card work-item render-more" data-category="render" onclick="previewImage(this)" style="display:none;"><div class="card-img-box"><img src="images/render/5_thumb.webp" data-full-src="images/render/5.webp" class="card-img"></div><div class="card-info"><div class="card-title">保温杯渲染</div><div class="card-stats"><div class="stat">👁️ 24.9w</div><div class="stat">❤️ 4.8w</div></div></div></div>
       <div class="card work-item render-more" data-category="render" onclick="previewImage(this)" style="display:none;"><div class="card-img-box"><img src="images/render/6_thumb.webp" data-full-src="images/render/6.webp" class="card-img"></div><div class="card-info"><div class="card-title">香水瓶渲染</div><div class="card-stats"><div class="stat">👁️ 33.7w</div><div class="stat">❤️ 6.9w</div></div></div></div>
 
-      <!-- AIGC创意 → 保持原来的点击事件 -->
+      <!-- AIGC创意 -->
       <div class="card work-item" data-category="ai" onclick="previewImage(this)"><div class="card-img-box"><img src="images/ai/1_thumb.webp" data-full-src="images/ai/1.webp" class="card-img"></div><div class="card-info"><div class="card-title">户外露营场景合成</div><div class="card-stats"><div class="stat">👁️ 48.9w</div><div class="stat">❤️ 11.6w</div></div></div></div>
       <div class="card work-item" data-category="ai" onclick="previewImage(this)"><div class="card-img-box"><img src="images/ai/2_thumb.webp" data-full-src="images/ai/2.webp" class="card-img"></div><div class="card-info"><div class="card-title">模特穿搭合成</div><div class="card-stats"><div class="stat">👁️ 52.3w</div><div class="stat">❤️ 13.2w</div></div></div></div>
       <div class="card work-item" data-category="ai" onclick="previewImage(this)"><div class="card-img-box"><img src="images/ai/3_thumb.webp" data-full-src="images/ai/3.webp" class="card-img"></div><div class="card-info"><div class="card-title">饮品创意合成</div><div class="card-stats"><div class="stat">👁️ 45.6w</div><div class="stat">❤️ 10.4w</div></div></div></div>
@@ -943,7 +969,7 @@ footer{
   </div>
 </section>
 
-<!-- 视频作品 → 修复播放按钮和时长显示 -->
+<!-- 视频作品 -->
 <section id="video" class="section">
   <div class="container">
     <div class="section-header">
@@ -957,11 +983,13 @@ footer{
     <div id="videoPreview">
       <div class="video-grid">
         <div class="video-main" onclick="openVideoModal('videos/1.mp4')"><img src="images/video/1_thumb.webp"><div class="video-play">▶</div><div class="video-duration">01:28</div></div>
-        <div class="video-small" onclick="openVideoModal('videos/2.mp4')"><img src="images/video/2_thumb.webp"><div class="video-play">▶</div><div class="video-duration">00:45</div></div>
+        <div class="video-side">
+          <div class="video-small" onclick="openVideoModal('videos/2.mp4')"><img src="images/video/2_thumb.webp"><div class="video-play">▶</div><div class="video-duration">00:45</div></div>
+          <div class="video-small" onclick="openVideoModal('videos/3.mp4')"><img src="images/video/3_thumb.webp"><div class="video-play">▶</div><div class="video-duration">00:38</div></div>
+        </div>
       </div>
     </div>
     
-    <!-- 修改：视频卡片添加播放按钮和时长 -->
     <div class="grid" id="allVideos" style="display:none;">
       <div class="card" onclick="openVideoModal('videos/1.mp4')">
         <div class="card-img-box"><img src="images/video/1_thumb.webp" class="card-img"></div>
@@ -1003,7 +1031,7 @@ footer{
   </div>
 </section>
 
-<!-- 专业领域 → 完全不变 -->
+<!-- 专业领域 -->
 <section id="service" class="section">
   <div class="container">
     <h2 class="section-title">专业领域</h2>
@@ -1017,13 +1045,20 @@ footer{
   </div>
 </section>
 
-<!-- 页脚 → 完全不变 -->
+<!-- 页脚 -->
 <footer id="contact" class="contact-section">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-col"><h4>关于我</h4><p>7年电商视觉设计经验，擅长将创意与商业结合，为品牌打造有价值的视觉内容。</p></div>
       <div class="footer-col"><h4>联系我</h4><div class="contact-item">📧 1711325061@qq.com</div><div class="contact-item">📍 广东省深圳市</div></div>
-      <div class="footer-col"><h4>快速导航</h4><ul class="footer-links"><li><a href="#home">首页</a></li><li><a href="#works">作品</a></li><li><a href="#video">视频</a></li><li><a href="#service">服务</a></li></ul></div>
+      <div class="footer-col"><h4>快速导航</h4>
+        <ul class="footer-links">
+          <li><a href="#home">首页</a></li>
+          <li><a href="#works">作品</a></li>
+          <li><a href="#video">视频</a></li>
+          <li><a href="#service">服务</a></li>
+        </ul>
+      </div>
       <div class="footer-col"><h4>关注我</h4>
         <div class="social-links">
           <a href="https://www.zcool.com.cn/u/23450553" class="social-link" target="_blank">
@@ -1039,31 +1074,27 @@ footer{
   </div>
 </footer>
 
-<!-- 原有弹窗 → 给主图/渲染/AIGC -->
+<!-- 弹窗 -->
 <div class="modal small-modal" id="wxModal"><span class="modal-close" onclick="closeWxModal()">&times;</span><div class="modal-content"><h3>扫码加我微信</h3><img src="images/wechat-qrcode.webp" class="wx-qrcode"><div class="wx-id">微信号：gongzhudeng <button class="copy-btn" onclick="copyWxId()">复制</button></div><p class="copy-success" id="copySuccess">复制成功</p></div></div>
 <div class="modal" id="imageModal"><span class="modal-close" onclick="closeModal()">&times;</span><img src="" class="modal-content" id="modalImg"></div>
 
-<!-- 详情页独立弹窗 → 只给详情页用 -->
 <div class="detail-modal" id="detailModal">
   <span class="modal-close" onclick="closeDetailModal()">&times;</span>
   <img src="" class="detail-modal-content" id="detailModalImg">
 </div>
 
-<!-- 视频弹窗 → 完全不变 -->
 <div class="modal video-modal" id="videoModal"><span class="modal-close" onclick="closeVideoModal()">&times;</span><video id="previewVideo" controls></video></div>
 
 <script>
-// 新增：跳转至关于我（页脚）
 function scrollToAboutMe(){
   document.getElementById('contact').scrollIntoView({behavior:'smooth'});
 }
 
-// 基础滚动（保留，兼容其他调用）
 function scrollToWorks(){
   document.getElementById('works').scrollIntoView({behavior:'smooth'});
 }
 
-// 修复：作品筛选逻辑（按分类单独计数，解决收起后消失问题）
+// 作品筛选逻辑
 let showAllWorks = false;
 let currentCategory='all';
 function filterWorks(category){
@@ -1078,9 +1109,8 @@ function filterWorks(category){
   document.getElementById('showAllBtn').style.display='inline-flex';
   document.getElementById('showLessBtn').style.display='none';
 
-  // 修复：按分类单独计数（手机端显示2个，PC端显示4个）
   let count = 0;
-  const showCount = window.innerWidth <= 768 ? 2 : 4; // 手机端显示2个，PC端4个
+  const showCount = window.innerWidth <= 768 ? 2 : 4;
   items.forEach(i=>{ 
     if(i.dataset.category===category || category==='all'){
       if(count < showCount){
@@ -1091,15 +1121,13 @@ function filterWorks(category){
   });
 }
 
-// 修复：展开/收起作品逻辑（按分类计数）
+// 展开/收起作品
 function toggleWorks(){
   showAllWorks = !showAllWorks;
   const items = document.querySelectorAll('.work-item');
-  // 先筛选当前分类的所有项
   const currentItems = Array.from(items).filter(i => 
     currentCategory === 'all' || i.dataset.category === currentCategory
   );
-  // 手机端默认显示2个，PC端4个
   const showCount = window.innerWidth <= 768 ? 2 : 4;
 
   items.forEach(i=>{
@@ -1125,12 +1153,12 @@ function toggleVideos(){
   else{v1.style.display='block';v2.style.display='none';s.style.display='inline-flex';h.style.display='none';}
 }
 
-// 微信弹窗功能 → 不变
+// 微信弹窗
 function openWxModal(){document.getElementById('wxModal').classList.add('active');document.body.style.overflow='hidden';}
 function closeWxModal(){document.getElementById('wxModal').classList.remove('active');document.body.style.overflow='auto';}
 function copyWxId(){navigator.clipboard.writeText('gongzhudeng').then(()=>{document.getElementById('copySuccess').style.display='block';setTimeout(()=>document.getElementById('copySuccess').style.display='none',2000);});}
 
-// 普通图片弹窗（主图/渲染/AIGC）→ 不变
+// 普通图片弹窗
 function previewImage(el) {
   const img = el.querySelector('.card-img');
   const modal = document.getElementById('imageModal');
@@ -1144,7 +1172,7 @@ function closeModal() {
   document.body.style.overflow = 'auto';
 }
 
-// 详情页独立弹窗函数 → 只作用于详情页
+// 详情页独立弹窗
 function previewDetailImage(el) {
   const img = el.querySelector('.card-img');
   const modal = document.getElementById('detailModal');
@@ -1159,7 +1187,7 @@ function closeDetailModal() {
   document.body.style.overflow = 'auto';
 }
 
-// 视频弹窗 → 不变
+// 视频弹窗
 function openVideoModal(src){const v=document.getElementById('previewVideo');v.src=src;document.getElementById('videoModal').classList.add('active');document.body.style.overflow='hidden';v.play();}
 function closeVideoModal(){const v=document.getElementById('previewVideo');v.pause();v.src='';document.getElementById('videoModal').classList.remove('active');document.body.style.overflow='auto';}
 
@@ -1189,7 +1217,7 @@ window.addEventListener('scroll', function() {
   }
 });
 
-// 窗口大小变化时重新筛选（适配手机/PC切换）
+// 窗口大小变化时重新筛选
 window.addEventListener('resize', function() {
   filterWorks(currentCategory);
 });
