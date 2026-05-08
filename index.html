@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> <!-- 禁止缩放+横向滚动 -->
 <title>龚著登 - 电商视觉设计师</title>
 <link rel="icon" href="favicon.ico">
 
@@ -12,6 +12,9 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
+html, body{
+  overflow-x: hidden; /* 全局禁止横向滚动 */
+}
 body{
   font-family:'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background: #0F1519;
@@ -58,7 +61,7 @@ nav{
   text-decoration:none;
   color:#999;
   font-size:14px;
-  font-weight:50;
+  font-weight:500;
   transition: all 0.2s;
   white-space:nowrap;
 }
@@ -287,6 +290,7 @@ nav{
   font-size:14px;
   cursor:pointer;
   transition:all 0.2s;
+  white-space:nowrap;
 }
 .tab-btn.active, .tab-btn:hover{
   background: rgba(255,77,79,0.15);
@@ -597,7 +601,7 @@ footer{
   border-radius: 8px;
 }
 
-/* 详情页独立弹窗（只给详情页用，不影响任何其他内容） */
+/* 详情页独立弹窗（只给详情页用） */
 .detail-modal{
   position: fixed;
   top: 0; left: 0;
@@ -676,32 +680,83 @@ footer{
   border-radius: 12px;
 }
 
-/* 移动端适配优化（重点修改） */
+/* 移动端适配优化（全部修复完成） */
 @media(max-width: 768px) {
-  /* 首页适配 */
-  .hero-content {
-    flex-direction: column;
-    gap: 40px;
+  /* 1. 全局禁止横向滚动（核心修复） */
+  html, body{
+    overflow-x: hidden !important;
+    width: 100% !important;
   }
-  .hero-text {
-    flex: none;
-    width: 100%;
-  }
-  .hero-text h1 {
-    font-size: 36px;
-  }
-  .hero-image{
-    margin-right: 0;
-    margin-top: 0;
+  .container{
+    width: 92% !important;
+    max-width: 100% !important;
   }
 
-  /* 精选作品：手机端一行2列，默认显示2个 */
+  /* 2. 顶部导航栏修复：文字显示不全 */
+  .nav{
+    padding: 14px 0 !important;
+  }
+  .logo{
+    font-size: 16px !important;
+  }
+  .nav-links{
+    gap: 18px !important;
+  }
+  .nav a{
+    font-size: 13px !important;
+  }
+
+  /* 3. 首页按钮修复：了解我和其他按钮在一行 */
+  .hero-buttons{
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    gap: 12px !important;
+  }
+  .btn{
+    padding: 10px 20px !important;
+    font-size: 13px !important;
+    white-space: nowrap !important;
+  }
+  .btn-icon{
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 16px !important;
+  }
+  .btn-text{
+    font-size: 13px !important;
+    white-space: nowrap !important;
+  }
+
+  /* 4. 精选作品标签：一行显示5个 */
+  .works-tabs{
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    padding-bottom: 8px !important;
+    gap: 8px !important;
+  }
+  .tab-btn{
+    padding: 6px 14px !important;
+    font-size: 12px !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* 5. 作品/视频板块：强制一行2个，默认显示2个 */
   .grid {
-    grid-template-columns: repeat(2, 1fr) !important; /* 强制2列 */
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+  }
+  .video-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .video-main, .video-small{
+    aspect-ratio: 16/10 !important;
+  }
+  .video-side{
+    flex-direction: row !important;
     gap: 16px !important;
   }
 
-  /* 专业领域：手机端横向滚动，显示5个 */
+  /* 6. 专业领域：手机端横向滚动，显示5个 */
   .skills-grid {
     display: flex !important;
     overflow-x: auto;
@@ -726,15 +781,37 @@ footer{
     font-size: 12px;
   }
 
-  /* 视频板块：手机端默认布局适配 */
-  .video-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  /* 页脚适配 */
+  /* 7. 页脚修复：全部内容居中对齐 */
   .footer-grid {
     grid-template-columns: 1fr !important;
-    gap: 20px !important;
+    gap: 30px !important;
+    text-align: center !important;
+  }
+  .footer-col h4{
+    text-align: center !important;
+  }
+  .contact-item{
+    justify-content: center !important;
+  }
+  .social-links{
+    justify-content: center !important;
+  }
+
+  /* 首页适配 */
+  .hero-content {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .hero-text {
+    flex: none;
+    width: 100%;
+  }
+  .hero-text h1 {
+    font-size: 36px;
+  }
+  .hero-image{
+    margin-right: 0;
+    margin-top: 0;
   }
 }
 
@@ -749,8 +826,21 @@ footer{
   .video-grid {
     grid-template-columns:2fr 1fr !important;
   }
+  .video-side{
+    flex-direction: column !important;
+  }
   .footer-grid {
     grid-template-columns:2fr 1fr 1fr 1fr !important;
+    text-align: left !important;
+  }
+  .footer-col h4{
+    text-align: left !important;
+  }
+  .contact-item{
+    justify-content: flex-start !important;
+  }
+  .social-links{
+    justify-content: flex-start !important;
   }
 }
 </style>
@@ -786,7 +876,6 @@ footer{
         <div class="hero-buttons">
           <a href="#works" class="btn btn-primary">查看作品</a>
           <a href="#video" class="btn btn-secondary">视频作品</a>
-          <!-- 修改：跳转至关于我（footer的contact） -->
           <button class="btn btn-icon" onclick="scrollToAboutMe()">▶</button>
           <span class="btn-text">了解我</span>
         </div>
@@ -868,7 +957,7 @@ footer{
     <div id="videoPreview">
       <div class="video-grid">
         <div class="video-main" onclick="openVideoModal('videos/1.mp4')"><img src="images/video/1_thumb.webp"><div class="video-play">▶</div><div class="video-duration">01:28</div></div>
-        <div class="video-side"><div class="video-small" onclick="openVideoModal('videos/2.mp4')"><img src="images/video/2_thumb.webp"><div class="video-play">▶</div><div class="video-duration">00:45</div></div><div class="video-small" onclick="openVideoModal('videos/3.mp4')"><img src="images/video/3_thumb.webp"><div class="video-play">▶</div><div class="video-duration">00:38</div></div></div>
+        <div class="video-small" onclick="openVideoModal('videos/2.mp4')"><img src="images/video/2_thumb.webp"><div class="video-play">▶</div><div class="video-duration">00:45</div></div>
       </div>
     </div>
     
