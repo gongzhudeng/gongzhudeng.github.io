@@ -5,1248 +5,311 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>龚著登 - 电商视觉设计师</title>
 <link rel="icon" href="favicon.ico">
-
 <link rel="preconnect" href="https://fonts.font.im" crossorigin>
 <link rel="dns-prefetch" href="https://fonts.font.im">
-<link href="https://fonts.font.im/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+<link href="https://fonts.font.im/css2?family=Inter:wght@300;400;500;600;700;80&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-html, body{
-  overflow-x: hidden;
-}
-body{
-  font-family:'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: #0F1519;
-  color:#e5e5e5;
-  scroll-behavior: smooth;
-  line-height:1.6;
-}
-
-.container{
-  width:90%;
-  max-width:1280px;
-  margin:0 auto;
-}
-
-/* 导航栏 */
-nav{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  background: rgba(15,15,19,0.95);
-  backdrop-filter: blur(12px);
-  border-bottom:1px solid rgba(255,255,255,0.05);
-  z-index:999;
-}
-.nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:16px 0;
-}
-.logo{
-  font-weight:700;
-  font-size:18px;
-  color:#fff;
-  flex-shrink:0;
-}
-.nav-links{
-  display:flex;
-  gap:32px;
-  align-items:center;
-}
-.nav a{
-  text-decoration:none;
-  color:#999;
-  font-size:14px;
-  font-weight:500;
-  transition: all 0.2;
-  white-space:nowrap;
-}
-.nav a:hover, .nav a.active{
-  color:#ff4d4f;
-}
-
-/* 首页区域 */
-.hero{
-  padding: 60px 0 0px;
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-.hero-content{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:0px;
-  width:100%;
-}
-.hero-text{
-  flex: 0 0 480px;
-}
-.hero-text h1{
-  font-size:56px;
-  font-weight:800;
-  line-height:1.1;
-  margin-bottom:12px;
-  color:#fff;
-}
-.hero-text h1 span{
-  color:#ff4d4f;
-  display:block;
-}
-.hero-desc{
-  font-size:16px;
-  color:#999;
-  margin-bottom:28px;
-  max-width:480px;
-}
-.hero-stats{
-  display:flex;
-  gap:28px;
-  margin-bottom:32px;
-}
-.stat-item{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  color:#999;
-  font-size:14px;
-}
+html,body{overflow-x:hidden;}
+body{font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0F1519;color:#e5e5e5;scroll-behavior:smooth;line-height:1.6;}
+.container{width:90%;max-width:1280px;margin:0 auto;}
+nav{position:fixed;top:0;left:0;width:100%;background:rgba(15,15,19,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.05);z-index:999;}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0;}
+.logo{font-weight:700;font-size:18px;color:#fff;flex-shrink:0;}
+.nav-links{display:flex;gap:32px;align-items:center;}
+.nav a{text-decoration:none;color:#999;font-size:14px;font-weight:500;transition:all 0.2s;white-space:nowrap;}
+.nav a:hover,.nav a.active{color:#ff4d4f;}
+.hero{padding:60px 0 0;display:flex;align-items:center;position:relative;}
+.hero-content{display:flex;align-items:center;justify-content:space-between;gap:0;width:100%;}
+.hero-text{flex:0 0 480px;}
+.hero-text h1{font-size:56px;font-weight:800;line-height:1.1;margin-bottom:12px;color:#fff;}
+.hero-text h1 span{color:#ff4d4f;display:block;}
+.hero-desc{font-size:16px;color:#999;margin-bottom:28px;max-width:480px;}
+.hero-stats{display:flex;gap:28px;margin-bottom:32px;}
+.stat-item{display:flex;align-items:center;gap:8px;color:#999;font-size:14px;}
 .stat-item i{color:#ff4d4f;}
-.hero-buttons{
-  display:flex;
-  gap:16px;
-  flex-wrap:wrap;
-  align-items:center;
-}
-.btn{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:12px 28px;
-  border-radius:30px;
-  text-decoration:none;
-  font-weight:600;
-  transition:all 0.2;
-  font-size:14px;
-  border:none;
-  cursor:pointer;
-}
-.btn-primary{
-  background: linear-gradient(135deg,#ff4d4f,#ff7875);
-  color:#fff;
-  box-shadow:0 4px 15px rgba(255,77,79,0.3);
-}
-.btn-primary:hover{
-  transform:translateY(-2px);
-  box-shadow:0 6px 20px rgba(255,77,79,0.4);
-}
-.btn-secondary{
-  background: rgba(255,255,250,0.1);
-  color:#fff;
-  border:1px solid rgba(255,255,255,0.15);
-}
-.btn-secondary:hover{
-  background: rgba(255,255,255,0.15);
-  transform:translateY(-2px);
-}
-.btn-icon{
-  width:40px;
-  height:40px;
-  border-radius:50%;
-  background: rgba(255,255,255,0.1);
-  color:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:0;
-  font-size:18px;
-}
-.btn-text{
-  color:#fff;
-  font-size:14px;
-  font-weight:500;
-}
-
-/* 光晕右上角微调 + 照片放大 + 新增四周间距控制 */
-.hero-image{
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
-  position: relative;
-  max-width: 1000px;
-  margin-right: 0px;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  margin-left: 0;
-}
-.hero-image::after {
-  content: '';
-  position: absolute;
-  right: -60px;
-  top: -10%;
-  width: 65%;
-  height: 65%;
-  background: rgba(255, 0, 0, 0.7);
-  filter: blur(80px);
-  border-radius: 50%;
-  z-index: -1;
-  animation: glow1 4s ease-in-out infinite alternate;
-}
-.hero-image::before {
-  content: '';
-  position: absolute;
-  left: 50px;
-  bottom: 20%;
-  width: 40%;
-  height: 40%;
-  background: rgba(255, 0, 0, 0.5);
-  filter: blur(60px);
-  border-radius: 50%;
-  z-index: -1;
-  animation: glow2 5s ease-in-out infinite alternate;
-}
-.hero-image .glow-small {
-  position: absolute;
-  right: -55%;
-  bottom: 20%;
-  width: 55%;
-  height: 55%;
-  background: rgba(255, 0, 0, 0.4);
-  filter: blur(50px);
-  border-radius: 50%;
-  z-index: -1;
-  animation: glow3 3.5s ease-in-out infinite alternate;
-}
-@keyframes glow1 { 0%{transform: scale(1);opacity:0.7;} 100%{transform: scale(1.15);opacity:0.9;} }
-@keyframes glow2 { 0%{transform: scale(1);opacity:0.5;} 100%{transform: scale(1.2);opacity:0.7;} }
-@keyframes glow3 { 0%{transform: scale(1);opacity:0.4;} 100%{transform: scale(1.25);opacity:0.6;} }
-
-.hero-image img{
-  width: 100%;
-  object-fit: cover;
-  border-radius: 14px;
-  box-shadow: none;
-  position: relative;
-  z-index: 1;
-}
-
-/* 通用板块样式 */
-.section{
-  padding:60px 0;
-}
-.section-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:32px;
-}
-.section-title{
-  font-size:24px;
-  font-weight:700;
-  color:#fff;
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-.section-title::before{
-  content:'';
-  width:4px;
-  height:24px;
-  background: linear-gradient(135deg,#ff4d4f,#ff7875);
-  border-radius:2px;
-}
-.view-all{
-  color:#999;
-  text-decoration:none;
-  font-size:14px;
-  display:flex;
-  align-items:center;
-  gap:6px;
-  transition:color 0.2;
-  cursor:pointer;
-}
-.view-all:hover{
-  color:#ff4d4f;
-}
-
-/* 作品标签切换 */
-.works-tabs{
-  display:flex;
-  gap:12px;
-  margin-bottom:32px;
-  flex-wrap:wrap;
-}
-.tab-btn{
-  padding:8px 20px;
-  border-radius:20px;
-  background: rgba(255,255,255,0.05);
-  color:#999;
-  border:none;
-  font-size:14px;
-  cursor:pointer;
-  transition:all 0.2;
-  white-space:nowrap;
-}
-.tab-btn.active, .tab-btn:hover{
-  background: rgba(255,77,79,0.15);
-  color:#ff4d4f;
-}
-
-/* 作品卡片：统一所有样式 */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:24px;
-}
-.card{
-  background:#1a1a24;
-  border-radius:16px;
-  overflow:hidden;
-  transition:transform 0.2, box-shadow 0.2;
-  cursor:pointer;
-  position: relative;
-}
-.card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 12px 30px rgba(0,0,0,0.3);
-}
-.card-img-box{
-  aspect-ratio: 16/10;
-  overflow:hidden;
-  background:#222;
-}
-.card-img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  transition:transform 0.3;
-}
+.hero-buttons{display:flex;gap:16px;flex-wrap:wrap;align-items:center;}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:30px;text-decoration:none;font-weight:600;transition:all 0.2s;font-size:14px;border:none;cursor:pointer;}
+.btn-primary{background:linear-gradient(135deg,#ff4d4f,#ff7875);color:#fff;box-shadow:0 4px 15px rgba(255,77,79,0.3);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,77,79,0.4);}
+.btn-secondary{background:rgba(255,255,250,0.1);color:#fff;border:1px solid rgba(255,255,255,0.15);}
+.btn-secondary:hover{background:rgba(255,255,255,0.15);transform:translateY(-2px);}
+.btn-icon{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.1);color:#fff;display:flex;align-items:center;justify-content:center;padding:0;font-size:18px;}
+.btn-text{color:#fff;font-size:14px;font-weight:500;}
+.hero-image{flex:1;display:flex;justify-content:flex-end;position:relative;max-width:1000px;margin-right:0;margin-top:0;margin-bottom:0;margin-left:0;}
+.hero-image::after{content:'';position:absolute;right:-60px;top:-10%;width:65%;height:65%;background:rgba(255,0,0,0.7);filter:blur(80px);border-radius:50%;z-index:-1;animation:glow1 4s ease-in-out infinite alternate;}
+.hero-image::before{content:'';position:absolute;left:50px;bottom:20%;width:40%;height:40%;background:rgba(255,0,0,0.5);filter:blur(60px);border-radius:50%;z-index:-1;animation:glow2 5s ease-in-out infinite alternate;}
+.hero-image .glow-small{position:absolute;right:-55%;bottom:20%;width:55%;height:55%;background:rgba(255,0,0,0.4);filter:blur(50px);border-radius:50%;z-index:-1;animation:glow3 3.5s ease-in-out infinite alternate;}
+@keyframes glow1{0%{transform:scale(1);opacity:0.7;}100%{transform:scale(1.15);opacity:0.9;}}
+@keyframes glow2{0%{transform:scale(1);opacity:0.5;}100%{transform:scale(1.2);opacity:0.7;}}
+@keyframes glow3{0%{transform:scale(1);opacity:0.4;}100%{transform:scale(1.25);opacity:0.6;}}
+.hero-image img{width:100%;object-fit:cover;border-radius:14px;box-shadow:none;position:relative;z-index:1;}
+.section{padding:60px 0;}
+.section-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;}
+.section-title{font-size:24px;font-weight:700;color:#fff;display:flex;align-items:center;gap:12px;}
+.section-title::before{content:'';width:4px;height:24px;background:linear-gradient(135deg,#ff4d4f,#ff7875);border-radius:2px;}
+.view-all{color:#999;text-decoration:none;font-size:14px;display:flex;align-items:center;gap:6px;transition:color 0.2s;cursor:pointer;}
+.view-all:hover{color:#ff4d4f;}
+.works-tabs{display:flex;gap:12px;margin-bottom:32px;flex-wrap:wrap;}
+.tab-btn{padding:8px 20px;border-radius:20px;background:rgba(255,255,255,0.05);color:#999;border:none;font-size:14px;cursor:pointer;transition:all 0.2s;white-space:nowrap;}
+.tab-btn.active,.tab-btn:hover{background:rgba(255,77,79,0.15);color:#ff4d4f;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;}
+.card{background:#1a1a24;border-radius:16px;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;cursor:pointer;position:relative;}
+.card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(0,0,0,0.3);}
+.card-img-box{aspect-ratio:16/10;overflow:hidden;background:#222;}
+.card-img{width:100%;height:100%;object-fit:cover;transition:transform 0.3s;}
 .card:hover .card-img{transform:scale(1.05);}
-.card-info{
-  padding:20px;
-}
-.card-title{
-  font-weight:600;
-  font-size:16px;
-  margin-bottom:8px;
-  color:#fff;
-}
-.card-desc{
-  font-size:14px;
-  color:#999;
-  margin-bottom:12px;
-}
-.card-stats{
-  display:flex;
-  gap:20px;
-  color:#666;
-  font-size:13px;
-}
-.stat{
-  display:flex;
-  align-items:center;
-  gap:6px;
-}
-
-/* 视频样式 */
-.video-grid{
-  display:grid;
-  grid-template-columns:2fr 1fr;
-  gap:24px;
-}
-.video-main{
-  aspect-ratio:16/9;
-  border-radius:16px;
-  overflow:hidden;
-  position:relative;
-  cursor:pointer;
-}
-.video-main img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-.video-play-card {
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  width:40px;
-  height:40px;
-  border-radius:50%;
-  background:rgba(0,0,0,0.6);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#fff;
-  font-size:16px;
-  transition:transform 0.2;
-  z-index: 2;
-}
-.video-main .video-play {
-  width:60px;
-  height:60px;
-  font-size:24px;
-}
-.video-side{
-  display:flex;
-  flex-direction:column;
-  gap:24px;
-}
-.video-small{
-  aspect-ratio:16/10;
-  border-radius:12px;
-  overflow:hidden;
-  position:relative;
-  cursor:pointer;
-}
-.video-small img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-.video-small .video-play{
-  width:40px;
-  height:40px;
-  font-size:16px;
-}
-.video-duration-card {
-  position:absolute;
-  bottom:10px;
-  right:10px;
-  background:rgba(0,0,0,0.7);
-  color:#fff;
-  padding:2px 8px;
-  border-radius:4px;
-  font-size:12px;
-  z-index: 2;
-}
-.video-duration{
-  position:absolute;
-  bottom:10px;
-  right:10px;
-  background:rgba(0,0,0,0.7);
-  color:#fff;
-  padding:2px 8px;
-  border-radius:4px;
-  font-size:12px;
-}
-
-/* 专业领域 */
-.skills-grid{
-  display:grid;
-  grid-template-columns:repeat(5, 1fr);
-  gap:24px;
-}
-.skill-card{
-  background:#1a1a24;
-  border-radius:16px;
-  padding:28px 24px;
-  text-align:center;
-  transition:transform 0.2, box-shadow 0.2;
-}
-.skill-icon{
-  width:48px;
-  height:48px;
-  border-radius:12px;
-  margin:0 auto 16px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:24px;
-}
+.card-info{padding:20px;}
+.card-title{font-weight:600;font-size:16px;margin-bottom:8px;color:#fff;}
+.card-desc{font-size:14px;color:#999;margin-bottom:12px;}
+.card-stats{display:flex;gap:20px;color:#666;font-size:13px;}
+.stat{display:flex;align-items:center;gap:6px;}
+.video-grid{display:grid;grid-template-columns:2fr 1fr;gap:24px;}
+.video-main{aspect-ratio:16/9;border-radius:16px;overflow:hidden;position:relative;cursor:pointer;}
+.video-main img{width:100%;height:100%;object-fit:cover;}
+.video-play-card{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:40px;height:40px;border-radius:50%;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;transition:transform 0.2s;z-index:2;}
+.video-main .video-play-card{width:60px;height:60px;font-size:24px;}
+.video-side{display:flex;flex-direction:column;gap:24px;}
+.video-small{aspect-ratio:16/10;border-radius:12px;overflow:hidden;position:relative;cursor:pointer;}
+.video-small img{width:100%;height:100%;object-fit:cover;}
+.video-duration-card{position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,0.7);color:#fff;padding:2px 8px;border-radius:4px;font-size:12px;z-index:2;}
+.skills-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;}
+.skill-card{background:#1a1a24;border-radius:16px;padding:28px 24px;text-align:center;transition:transform 0.2s,box-shadow 0.2s;}
+.skill-icon{width:48px;height:48px;border-radius:12px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:24px;}
 .skill-icon.orange{background:rgba(255,153,0,0.1);color:#ff9900;}
 .skill-icon.green{background:rgba(0,200,100,0.1);color:#00c864;}
 .skill-icon.blue{background:rgba(0,120,255,0.1);color:#0078ff;}
 .skill-icon.purple{background:rgba(150,0,255,0.1);color:#9600ff;}
 .skill-icon.red{background:rgba(255,77,79,0.1);color:#ff4d4f;}
-
-.skill-title{
-  font-weight:600;
-  font-size:16px;
-  margin-bottom:8px;
-  color:#fff;
-}
-.skill-desc{
-  font-size:13px;
-  color:#999;
-}
-
-/* 页脚 */
-footer{
-  background:#121218;
-  padding:60px 0 30px;
-  border-top:1px solid rgba(255,255,255,0.05);
-}
-.footer-grid{
-  display:grid;
-  grid-template-columns:2fr 1fr 1fr 1fr;
-  gap:40px;
-  margin-bottom:40px;
-}
-.footer-col h4{
-  font-size:16px;
-  font-weight:600;
-  color:#fff;
-  margin-bottom:20px;
-}
-.footer-col p{
-  color:#999;
-  font-size:14px;
-  line-height:1.8;
-  margin-bottom:20px;
-}
-.footer-links{
-  list:none;
-}
-.footer-links li{
-  margin-bottom:12px;
-}
-.footer-links a{
-  color:#999;
-  text-decoration:none;
-  font-size:14px;
-  transition:color 0.2;
-}
-.footer-links a:hover{
-  color:#ff4d4f;
-}
-.contact-item{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  color:#999;
-  font-size:14px;
-  margin-bottom:12px;
-}
+.skill-title{font-weight:600;font-size:16px;margin-bottom:8px;color:#fff;}
+.skill-desc{font-size:13px;color:#999;}
+footer{background:#121218;padding:60px 0 30px;border-top:1px solid rgba(255,255,255,0.05);}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px;}
+.footer-col h4{font-size:16px;font-weight:600;color:#fff;margin-bottom:20px;}
+.footer-col p{color:#999;font-size:14px;line-height:1.8;margin-bottom:20px;}
+.footer-links{list-style:none;}
+.footer-links li{margin-bottom:12px;}
+.footer-links a{color:#999;text-decoration:none;font-size:14px;transition:color 0.2s;}
+.footer-links a:hover{color:#ff4d4f;}
+.contact-item{display:flex;align-items:center;gap:10px;color:#999;font-size:14px;margin-bottom:12px;}
 .contact-item i{color:#ff4d4f;}
-.social-links{
-  display:flex;
-  gap:16px;
-}
-.social-link{
-  width:36px;
-  height:36px;
-  border-radius:50%;
-  background:rgba(255,255,255,0.1);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-decoration:none;
-  transition:all 0.2;
-  overflow: hidden;
-}
-.social-link img {
-  width: 20px;
-  height: 20px;
-  transition: filter 0.2;
-}
-.social-link:hover{
-  background:#ff4d4f;
-}
-.social-link:hover img {
-  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
-}
-
-.footer-bottom{
-  text-align:center;
-  padding-top:30px;
-  border-top:1px solid rgba(255,255,255,0.05);
-  color:#666;
-  font-size:13px;
-}
-
-/* 弹窗样式 */
-.modal{
-  position: fixed;
-  top: 0; left: 0;
-  width:100vw; height:100vh;
-  background: rgba(0,0,0,0.95);
-  z-index:9999;
-  opacity:0;
-  visibility:hidden;
-  transition: opacity 0.3 ease;
+.social-links{display:flex;gap:16px;}
+.social-link{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all 0.2s;overflow:hidden;}
+.social-link img{width:20px;height:20px;transition:filter 0.2s;}
+.social-link:hover{background:#ff4d4f;}
+.social-link:hover img{filter:invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);}
+.footer-bottom{text-align:center;padding-top:30px;border-top:1px solid rgba(255,255,255,0.05);color:#666;font-size:13px;}
+.modal{position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.95);z-index:9999;opacity:0;visibility:hidden;transition:opacity 0.3s;display:flex;align-items:center;justify-content:center;padding:20px;}
+.modal.active{opacity:1;visibility:visible;}
+.modal-close{position:fixed;top:30px;right:30px;color:#fff;font-size:40px;cursor:pointer;z-index:10000;transition:color 0.2s;}
+.modal-close:hover{color:#ff4d4f;}
+.modal-content{max-width:90%;max-height:85vh;object-fit:contain;border-radius:8px;}
+.detail-modal{position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.95);z-index:9999;opacity:0;visibility:hidden;transition:opacity 0.3s;padding:20px;overflow-y:auto;}
+.detail-modal.active{opacity:1;visibility:visible;}
+.detail-modal-content{display:block;margin:100px auto 50px auto;width:750px;max-width:95%;height:auto;object-fit:contain;border-radius:8px;}
+@media(max-width:768px){.detail-modal-content{margin:50px auto 30px auto;}}
+.small-modal .modal-content{background:#1a1a24;border-radius:20px;padding:40px;max-width:400px;width:90%;text-align:center;}
+.wx-qrcode{width:220px;height:220px;margin:0 auto 20px;border-radius:12px;border:1px solid rgba(255,255,255,0.1);}
+.wx-id{font-size:16px;color:#999;margin-bottom:20px;display:flex;align-items:center;justify-content:center;gap:10px;}
+.copy-btn{background:#ff4d4f;color:#fff;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;font-size:14px;}
+.copy-success{color:#00c864;font-size:14px;margin-top:10px;display:none;}
+.video-modal{
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
 }
-.modal.active{
-  opacity:1;
-  visibility:visible;
+.video-modal #bilibiliPlayer{
+  width: 90%;
+  max-width: 1200px;
+  aspect-ratio: 16/9;
 }
-.modal-close{
-  position: fixed;
-  top:30px; right:30px;
-  color:#fff;
-  font-size:40px;
-  cursor:pointer;
-  z-index:10000;
-  transition:color 0.2;
-}
-.modal-close:hover{color:#ff4d4f;}
-.modal-content{
-  max-width: 90%;
-  max-height: 85vh;
-  object-fit: contain;
-  border-radius: 8px;
-}
-
-.detail-modal{
-  position: fixed;
-  top: 0; left: 0;
-  width:100vw; height:100vh;
-  background: rgba(0,0,0,0.95);
-  z-index:9999;
-  opacity:0;
-  visibility:hidden;
-  transition: opacity 0.3 ease;
-  padding: 20px;
-  overflow-y: auto;
-}
-.detail-modal.active{
-  opacity:1;
-  visibility:visible;
-}
-.detail-modal-content{
-  display: block;
-  margin: 100px auto 50px auto;
-  width: 750px;
-  max-width: 95%;
-  height: auto;
-  object-fit: contain;
-  border-radius: 8px;
-}
-@media(max-width:768px){
-  .detail-modal-content{
-    margin: 50px auto 30px auto;
-  }
-}
-
-.small-modal .modal-content{
-  background:#1a1a24;
-  border-radius:20px;
-  padding:40px;
-  max-width:400px;
-  width:90%;
-  text-align:center;
-}
-.wx-qrcode{
-  width:220px;
-  height:220px;
-  margin:0 auto 20px;
-  border-radius:12px;
-  border:1px solid rgba(255,255,255,0.1);
-}
-.wx-id{
-  font-size:16px;
-  color:#999;
-  margin-bottom:20px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-}
-.copy-btn{
-  background:#ff4d4f;
-  color:#fff;
-  border:none;
-  padding:8px 16px;
-  border-radius:8px;
-  cursor:pointer;
-  font-size:14px;
-}
-.copy-success{
-  color:#00c864;
-  font-size:14px;
-  margin-top:10px;
-  display:none;
-}
-.video-modal video{
-  max-width: 90%;
-  max-height: 85vh;
+.video-modal iframe{
+  width: 100% !important;
+  height: 100% !important;
   border-radius: 12px;
+  border: none;
 }
-
-/* 移动端适配优化（本次只修改了这里的视频显示数量） */
-@media(max-width: 768px) {
-  /* 1. 全局禁止横向滚动 */
-  html, body{
-    overflow-x: hidden !important;
-    width: 100% !important;
-  }
-  .container{
-    width: 92% !important;
-    max-width: 100% !important;
-  }
-
-  /* 2. 顶部导航栏修复 */
-  .nav{
-    padding: 14px 0 !important;
-  }
-  .logo{
-    font-size: 16px !important;
-  }
-  .nav-links{
-    gap: 18px !important;
-  }
-  .nav a{
-    font-size: 13px !important;
-  }
-
-  /* 3. 首页顶部加距离 */
-  .hero{
-    padding-top: 80px !important;
-  }
-
-  /* 4. 首页按钮修复：了解我和其他按钮在一行 */
-  .hero-buttons{
-    flex-wrap: nowrap !important;
-    justify-content: flex-start !important;
-    gap: 12px !important;
-  }
-  .btn{
-    padding: 10px 20px !important;
-    font-size: 13px !important;
-    white-space: nowrap !important;
-  }
-  .btn-icon{
-    width: 36px !important;
-    height: 36px !important;
-    font-size: 16px !important;
-  }
-  .btn-text{
-    font-size: 13px !important;
-    white-space: nowrap !important;
-  }
-
-  /* 5. 精选作品标签：一行显示5个 */
-  .works-tabs{
-    flex-wrap: nowrap !important;
-    overflow-x: auto !important;
-    padding-bottom: 8px !important;
-    gap: 8px !important;
-  }
-  .tab-btn{
-    padding: 6px 14px !important;
-    font-size: 12px !important;
-    flex-shrink: 0 !important;
-  }
-
-  /* 6. 作品/视频板块：强制一行2个 + 视频默认只显示2个 */
-  .grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 16px !important;
-  }
-  .video-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 16px !important;
-  }
-  /* 让video-side的子元素直接参与grid布局 */
-  .video-side{
-    display: contents !important;
-  }
-  /* 统一所有视频卡片的大小和圆角 */
-  .video-main, .video-small{
-    aspect-ratio: 16/10 !important;
-    width: 100% !important;
-    border-radius: 16px !important;
-  }
-  /* 核心修改：手机端默认隐藏第三个视频 */
-  .video-small:nth-child(2){
-    display: none !important;
-  }
-
-  /* 7. 专业领域：手机端横向滚动 */
-  .skills-grid {
-    display: flex !important;
-    overflow-x: auto;
-    padding-bottom: 10px;
-    gap: 16px;
-    grid-template-columns: none !important;
-  }
-  .skill-card {
-    flex: 0 0 calc(20% - 12px);
-    min-width: 120px;
-    padding: 16px 12px;
-  }
-  .skill-icon {
-    width: 36px;
-    height: 36px;
-    font-size: 20px;
-  }
-  .skill-title {
-    font-size: 14px;
-  }
-  .skill-desc {
-    font-size: 12px;
-  }
-
-  /* 8. 页脚修复：全部内容居中 + 快速导航圆点居中 */
-  .footer-grid {
-    grid-template-columns: 1fr !important;
-    gap: 30px !important;
-    text-align: center !important;
-  }
-  .footer-col h4{
-    text-align: center !important;
-  }
-  .contact-item{
-    justify-content: center !important;
-  }
-  .social-links{
-    justify-content: center !important;
-  }
-  /* 修复快速导航圆点居中 */
-  .footer-links li{
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    gap: 8px !important;
-  }
-  .footer-links li::before{
-    content: '•' !important;
-    color: #fff !important;
-    font-size: 16px !important;
-  }
-
-  /* 9. 手机端个人照片周围距离设为0 */
-  .hero-image{
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  .hero-image img{
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  /* 首页适配 */
-  .hero-content {
-    flex-direction: column;
-    gap: 40px;
-  }
-  .hero-text {
-    flex: none;
-    width: 100%;
-  }
-  .hero-text h1 {
-    font-size: 36px;
-  }
-}
-
-/* 非移动端样式保护（PC端完全恢复原样） */
-@media(min-width: 769px) {
-  .grid {
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr)) !important;
-  }
-  .skills-grid {
-    grid-template-columns:repeat(5, 1fr) !important;
-  }
-  .video-grid {
-    grid-template-columns:2fr 1fr !important;
-  }
-  .video-side{
-    display: flex !important;
-    flex-direction: column !important;
-    gap:24px !important;
-  }
-  .video-main{
-    border-radius:16px !important;
-  }
-  .video-small{
-    border-radius:12px !important;
-    display: block !important; /* PC端强制显示所有视频 */
-  }
-  .footer-grid {
-    grid-template-columns:2fr 1fr 1fr 1fr !important;
-    text-align: left !important;
-  }
-  .footer-col h4{
-    text-align: left !important;
-  }
-  .contact-item{
-    justify-content: flex-start !important;
-  }
-  .social-links{
-    justify-content: flex-start !important;
-  }
-  /* PC端快速导航恢复原样 */
-  .footer-links li{
-    display: block !important;
-  }
-  .footer-links li::before{
-    content: none !important;
-  }
-  /* PC端个人照片恢复原有间距 */
-  .hero-image{
-    margin-right: 0px !important;
-    margin-top: 0px !important;
-    margin-bottom: 0px !important;
-    margin-left: 0 !important;
-  }
-  /* PC端首页顶部间距恢复原样 */
-  .hero{
-    padding-top: 60px !important;
-  }
-}
+@media(max-width:768px){html,body{overflow-x:hidden!important;width:100%!important;}.container{width:92%!important;max-width:100%!important;}.nav{padding:14px 0!important;}.logo{font-size:16px!important;}.nav-links{gap:18px!important;}.nav a{font-size:13px!important;}.hero{padding-top:80px!important;}.hero-buttons{flex-wrap:nowrap!important;justify-content:flex-start!important;gap:12px!important;}.btn{padding:10px 20px!important;font-size:13px!important;white-space:nowrap!important;}.btn-icon{width:36px!important;height:36px!important;font-size:16px!important;}.btn-text{font-size:13px!important;white-space:nowrap!important;}.works-tabs{flex-wrap:nowrap!important;overflow-x:auto!important;padding-bottom:8px!important;gap:8px!important;}.tab-btn{padding:6px 14px!important;font-size:12px!important;flex-shrink:0!important;}.grid{grid-template-columns:repeat(2,1fr)!important;gap:16px!important;}.video-grid{grid-template-columns:repeat(2,1fr)!important;gap:16px!important;}.video-side{display:contents!important;}.video-main,.video-small{aspect-ratio:16/10!important;width:100%!important;border-radius:16px!important;}.video-small:nth-child(2){display:none!important;}.skills-grid{display:flex!important;overflow-x:auto;padding-bottom:10px;gap:16px;grid-template-columns:none!important;}.skill-card{flex:0 0 calc(20% - 12px);min-width:120px;padding:16px 12px;}.skill-icon{width:36px;height:36px;font-size:20px;}.skill-title{font-size:14px;}.skill-desc{font-size:12px;}.footer-grid{grid-template-columns:1fr!important;gap:30px!important;text-align:center!important;}.footer-col h4{text-align:center!important;}.contact-item{justify-content:center!important;}.social-links{justify-content:center!important;}.footer-links li{display:flex!important;justify-content:center!important;align-items:center!important;gap:8px!important;}.footer-links li::before{content:'•'!important;color:#fff!important;font-size:16px!important;}.hero-image{margin:0!important;padding:0!important;}.hero-image img{margin:0!important;padding:0!important;}.hero-content{flex-direction:column;gap:40px;}.hero-text{flex:none;width:100%;}.hero-text h1{font-size:36px;}
+.video-modal #bilibiliPlayer{width: 95% !important;}
+}}
+@media(min-width:769px){.grid{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))!important;}.skills-grid{grid-template-columns:repeat(5,1fr)!important;}.video-grid{grid-template-columns:2fr 1fr!important;}.video-side{display:flex!important;flex-direction:column!important;gap:24px!important;}.video-main{border-radius:16px!important;}.video-small{border-radius:12px!important;display:block!important;}.footer-grid{grid-template-columns:2fr 1fr 1fr 1fr!important;text-align:left!important;}.footer-col h4{text-align:left!important;}.contact-item{justify-content:flex-start!important;}.social-links{justify-content:flex-start!important;}.footer-links li{display:block!important;}.footer-links li::before{content:none!important;}.hero-image{margin-right:0px!important;margin-top:0px!important;margin-bottom:0px!important;margin-left:0!important;}.hero{padding-top:60px!important;}}
 </style>
 </head>
 <body>
-
-<!-- 导航栏 -->
-<nav>
-  <div class="container nav">
-    <div class="logo">龚著登 DESIGN</div>
-    <div class="nav-links">
-      <a href="#home" class="active">首页</a>
-      <a href="#works" onclick="filterWorks('all')">作品</a>
-      <a href="#video">视频</a>
-      <a href="#service">服务</a>
-      <a href="#" onclick="openWxModal();return false;">联系我</a>
-    </div>
-  </div>
-</nav>
-
-<!-- 首页 -->
-<section id="home" class="hero">
-  <div class="container">
-    <div class="hero-content">
-      <div class="hero-text">
-        <h1>龚著登<br><span>电商视觉设计师</span></h1>
-        <p class="hero-desc">专注于电商视觉设计与视频制作，用创意提升产品价值，让视觉更有温度，让品牌更有力量。</p>
-        <div class="hero-stats">
-          <div class="stat-item"><i>⏱️</i> 7年电商视觉经验</div>
-          <div class="stat-item"><i>👥</i> 服务客户 200+</div>
-          <div class="stat-item"><i>📁</i> 项目完成 350+</div>
-        </div>
-        <div class="hero-buttons">
-          <a href="#works" class="btn btn-primary">查看作品</a>
-          <a href="#video" class="btn btn-secondary">视频作品</a>
-          <button class="btn btn-icon" onclick="scrollToAboutMe()">▶</button>
-          <span class="btn-text">了解我</span>
-        </div>
-      </div>
-      <div class="hero-image">
-        <div class="glow-small"></div>
-        <img src="images/avatar.webp" alt="龚著登 个人形象照">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 精选作品 -->
-<section id="works" class="section">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">精选作品</h2>
-      <div>
-        <a href="#" class="view-all" id="showAllBtn" onclick="toggleWorks();return false;">查看全部作品 →</a>
-        <a href="#" class="view-all" id="showLessBtn" onclick="toggleWorks();return false;">← 收起</a>
-      </div>
-    </div>
-    
-    <div class="works-tabs">
-      <button class="tab-btn active" onclick="filterWorks('all')">全部</button>
-      <button class="tab-btn" onclick="filterWorks('detail')">详情页设计</button>
-      <button class="tab-btn" onclick="filterWorks('main')">主图设计</button>
-      <button class="tab-btn" onclick="filterWorks('render')">C4D产品渲染</button>
-      <button class="tab-btn" onclick="filterWorks('ai')">AIGC创意</button>
-    </div>
-    
-    <div class="grid" id="worksGrid">
-      <!-- 详情页设计 -->
-      <div class="card work-item" data-category="detail" onclick="previewDetailImage(this)"><div class="card-img-box"><img src="images/detail/1_thumb.webp" data-full-src="images/detail/1.webp" class="card-img"></div><div class="card-info"><div class="card-title">手持小风扇详情页</div><div class="card-stats"><div class="stat">👁️ 28.6w</div><div class="stat">❤️ 5.2w</div></div></div></div>
-      <div class="card work-item" data-category="detail" onclick="previewDetailImage(this)"><div class="card-img-box"><img src="images/detail/2_thumb.webp" data-full-src="images/detail/2.webp" class="card-img"></div><div class="card-info"><div class="card-title">三合一充电宝详情页</div><div class="card-stats"><div class="stat">👁️ 32.1w</div><div class="stat">❤️ 6.8w</div></div></div></div>
-      <div class="card work-item" data-category="detail" onclick="previewDetailImage(this)"><div class="card-img-box"><img src="images/detail/3_thumb.webp" data-full-src="images/detail/3.webp" class="card-img"></div><div class="card-info"><div class="card-title">便携胶囊充电宝详情页</div><div class="card-stats"><div class="stat">👁️ 25.7w</div><div class="stat">❤️ 4.9w</div></div></div></div>
-      <div class="card work-item" data-category="detail" onclick="previewDetailImage(this)"><div class="card-img-box"><img src="images/detail/4_thumb.webp" data-full-src="images/detail/4.webp" class="card-img"></div><div class="card-info"><div class="card-title">多功能小音箱详情页</div><div class="card-stats"><div class="stat">👁️ 35.4w</div><div class="stat">❤️ 7.3w</div></div></div></div>
-      <div class="card work-item detail-more" data-category="detail" onclick="previewDetailImage(this)" style="display:none;"><div class="card-img-box"><img src="images/detail/5_thumb.webp" data-full-src="images/detail/5.webp" class="card-img"></div><div class="card-info"><div class="card-title">时尚靓丽剃须刀详情页</div><div class="card-stats"><div class="stat">👁️ 29.3w</div><div class="stat">❤️ 5.8w</div></div></div></div>
-      <div class="card work-item detail-more" data-category="detail" onclick="previewDetailImage(this)" style="display:none;"><div class="card-img-box"><img src="images/detail/6_thumb.webp" data-full-src="images/detail/6.webp" class="card-img"></div><div class="card-info"><div class="card-title">四合一无线充电器详情页</div><div class="card-stats"><div class="stat">👁️ 22.8w</div><div class="stat">❤️ 4.1w</div></div></div></div>
-
-      <!-- 主图设计 -->
-      <div class="card work-item" data-category="main" onclick="previewImage(this)"><div class="card-img-box"><img src="images/main/1_thumb.webp" data-full-src="images/main/1.webp" class="card-img"></div><div class="card-info"><div class="card-title">无线蓝牙耳机主图</div><div class="card-stats"><div class="stat">👁️ 42.7w</div><div class="stat">❤️ 9.5w</div></div></div></div>
-      <div class="card work-item" data-category="main" onclick="previewImage(this)"><div class="card-img-box"><img src="images/main/2_thumb.webp" data-full-src="images/main/2.webp" class="card-img"></div><div class="card-info"><div class="card-title">即食螺蛳粉主图</div><div class="card-stats"><div class="stat">👁️ 56.3w</div><div class="stat">❤️ 12.4w</div></div></div></div>
-      <div class="card work-item" data-category="main" onclick="previewImage(this)"><div class="card-img-box"><img src="images/main/3_thumb.webp" data-full-src="images/main/3.webp" class="card-img"></div><div class="card-info"><div class="card-title">夏季冰丝T恤主图</div><div class="card-stats"><div class="stat">👁️ 38.2w</div><div class="stat">❤️ 8.1w</div></div></div></div>
-      <div class="card work-item" data-category="main" onclick="previewImage(this)"><div class="card-img-box"><img src="images/main/4_thumb.webp" data-full-src="images/main/4.webp" class="card-img"></div><div class="card-info"><div class="card-title">车载香薰主图</div><div class="card-stats"><div class="stat">👁️ 31.5w</div><div class="stat">❤️ 6.7w</div></div></div></div>
-      <div class="card work-item main-more" data-category="main" onclick="previewImage(this)" style="display:none;"><div class="card-img-box"><img src="images/main/5_thumb.webp" data-full-src="images/main/5.webp" class="card-img"></div><div class="card-info"><div class="card-title">家用除螨仪主图</div><div class="card-stats"><div class="stat">👁️ 27.9w</div><div class="stat">❤️ 5.3w</div></div></div></div>
-      <div class="card work-item main-more" data-category="main" onclick="previewImage(this)" style="display:none;"><div class="card-img-box"><img src="images/main/6_thumb.webp" data-full-src="images/main/6.webp" class="card-img"></div><div class="card-info"><div class="card-title">宠物冻干零食主图</div><div class="card-stats"><div class="stat">👁️ 34.6w</div><div class="stat">❤️ 7.9w</div></div></div></div>
-
-      <!-- C4D产品渲染 -->
-      <div class="card work-item" data-category="render" onclick="previewImage(this)"><div class="card-img-box"><img src="images/render/1_thumb.webp" data-full-src="images/render/1.webp" class="card-img"></div><div class="card-info"><div class="card-title">智能手表渲染</div><div class="card-stats"><div class="stat">👁️ 39.8w</div><div class="stat">❤️ 8.7w</div></div></div></div>
-      <div class="card work-item" data-category="render" onclick="previewImage(this)"><div class="card-img-box"><img src="images/render/2_thumb.webp" data-full-src="images/render/2.webp" class="card-img"></div><div class="card-info"><div class="card-title">北欧风茶几渲染</div><div class="card-stats"><div class="stat">👁️ 26.4w</div><div class="stat">❤️ 5.6w</div></div></div></div>
-      <div class="card work-item" data-category="render" onclick="previewImage(this)"><div class="card-img-box"><img src="images/render/3_thumb.webp" data-full-src="images/render/3.webp" class="card-img"></div><div class="card-info"><div class="card-title">口红管体渲染</div><div class="card-stats"><div class="stat">👁️ 41.2w</div><div class="stat">❤️ 9.3w</div></div></div></div>
-      <div class="card work-item" data-category="render" onclick="previewImage(this)"><div class="card-img-box"><img src="images/render/4_thumb.webp" data-full-src="images/render/4.webp" class="card-img"></div><div class="card-info"><div class="card-title">电竞鼠标渲染</div><div class="card-stats"><div class="stat">👁️ 37.5w</div><div class="stat">❤️ 7.8w</div></div></div></div>
-      <div class="card work-item render-more" data-category="render" onclick="previewImage(this)" style="display:none;"><div class="card-img-box"><img src="images/render/5_thumb.webp" data-full-src="images/render/5.webp" class="card-img"></div><div class="card-info"><div class="card-title">保温杯渲染</div><div class="card-stats"><div class="stat">👁️ 24.9w</div><div class="stat">❤️ 4.8w</div></div></div></div>
-      <div class="card work-item render-more" data-category="render" onclick="previewImage(this)" style="display:none;"><div class="card-img-box"><img src="images/render/6_thumb.webp" data-full-src="images/render/6.webp" class="card-img"></div><div class="card-info"><div class="card-title">香水瓶渲染</div><div class="card-stats"><div class="stat">👁️ 33.7w</div><div class="stat">❤️ 6.9w</div></div></div></div>
-
-      <!-- AIGC创意 -->
-      <div class="card work-item" data-category="ai" onclick="previewImage(this)"><div class="card-img-box"><img src="images/ai/1_thumb.webp" data-full-src="images/ai/1.webp" class="card-img"></div><div class="card-info"><div class="card-title">户外露营场景合成</div><div class="card-stats"><div class="stat">👁️ 48.9w</div><div class="stat">❤️ 11.6w</div></div></div></div>
-      <div class="card work-item" data-category="ai" onclick="previewImage(this)"><div class="card-img-box"><img src="images/ai/2_thumb.webp" data-full-src="images/ai/2.webp" class="card-img"></div><div class="card-info"><div class="card-title">模特穿搭合成</div><div class="card-stats"><div class="stat">👁️ 52.3w</div><div class="stat">❤️ 13.2w</div></div></div></div>
-      <div class="card work-item" data-category="ai" onclick="previewImage(this)"><div class="card-img-box"><img src="images/ai/3_thumb.webp" data-full-src="images/ai/3.webp" class="card-img"></div><div class="card-info"><div class="card-title">饮品创意合成</div><div class="card-stats"><div class="stat">👁️ 45.6w</div><div class="stat">❤️ 10.4w</div></div></div></div>
-      <div class="card work-item" data-category="ai" onclick="previewImage(this)"><div class="card-img-box"><img src="images/ai/4_thumb.webp" data-full-src="images/ai/4.webp" class="card-img"></div><div class="card-info"><div class="card-title">智能家居场景合成</div><div class="card-stats"><div class="stat">👁️ 36.8w</div><div class="stat">❤️ 8.2w</div></div></div></div>
-      <div class="card work-item ai-more" data-category="ai" onclick="previewImage(this)" style="display:none;"><div class="card-img-box"><img src="images/ai/5_thumb.webp" data-full-src="images/ai/5.webp" class="card-img"></div><div class="card-info"><div class="card-title">美妆产品场景合成</div><div class="card-stats"><div class="stat">👁️ 29.7w</div><div class="stat">❤️ 5.9w</div></div></div></div>
-      <div class="card work-item ai-more" data-category="ai" onclick="previewImage(this)" style="display:none;"><div class="card-img-box"><img src="images/ai/6_thumb.webp" data-full-src="images/ai/6.webp" class="card-img"></div><div class="card-info"><div class="card-title">宠物用品场景合成</div><div class="card-stats"><div class="stat">👁️ 31.4w</div><div class="stat">❤️ 6.5w</div></div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- 视频作品 -->
-<section id="video" class="section">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">视频作品</h2>
-      <div>
-        <a href="#" class="view-all" onclick="toggleVideos();return false;" id="video-show">查看全部视频 →</a>
-        <a href="#" class="view-all" onclick="toggleVideos();return false;" id="video-hide" style="display:none;">← 收起</a>
-      </div>
-    </div>
-    
-    <div id="videoPreview">
-      <div class="video-grid">
-        <div class="video-main" onclick="openVideoModal('videos/1.mp4')"><img src="images/video/1_thumb.webp"><div class="video-play">▶</div><div class="video-duration">01:28</div></div>
-        <div class="video-side">
-          <div class="video-small" onclick="openVideoModal('videos/2.mp4')"><img src="images/video/2_thumb.webp"><div class="video-play">▶</div><div class="video-duration">00:45</div></div>
-          <div class="video-small" onclick="openVideoModal('videos/3.mp4')"><img src="images/video/3_thumb.webp"><div class="video-play">▶</div><div class="video-duration">00:38</div></div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="grid" id="allVideos" style="display:none;">
-      <div class="card" onclick="openVideoModal('videos/1.mp4')">
-        <div class="card-img-box"><img src="images/video/1_thumb.webp" class="card-img"></div>
-        <div class="video-play-card">▶</div>
-        <div class="video-duration-card">01:28</div>
-        <div class="card-info">超薄磁吸充电宝动画</div>
-      </div>
-      <div class="card" onclick="openVideoModal('videos/2.mp4')">
-        <div class="card-img-box"><img src="images/video/2_thumb.webp" class="card-img"></div>
-        <div class="video-play-card">▶</div>
-        <div class="video-duration-card">00:45</div>
-        <div class="card-info">C4D三维场景动画</div>
-      </div>
-      <div class="card" onclick="openVideoModal('videos/3.mp4')">
-        <div class="card-img-box"><img src="images/video/3_thumb.webp" class="card-img"></div>
-        <div class="video-play-card">▶</div>
-        <div class="video-duration-card">00:38</div>
-        <div class="card-info">美妆产品动态演示</div>
-      </div>
-      <div class="card" onclick="openVideoModal('videos/4.mp4')">
-        <div class="card-img-box"><img src="images/video/4_thumb.webp" class="card-img"></div>
-        <div class="video-play-card">▶</div>
-        <div class="video-duration-card">00:52</div>
-        <div class="card-info">电子产品开箱动画</div>
-      </div>
-      <div class="card" onclick="openVideoModal('videos/5.mp4')">
-        <div class="card-img-box"><img src="images/video/5_thumb.webp" class="card-img"></div>
-        <div class="video-play-card">▶</div>
-        <div class="video-duration-card">01:05</div>
-        <div class="card-info">食品制作过程动画</div>
-      </div>
-      <div class="card" onclick="openVideoModal('videos/6.mp4')">
-        <div class="card-img-box"><img src="images/video/6_thumb.webp" class="card-img"></div>
-        <div class="video-play-card">▶</div>
-        <div class="video-duration-card">00:49</div>
-        <div class="card-info">户外装备功能动画</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 专业领域 -->
-<section id="service" class="section">
-  <div class="container">
-    <h2 class="section-title">专业领域</h2>
-    <div class="skills-grid">
-      <div class="skill-card"><div class="skill-icon orange">📸</div><div class="skill-title">电商主图设计</div><div class="skill-desc">突出卖点，提升点击率</div></div>
-      <div class="skill-card"><div class="skill-icon red">📄</div><div class="skill-title">详情页设计</div><div class="skill-desc">优化转化，提升购买率</div></div>
-      <div class="skill-card"><div class="skill-icon green">🎨</div><div class="skill-title">C4D产品渲染</div><div class="skill-desc">高质量渲染，真实还原</div></div>
-      <div class="skill-card"><div class="skill-icon blue">🎬</div><div class="skill-title">视频制作</div><div class="skill-desc">产品视频，广告片制作</div></div>
-      <div class="skill-card"><div class="skill-icon purple">🤖</div><div class="skill-title">AIGC创意设计</div><div class="skill-desc">AI加持，创意无限可能</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- 页脚 -->
-<footer id="contact" class="contact-section">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-col"><h4>关于我</h4><p>7年电商视觉设计经验，擅长将创意与商业结合，为品牌打造有价值的视觉内容。</p></div>
-      <div class="footer-col"><h4>联系我</h4><div class="contact-item">📧 1711325061@qq.com</div><div class="contact-item">📍 广东省深圳市</div></div>
-      <div class="footer-col"><h4>快速导航</h4>
-        <ul class="footer-links">
-          <li><a href="#home">首页</a></li>
-          <li><a href="#works">作品</a></li>
-          <li><a href="#video">视频</a></li>
-          <li><a href="#service">服务</a></li>
-        </ul>
-      </div>
-      <div class="footer-col"><h4>关注我</h4>
-        <div class="social-links">
-          <a href="https://www.zcool.com.cn/u/23450553" class="social-link" target="_blank">
-            <img src="icons/zcool.svg" alt="站酷">
-          </a>
-          <a href="#" class="social-link" onclick="openWxModal();return false;">
-            <img src="icons/wechat.svg" alt="微信">
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">© 2026 龚著登 DESIGN | 电商视觉设计全案服务</div>
-  </div>
-</footer>
-
-<!-- 弹窗 -->
-<div class="modal small-modal" id="wxModal"><span class="modal-close" onclick="closeWxModal()">&times;</span><div class="modal-content"><h3>扫码加我微信</h3><img src="images/wechat-qrcode.webp" class="wx-qrcode"><div class="wx-id">微信号：gongzhudeng <button class="copy-btn" onclick="copyWxId()">复制</button></div><p class="copy-success" id="copySuccess">复制成功</p></div></div>
-<div class="modal" id="imageModal"><span class="modal-close" onclick="closeModal()">&times;</span><img src="" class="modal-content" id="modalImg"></div>
-
-<div class="detail-modal" id="detailModal">
-  <span class="modal-close" onclick="closeDetailModal()">&times;</span>
-  <img src="" class="detail-modal-content" id="detailModalImg">
+<nav><div class="container nav"><div class="logo">龚著登 DESIGN</div><div class="nav-links"><a href="#home" class="active">首页</a><a href="#works" onclick="filterWorks('all')">作品</a><a href="#video">视频</a><a href="#service">服务</a><a href="#" onclick="openWxModal();return false;">联系我</a></div></div></nav>
+<section id="home" class="hero"><div class="container"><div class="hero-content"><div class="hero-text"><h1>龚著登<br><span>电商视觉设计师</span></h1><p class="hero-desc">专注于电商视觉设计与视频制作，用创意提升产品价值，让视觉更有温度，让品牌更有力量。</p><div class="hero-stats"><div class="stat-item"><i>⏱️</i> 5年电商视觉经验</div><div class="stat-item"><i>👥</i> 服务客户 200+</div><div class="stat-item"><i>📁</i> 项目完成 350+</div></div><div class="hero-buttons">
+<!-- ✅ 修复1：三个按钮全部改成丝滑滚动 -->
+<a href="#works" class="btn btn-primary" onclick="scrollToWorks();return false;">查看作品</a>
+<a href="#video" class="btn btn-secondary" onclick="scrollToVideo();return false;">视频作品</a>
+<button class="btn btn-icon" onclick="scrollToAboutMe()">▶</button>
+<span class="btn-text">了解我</span>
+</div></div><div class="hero-image"><div class="glow-small"></div><img src="images/avatar.webp" alt="龚著登 个人形象照"></div></div></div></section>
+<section id="works" class="section"><div class="container"><div class="section-header"><h2 class="section-title">精选作品</h2><div><a href="#" class="view-all" id="showAllBtn" onclick="toggleWorks();return false;">查看全部作品 →</a><a href="#" class="view-all" id="showLessBtn" onclick="toggleWorks();return false;">← 收起</a></div></div><div class="works-tabs"><button class="tab-btn active" onclick="filterWorks('all')">全部</button><button class="tab-btn" onclick="filterWorks('detail')">详情页设计</button><button class="tab-btn" onclick="filterWorks('main')">主图设计</button><button class="tab-btn" onclick="filterWorks('render')">C4D产品渲染</button><button class="tab-btn" onclick="filterWorks('ai')">AIGC创意</button></div><div class="grid" id="worksGrid">
+<div class="card work-item" data-category="detail" onclick="previewDetailImage(this)"><div class="card-img-box"><img src="images/detail/1_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">手持小风扇详情页</div><div class="card-stats"><div class="stat">👁️ 28.6w</div><div class="stat">❤️ 5.2w</div></div></div></div>
+<div class="card work-item" data-category="detail" onclick="previewDetailImage(this)"><div class="card-img-box"><img src="images/detail/2_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">三合一充电宝详情页</div><div class="card-stats"><div class="stat">👁️ 32.1w</div><div class="stat">❤️ 6.8w</div></div></div></div>
+<div class="card work-item" data-category="detail" onclick="previewDetailImage(this)"><div class="card-img-box"><img src="images/detail/3_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">便携胶囊充电宝详情页</div><div class="card-stats"><div class="stat">👁️ 25.7w</div><div class="stat">❤️ 4.9w</div></div></div></div>
+<div class="card work-item" data-category="detail" onclick="previewDetailImage(this)"><div class="card-img-box"><img src="images/detail/4_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">多功能小音箱详情页</div><div class="card-stats"><div class="stat">👁️ 35.4w</div><div class="stat">❤️ 7.3w</div></div></div></div>
+<div class="card work-item detail-more" data-category="detail" onclick="previewDetailImage(this)" style="display:none;"><div class="card-img-box"><img src="images/detail/5_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">时尚靓丽剃须刀详情页</div><div class="card-stats"><div class="stat">👁️ 29.3w</div><div class="stat">❤️ 5.8w</div></div></div></div>
+<div class="card work-item detail-more" data-category="detail" onclick="previewDetailImage(this)" style="display:none;"><div class="card-img-box"><img src="images/detail/6_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">四合一无线充电器详情页</div><div class="card-stats"><div class="stat">👁️ 22.8w</div><div class="stat">❤️ 4.1w</div></div></div></div>
+<div class="card work-item" data-category="main" onclick="previewImage(this)"><div class="card-img-box"><img src="images/main/1_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">无线蓝牙耳机主图</div><div class="card-stats"><div class="stat">👁️ 42.7w</div><div class="stat">❤️ 9.5w</div></div></div></div>
+<div class="card work-item" data-category="main" onclick="previewImage(this)"><div class="card-img-box"><img src="images/main/2_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">即食螺蛳粉主图</div><div class="card-stats"><div class="stat">👁️ 56.3w</div><div class="stat">❤️ 12.4w</div></div></div></div>
+<div class="card work-item" data-category="main" onclick="previewImage(this)"><div class="card-img-box"><img src="images/main/3_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">夏季冰丝T恤主图</div><div class="card-stats"><div class="stat">👁️ 38.2w</div><div class="stat">❤️ 8.1w</div></div></div></div>
+<div class="card work-item" data-category="main" onclick="previewImage(this)"><div class="card-img-box"><img src="images/main/4_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">车载香薰主图</div><div class="card-stats"><div class="stat">👁️ 31.5w</div><div class="stat">❤️ 6.7w</div></div></div></div>
+<div class="card work-item main-more" data-category="main" onclick="previewImage(this)" style="display:none;"><div class="card-img-box"><img src="images/main/5_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">家用除螨仪主图</div><div class="card-stats"><div class="stat">👁️ 27.9w</div><div class="stat">❤️ 5.3w</div></div></div></div>
+<div class="card work-item main-more" data-category="main" onclick="previewImage(this)" style="display:none;"><div class="card-img-box"><img src="images/main/6_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">宠物冻干零食主图</div><div class="card-stats"><div class="stat">👁️ 34.6w</div><div class="stat">❤️ 7.9w</div></div></div></div>
+<div class="card work-item" data-category="render" onclick="previewImage(this)"><div class="card-img-box"><img src="images/render/1_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">智能手表渲染</div><div class="card-stats"><div class="stat">👁️ 39.8w</div><div class="stat">❤️ 8.7w</div></div></div></div>
+<div class="card work-item" data-category="render" onclick="previewImage(this)"><div class="card-img-box"><img src="images/render/2_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">北欧风茶几渲染</div><div class="card-stats"><div class="stat">👁️ 26.4w</div><div class="stat">❤️ 5.6w</div></div></div></div>
+<div class="card work-item" data-category="render" onclick="previewImage(this)"><div class="card-img-box"><img src="images/render/3_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">口红管体渲染</div><div class="card-stats"><div class="stat">👁️ 41.2w</div><div class="stat">❤️ 9.3w</div></div></div></div>
+<div class="card work-item" data-category="render" onclick="previewImage(this)"><div class="card-img-box"><img src="images/render/4_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">电竞鼠标渲染</div><div class="card-stats"><div class="stat">👁️ 37.5w</div><div class="stat">❤️ 7.8w</div></div></div></div>
+<div class="card work-item render-more" data-category="render" onclick="previewImage(this)" style="display:none;"><div class="card-img-box"><img src="images/render/5_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">保温杯渲染</div><div class="card-stats"><div class="stat">👁️ 24.9w</div><div class="stat">❤️ 4.8w</div></div></div></div>
+<div class="card work-item render-more" data-category="render" onclick="previewImage(this)" style="display:none;"><div class="card-img-box"><img src="images/render/6_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">香水瓶渲染</div><div class="card-stats"><div class="stat">👁️ 33.7w</div><div class="stat">❤️ 6.9w</div></div></div></div>
+<div class="card work-item" data-category="ai" onclick="previewImage(this)"><div class="card-img-box"><img src="images/ai/1_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">户外露营场景合成</div><div class="card-stats"><div class="stat">👁️ 48.9w</div><div class="stat">❤️ 11.6w</div></div></div></div>
+<div class="card work-item" data-category="ai" onclick="previewImage(this)"><div class="card-img-box"><img src="images/ai/2_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">模特穿搭合成</div><div class="card-stats"><div class="stat">👁️ 52.3w</div><div class="stat">❤️ 13.2w</div></div></div></div>
+<div class="card work-item" data-category="ai" onclick="previewImage(this)"><div class="card-img-box"><img src="images/ai/3_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">饮品创意合成</div><div class="card-stats"><div class="stat">👁️ 45.6w</div><div class="stat">❤️ 10.4w</div></div></div></div>
+<div class="card work-item" data-category="ai" onclick="previewImage(this)"><div class="card-img-box"><img src="images/ai/4_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">智能家居场景合成</div><div class="card-stats"><div class="stat">👁️ 36.8w</div><div class="stat">❤️ 8.2w</div></div></div></div>
+<div class="card work-item ai-more" data-category="ai" onclick="previewImage(this)" style="display:none;"><div class="card-img-box"><img src="images/ai/5_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">美妆产品场景合成</div><div class="card-stats"><div class="stat">👁️ 29.7w</div><div class="stat">❤️ 5.9w</div></div></div></div>
+<div class="card work-item ai-more" data-category="ai" onclick="previewImage(this)" style="display:none;"><div class="card-img-box"><img src="images/ai/6_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">宠物用品场景合成</div><div class="card-stats"><div class="stat">👁️ 31.4w</div><div class="stat">❤️ 6.5w</div></div></div></div>
+</div></div></section>
+<section id="video" class="section"><div class="container"><div class="section-header"><h2 class="section-title">视频作品</h2><div><a href="#" class="view-all" onclick="toggleVideos();return false;" id="video-show">查看全部视频 →</a><a href="#" class="view-all" onclick="toggleVideos();return false;" id="video-hide" style="display:none;">← 收起</a></div></div><div id="videoPreview"><div class="video-grid">
+<!-- ✅ 修复2：默认视频区域加上和全部视频一样的播放键图标 -->
+<div class="video-main" onclick="openVideoModal('videos/1.mp4')"><img src="images/video/1_thumb.webp"><div class="video-play-card">▶</div><div class="video-duration-card">01:28</div></div>
+<div class="video-side">
+<div class="video-small" onclick="openVideoModal('videos/2.mp4')"><img src="images/video/2_thumb.webp"><div class="video-play-card">▶</div><div class="video-duration-card">00:45</div></div>
+<div class="video-small" onclick="openVideoModal('videos/3.mp4')"><img src="images/video/3_thumb.webp"><div class="video-play-card">▶</div><div class="video-duration-card">00:38</div></div>
 </div>
-
-<div class="modal video-modal" id="videoModal"><span class="modal-close" onclick="closeVideoModal()">&times;</span><video id="previewVideo" controls></video></div>
-
+</div></div><div class="grid" id="allVideos" style="display:none;">
+<div class="card" onclick="openVideoModal('videos/1.mp4')"><div class="card-img-box"><img src="images/video/1_thumb.webp" class="card-img"></div><div class="video-play-card">▶</div><div class="video-duration-card">01:28</div><div class="card-info">超薄磁吸充电宝动画</div></div>
+<div class="card" onclick="openVideoModal('videos/2.mp4')"><div class="card-img-box"><img src="images/video/2_thumb.webp" class="card-img"></div><div class="video-play-card">▶</div><div class="video-duration-card">00:45</div><div class="card-info">创意小巧充电头动画</div></div>
+<div class="card" onclick="openVideoModal('videos/3.mp4')"><div class="card-img-box"><img src="images/video/3_thumb.webp" class="card-img"></div><div class="video-play-card">▶</div><div class="video-duration-card">00:38</div><div class="card-info">科幻带插头充电宝动画</div></div>
+<div class="card" onclick="openVideoModal('videos/4.mp4')"><div class="card-img-box"><img src="images/video/4_thumb.webp" class="card-img"></div><div class="video-play-card">▶</div><div class="video-duration-card">00:52</div><div class="card-info">暗黑充电宝动画</div></div>
+<div class="card" onclick="openVideoModal('videos/5.mp4')"><div class="card-img-box"><img src="images/video/5_thumb.webp" class="card-img"></div><div class="video-play-card">▶</div><div class="video-duration-card">01:05</div><div class="card-info">挂腰贴身小风扇动画</div></div>
+<div class="card" onclick="openVideoModal('videos/6.mp4')"><div class="card-img-box"><img src="images/video/6_thumb.webp" class="card-img"></div><div class="video-play-card">▶</div><div class="video-duration-card">00:49</div><div class="card-info">多彩充电宝动画</div></div>
+</div></div></section>
+<section id="service" class="section"><div class="container"><h2 class="section-title">专业领域</h2><div class="skills-grid"><div class="skill-card"><div class="skill-icon orange">📸</div><div class="skill-title">电商主图设计</div><div class="skill-desc">突出卖点，提升点击率</div></div><div class="skill-card"><div class="skill-icon red">📄</div><div class="skill-title">详情页设计</div><div class="skill-desc">优化转化，提升购买率</div></div><div class="skill-card"><div class="skill-icon green">🎨</div><div class="skill-title">C4D产品渲染</div><div class="skill-desc">高质量渲染，真实还原</div></div><div class="skill-card"><div class="skill-icon blue">🎬</div><div class="skill-title">视频制作</div><div class="skill-desc">产品视频，广告片制作</div></div><div class="skill-card"><div class="skill-icon purple">🤖</div><div class="skill-title">AIGC创意设计</div><div class="skill-desc">AI加持，创意无限可能</div></div></div></div></section>
+<footer id="contact" class="contact-section"><div class="container"><div class="footer-grid"><div class="footer-col"><h4>关于我</h4><p>7年电商视觉设计经验，擅长将创意与商业结合，为品牌打造有价值的视觉内容。</p></div><div class="footer-col"><h4>联系我</h4><div class="contact-item">📧 1711325061@qq.com</div><div class="contact-item">📍 广东省深圳市</div></div><div class="footer-col"><h4>快速导航</h4><ul class="footer-links"><li><a href="#home">首页</a></li><li><a href="#works">作品</a></li><li><a href="#video">视频</a></li><li><a href="#service">服务</a></li></ul></div>
+<!-- ✅ 修复3：添加抖音和小红书按钮，样式和微信完全一致 -->
+<div class="footer-col"><h4>关注我</h4><div class="social-links">
+<a href="https://www.zcool.com.cn/u/23450553" class="social-link" target="_blank"><img src="icons/zcool.svg" alt="站酷"></a>
+<a href="#" class="social-link" onclick="openWxModal();return false;"><img src="icons/wechat.svg" alt="微信"></a>
+<a href="#" class="social-link" onclick="openDouyinModal();return false;"><img src="icons/douyin.svg" alt="抖音"></a>
+<a href="#" class="social-link" onclick="openXiaohongshuModal();return false;"><img src="icons/xiaohongshu.svg" alt="小红书"></a>
+</div></div>
+</div><div class="footer-bottom">© 2026 龚著登 DESIGN | 电商视觉设计全案服务</div></div></footer>
+<!-- 原有弹窗 -->
+<div class="modal small-modal" id="wxModal"><span class="modal-close" onclick="closeWxModal()">&times;</span><div class="modal-content"><h3>扫码加我微信</h3><img src="images/wechat-qrcode.webp" class="wx-qrcode"><div class="wx-id">微信号：gongzhudeng <button class="copy-btn" onclick="copyWxId()">复制</button></div><p class="copy-success" id="copySuccess">复制成功</p></div></div>
+<!-- ✅ 新增抖音弹窗 -->
+<div class="modal small-modal" id="douyinModal"><span class="modal-close" onclick="closeDouyinModal()">&times;</span><div class="modal-content"><h3>扫码加我抖音</h3><img src="images/douyin-qrcode.webp" class="wx-qrcode"><div class="wx-id">抖音号：1711325061a <button class="copy-btn" onclick="copyDouyinId()">复制</button></div><p class="copy-success" id="copyDouyinSuccess">复制成功</p></div></div>
+<!-- ✅ 新增小红书弹窗 -->
+<div class="modal small-modal" id="xiaohongshuModal"><span class="modal-close" onclick="closeXiaohongshuModal()">&times;</span><div class="modal-content"><h3>扫码加我小红书</h3><img src="images/xiaohongshu-qrcode.webp" class="wx-qrcode"><div class="wx-id">小红书号：gongzhudeng <button class="copy-btn" onclick="copyXiaohongshuId()">复制</button></div><p class="copy-success" id="copyXiaohongshuSuccess">复制成功</p></div></div>
+<div class="modal" id="imageModal"><span class="modal-close" onclick="closeModal()">&times;</span><img src="" class="modal-content" id="modalImg"></div>
+<div class="detail-modal" id="detailModal"><span class="modal-close" onclick="closeDetailModal()">&times;</span><img src="" class="detail-modal-content" id="detailModalImg"></div>
+<div class="modal video-modal" id="videoModal"><span class="modal-close" onclick="closeVideoModal()">&times;</span><div id="bilibiliPlayer"></div></div>
 <script>
-function scrollToAboutMe(){
-  document.getElementById('contact').scrollIntoView({behavior:'smooth'});
-}
+function scrollToAboutMe(){document.getElementById('contact').scrollIntoView({behavior:'smooth'});}
+function scrollToWorks(){document.getElementById('works').scrollIntoView({behavior:'smooth'});}
+// ✅ 新增视频板块丝滑滚动函数
+function scrollToVideo(){document.getElementById('video').scrollIntoView({behavior:'smooth'});}
 
-function scrollToWorks(){
-  document.getElementById('works').scrollIntoView({behavior:'smooth'});
-}
-
-// 作品筛选逻辑
-let showAllWorks = false;
-let currentCategory='all';
+let showAllWorks=false;let currentCategory='all';
 function filterWorks(category){
-  currentCategory=category;
-  showAllWorks = false;
-  const items=document.querySelectorAll('.work-item');
-  const tabs=document.querySelectorAll('.tab-btn');
-  
-  tabs.forEach(t=>t.classList.remove('active'));
-  event?.target.classList.add('active');
+  currentCategory=category;showAllWorks=false;
+  const items=document.querySelectorAll('.work-item');const tabs=document.querySelectorAll('.tab-btn');
+  tabs.forEach(t=>t.classList.remove('active'));event?.target.classList.add('active');
   items.forEach(i=>i.style.display='none');
   document.getElementById('showAllBtn').style.display='inline-flex';
   document.getElementById('showLessBtn').style.display='none';
-
-  let count = 0;
-  const showCount = window.innerWidth <= 768 ? 2 : 4;
-  items.forEach(i=>{ 
-    if(i.dataset.category===category || category==='all'){
-      if(count < showCount){
-        i.style.display='block';
-      }
-      count++;
-    }
-  });
+  if(category==='all'){
+    document.querySelectorAll('.work-item').forEach((item,index)=>{if(index<4)item.style.display='block';});
+  }else{
+    document.querySelectorAll(`.work-item[data-category="${category}"]`).forEach((item,index)=>{if(index<4)item.style.display='block';});
+  }
 }
-
-// 展开/收起作品
 function toggleWorks(){
-  showAllWorks = !showAllWorks;
-  const items = document.querySelectorAll('.work-item');
-  const currentItems = Array.from(items).filter(i => 
-    currentCategory === 'all' || i.dataset.category === currentCategory
-  );
-  const showCount = window.innerWidth <= 768 ? 2 : 4;
+  showAllWorks=!showAllWorks;
+  const showAllBtn=document.getElementById('showAllBtn');const showLessBtn=document.getElementById('showLessBtn');
+  if(showAllWorks){
+    showAllBtn.style.display='none';showLessBtn.style.display='inline-flex';
+    if(currentCategory==='all'){document.querySelectorAll('.work-item').forEach(item=>item.style.display='block');}
+    else{document.querySelectorAll(`.work-item[data-category="${currentCategory}"]`).forEach(item=>item.style.display='block');}
+  }else{
+    showAllBtn.style.display='inline-flex';showLessBtn.style.display='none';filterWorks(currentCategory);
+  }
+}
+function toggleVideos(){
+  const videoPreview=document.getElementById('videoPreview');const allVideos=document.getElementById('allVideos');
+  const videoShow=document.getElementById('video-show');const videoHide=document.getElementById('video-hide');
+  if(allVideos.style.display==='none'){
+    videoPreview.style.display='none';allVideos.style.display='grid';videoShow.style.display='none';videoHide.style.display='inline-flex';
+  }else{
+    videoPreview.style.display='block';allVideos.style.display='none';videoShow.style.display='inline-flex';videoHide.style.display='none';
+  }
+}
+function previewImage(el){
+  const modal=document.getElementById('imageModal');
+  const img=document.getElementById('modalImg');
+  img.src = '';
+  img.src = el.querySelector('.card-img').dataset.fullSrc;
+  modal.classList.add('active');
+}
+function previewDetailImage(el){
+  const modal=document.getElementById('detailModal');
+  const img=document.getElementById('detailModalImg');
+  img.src = '';
+  img.src = el.querySelector('.card-img').dataset.fullSrc;
+  modal.classList.add('active');
+}
+function closeModal(){document.getElementById('imageModal').classList.remove('active');}
+function closeDetailModal(){document.getElementById('detailModal').classList.remove('active');}
+function openWxModal(){document.getElementById('wxModal').classList.add('active');}
+function closeWxModal(){document.getElementById('wxModal').classList.remove('active');}
+function copyWxId(){const wxId='gongzhudeng';navigator.clipboard.writeText(wxId).then(()=>{const success=document.getElementById('copySuccess');success.style.display='block';setTimeout(()=>{success.style.display='none';},2000);});}
 
-  items.forEach(i=>{
-    if(currentCategory === 'all' || i.dataset.category === currentCategory){
-      i.style.display = showAllWorks 
-        ? 'block' 
-        : (currentItems.indexOf(i) < showCount ? 'block' : 'none');
-    }else{
-      i.style.display = 'none';
+// ✅ 新增抖音相关函数
+function openDouyinModal(){document.getElementById('douyinModal').classList.add('active');}
+function closeDouyinModal(){document.getElementById('douyinModal').classList.remove('active');}
+function copyDouyinId(){const douyinId='1711325061';navigator.clipboard.writeText(douyinId).then(()=>{const success=document.getElementById('copyDouyinSuccess');success.style.display='block';setTimeout(()=>{success.style.display='none';},2000);});}
+
+// ✅ 新增小红书相关函数
+function openXiaohongshuModal(){document.getElementById('xiaohongshuModal').classList.add('active');}
+function closeXiaohongshuModal(){document.getElementById('xiaohongshuModal').classList.remove('active');}
+function copyXiaohongshuId(){const xiaohongshuId='xiaohongshu123';navigator.clipboard.writeText(xiaohongshuId).then(()=>{const success=document.getElementById('copyXiaohongshuSuccess');success.style.display='block';setTimeout(()=>{success.style.display='none';},2000);});}
+
+const videoBilibiliLinks = {
+  'videos/1.mp4': '//player.bilibili.com/player.html?isOutside=true&aid=116548417165428&bvid=BV1UP576eEpL&cid=38229509704&p=1',
+  'videos/2.mp4': '//player.bilibili.com/player.html?isOutside=true&aid=116548400323464&bvid=BV1tK576AEpJ&cid=38229443088&p=1',
+  'videos/3.mp4': '//player.bilibili.com/player.html?isOutside=true&aid=116548433878455&bvid=BV1ao5j6uE5G&cid=38229639450&p=1',
+  'videos/4.mp4': '//player.bilibili.com/player.html?isOutside=true&aid=116548500983920&bvid=BV1mx5j68E4o&cid=38229904735&p=1',
+  'videos/5.mp4': '//player.bilibili.com/player.html?isOutside=true&aid=116548450652316&bvid=BV1YR5j66E22&cid=38229705040&p=1',
+  'videos/6.mp4': '//player.bilibili.com/player.html?isOutside=true&aid=116548500983867&bvid=BV1mx5j68EtQ&cid=38229903459&p=1'
+};
+
+function openVideoModal(videoKey){
+  const modal = document.getElementById('videoModal');
+  const player = document.getElementById('bilibiliPlayer');
+  const link = videoBilibiliLinks[videoKey];
+  player.innerHTML = '';
+  player.innerHTML = `<iframe src="${link}" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>`;
+  modal.classList.add('active');
+}
+function closeVideoModal(){
+  const modal = document.getElementById('videoModal');
+  const player = document.getElementById('bilibiliPlayer');
+  modal.classList.remove('active');
+  player.innerHTML = '';
+}
+
+// 所有弹窗点击背景关闭（包含新增的抖音、小红书弹窗）
+document.querySelectorAll('.modal, .detail-modal').forEach(modal => {
+  modal.addEventListener('click', function(e) {
+    if(e.target === this) {
+      this.classList.remove('active');
+      if(this.id === 'videoModal') {
+        document.getElementById('bilibiliPlayer').innerHTML = '';
+      }
     }
   });
-  document.getElementById('showAllBtn').style.display = showAllWorks ? 'none' : 'inline-flex';
-  document.getElementById('showLessBtn').style.display = showAllWorks ? 'inline-flex' : 'none';
-}
-
-// 视频展开/收起
-let showAllVideos=false;
-function toggleVideos(){
-  showAllVideos=!showAllVideos;
-  const v1=document.getElementById('videoPreview');const v2=document.getElementById('allVideos');
-  const s=document.getElementById('video-show');const h=document.getElementById('video-hide');
-  if(showAllVideos){v1.style.display='none';v2.style.display='grid';s.style.display='none';h.style.display='inline-flex';}
-  else{v1.style.display='block';v2.style.display='none';s.style.display='inline-flex';h.style.display='none';}
-}
-
-// 微信弹窗
-function openWxModal(){document.getElementById('wxModal').classList.add('active');document.body.style.overflow='hidden';}
-function closeWxModal(){document.getElementById('wxModal').classList.remove('active');document.body.style.overflow='auto';}
-function copyWxId(){navigator.clipboard.writeText('gongzhudeng').then(()=>{document.getElementById('copySuccess').style.display='block';setTimeout(()=>document.getElementById('copySuccess').style.display='none',2000);});}
-
-// 普通图片弹窗
-function previewImage(el) {
-  const img = el.querySelector('.card-img');
-  const modal = document.getElementById('imageModal');
-  const modalImg = document.getElementById('modalImg');
-  modalImg.src = img.dataset.fullSrc;
-  modal.classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
-function closeModal() {
-  document.getElementById('imageModal').classList.remove('active');
-  document.body.style.overflow = 'auto';
-}
-
-// 详情页独立弹窗
-function previewDetailImage(el) {
-  const img = el.querySelector('.card-img');
-  const modal = document.getElementById('detailModal');
-  const modalImg = document.getElementById('detailModalImg');
-  modalImg.src = img.dataset.fullSrc;
-  modal.classList.add('active');
-  document.body.style.overflow = 'hidden';
-  modal.scrollTop = 0;
-}
-function closeDetailModal() {
-  document.getElementById('detailModal').classList.remove('active');
-  document.body.style.overflow = 'auto';
-}
-
-// 视频弹窗
-function openVideoModal(src){const v=document.getElementById('previewVideo');v.src=src;document.getElementById('videoModal').classList.add('active');document.body.style.overflow='hidden';v.play();}
-function closeVideoModal(){const v=document.getElementById('previewVideo');v.pause();v.src='';document.getElementById('videoModal').classList.remove('active');document.body.style.overflow='auto';}
-
-// 全局关闭
-document.addEventListener('keydown',e=>{
-  if(e.key==='Escape'){
-    closeWxModal();
-    closeModal();
-    closeDetailModal();
-    closeVideoModal();
-  }
-});
-document.getElementById('imageModal').onclick = function(e) {if(e.target === this) closeModal();}
-document.getElementById('detailModal').onclick = function(e) {if(e.target === this) closeDetailModal();}
-document.getElementById('videoModal').onclick = function(e) {if(e.target === this) closeVideoModal();}
-document.getElementById('wxModal').onclick = function(e) {if(e.target === this) closeWxModal();}
-
-// 导航栏滚动优化
-window.addEventListener('scroll', function() {
-  const nav = document.querySelector('nav');
-  if (window.scrollY > 50) {
-    nav.style.background = 'rgba(15,15,19,0.98)';
-    nav.style.borderBottom = '1px solid rgba(255,255,255,0.08)';
-  } else {
-    nav.style.background = 'rgba(15,15,19,0.95)';
-    nav.style.borderBottom = '1px solid rgba(255,255,255,0.05)';
-  }
 });
 
-// 窗口大小变化时重新筛选
-window.addEventListener('resize', function() {
-  filterWorks(currentCategory);
-});
-
-// 初始化
 filterWorks('all');
 </script>
 </body>
