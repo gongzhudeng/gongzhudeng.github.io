@@ -1240,6 +1240,287 @@
         padding-top: 60px !important;
       }
     }
+/* ===== 工具经验卡片 ===== */
+.tool-card {
+  background: #1a1a24;
+  border-radius: 16px;
+  padding: 24px 20px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+.tool-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+.tool-card .tool-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  margin: 0 auto 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+.tool-card .tool-icon img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+.tool-card .tool-icon.ps { background: rgba(0, 120, 255, 0.12); }
+.tool-card .tool-icon.c4d { background: rgba(255, 153, 0, 0.12); }
+.tool-card .tool-icon.ae { background: rgba(150, 0, 255, 0.12); }
+.tool-card .tool-icon.pr { background: rgba(200, 100, 255, 0.12); }
+.tool-card .tool-icon.ai-tool { background: rgba(0, 200, 180, 0.12); }
+.tool-card .tool-name {
+  font-weight: 700;
+  font-size: 15px;
+  color: #fff;
+  margin-bottom: 6px;
+  position: relative;
+  z-index: 1;
+}
+.tool-card .tool-years {
+  display: inline-block;
+  font-weight: 800;
+  font-size: 28px;
+  color: #ff4d4f;
+  margin-bottom: 6px;
+  position: relative;
+  z-index: 1;
+  line-height: 1;
+}
+.tool-card .tool-years sub {
+  font-size: 13px;
+  font-weight: 500;
+  color: #999;
+  bottom: 0;
+}
+.tool-card .tool-tagline {
+  font-size: 12px;
+  color: #777;
+  position: relative;
+  z-index: 1;
+}
+.tool-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  border-radius: 0 0 16px 16px;
+  z-index: 0;
+}
+.tool-card.card-ps::after { background: linear-gradient(90deg, #0078ff, #4da6ff); }
+.tool-card.card-c4d::after { background: linear-gradient(90deg, #ff9900, #ffb347); }
+.tool-card.card-ae::after { background: linear-gradient(90deg, #9600ff, #c17dff); }
+.tool-card.card-pr::after { background: linear-gradient(90deg, #7b2fff, #d49fff); }
+.tool-card.card-ai::after { background: linear-gradient(90deg, #00c8b4, #00e6cc); }
+
+/* ===== 设计百宝箱 ===== */
+.resource-section {
+  padding: 50px 0 60px;
+}
+.resource-section .section-subtitle {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 28px;
+  margin-top: -16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.resource-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.resource-tab-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+  color: #aaa;
+  padding: 10px 22px;
+  border-radius: 24px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.resource-tab-btn:hover {
+  background: rgba(255, 77, 79, 0.15);
+  color: #ff7875;
+}
+.resource-tab-btn.active {
+  background: rgba(255, 77, 79, 0.2);
+  color: #ff4d4f;
+  font-weight: 600;
+  box-shadow: 0 0 10px rgba(255, 77, 79, 0.2);
+}
+.resource-panel {
+  display: none;
+}
+.resource-panel.active {
+  display: block;
+}
+.resource-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+.resource-link-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #1a1a24;
+  border-radius: 14px;
+  padding: 18px 20px;
+  text-decoration: none;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+.resource-link-card:hover {
+  background: #222230;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 77, 79, 0.2);
+}
+.resource-favicon-wrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-top: 2px;
+}
+.resource-favicon-wrap img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+}
+.resource-favicon-wrap .favicon-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  color: #aaa;
+  z-index: 0;
+  text-transform: uppercase;
+}
+.resource-link-info {
+  flex: 1;
+  min-width: 0;
+}
+.resource-link-name {
+  font-size: 14px;
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 4px;
+  transition: color 0.2s;
+}
+.resource-link-card:hover .resource-link-name {
+  color: #ff7875;
+}
+.resource-link-desc {
+  font-size: 12px;
+  color: #888;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+.resource-link-tag {
+  display: inline-block;
+  font-size: 10px;
+  color: #666;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 2px 8px;
+  border-radius: 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+/* ===== 移动端适配 ===== */
+@media(max-width:768px) {
+  .tools-grid-mobile {
+    display: flex !important;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    gap: 14px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tools-grid-mobile .tool-card {
+    flex: 0 0 150px;
+    min-width: 150px;
+    padding: 20px 14px;
+    scroll-snap-align: start;
+  }
+  .tools-grid-mobile .tool-card .tool-years {
+    font-size: 24px;
+  }
+  .tools-grid-mobile .tool-card .tool-name {
+    font-size: 13px;
+  }
+  .resource-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .resource-tab-btn {
+    flex-shrink: 0;
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+  .resource-links {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .resource-link-card {
+    padding: 14px 16px;
+    gap: 12px;
+  }
+  .resource-favicon-wrap {
+    width: 32px;
+    height: 32px;
+  }
+  .resource-favicon-wrap img {
+    width: 20px;
+    height: 20px;
+  }
+  .resource-link-name {
+    font-size: 13px;
+  }
+  .resource-link-desc {
+    font-size: 11px;
+  }
+  .resource-link-tag {
+    font-size: 9px;
+  }
+}
   </style>
 </head>
 <body>
@@ -1250,7 +1531,8 @@
         <a href="#home" class="active" onclick="setActiveNav(this); scrollToHome(); return false;">首页</a>
         <a href="#works" onclick="setActiveNav(this); filterWorks('all'); scrollToWorks(); return false;">作品</a>
         <a href="#video" onclick="setActiveNav(this); scrollToVideo(); return false;">视频</a>
-        <a href="#service" onclick="setActiveNav(this); scrollToService(); return false;">服务</a>
+        <a href="#tools" onclick="setActiveNav(this); scrollToTools(); return false;">工具</a>
+<a href="#resources" onclick="setActiveNav(this); scrollToResources(); return false;">导航</a>
         <a href="#" onclick="setActiveNav(this); openWxModal(); return false;">联系我</a>
       </div>
     </div>
@@ -1363,25 +1645,70 @@
     </div>
   </section>
 
-  <section id="service" class="section">
+<section id="tools" class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">工具经验</h2>
+    </div>
+    <p style="color:#888;font-size:14px;margin-bottom:28px;margin-top:-16px;">
+      7年设计生涯，深耕以下工具<span class="badge-exp" style="display:inline-block;background:rgba(255,77,79,0.15);color:#ff7875;font-weight:600;padding:3px 12px;border-radius:20px;font-size:12px;margin-left:8px;">累计经验 22+ 年</span>
+    </p>
+    <div class="skills-grid tools-grid-desktop" id="toolsGrid">
+      <div class="tool-card card-ps">
+        <div class="tool-icon ps"><img src="icons/ps.svg" alt="Photoshop" onerror="this.style.display='none';this.parentNode.innerHTML='🖼️'"></div>
+        <div class="tool-name">Photoshop</div>
+        <div class="tool-years">7<sub>年</sub></div>
+        <div class="tool-tagline">图像合成·精修·排版</div>
+      </div>
+      <div class="tool-card card-c4d">
+        <div class="tool-icon c4d"><img src="icons/c4d.svg" alt="Cinema 4D" onerror="this.style.display='none';this.parentNode.innerHTML='🧊'"></div>
+        <div class="tool-name">Cinema 4D</div>
+        <div class="tool-years">5<sub>年</sub></div>
+        <div class="tool-tagline">产品建模·渲染·动画</div>
+      </div>
+      <div class="tool-card card-ae">
+        <div class="tool-icon ae"><img src="icons/ae.svg" alt="After Effects" onerror="this.style.display='none';this.parentNode.innerHTML='✨'"></div>
+        <div class="tool-name">After Effects</div>
+        <div class="tool-years">4<sub>年</sub></div>
+        <div class="tool-tagline">动效设计·视觉特效</div>
+      </div>
+      <div class="tool-card card-pr">
+        <div class="tool-icon pr"><img src="icons/pr.svg" alt="Premiere Pro" onerror="this.style.display='none';this.parentNode.innerHTML='🎬'"></div>
+        <div class="tool-name">Premiere Pro</div>
+        <div class="tool-years">4<sub>年</sub></div>
+        <div class="tool-tagline">视频剪辑·调色·输出</div>
+      </div>
+      <div class="tool-card card-ai">
+        <div class="tool-icon ai-tool"><img src="icons/ai.svg" alt="AI工具" onerror="this.style.display='none';this.parentNode.innerHTML='🤖'"></div>
+        <div class="tool-name">综合AI工具</div>
+        <div class="tool-years">2<sub>年</sub></div>
+        <div class="tool-tagline">Midjourney·SD·工作流</div>
+      </div>
+    </div>
+  </div>
+</section>
+  <!-- ========== 设计百宝箱 ========== -->
+  <section id="resources" class="resource-section">
     <div class="container">
-      <h2 class="section-title">专业领域</h2>
-      <div class="skills-grid">
-        <div class="skill-card"><div class="skill-icon orange">📸</div><div class="skill-title">电商主图设计</div><div class="skill-desc">突出卖点，提升点击率</div></div>
-        <div class="skill-card"><div class="skill-icon red">📄</div><div class="skill-title">详情页设计</div><div class="skill-desc">优化转化，提升购买率</div></div>
-        <div class="skill-card"><div class="skill-icon green">🎨</div><div class="skill-title">C4D产品渲染</div><div class="skill-desc">高质量渲染，真实还原</div></div>
-        <div class="skill-card"><div class="skill-icon blue">🎬</div><div class="skill-title">视频制作</div><div class="skill-desc">产品视频，广告片制作</div></div>
-        <div class="skill-card"><div class="skill-icon purple">🤖</div><div class="skill-title">AIGC创意设计</div><div class="skill-desc">AI加持，创意无限可能</div></div>
+      <div class="section-header">
+        <h2 class="section-title">7年精选 · 设计百宝箱</h2>
+      </div>
+      <p class="section-subtitle">
+        <span class="badge-exp" style="display:inline-block;background:rgba(255,77,79,0.15);color:#ff7875;font-weight:600;padding:3px 12px;border-radius:20px;font-size:12px;">长期积累</span> 多年设计生涯中亲测好用的实用网站合集
+      </p>
+      <div id="resourceNavContainer">
+        <div class="resource-tabs" id="resourceTabs"></div>
+        <div class="resource-panels" id="resourcePanels"></div>
       </div>
     </div>
   </section>
-
   <footer id="contact" class="contact-section">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-col"><h4>关于我</h4><p>7年电商视觉设计经验，擅长将创意与商业结合，为品牌打造有价值的视觉内容。</p></div>
         <div class="footer-col"><h4>联系我</h4><div class="contact-item">📧 1711325061@qq.com</div><div class="contact-item">📍 广东省深圳市</div></div>
-        <div class="footer-col"><h4>快速导航</h4><ul class="footer-links"><li><a href="#home">首页</a></li><li><a href="#works">作品</a></li><li><a href="#video">视频</a></li><li><a href="#service">服务</a></li></ul></div>
+        <div class="footer-col"><h4>快速导航</h4><ul class="footer-links"><li><a href="#home">首页</a></li><li><a href="#works">作品</a></li><li><a href="#video">视频</a></li><li><a href="#tools">工具</a></li>
+<li><a href="#resources">导航</a></li></ul></div>
         <div class="footer-col"><h4>关注我</h4><div class="social-links"><a href="https://www.zcool.com.cn/u/23450553" class="social-link" target="_blank"><img src="icons/zcool.svg" alt="站酷"></a><a href="#" class="social-link" onclick="openWxModal();return false;"><img src="icons/wechat.svg" alt="微信"></a><a href="#" class="social-link" onclick="openDouyinModal();return false;"><img src="icons/douyin.svg" alt="抖音"></a><a href="#" class="social-link" onclick="openXiaohongshuModal();return false;"><img src="icons/xiaohongshu.svg" alt="小红书"></a></div></div>
       </div>
       <div class="footer-bottom">© 2026 龚著登 DESIGN | 电商视觉设计全案服务</div>
@@ -1423,6 +1750,145 @@
   </div>
 
   <script>
+    // ========== 资源导航数据与切换逻辑 ==========
+    const resourceData = [
+      { category: '灵感采集', emoji: '💡', desc: '国内外设计灵感平台，拓展审美边界', sites: [
+        { name: '站酷', url: 'https://www.zcool.com.cn', tag: '国内', desc: '本土设计师作品交流平台' },
+        { name: '花瓣', url: 'https://huaban.com', tag: '国内', desc: '图片采集与灵感整理工具' },
+        { name: 'Behance', url: 'https://www.behance.net', tag: '国际', desc: 'Adobe旗下全球创意作品社区' },
+        { name: 'Dribbble', url: 'https://dribbble.com', tag: '国际', desc: 'UI/视觉设计作品展示平台' },
+        { name: 'Pinterest', url: 'https://www.pinterest.com', tag: '国际', desc: '全球图片灵感搜索引擎' },
+        { name: 'Muzli', url: 'https://muz.li', tag: '灵感', desc: 'Chrome插件，每日设计灵感推送' }
+      ]},
+      { category: 'AIGC工具', emoji: '🤖', desc: 'AI赋能设计，提升创作效率', sites: [
+        { name: 'Midjourney', url: 'https://www.midjourney.com', tag: '生图', desc: 'AI艺术生成器，Discord内使用' },
+        { name: 'Stable Diffusion', url: 'https://stability.ai', tag: '开源', desc: '开源AI图像生成模型' },
+        { name: '文心一格', url: 'https://yige.baidu.com', tag: '国内', desc: '百度出品的AI艺术创作平台' },
+        { name: '通义万相', url: 'https://tongyi.aliyun.com', tag: '国内', desc: '阿里云AI图像生成工具' },
+        { name: 'ChatGPT', url: 'https://chatgpt.com', tag: '对话', desc: 'OpenAI对话式AI助手' },
+        { name: 'Runway', url: 'https://runwayml.com', tag: '视频', desc: 'AI视频生成与编辑平台' }
+      ]},
+      { category: '学习交流', emoji: '📚', desc: '设计教程与行业交流阵地', sites: [
+        { name: '优设', url: 'https://www.uisdc.com', tag: '教程', desc: '国内人气设计教程平台' },
+        { name: '虎课网', url: 'https://huke88.com', tag: '课程', desc: '设计职业技能在线学习' },
+        { name: 'B站设计区', url: 'https://www.bilibili.com/v/design', tag: '视频', desc: 'Bilibili设计类视频专区' },
+        { name: '站酷高高手', url: 'https://www.gogoup.com', tag: '进阶', desc: '站酷旗下设计教育品牌' },
+        { name: 'Design+Code', url: 'https://designcode.io', tag: '英文', desc: 'UI设计与代码融合教程' }
+      ]},
+      { category: '视频平台', emoji: '🎬', desc: '短视频与长视频发布平台', sites: [
+        { name: 'Bilibili', url: 'https://www.bilibili.com', tag: '国内', desc: '国内领先的视频弹幕网站' },
+        { name: '抖音', url: 'https://www.douyin.com', tag: '短视频', desc: '日活过亿的短视频平台' },
+        { name: '小红书', url: 'https://www.xiaohongshu.com', tag: '种草', desc: '生活方式分享与种草社区' },
+        { name: 'YouTube', url: 'https://www.youtube.com', tag: '国际', desc: '全球最大视频分享平台' },
+        { name: 'Vimeo', url: 'https://vimeo.com', tag: '专业', desc: '高品质视频创作社区' }
+      ]},
+      { category: '动态资源', emoji: '✨', desc: '免费视频素材与动态模板', sites: [
+        { name: 'Coverr', url: 'https://coverr.co', tag: '免费', desc: '免费商用视频背景素材' },
+        { name: 'Mixkit', url: 'https://mixkit.co', tag: '免费', desc: '免费视频与音效素材库' },
+        { name: 'Videvo', url: 'https://www.videvo.net', tag: '素材', desc: '免费与付费视频素材' },
+        { name: 'Motion Array', url: 'https://motionarray.com', tag: '模板', desc: 'After Effects模板与视频素材' }
+      ]},
+      { category: '三维资源', emoji: '🧊', desc: '3D模型与贴图资源站点', sites: [
+        { name: 'CG模型网', url: 'https://www.cgmodel.com', tag: '国内', desc: '国内大型3D模型交易平台' },
+        { name: '3D66', url: 'https://www.3d66.com', tag: '国内', desc: '3D溜溜网，模型素材丰富' },
+        { name: 'Sketchfab', url: 'https://sketchfab.com', tag: '展示', desc: '在线3D模型展示与下载' },
+        { name: 'Poliigon', url: 'https://www.poliigon.com', tag: '贴图', desc: '高品质PBR贴图与模型' },
+        { name: 'Quixel', url: 'https://quixel.com', tag: '扫描', desc: 'Megascans高精度扫描资源' }
+      ]},
+      { category: '实拍资源', emoji: '📷', desc: '免费高质量摄影图片库', sites: [
+        { name: 'Unsplash', url: 'https://unsplash.com', tag: '免费', desc: '免费高分辨率摄影图片' },
+        { name: 'Pexels', url: 'https://www.pexels.com', tag: '免费', desc: '免费商用图片与视频' },
+        { name: 'Pixabay', url: 'https://pixabay.com', tag: '免费', desc: '海量免费图片与插图' },
+        { name: '500px', url: 'https://500px.com', tag: '摄影', desc: '全球摄影师作品社区' }
+      ]},
+      { category: '平面资源', emoji: '🎨', desc: '矢量素材与平面设计资源', sites: [
+        { name: '千图网', url: 'https://www.58pic.com', tag: '国内', desc: '老牌国内设计素材网站' },
+        { name: '千库网', url: 'https://588ku.com', tag: '国内', desc: 'PNG元素与背景素材' },
+        { name: 'Freepik', url: 'https://www.freepik.com', tag: '矢量', desc: '海量免费矢量与PSD资源' },
+        { name: 'Vecteezy', url: 'https://www.vecteezy.com', tag: '免费', desc: '免费矢量图下载平台' },
+        { name: 'Flaticon', url: 'https://www.flaticon.com', tag: '图标', desc: '免费矢量图标库' }
+      ]},
+      { category: '音效资源', emoji: '🎵', desc: '免费与商用音效背景音乐', sites: [
+        { name: '爱给网', url: 'https://www.aigei.com', tag: '国内', desc: '国内音效配乐素材平台' },
+        { name: 'Freesound', url: 'https://freesound.org', tag: '免费', desc: '社区驱动的免费音效库' },
+        { name: 'Mixkit Sound', url: 'https://mixkit.co/free-sound-effects/', tag: '免费', desc: '免费商用音效下载' },
+        { name: 'Artlist', url: 'https://artlist.io', tag: '高级', desc: '高品质音乐与音效授权' },
+        { name: 'Epidemic Sound', url: 'https://www.epidemicsound.com', tag: '专业', desc: '专业级版权音乐平台' }
+      ]}
+    ];
+
+    function getFaviconUrl(domain) {
+      return `https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://${domain}&size=32`;
+    }
+    function getSiteInitial(name) {
+      const ch = name.charAt(0);
+      return /[\u4e00-\u9fff]/.test(ch) ? ch : ch.toUpperCase();
+    }
+
+    function buildResourcePanel(categoryData) {
+      let html = '';
+      categoryData.sites.forEach(site => {
+        const domain = new URL(site.url).hostname;
+        const faviconSrc = getFaviconUrl(domain);
+        const initial = getSiteInitial(site.name);
+        html += `<a href="${site.url}" target="_blank" rel="noopener" class="resource-link-card" title="${site.name} - ${site.tag}">`;
+        html += `<span class="resource-favicon-wrap"><span class="favicon-fallback" style="display:none;">${initial}</span><img src="${faviconSrc}" alt="" loading="lazy" onerror="this.style.display='none';this.previousElementSibling.style.display='flex';"></span>`;
+        html += `<div class="resource-link-info">`;
+        html += `<div class="resource-link-name">${site.name}</div>`;
+        html += `<div class="resource-link-desc">${site.desc}</div>`;
+        html += `</div>`;
+        html += `<span class="resource-link-tag">${site.tag}</span>`;
+        html += `</a>`;
+      });
+      return html;
+    }
+
+    function initResourceTabs() {
+      const tabsContainer = document.getElementById('resourceTabs');
+      const panelsContainer = document.getElementById('resourcePanels');
+      if (!tabsContainer || !panelsContainer) return;
+
+      resourceData.forEach((cat, index) => {
+        const btn = document.createElement('button');
+        btn.className = 'resource-tab-btn';
+        btn.textContent = cat.emoji + ' ' + cat.category;
+        btn.dataset.index = index;
+        btn.addEventListener('click', () => switchResourceTab(index));
+        tabsContainer.appendChild(btn);
+
+        const panel = document.createElement('div');
+        panel.className = 'resource-panel';
+        panel.innerHTML = `<div class="resource-links">${buildResourcePanel(cat)}</div>`;
+        panelsContainer.appendChild(panel);
+      });
+
+      switchResourceTab(0);
+    }
+
+    function switchResourceTab(index) {
+      const tabs = document.querySelectorAll('.resource-tab-btn');
+      const panels = document.querySelectorAll('.resource-panel');
+      tabs.forEach((tab, i) => tab.classList.toggle('active', i === index));
+      panels.forEach((panel, i) => panel.classList.toggle('active', i === index));
+    }
+
+    // 工具卡片响应式类名切换
+    function handleToolsGridResponsive() {
+      const grid = document.getElementById('toolsGrid');
+      if (!grid) return;
+      if (window.innerWidth <= 768) {
+        grid.classList.add('tools-grid-mobile');
+        grid.classList.remove('tools-grid-desktop');
+      } else {
+        grid.classList.add('tools-grid-desktop');
+        grid.classList.remove('tools-grid-mobile');
+      }
+    }
+    window.addEventListener('resize', handleToolsGridResponsive);
+
+    // 页面初始化
+    initResourceTabs();
+    handleToolsGridResponsive();
     function setActiveNav(el) {
       document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
       el.classList.add('active');
@@ -1441,6 +1907,12 @@
     }
     function scrollToVideo() {
       document.getElementById('video').scrollIntoView({ behavior: 'smooth' });
+function scrollToTools() {
+  document.getElementById('tools').scrollIntoView({ behavior: 'smooth' });
+}
+function scrollToResources() {
+  document.getElementById('resources').scrollIntoView({ behavior: 'smooth' });
+}
     }
 
     let showAllWorks = false;
