@@ -708,9 +708,9 @@
       display: block;
     }
     .resource-links {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 16px;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px;
+    align-items: start;
     }
     .resource-link-card {
       display: flex;
@@ -1204,20 +1204,22 @@
       .video-modal #bilibiliPlayer { width: 95% !important; }
       /* 移动端工具卡片 */
       .tools-grid-mobile { display: flex !important; overflow-x: auto; padding-bottom: 10px; gap: 12px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
-      .tools-grid-mobile .tool-card { flex: 0 0 130px; min-width: 130px; padding: 16px 10px; scroll-snap-align: start; }
-      .tools-grid-mobile .tool-card .tool-years { font-size: 22px; }
-      .tools-grid-mobile .tool-card .tool-name { font-size: 12px; }
-      .tools-grid-mobile .tool-card .tool-tagline { font-size: 10px; }
+      .tools-grid-mobile .tool-card { flex: 0 0 110px; min-width: 110px; padding: 14px 8px; scroll-snap-align: start; }
+      .tools-grid-mobile .tool-card .tool-years { font-size: 20px; }
+      .tools-grid-mobile .tool-card .tool-name { font-size: 11px; }
+      .tools-grid-mobile .tool-card .tool-tagline { font-size: 9px; }
       /* 移动端百宝箱 */
       .resource-tabs { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 6px; -webkit-overflow-scrolling: touch; }
       .resource-tab-btn { flex-shrink: 0; padding: 8px 16px; font-size: 12px; }
       .resource-links { grid-template-columns: repeat(2, 1fr) !important; gap: 10px; }
-      .resource-link-card { padding: 12px 14px; }
-      .resource-favicon-wrap { width: 32px; height: 32px; }
-      .resource-favicon-wrap img { width: 20px; height: 20px; }
-      .resource-link-name { font-size: 13px; }
-      .resource-link-desc { font-size: 11px; }
-      .resource-link-tag { font-size: 9px; }
+      .resource-link-card {
+    padding: 10px 12px;
+    height: fit-content; }
+      .resource-favicon-wrap { width: 28px; height: 28px; }
+      .resource-favicon-wrap img { width: 18px; height: 18px; }
+      .resource-link-name { font-size: 12px; }
+      .resource-link-desc { font-size: 10px; }
+      .resource-link-tag { font-size: 8px; }
     }
     @media(min-width:769px) {
       .grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important; }
