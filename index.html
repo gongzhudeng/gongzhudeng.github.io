@@ -224,34 +224,16 @@
       animation: glow3 3.5s ease-in-out infinite alternate;
     }
     @keyframes glow1 {
-      0% {
-        transform: scale(1);
-        opacity: 0.7;
-      }
-      100% {
-        transform: scale(1.15);
-        opacity: 0.9;
-      }
+      0% { transform: scale(1); opacity: 0.7; }
+      100% { transform: scale(1.15); opacity: 0.9; }
     }
     @keyframes glow2 {
-      0% {
-        transform: scale(1);
-        opacity: 0.5;
-      }
-      100% {
-        transform: scale(1.2);
-        opacity: 0.7;
-      }
+      0% { transform: scale(1); opacity: 0.5; }
+      100% { transform: scale(1.2); opacity: 0.7; }
     }
     @keyframes glow3 {
-      0% {
-        transform: scale(1);
-        opacity: 0.4;
-      }
-      100% {
-        transform: scale(1.25);
-        opacity: 0.6;
-      }
+      0% { transform: scale(1); opacity: 0.4; }
+      100% { transform: scale(1.25); opacity: 0.6; }
     }
     .hero-image img {
       width: 100%;
@@ -312,12 +294,8 @@
       box-shadow: 0 0 15px rgba(255, 77, 79, 0.3);
     }
     @keyframes danmakuMove {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(calc(-100% - 100vw));
-      }
+      0% { transform: translateX(0); }
+      100% { transform: translateX(calc(-100% - 100vw)); }
     }
 
     .section {
@@ -486,14 +464,8 @@
       line-height: 1;
     }
     @keyframes badgeUp {
-      0% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-      100% {
-        opacity: 0;
-        transform: translateY(-22px) scale(1.6);
-      }
+      0% { opacity: 1; transform: translateY(0) scale(1); }
+      100% { opacity: 0; transform: translateY(-22px) scale(1.6); }
     }
 
     .video-grid {
@@ -588,26 +560,11 @@
       justify-content: center;
       font-size: 24px;
     }
-    .skill-icon.orange {
-      background: rgba(255, 153, 0, 0.1);
-      color: #ff9900;
-    }
-    .skill-icon.green {
-      background: rgba(0, 200, 100, 0.1);
-      color: #00c864;
-    }
-    .skill-icon.blue {
-      background: rgba(0, 120, 255, 0.1);
-      color: #0078ff;
-    }
-    .skill-icon.purple {
-      background: rgba(150, 0, 255, 0.1);
-      color: #9600ff;
-    }
-    .skill-icon.red {
-      background: rgba(255, 77, 79, 0.1);
-      color: #ff4d4f;
-    }
+    .skill-icon.orange { background: rgba(255, 153, 0, 0.1); color: #ff9900; }
+    .skill-icon.green { background: rgba(0, 200, 100, 0.1); color: #00c864; }
+    .skill-icon.blue { background: rgba(0, 120, 255, 0.1); color: #0078ff; }
+    .skill-icon.purple { background: rgba(150, 0, 255, 0.1); color: #9600ff; }
+    .skill-icon.red { background: rgba(255, 77, 79, 0.1); color: #ff4d4f; }
     .skill-title {
       font-weight: 600;
       font-size: 16px;
@@ -617,6 +574,228 @@
     .skill-desc {
       font-size: 13px;
       color: #999;
+    }
+
+    /* 工具卡片 */
+    .tool-card {
+      background: #1a1a24;
+      border-radius: 16px;
+      padding: 24px 20px;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    .tool-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    }
+    .tool-card .tool-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      margin: 0 auto 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+    .tool-card .tool-icon img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+    }
+    .tool-card .tool-icon.ps { background: rgba(0, 120, 255, 0.12); }
+    .tool-card .tool-icon.c4d { background: rgba(255, 153, 0, 0.12); }
+    .tool-card .tool-icon.ae { background: rgba(150, 0, 255, 0.12); }
+    .tool-card .tool-icon.pr { background: rgba(200, 100, 255, 0.12); }
+    .tool-card .tool-icon.ai-tool { background: rgba(0, 200, 180, 0.12); }
+    .tool-card .tool-name {
+      font-weight: 700;
+      font-size: 15px;
+      color: #fff;
+      margin-bottom: 6px;
+      position: relative;
+      z-index: 1;
+    }
+    .tool-card .tool-years {
+      display: inline-block;
+      font-weight: 800;
+      font-size: 28px;
+      color: #ff4d4f;
+      margin-bottom: 6px;
+      position: relative;
+      z-index: 1;
+      line-height: 1;
+    }
+    .tool-card .tool-years sub {
+      font-size: 13px;
+      font-weight: 500;
+      color: #999;
+      bottom: 0;
+    }
+    .tool-card .tool-tagline {
+      font-size: 12px;
+      color: #777;
+      position: relative;
+      z-index: 1;
+    }
+    .tool-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      border-radius: 0 0 16px 16px;
+      z-index: 0;
+    }
+    .tool-card.card-ps::after { background: linear-gradient(90deg, #0078ff, #4da6ff); }
+    .tool-card.card-c4d::after { background: linear-gradient(90deg, #ff9900, #ffb347); }
+    .tool-card.card-ae::after { background: linear-gradient(90deg, #9600ff, #c17dff); }
+    .tool-card.card-pr::after { background: linear-gradient(90deg, #7b2fff, #d49fff); }
+    .tool-card.card-ai::after { background: linear-gradient(90deg, #00c8b4, #00e6cc); }
+
+    /* 百宝箱 */
+    .resource-section {
+      padding: 50px 0 60px;
+    }
+    .resource-section .section-subtitle {
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 28px;
+      margin-top: -16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .resource-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .resource-tab-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: none;
+      color: #aaa;
+      padding: 10px 22px;
+      border-radius: 24px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .resource-tab-btn:hover {
+      background: rgba(255, 77, 79, 0.15);
+      color: #ff7875;
+    }
+    .resource-tab-btn.active {
+      background: rgba(255, 77, 79, 0.2);
+      color: #ff4d4f;
+      font-weight: 600;
+      box-shadow: 0 0 10px rgba(255, 77, 79, 0.2);
+    }
+    .resource-panel {
+      display: none;
+    }
+    .resource-panel.active {
+      display: block;
+    }
+    .resource-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .resource-link-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: #1a1a24;
+      border-radius: 14px;
+      padding: 18px 20px;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    .resource-link-card:hover {
+      background: #222230;
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+      border-color: rgba(255, 77, 79, 0.2);
+    }
+    .resource-favicon-wrap {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin-top: 2px;
+    }
+    .resource-favicon-wrap img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+      position: relative;
+      z-index: 1;
+    }
+    .resource-favicon-wrap .favicon-fallback {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+      color: #aaa;
+      z-index: 0;
+      text-transform: uppercase;
+    }
+    .resource-link-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .resource-link-name {
+      font-size: 14px;
+      color: #fff;
+      font-weight: 600;
+      margin-bottom: 4px;
+      transition: color 0.2s;
+    }
+    .resource-link-card:hover .resource-link-name {
+      color: #ff7875;
+    }
+    .resource-link-desc {
+      font-size: 12px;
+      color: #888;
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-bottom: 4px;
+    }
+    .resource-link-tag {
+      display: inline-block;
+      font-size: 10px;
+      color: #666;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 2px 8px;
+      border-radius: 10px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      align-self: center;
     }
 
     footer {
@@ -694,7 +873,6 @@
     }
     .social-link:hover img {
       filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
-
     }
     .footer-bottom {
       text-align: center;
@@ -981,563 +1159,81 @@
     }
 
     @media(max-width:768px) {
-      .desktop-break {
-        display: none;
-.resource-links {
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-}
-.resource-link-card {
-  padding: 12px 14px;
-}
-      }
-      .price-grid {
-        flex-direction: column;
-        align-items: center;
-        gap: 16px;
-      }
-      .price-card {
-        max-width: 300px;
-        width: 100%;
-      }
-      .price-modal-content {
-        padding: 30px 14px 25px;
-      }
-      html,
-      body {
-        overflow-x: hidden !important;
-        width: 100% !important;
-      }
-      .container {
-        width: 92% !important;
-        max-width: 100% !important;
-      }
-      .nav {
-        padding: 14px 0 !important;
-      }
-      .logo {
-        font-size: 16px !important;
-      }
-      .nav-links {
-        gap: 18px !important;
-      }
-      .nav a {
-        font-size: 13px !important;
-      }
-      .hero {
-        padding-top: 80px !important;
-      }
-      .hero-buttons {
-        flex-wrap: wrap !important;
-        justify-content: flex-start !important;
-        gap: 12px !important;
-      }
-      .btn {
-        padding: 8px 16px !important;
-        font-size: 12px !important;
-        white-space: nowrap !important;
-      }
-      .btn-icon {
-        width: 36px !important;
-        height: 36px !important;
-        font-size: 16px !important;
-      }
-      .btn-text {
-        font-size: 13px !important;
-        white-space: nowrap !important;
-      }
-      .works-tabs {
-        flex-wrap: nowrap !important;
-        overflow-x: auto !important;
-        padding-bottom: 8px !important;
-        gap: 8px !important;
-      }
-      .tab-btn {
-        padding: 6px 14px !important;
-        font-size: 12px !important;
-        flex-shrink: 0 !important;
-      }
-      .grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 16px !important;
-      }
-      .video-grid {
-        grid-template-columns:repeat(auto-fill, minmax(60px, 1fr))!important;
-        gap: 16px !important;
-      }
-      .video-side {
-        display: contents !important;
-      }
-      .video-main,
-      .video-small {
-        aspect-ratio: 16/10 !important;
-        width: 100% !important;
-        border-radius: 16px !important;
-      }
-      .video-small:nth-child(2) {
-        display: none !important;
-      }
-      .video-duration-card {
-        display: none !important;
-      }
-      .video-stats-mobile {
-        display: flex !important;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
-        padding: 6px 10px;
-        justify-content: space-between;
-        font-size: 12px;
-        color: #fff;
-        z-index: 3;
-        gap: 12px;
-      }
-      .video-stats-mobile .stat {
-        font-size: 12px;
-      }
-      .video-stats-mobile .like-stat {
-        color: inherit;
-      }
-      .video-stats-mobile .like-stat.liked {
-        color: #ff4d4f;
-        font-weight: 600;
-      }
-      .skills-grid {
-        display: flex !important;
-        overflow-x: auto;
-        padding-bottom: 10px;
-        gap: 16px;
-        grid-template-columns: none !important;
-      }
-      .skill-card {
-        flex: 0 0 calc(20% - 12px);
-        min-width: 120px;
-        padding: 16px 12px;
-      }
-      .skill-icon {
-        width: 36px;
-        height: 36px;
-        font-size: 20px;
-      }
-      .skill-title {
-        font-size: 14px;
-      }
-      .skill-desc {
-        font-size: 12px;
-      }
-      .footer-grid {
-        grid-template-columns: 1fr !important;
-        gap: 30px !important;
-        text-align: center !important;
-      }
-      .footer-col h4 {
-        text-align: center !important;
-      }
-      .contact-item {
-        justify-content: center !important;
-      }
-      .social-links {
-        justify-content: center !important;
-      }
-      .footer-links li {
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        gap: 8px !important;
-      }
-      .footer-links li::before {
-        content: '•' !important;
-        color: #fff !important;
-        font-size: 16px !important;
-      }
-      .hero-image {
-        margin: 0 !important;
-        padding: 0 !important;
-      }
-      .hero-image img {
-        margin: 0 !important;
-        padding: 0 !important;
-      }
-      .hero-content {
-        flex-direction: column;
-        gap: 40px;
-      }
-      .hero-text {
-        flex: none;
-        width: 100%;
-      }
-      .hero-text h1 {
-        font-size: 36px;
-      }
-      .danmaku-layer {
-        top: 42%;
-        height: 58%;
-      }
-      .danmaku-item {
-        font-size: 12px;
-        padding: 5px 12px;
-        border-radius: 16px;
-      }
-      .video-modal #bilibiliPlayer {
-        width: 95% !important;
-      }
+      .desktop-break { display: none; }
+      .price-grid { flex-direction: column; align-items: center; gap: 16px; }
+      .price-card { max-width: 300px; width: 100%; }
+      .price-modal-content { padding: 30px 14px 25px; }
+      html, body { overflow-x: hidden !important; width: 100% !important; }
+      .container { width: 92% !important; max-width: 100% !important; }
+      .nav { padding: 14px 0 !important; }
+      .logo { font-size: 16px !important; }
+      .nav-links { gap: 18px !important; }
+      .nav a { font-size: 13px !important; }
+      .hero { padding-top: 80px !important; }
+      .hero-buttons { flex-wrap: wrap !important; justify-content: flex-start !important; gap: 12px !important; }
+      .btn { padding: 8px 16px !important; font-size: 12px !important; white-space: nowrap !important; }
+      .btn-icon { width: 36px !important; height: 36px !important; font-size: 16px !important; }
+      .btn-text { font-size: 13px !important; white-space: nowrap !important; }
+      .works-tabs { flex-wrap: nowrap !important; overflow-x: auto !important; padding-bottom: 8px !important; gap: 8px !important; }
+      .tab-btn { padding: 6px 14px !important; font-size: 12px !important; flex-shrink: 0 !important; }
+      .grid { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; }
+      .video-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; }
+      .video-side { display: contents !important; }
+      .video-main, .video-small { aspect-ratio: 16/10 !important; width: 100% !important; border-radius: 16px !important; }
+      .video-small:nth-child(2) { display: none !important; }
+      .video-duration-card { display: none !important; }
+      .video-stats-mobile { display: flex !important; position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.7)); padding: 6px 10px; justify-content: space-between; font-size: 12px; color: #fff; z-index: 3; gap: 12px; }
+      .skills-grid { display: flex !important; overflow-x: auto; padding-bottom: 10px; gap: 16px; grid-template-columns: none !important; }
+      .skill-card { flex: 0 0 calc(20% - 12px); min-width: 120px; padding: 16px 12px; }
+      .skill-icon { width: 36px; height: 36px; font-size: 20px; }
+      .skill-title { font-size: 14px; }
+      .skill-desc { font-size: 12px; }
+      .footer-grid { grid-template-columns: 1fr !important; gap: 30px !important; text-align: center !important; }
+      .footer-col h4 { text-align: center !important; }
+      .contact-item { justify-content: center !important; }
+      .social-links { justify-content: center !important; }
+      .footer-links li { display: flex !important; justify-content: center !important; align-items: center !important; gap: 8px !important; }
+      .footer-links li::before { content: '•' !important; color: #fff !important; font-size: 16px !important; }
+      .hero-image { margin: 0 !important; padding: 0 !important; }
+      .hero-image img { margin: 0 !important; padding: 0 !important; }
+      .hero-content { flex-direction: column; gap: 40px; }
+      .hero-text { flex: none; width: 100%; }
+      .hero-text h1 { font-size: 36px; }
+      .danmaku-layer { top: 42%; height: 58%; }
+      .danmaku-item { font-size: 12px; padding: 5px 12px; border-radius: 16px; }
+      .video-modal #bilibiliPlayer { width: 95% !important; }
+      /* 移动端工具卡片 */
+      .tools-grid-mobile { display: flex !important; overflow-x: auto; padding-bottom: 10px; gap: 12px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+      .tools-grid-mobile .tool-card { flex: 0 0 130px; min-width: 130px; padding: 16px 10px; scroll-snap-align: start; }
+      .tools-grid-mobile .tool-card .tool-years { font-size: 22px; }
+      .tools-grid-mobile .tool-card .tool-name { font-size: 12px; }
+      .tools-grid-mobile .tool-card .tool-tagline { font-size: 10px; }
+      /* 移动端百宝箱 */
+      .resource-tabs { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 6px; -webkit-overflow-scrolling: touch; }
+      .resource-tab-btn { flex-shrink: 0; padding: 8px 16px; font-size: 12px; }
+      .resource-links { grid-template-columns: repeat(2, 1fr) !important; gap: 10px; }
+      .resource-link-card { padding: 12px 14px; }
+      .resource-favicon-wrap { width: 32px; height: 32px; }
+      .resource-favicon-wrap img { width: 20px; height: 20px; }
+      .resource-link-name { font-size: 13px; }
+      .resource-link-desc { font-size: 11px; }
+      .resource-link-tag { font-size: 9px; }
     }
     @media(min-width:769px) {
-      .grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
-      }
-      .skills-grid {
-        grid-template-columns: repeat(5, 1fr) !important;
-      }
-      .video-grid {
-        grid-template-columns: 2fr 1fr !important;
-        align-items: stretch;
-      }
-      .video-main {
-        height: auto;
-      }
-      .video-side {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 24px !important;
-        height: 100%;
-      }
-      .video-small {
-        flex: 1 1 0;
-        min-height: 0;
-        border-radius: 12px !important;
-        display: block !important;
-        overflow: hidden;
-        position: relative;
-        cursor: pointer;
-      }
-      .video-small img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-      .footer-grid {
-        grid-template-columns: 2fr 1fr 1fr 1fr !important;
-        text-align: left !important;
-      }
-      .footer-col h4 {
-        text-align: left !important;
-      }
-      .contact-item {
-        justify-content: flex-start !important;
-      }
-      .social-links {
-        justify-content: flex-start !important;
-      }
-      .footer-links li {
-        display: block !important;
-      }
-      .footer-links li::before {
-        content: none !important;
-      }
-      .hero-image {
-        margin-right: 0px !important;
-        margin-top: 0px !important;
-        margin-bottom: 0px !important;
-        margin-left: 0 !important;
-      }
-      .hero {
-        padding-top: 60px !important;
-      }
+      .grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important; }
+      .skills-grid { grid-template-columns: repeat(5, 1fr) !important; }
+      .video-grid { grid-template-columns: 2fr 1fr !important; align-items: stretch; }
+      .video-main { height: auto; }
+      .video-side { display: flex !important; flex-direction: column !important; gap: 24px !important; height: 100%; }
+      .video-small { flex: 1 1 0; min-height: 0; border-radius: 12px !important; display: block !important; overflow: hidden; position: relative; cursor: pointer; }
+      .video-small img { width: 100%; height: 100%; object-fit: cover; }
+      .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr !important; text-align: left !important; }
+      .footer-col h4 { text-align: left !important; }
+      .contact-item { justify-content: flex-start !important; }
+      .social-links { justify-content: flex-start !important; }
+      .hero-image { margin-right: 0px !important; margin-top: 0px !important; margin-bottom: 0px !important; margin-left: 0 !important; }
+      .hero { padding-top: 60px !important; }
     }
-/* ===== 工具经验卡片 ===== */
-.tool-card {
-  background: #1a1a24;
-  border-radius: 16px;
-  padding: 24px 20px;
-  text-align: center;
-  transition: transform 0.2s, box-shadow 0.2s;
-  position: relative;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.04);
-}
-.tool-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
-}
-.tool-card .tool-icon {
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
-  margin: 0 auto 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  z-index: 1;
-}
-.tool-card .tool-icon img {
-  width: 32px;
-  height: 32px;
-  object-fit: contain;
-  filter: brightness(0) invert(1);
-}
-.tool-card .tool-icon.ps { background: rgba(0, 120, 255, 0.12); }
-.tool-card .tool-icon.c4d { background: rgba(255, 153, 0, 0.12); }
-.tool-card .tool-icon.ae { background: rgba(150, 0, 255, 0.12); }
-.tool-card .tool-icon.pr { background: rgba(200, 100, 255, 0.12); }
-.tool-card .tool-icon.ai-tool { background: rgba(0, 200, 180, 0.12); }
-.tool-card .tool-name {
-  font-weight: 700;
-  font-size: 15px;
-  color: #fff;
-  margin-bottom: 6px;
-  position: relative;
-  z-index: 1;
-}
-.tool-card .tool-years {
-  display: inline-block;
-  font-weight: 800;
-  font-size: 28px;
-  color: #ff4d4f;
-  margin-bottom: 6px;
-  position: relative;
-  z-index: 1;
-  line-height: 1;
-}
-.tool-card .tool-years sub {
-  font-size: 13px;
-  font-weight: 500;
-  color: #999;
-  bottom: 0;
-}
-.tool-card .tool-tagline {
-  font-size: 12px;
-  color: #777;
-  position: relative;
-  z-index: 1;
-}
-.tool-card::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  border-radius: 0 0 16px 16px;
-  z-index: 0;
-}
-.tool-card.card-ps::after { background: linear-gradient(90deg, #0078ff, #4da6ff); }
-.tool-card.card-c4d::after { background: linear-gradient(90deg, #ff9900, #ffb347); }
-.tool-card.card-ae::after { background: linear-gradient(90deg, #9600ff, #c17dff); }
-.tool-card.card-pr::after { background: linear-gradient(90deg, #7b2fff, #d49fff); }
-.tool-card.card-ai::after { background: linear-gradient(90deg, #00c8b4, #00e6cc); }
-
-/* ===== 设计百宝箱 ===== */
-.resource-section {
-  padding: 50px 0 60px;
-}
-.resource-section .section-subtitle {
-  font-size: 14px;
-  color: #888;
-  margin-bottom: 28px;
-  margin-top: -16px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-.resource-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 28px;
-}
-.resource-tab-btn {
-  background: rgba(255, 255, 255, 0.05);
-  border: none;
-  color: #aaa;
-  padding: 10px 22px;
-  border-radius: 24px;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s;
-  white-space: nowrap;
-}
-.resource-tab-btn:hover {
-  background: rgba(255, 77, 79, 0.15);
-  color: #ff7875;
-}
-.resource-tab-btn.active {
-  background: rgba(255, 77, 79, 0.2);
-  color: #ff4d4f;
-  font-weight: 600;
-  box-shadow: 0 0 10px rgba(255, 77, 79, 0.2);
-}
-.resource-panel {
-  display: none;
-}
-.resource-panel.active {
-  display: block;
-}
-.resource-links {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 16px;
-}
-.resource-link-card {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  background: #1a1a24;
-  border-radius: 14px;
-  padding: 18px 20px;
-  text-decoration: none;
-  transition: all 0.2s;
-  cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.04);
-}
-.resource-link-card:hover {
-  background: #222230;
-  transform: translateY(-4px);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
-  border-color: rgba(255, 77, 79, 0.2);
-}
-.resource-favicon-wrap {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  overflow: hidden;
-  flex-shrink: 0;
-  background: rgba(255, 255, 255, 0.06);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  margin-top: 2px;
-}
-.resource-favicon-wrap img {
-  width: 24px;
-  height: 24px;
-  object-fit: contain;
-  position: relative;
-  z-index: 1;
-}
-.resource-favicon-wrap .favicon-fallback {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 14px;
-  color: #aaa;
-  z-index: 0;
-  text-transform: uppercase;
-}
-.resource-link-info {
-  flex: 1;
-  min-width: 0;
-}
-.resource-link-name {
-  font-size: 14px;
-  color: #fff;
-  font-weight: 600;
-  margin-bottom: 4px;
-  transition: color 0.2s;
-}
-.resource-link-card:hover .resource-link-name {
-  color: #ff7875;
-}
-.resource-link-desc {
-  font-size: 12px;
-  color: #888;
-  line-height: 1.4;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  margin-bottom: 4px;
-}
-.resource-link-tag {
-  display: inline-block;
-  font-size: 10px;
-  color: #666;
-  background: rgba(255, 255, 255, 0.04);
-  padding: 2px 8px;
-  border-radius: 10px;
-  white-space: nowrap;
-  flex-shrink: 0;
-  align-self: center;
-}
-
-/* ===== 移动端适配 ===== */
-@media(max-width:768px) {
-.tools-grid-mobile {
-    display: flex !important;
-    overflow-x: auto;
-    padding-bottom: 10px;
-    gap: 12px;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-}
-.tools-grid-mobile .tool-card {
-    flex: 0 0 130px;
-    min-width: 130px;
-    padding: 16px 10px;
-    scroll-snap-align: start;
-}
-.tools-grid-mobile .tool-card .tool-years {
-    font-size: 22px;
-}
-.tools-grid-mobile .tool-card .tool-name {
-    font-size: 12px;
-}
-.tools-grid-mobile .tool-card .tool-tagline {
-    font-size: 10px;
-}
-.resource-links {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-}
-.resource-link-card {
-    padding: 12px 14px;
-}
-  .resource-tabs {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding-bottom: 6px;
-    -webkit-overflow-scrolling: touch;
-  }
-  .resource-tab-btn {
-    flex-shrink: 0;
-    padding: 8px 16px;
-    font-size: 12px;
-  }
-  .resource-links {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-  .resource-link-card {
-    padding: 14px 16px;
-    gap: 12px;
-  }
-  .resource-favicon-wrap {
-    width: 32px;
-    height: 32px;
-  }
-  .resource-favicon-wrap img {
-    width: 20px;
-    height: 20px;
-  }
-  .resource-link-name {
-    font-size: 13px;
-  }
-  .resource-link-desc {
-    font-size: 11px;
-  }
-  .resource-link-tag {
-    font-size: 9px;
-  }
-}
   </style>
 </head>
 <body>
@@ -1549,7 +1245,7 @@
         <a href="#works" onclick="setActiveNav(this); filterWorks('all'); scrollToWorks(); return false;">作品</a>
         <a href="#video" onclick="setActiveNav(this); scrollToVideo(); return false;">视频</a>
         <a href="#tools" onclick="setActiveNav(this); scrollToTools(); return false;">工具</a>
-<a href="#resources" onclick="setActiveNav(this); scrollToResources(); return false;">导航</a>
+        <a href="#resources" onclick="setActiveNav(this); scrollToResources(); return false;">导航</a>
         <a href="#" onclick="setActiveNav(this); openWxModal(); return false;">联系我</a>
       </div>
     </div>
@@ -1662,49 +1358,49 @@
     </div>
   </section>
 
-<section id="tools" class="section">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">工具经验</h2>
+  <section id="tools" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">工具经验</h2>
+      </div>
+      <p style="color:#888;font-size:14px;margin-bottom:28px;margin-top:-16px;">
+        7年设计生涯，深耕以下工具<span class="badge-exp" style="display:inline-block;background:rgba(255,77,79,0.15);color:#ff7875;font-weight:600;padding:3px 12px;border-radius:20px;font-size:12px;margin-left:8px;">累计经验 22+ 年</span>
+      </p>
+      <div class="skills-grid tools-grid-desktop" id="toolsGrid">
+        <div class="tool-card card-ps">
+          <div class="tool-icon ps"><img src="icons/ps.svg" alt="Photoshop" onerror="this.style.display='none';this.parentNode.innerHTML='🖼️'"></div>
+          <div class="tool-name">Photoshop</div>
+          <div class="tool-years">7<sub>年</sub></div>
+          <div class="tool-tagline">图像合成·精修·排版</div>
+        </div>
+        <div class="tool-card card-c4d">
+          <div class="tool-icon c4d"><img src="icons/c4d.svg" alt="Cinema 4D" onerror="this.style.display='none';this.parentNode.innerHTML='🧊'"></div>
+          <div class="tool-name">Cinema 4D</div>
+          <div class="tool-years">5<sub>年</sub></div>
+          <div class="tool-tagline">产品建模·渲染·动画</div>
+        </div>
+        <div class="tool-card card-ae">
+          <div class="tool-icon ae"><img src="icons/ae.svg" alt="After Effects" onerror="this.style.display='none';this.parentNode.innerHTML='✨'"></div>
+          <div class="tool-name">After Effects</div>
+          <div class="tool-years">4<sub>年</sub></div>
+          <div class="tool-tagline">动效设计·视觉特效</div>
+        </div>
+        <div class="tool-card card-pr">
+          <div class="tool-icon pr"><img src="icons/pr.svg" alt="Premiere Pro" onerror="this.style.display='none';this.parentNode.innerHTML='🎬'"></div>
+          <div class="tool-name">Premiere Pro</div>
+          <div class="tool-years">4<sub>年</sub></div>
+          <div class="tool-tagline">视频剪辑·调色·输出</div>
+        </div>
+        <div class="tool-card card-ai">
+          <div class="tool-icon ai-tool"><img src="icons/ai.svg" alt="AI工具" onerror="this.style.display='none';this.parentNode.innerHTML='🤖'"></div>
+          <div class="tool-name">综合AI工具</div>
+          <div class="tool-years">2<sub>年</sub></div>
+          <div class="tool-tagline">Midjourney·SD·工作流</div>
+        </div>
+      </div>
     </div>
-    <p style="color:#888;font-size:14px;margin-bottom:28px;margin-top:-16px;">
-      7年设计生涯，深耕以下工具<span class="badge-exp" style="display:inline-block;background:rgba(255,77,79,0.15);color:#ff7875;font-weight:600;padding:3px 12px;border-radius:20px;font-size:12px;margin-left:8px;">累计经验 22+ 年</span>
-    </p>
-    <div class="skills-grid tools-grid-desktop" id="toolsGrid">
-      <div class="tool-card card-ps">
-        <div class="tool-icon ps"><img src="icons/ps.svg" alt="Photoshop" onerror="this.style.display='none';this.parentNode.innerHTML='🖼️'"></div>
-        <div class="tool-name">Photoshop</div>
-        <div class="tool-years">7<sub>年</sub></div>
-        <div class="tool-tagline">图像合成·精修·排版</div>
-      </div>
-      <div class="tool-card card-c4d">
-        <div class="tool-icon c4d"><img src="icons/c4d.svg" alt="Cinema 4D" onerror="this.style.display='none';this.parentNode.innerHTML='🧊'"></div>
-        <div class="tool-name">Cinema 4D</div>
-        <div class="tool-years">5<sub>年</sub></div>
-        <div class="tool-tagline">产品建模·渲染·动画</div>
-      </div>
-      <div class="tool-card card-ae">
-        <div class="tool-icon ae"><img src="icons/ae.svg" alt="After Effects" onerror="this.style.display='none';this.parentNode.innerHTML='✨'"></div>
-        <div class="tool-name">After Effects</div>
-        <div class="tool-years">4<sub>年</sub></div>
-        <div class="tool-tagline">动效设计·视觉特效</div>
-      </div>
-      <div class="tool-card card-pr">
-        <div class="tool-icon pr"><img src="icons/pr.svg" alt="Premiere Pro" onerror="this.style.display='none';this.parentNode.innerHTML='🎬'"></div>
-        <div class="tool-name">Premiere Pro</div>
-        <div class="tool-years">4<sub>年</sub></div>
-        <div class="tool-tagline">视频剪辑·调色·输出</div>
-      </div>
-      <div class="tool-card card-ai">
-        <div class="tool-icon ai-tool"><img src="icons/ai.svg" alt="AI工具" onerror="this.style.display='none';this.parentNode.innerHTML='🤖'"></div>
-        <div class="tool-name">综合AI工具</div>
-        <div class="tool-years">2<sub>年</sub></div>
-        <div class="tool-tagline">Midjourney·SD·工作流</div>
-      </div>
-    </div>
-  </div>
-</section>
-  <!-- ========== 设计百宝箱 ========== -->
+  </section>
+
   <section id="resources" class="resource-section">
     <div class="container">
       <div class="section-header">
@@ -1719,13 +1415,13 @@
       </div>
     </div>
   </section>
+
   <footer id="contact" class="contact-section">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-col"><h4>关于我</h4><p>7年电商视觉设计经验，擅长将创意与商业结合，为品牌打造有价值的视觉内容。</p></div>
         <div class="footer-col"><h4>联系我</h4><div class="contact-item">📧 1711325061@qq.com</div><div class="contact-item">📍 广东省深圳市</div></div>
-        <div class="footer-col"><h4>快速导航</h4><ul class="footer-links"><li><a href="#home">首页</a></li><li><a href="#works">作品</a></li><li><a href="#video">视频</a></li><li><a href="#tools">工具</a></li>
-<li><a href="#resources">导航</a></li></ul></div>
+        <div class="footer-col"><h4>快速导航</h4><ul class="footer-links"><li><a href="#home">首页</a></li><li><a href="#works">作品</a></li><li><a href="#video">视频</a></li><li><a href="#tools">工具</a></li><li><a href="#resources">导航</a></li></ul></div>
         <div class="footer-col"><h4>关注我</h4><div class="social-links"><a href="https://www.zcool.com.cn/u/23450553" class="social-link" target="_blank"><img src="icons/zcool.svg" alt="站酷"></a><a href="#" class="social-link" onclick="openWxModal();return false;"><img src="icons/wechat.svg" alt="微信"></a><a href="#" class="social-link" onclick="openDouyinModal();return false;"><img src="icons/douyin.svg" alt="抖音"></a><a href="#" class="social-link" onclick="openXiaohongshuModal();return false;"><img src="icons/xiaohongshu.svg" alt="小红书"></a></div></div>
       </div>
       <div class="footer-bottom">© 2026 龚著登 DESIGN | 电商视觉设计全案服务</div>
@@ -1767,7 +1463,6 @@
   </div>
 
   <script>
-    // ========== 资源导航数据与切换逻辑 ==========
     const resourceData = [
       { category: '灵感采集', emoji: '💡', desc: '国内外设计灵感平台，拓展审美边界', sites: [
         { name: '站酷', url: 'https://www.zcool.com.cn', tag: '国内', desc: '本土设计师作品交流平台' },
@@ -1864,7 +1559,6 @@
       const tabsContainer = document.getElementById('resourceTabs');
       const panelsContainer = document.getElementById('resourcePanels');
       if (!tabsContainer || !panelsContainer) return;
-
       resourceData.forEach((cat, index) => {
         const btn = document.createElement('button');
         btn.className = 'resource-tab-btn';
@@ -1872,13 +1566,11 @@
         btn.dataset.index = index;
         btn.addEventListener('click', () => switchResourceTab(index));
         tabsContainer.appendChild(btn);
-
         const panel = document.createElement('div');
         panel.className = 'resource-panel';
         panel.innerHTML = `<div class="resource-links">${buildResourcePanel(cat)}</div>`;
         panelsContainer.appendChild(panel);
       });
-
       switchResourceTab(0);
     }
 
@@ -1889,7 +1581,6 @@
       panels.forEach((panel, i) => panel.classList.toggle('active', i === index));
     }
 
-    // 工具卡片响应式类名切换
     function handleToolsGridResponsive() {
       const grid = document.getElementById('toolsGrid');
       if (!grid) return;
@@ -1903,34 +1594,18 @@
     }
     window.addEventListener('resize', handleToolsGridResponsive);
 
-    // 页面初始化
-    initResourceTabs();
-    handleToolsGridResponsive();
+    // 导航功能
     function setActiveNav(el) {
       document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
       el.classList.add('active');
     }
-    function scrollToHome() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToService() {
-      document.getElementById('service').scrollIntoView({ behavior: 'smooth' });
-    }
-    function scrollToAboutMe() {
-      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-    }
-    function scrollToWorks() {
-      document.getElementById('works').scrollIntoView({ behavior: 'smooth' });
-    }
-    function scrollToVideo() {
-      document.getElementById('video').scrollIntoView({ behavior: 'smooth' });
-function scrollToTools() {
-  document.getElementById('tools').scrollIntoView({ behavior: 'smooth' });
-}
-function scrollToResources() {
-  document.getElementById('resources').scrollIntoView({ behavior: 'smooth' });
-}
-    }
+    function scrollToHome() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    function scrollToService() { document.getElementById('service').scrollIntoView({ behavior: 'smooth' }); }
+    function scrollToAboutMe() { document.getElementById('contact').scrollIntoView({ behavior: 'smooth' }); }
+    function scrollToWorks() { document.getElementById('works').scrollIntoView({ behavior: 'smooth' }); }
+    function scrollToVideo() { document.getElementById('video').scrollIntoView({ behavior: 'smooth' }); }
+    function scrollToTools() { document.getElementById('tools').scrollIntoView({ behavior: 'smooth' }); }
+    function scrollToResources() { document.getElementById('resources').scrollIntoView({ behavior: 'smooth' }); }
 
     let showAllWorks = false;
     let currentCategory = 'all';
@@ -1940,28 +1615,16 @@ function scrollToResources() {
       showAllWorks = false;
       const items = document.querySelectorAll('.work-item');
       const tabs = document.querySelectorAll('#worksTabs .tab-btn');
-
-      // 移除所有tab的active类
       tabs.forEach(t => t.classList.remove('active'));
-
-      // 给对应category的tab添加active类
       const activeTab = document.querySelector(`#worksTabs .tab-btn[data-category="${category}"]`);
-      if (activeTab) {
-        activeTab.classList.add('active');
-      }
-
+      if (activeTab) activeTab.classList.add('active');
       items.forEach(i => i.style.display = 'none');
       document.getElementById('showAllBtn').style.display = 'inline-flex';
       document.getElementById('showLessBtn').style.display = 'none';
-
       if (category === 'all') {
-        document.querySelectorAll('.work-item').forEach((item, index) => {
-          if (index < 4) item.style.display = 'block';
-        });
+        document.querySelectorAll('.work-item').forEach((item, index) => { if (index < 4) item.style.display = 'block'; });
       } else {
-        document.querySelectorAll(`.work-item[data-category="${category}"]`).forEach((item, index) => {
-          if (index < 4) item.style.display = 'block';
-        });
+        document.querySelectorAll(`.work-item[data-category="${category}"]`).forEach((item, index) => { if (index < 4) item.style.display = 'block'; });
       }
     }
 
@@ -1975,8 +1638,7 @@ function scrollToResources() {
         if (currentCategory === 'all') {
           document.querySelectorAll('.work-item').forEach(item => item.style.display = 'block');
         } else {
-          document.querySelectorAll(`.work-item[data-category="${currentCategory}"]`).forEach(item => item
-            .style.display = 'block');
+          document.querySelectorAll(`.work-item[data-category="${currentCategory}"]`).forEach(item => item.style.display = 'block');
         }
       } else {
         showAllBtn.style.display = 'inline-flex';
@@ -2017,18 +1679,10 @@ function scrollToResources() {
       img.src = el.querySelector('.card-img').dataset.fullSrc;
       modal.classList.add('active');
     }
-    function closeModal() {
-      document.getElementById('imageModal').classList.remove('active');
-    }
-    function closeDetailModal() {
-      document.getElementById('detailModal').classList.remove('active');
-    }
-    function openWxModal() {
-      document.getElementById('wxModal').classList.add('active');
-    }
-    function closeWxModal() {
-      document.getElementById('wxModal').classList.remove('active');
-    }
+    function closeModal() { document.getElementById('imageModal').classList.remove('active'); }
+    function closeDetailModal() { document.getElementById('detailModal').classList.remove('active'); }
+    function openWxModal() { document.getElementById('wxModal').classList.add('active'); }
+    function closeWxModal() { document.getElementById('wxModal').classList.remove('active'); }
     function copyWxId() {
       navigator.clipboard.writeText('gongshuai8').then(() => {
         const s = document.getElementById('copySuccess');
@@ -2036,12 +1690,8 @@ function scrollToResources() {
         setTimeout(() => s.style.display = 'none', 2000);
       });
     }
-    function openDouyinModal() {
-      document.getElementById('douyinModal').classList.add('active');
-    }
-    function closeDouyinModal() {
-      document.getElementById('douyinModal').classList.remove('active');
-    }
+    function openDouyinModal() { document.getElementById('douyinModal').classList.add('active'); }
+    function closeDouyinModal() { document.getElementById('douyinModal').classList.remove('active'); }
     function copyDouyinId() {
       navigator.clipboard.writeText('1711325061').then(() => {
         const s = document.getElementById('copyDouyinSuccess');
@@ -2049,12 +1699,8 @@ function scrollToResources() {
         setTimeout(() => s.style.display = 'none', 2000);
       });
     }
-    function openXiaohongshuModal() {
-      document.getElementById('xiaohongshuModal').classList.add('active');
-    }
-    function closeXiaohongshuModal() {
-      document.getElementById('xiaohongshuModal').classList.remove('active');
-    }
+    function openXiaohongshuModal() { document.getElementById('xiaohongshuModal').classList.add('active'); }
+    function closeXiaohongshuModal() { document.getElementById('xiaohongshuModal').classList.remove('active'); }
     function copyXiaohongshuId() {
       navigator.clipboard.writeText('xiaohongshu123').then(() => {
         const s = document.getElementById('copyXiaohongshuSuccess');
@@ -2075,8 +1721,7 @@ function scrollToResources() {
     function openVideoModal(videoKey) {
       const modal = document.getElementById('videoModal');
       const player = document.getElementById('bilibiliPlayer');
-      player.innerHTML =
-        `<iframe src="${videoBilibiliLinks[videoKey]}" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>`;
+      player.innerHTML = `<iframe src="${videoBilibiliLinks[videoKey]}" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>`;
       modal.classList.add('active');
     }
     function closeVideoModal() {
@@ -2092,22 +1737,12 @@ function scrollToResources() {
       });
     });
 
-    function openPriceModal() {
-      document.getElementById('priceModal').classList.add('active');
-    }
-    function closePriceModal() {
-      document.getElementById('priceModal').classList.remove('active');
-    }
-    document.getElementById('priceModal').addEventListener('click', function(e) {
-      if (e.target === this) closePriceModal();
-    });
+    function openPriceModal() { document.getElementById('priceModal').classList.add('active'); }
+    function closePriceModal() { document.getElementById('priceModal').classList.remove('active'); }
+    document.getElementById('priceModal').addEventListener('click', function(e) { if (e.target === this) closePriceModal(); });
 
-    function openMessageModal() {
-      document.getElementById('messageModal').classList.add('active');
-    }
-    function closeMessageModal() {
-      document.getElementById('messageModal').classList.remove('active');
-    }
+    function openMessageModal() { document.getElementById('messageModal').classList.add('active'); }
+    function closeMessageModal() { document.getElementById('messageModal').classList.remove('active'); }
     function sendMessage() {
       const input = document.getElementById('messageInput');
       const text = input.value.trim();
@@ -2116,17 +1751,11 @@ function scrollToResources() {
       input.value = '';
       closeMessageModal();
     }
-    document.getElementById('messageInput').addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') sendMessage();
-    });
+    document.getElementById('messageInput').addEventListener('keydown', function(e) { if (e.key === 'Enter') sendMessage(); });
 
     const LIKES_KEY = 'gzd_likes';
-    function getLiked() {
-      try { return new Set(JSON.parse(localStorage.getItem(LIKES_KEY))); } catch (e) { return new Set(); }
-    }
-    function saveLiked(s) {
-      try { localStorage.setItem(LIKES_KEY, JSON.stringify([...s])); } catch (e) {}
-    }
+    function getLiked() { try { return new Set(JSON.parse(localStorage.getItem(LIKES_KEY))); } catch (e) { return new Set(); } }
+    function saveLiked(s) { try { localStorage.setItem(LIKES_KEY, JSON.stringify([...s])); } catch (e) {} }
     function getCardId(el) {
       const card = el.closest('.card') || el.closest('.video-main') || el.closest('.video-small');
       if (!card) return null;
@@ -2162,27 +1791,20 @@ function scrollToResources() {
     }
     function initLikes() {
       const liked = getLiked();
-      document.querySelectorAll('#worksGrid .like-stat, #allVideos .like-stat, .video-main .like-stat, .video-small .like-stat')
-        .forEach(el => {
-          const cardId = getCardId(el);
-          if (!cardId) return;
-          if (liked.has(cardId)) el.classList.add('liked');
-          else el.classList.remove('liked');
-          el.removeEventListener('click', handleLikeClick);
-          el.addEventListener('click', handleLikeClick);
-        });
+      document.querySelectorAll('#worksGrid .like-stat, #allVideos .like-stat, .video-main .like-stat, .video-small .like-stat').forEach(el => {
+        const cardId = getCardId(el);
+        if (!cardId) return;
+        if (liked.has(cardId)) el.classList.add('liked');
+        else el.classList.remove('liked');
+        el.removeEventListener('click', handleLikeClick);
+        el.addEventListener('click', handleLikeClick);
+      });
     }
 
     (function() {
       const danmakuLayer = document.getElementById('danmakuLayer');
       if (!danmakuLayer) return;
-      const danmakuTexts = ['设计太棒了！', '细节处理完美', '视觉冲击力强', '创意满分', '专业！', '配色绝了', '每次合作都很愉快',
-        '效率超高', '作品质量一流', '值得信赖的设计师', '审美在线', '超越预期', '细节控', '交付速度飞快', '很懂客户需求', '设计感满满', '效果超好',
-        '太专业了', '无可挑剔', '品质保证', '回头客+1', '强烈推荐', '设计大神', '出图速度快', '改稿耐心', '服务态度好', '物超所值', '视觉表达精准',
-        '风格独特', '🔥 创意满分', '💯 专业水准', '✨ 设计太赞了', '🎨 配色大师', '👏 做得太好了', '⭐ 品质一流', '🚀 效率惊人', '💎 细节控本控',
-        '🌟 值得信赖', '🎯 精准表达', '🔥 爆款预定', '💯 满分设计', '⭐ 五星好评', '👑 设计王者', '💪 实力派', '💖 超喜欢这个风格', '🏆 行业标杆',
-        '🎉 每次都有惊喜', '👍 靠谱设计师'
-      ];
+      const danmakuTexts = ['设计太棒了！', '细节处理完美', '视觉冲击力强', '创意满分', '专业！', '配色绝了', '每次合作都很愉快','效率超高', '作品质量一流', '值得信赖的设计师', '审美在线', '超越预期', '细节控', '交付速度飞快', '很懂客户需求', '设计感满满', '效果超好','太专业了', '无可挑剔', '品质保证', '回头客+1', '强烈推荐', '设计大神', '出图速度快', '改稿耐心', '服务态度好', '物超所值', '视觉表达精准','风格独特', '🔥 创意满分', '💯 专业水准', '✨ 设计太赞了', '🎨 配色大师', '👏 做得太好了', '⭐ 品质一流', '🚀 效率惊人', '💎 细节控本控','🌟 值得信赖', '🎯 精准表达', '🔥 爆款预定', '💯 满分设计', '⭐ 五星好评', '👑 设计王者', '💪 实力派', '💖 超喜欢这个风格', '🏆 行业标杆','🎉 每次都有惊喜', '👍 靠谱设计师'];
       const accentClasses = ['', '', '', '', '', 'accent-warm', 'accent-warm', 'accent-gold', 'accent-cyan'];
       const desktopTracks = [12, 24, 36, 50, 64, 78];
       const mobileTracks = [8, 22, 38, 55, 72, 88];
@@ -2191,30 +1813,18 @@ function scrollToResources() {
       const MAX_DANMAKU = 18;
       const STORAGE_KEY = 'gzd_danmaku_history';
 
-      function getSavedMessages() {
-        try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch (e) { return []; }
-      }
+      function getSavedMessages() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch (e) { return []; } }
       function saveMessage(text) {
         const messages = getSavedMessages();
         messages.push(text);
         const trimmed = messages.slice(-200);
-        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(trimmed)); } catch (e) {
-          localStorage.setItem(STORAGE_KEY, JSON.stringify(trimmed.slice(-100)));
-        }
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(trimmed)); } catch (e) { localStorage.setItem(STORAGE_KEY, JSON.stringify(trimmed.slice(-100))); }
       }
 
-      function getTracks() {
-        return isMobile ? mobileTracks : desktopTracks;
-      }
-      function getRandomDuration() {
-        return isMobile ? (4 + Math.random() * 4) : (7 + Math.random() * 6);
-      }
-      function getRandomText() {
-        return danmakuTexts[Math.floor(Math.random() * danmakuTexts.length)];
-      }
-      function getRandomAccent() {
-        return accentClasses[Math.floor(Math.random() * accentClasses.length)];
-      }
+      function getTracks() { return isMobile ? mobileTracks : desktopTracks; }
+      function getRandomDuration() { return isMobile ? (4 + Math.random() * 4) : (7 + Math.random() * 6); }
+      function getRandomText() { return danmakuTexts[Math.floor(Math.random() * danmakuTexts.length)]; }
+      function getRandomAccent() { return accentClasses[Math.floor(Math.random() * accentClasses.length)]; }
 
       function createDanmakuItem(text, isUser = false) {
         const tracks = getTracks();
@@ -2222,16 +1832,14 @@ function scrollToResources() {
         const duration = getRandomDuration();
         const el = document.createElement('span');
         el.className = 'danmaku-item';
-        if (isUser) { el.classList.add('user-danmaku'); } else { const accent = getRandomAccent(); if (accent) el.classList.add(
-            accent); }
+        if (isUser) { el.classList.add('user-danmaku'); } else { const accent = getRandomAccent(); if (accent) el.classList.add(accent); }
         el.textContent = text;
         el.style.top = topPercent + '%';
         el.style.animationDuration = duration + 's';
         el.addEventListener('animationend', function() { if (el.parentNode) el.parentNode.removeChild(el); });
         danmakuLayer.appendChild(el);
         const allItems = danmakuLayer.querySelectorAll('.danmaku-item');
-        if (allItems.length > MAX_DANMAKU) { const oldest = allItems[0]; if (oldest && oldest.parentNode) oldest.parentNode
-            .removeChild(oldest); }
+        if (allItems.length > MAX_DANMAKU) { const oldest = allItems[0]; if (oldest && oldest.parentNode) oldest.parentNode.removeChild(oldest); }
       }
 
       window.addCustomDanmaku = function(text) {
@@ -2244,18 +1852,13 @@ function scrollToResources() {
         const messages = getSavedMessages();
         if (messages.length === 0) return;
         const shuffled = messages.sort(() => Math.random() - 0.5);
-        shuffled.slice(0, 10).forEach((msg, index) => {
-          setTimeout(() => { createDanmakuItem(msg, true); }, index * 300);
-        });
+        shuffled.slice(0, 10).forEach((msg, index) => { setTimeout(() => { createDanmakuItem(msg, true); }, index * 300); });
       }
 
-      function getRandomInterval() {
-        return isMobile ? (1200 + Math.random() * 1800) : (900 + Math.random() * 1600);
-      }
+      function getRandomInterval() { return isMobile ? (1200 + Math.random() * 1800) : (900 + Math.random() * 1600); }
       function scheduleNext() {
         if (danmakuTimer) clearTimeout(danmakuTimer);
-        danmakuTimer = setTimeout(() => { createDanmakuItem(getRandomText());
-          scheduleNext(); }, getRandomInterval());
+        danmakuTimer = setTimeout(() => { createDanmakuItem(getRandomText()); scheduleNext(); }, getRandomInterval());
       }
       function startDanmaku() {
         const initialCount = isMobile ? 4 : 6;
@@ -2263,16 +1866,15 @@ function scrollToResources() {
         loadHistory();
         scheduleNext();
       }
-      function stopDanmaku() {
-        if (danmakuTimer) { clearTimeout(danmakuTimer);
-          danmakuTimer = null; }
-      }
+      function stopDanmaku() { if (danmakuTimer) { clearTimeout(danmakuTimer); danmakuTimer = null; } }
       function handleResize() {
         const wasMobile = isMobile;
         isMobile = window.innerWidth <= 768;
-        if (wasMobile !== isMobile) { danmakuLayer.querySelectorAll('.danmaku-item').forEach(item => item.remove());
+        if (wasMobile !== isMobile) {
+          danmakuLayer.querySelectorAll('.danmaku-item').forEach(item => item.remove());
           stopDanmaku();
-          startDanmaku(); }
+          startDanmaku();
+        }
       }
       let resizeDebounce = null;
       window.addEventListener('resize', function() {
@@ -2281,12 +1883,14 @@ function scrollToResources() {
       });
       document.addEventListener('visibilitychange', function() {
         if (document.hidden) stopDanmaku();
-        else { danmakuLayer.querySelectorAll('.danmaku-item').forEach(item => item.remove());
-          startDanmaku(); }
+        else { danmakuLayer.querySelectorAll('.danmaku-item').forEach(item => item.remove()); startDanmaku(); }
       });
       startDanmaku();
     })();
 
+    // 初始化
+    initResourceTabs();
+    handleToolsGridResponsive();
     initLikes();
     filterWorks('all');
   </script>
