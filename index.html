@@ -1,1900 +1,2270 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="referrer" content="no-referrer">
-  <title>龚著登 | 电商视觉设计全案</title>
-  <link rel="icon" href="https://i0.hdslb.com/bfs/new_dyn/9bd2fd7f870ee6996a13ce07ee064de0278021288.png">
-  <link rel="preconnect" href="https://fonts.font.im" crossorigin>
-  <link rel="dns-prefetch" href="https://fonts.font.im">
-  <link href="https://fonts.font.im/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html,
-    body {
-      overflow-x: hidden;
-    }
-    body {
-      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #0F1519;
-      color: #e5e5e5;
-      scroll-behavior: smooth;
-      line-height: 1.6;
-    }
-    .container {
-      width: 90%;
-      max-width: 1280px;
-      margin: 0 auto;
-    }
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(15, 15, 19, 0.95);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      z-index: 999;
-    }
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 0;
-    }
-    .logo {
-      font-weight: 700;
-      font-size: 18px;
-      color: #fff;
-      flex-shrink: 0;
-    }
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      align-items: center;
-    }
-    .nav a {
-      text-decoration: none;
-      color: #999;
-      font-size: 14px;
-      font-weight: 500;
-      transition: all 0.2s;
-      white-space: nowrap;
-    }
-    .nav a:hover {
-      color: #ff4d4f;
-    }
-    .nav a.active {
-      color: #ff4d4f;
-    }
-    .hero {
-      padding: 60px 0 0;
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-content {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0;
-      width: 100%;
-      position: relative;
-      z-index: 2;
-    }
-    .hero-text {
-      flex: 0 0 480px;
-    }
-    .hero-text h1 {
-      font-size: 56px;
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 12px;
-      color: #fff;
-    }
-    .hero-text h1 span {
-      color: #ff4d4f;
-      display: block;
-    }
-    .hero-desc {
-      font-size: 16px;
-      color: #999;
-      margin-bottom: 28px;
-      max-width: 480px;
-    }
-    .hero-stats {
-      display: flex;
-      gap: 28px;
-      margin-bottom: 32px;
-    }
-    .stat-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: #999;
-      font-size: 14px;
-    }
-    .stat-item i {
-      color: #ff4d4f;
-    }
-    .hero-buttons {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 28px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.2s;
-      font-size: 14px;
-      border: none;
-      cursor: pointer;
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, #ff4d4f, #ff7875);
-      color: #fff;
-      box-shadow: 0 4px 15px rgba(255, 77, 79, 0.3);
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(255, 77, 79, 0.4);
-    }
-    .btn-secondary {
-      background: rgba(255, 255, 250, 0.1);
-      color: #fff;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-    }
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.15);
-      transform: translateY(-2px);
-    }
-    .btn-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.1);
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0;
-      font-size: 18px;
-    }
-    .btn-text {
-      color: #fff;
-      font-size: 14px;
-      font-weight: 500;
-    }
-    .hero-image {
-      flex: 1;
-      display: flex;
-      justify-content: flex-end;
-      position: relative;
-      max-width: 1000px;
-      margin: 0;
-    }
-    .hero-image::after {
-      content: '';
-      position: absolute;
-      right: -60px;
-      top: -10%;
-      width: 65%;
-      height: 65%;
-      background: rgba(255, 0, 0, 0.7);
-      filter: blur(80px);
-      border-radius: 50%;
-      z-index: -1;
-      animation: glow1 4s ease-in-out infinite alternate;
-    }
-    .hero-image::before {
-      content: '';
-      position: absolute;
-      left: 50px;
-      bottom: 20%;
-      width: 40%;
-      height: 40%;
-      background: rgba(255, 0, 0, 0.5);
-      filter: blur(60px);
-      border-radius: 50%;
-      z-index: -1;
-      animation: glow2 5s ease-in-out infinite alternate;
-    }
-    .hero-image .glow-small {
-      position: absolute;
-      right: -55%;
-      bottom: 20%;
-      width: 55%;
-      height: 55%;
-      background: rgba(255, 0, 0, 0.4);
-      filter: blur(50px);
-      border-radius: 50%;
-      z-index: -1;
-      animation: glow3 3.5s ease-in-out infinite alternate;
-    }
-    @keyframes glow1 {
-      0% { transform: scale(1); opacity: 0.7; }
-      100% { transform: scale(1.15); opacity: 0.9; }
-    }
-    @keyframes glow2 {
-      0% { transform: scale(1); opacity: 0.5; }
-      100% { transform: scale(1.2); opacity: 0.7; }
-    }
-    @keyframes glow3 {
-      0% { transform: scale(1); opacity: 0.4; }
-      100% { transform: scale(1.25); opacity: 0.6; }
-    }
-    .hero-image img {
-      width: 100%;
-      object-fit: cover;
-      border-radius: 14px;
-      position: relative;
-      z-index: 1;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="referrer" content="no-referrer">
+    <title>龚著登 | 电商视觉设计全案</title>
+    <link rel="icon" href="https://i0.hdslb.com/bfs/new_dyn/9bd2fd7f870ee6996a13ce07ee064de0278021288.png">
+    <link rel="preconnect" href="https://fonts.font.im" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.font.im">
+    <link href="https://fonts.font.im/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html,
+        body {
+            overflow-x: hidden;
+        }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0F1519;
+            color: #e5e5e5;
+            scroll-behavior: smooth;
+            line-height: 1.6;
+        }
+        .container {
+            width: 90%;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(15, 15, 19, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            z-index: 999;
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+        }
+        .logo {
+            font-weight: 700;
+            font-size: 18px;
+            color: #fff;
+            flex-shrink: 0;
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+        .nav a {
+            text-decoration: none;
+            color: #999;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .nav a:hover {
+            color: #ff4d4f;
+        }
+        .nav a.active {
+            color: #ff4d4f;
+        }
+        .hero {
+            padding: 60px 0 0;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-text {
+            flex: 0 0 480px;
+        }
+        .hero-text h1 {
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+        .hero-text h1 span {
+            color: #ff4d4f;
+            display: block;
+        }
+        .hero-desc {
+            font-size: 16px;
+            color: #999;
+            margin-bottom: 28px;
+            max-width: 480px;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 28px;
+            margin-bottom: 32px;
+        }
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #999;
+            font-size: 14px;
+        }
+        .stat-item i {
+            color: #ff4d4f;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #ff4d4f, #ff7875);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(255, 77, 79, 0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 77, 79, 0.4);
+        }
+        .btn-secondary {
+            background: rgba(255, 255, 250, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+        .btn-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            font-size: 18px;
+        }
+        .btn-text {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            position: relative;
+            max-width: 1000px;
+            margin: 0;
+        }
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            right: -60px;
+            top: -10%;
+            width: 65%;
+            height: 65%;
+            background: rgba(255, 0, 0, 0.7);
+            filter: blur(80px);
+            border-radius: 50%;
+            z-index: -1;
+            animation: glow1 4s ease-in-out infinite alternate;
+        }
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            left: 50px;
+            bottom: 20%;
+            width: 40%;
+            height: 40%;
+            background: rgba(255, 0, 0, 0.5);
+            filter: blur(60px);
+            border-radius: 50%;
+            z-index: -1;
+            animation: glow2 5s ease-in-out infinite alternate;
+        }
+        .hero-image .glow-small {
+            position: absolute;
+            right: -55%;
+            bottom: 20%;
+            width: 55%;
+            height: 55%;
+            background: rgba(255, 0, 0, 0.4);
+            filter: blur(50px);
+            border-radius: 50%;
+            z-index: -1;
+            animation: glow3 3.5s ease-in-out infinite alternate;
+        }
+        @keyframes glow1 {
+            0% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(1.15);
+                opacity: 0.9;
+            }
+        }
+        @keyframes glow2 {
+            0% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(1.2);
+                opacity: 0.7;
+            }
+        }
+        @keyframes glow3 {
+            0% {
+                transform: scale(1);
+                opacity: 0.4;
+            }
+            100% {
+                transform: scale(1.25);
+                opacity: 0.6;
+            }
+        }
+        .hero-image img {
+            width: 100%;
+            object-fit: cover;
+            border-radius: 14px;
+            position: relative;
+            z-index: 1;
+        }
 
-    .danmaku-layer {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 5;
-      pointer-events: none;
-      overflow: hidden;
-    }
-    .danmaku-item {
-      position: absolute;
-      left: 100%;
-      white-space: nowrap;
-      font-weight: 500;
-      font-size: 14px;
-      color: rgba(255, 255, 255, 0.92);
-      background: rgba(255, 255, 255, 0.06);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 20px;
-      padding: 6px 16px;
-      pointer-events: none;
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-      will-change: transform;
-      animation: danmakuMove linear forwards;
-    }
-    .danmaku-item.accent-warm {
-      background: rgba(255, 77, 79, 0.1);
-      border-color: rgba(255, 77, 79, 0.25);
-      color: #ff7875;
-    }
-    .danmaku-item.accent-gold {
-      background: rgba(255, 153, 0, 0.1);
-      border-color: rgba(255, 153, 0, 0.25);
-      color: #ffb347;
-    }
-    .danmaku-item.accent-cyan {
-      background: rgba(0, 200, 180, 0.1);
-      border-color: rgba(0, 200, 180, 0.25);
-      color: #00c8b4;
-    }
-    .danmaku-item.user-danmaku {
-      background: rgba(255, 77, 79, 0.18);
-      border-color: #ff4d4f;
-      color: #ff7875;
-      font-weight: 600;
-      box-shadow: 0 0 15px rgba(255, 77, 79, 0.3);
-    }
-    @keyframes danmakuMove {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(calc(-100% - 100vw)); }
-    }
+        .danmaku-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .danmaku-item {
+            position: absolute;
+            left: 100%;
+            white-space: nowrap;
+            font-weight: 500;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.92);
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            padding: 6px 16px;
+            pointer-events: none;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+            will-change: transform;
+            animation: danmakuMove linear forwards;
+        }
+        .danmaku-item.accent-warm {
+            background: rgba(255, 77, 79, 0.1);
+            border-color: rgba(255, 77, 79, 0.25);
+            color: #ff7875;
+        }
+        .danmaku-item.accent-gold {
+            background: rgba(255, 153, 0, 0.1);
+            border-color: rgba(255, 153, 0, 0.25);
+            color: #ffb347;
+        }
+        .danmaku-item.accent-cyan {
+            background: rgba(0, 200, 180, 0.1);
+            border-color: rgba(0, 200, 180, 0.25);
+            color: #00c8b4;
+        }
+        .danmaku-item.user-danmaku {
+            background: rgba(255, 77, 79, 0.18);
+            border-color: #ff4d4f;
+            color: #ff7875;
+            font-weight: 600;
+            box-shadow: 0 0 15px rgba(255, 77, 79, 0.3);
+        }
+        @keyframes danmakuMove {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-100% - 100vw));
+            }
+        }
 
-    .section {
-      padding: 60px 0;
-    }
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 32px;
-    }
-    .section-title {
-      font-size: 24px;
-      font-weight: 700;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .section-title::before {
-      content: '';
-      width: 4px;
-      height: 24px;
-      background: linear-gradient(135deg, #ff4d4f, #ff7875);
-      border-radius: 2px;
-    }
-    .view-all {
-      color: #999;
-      text-decoration: none;
-      font-size: 14px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: color 0.2s;
-      cursor: pointer;
-    }
-    .view-all:hover {
-      color: #ff4d4f;
-    }
-    .works-tabs {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 32px;
-      flex-wrap: wrap;
-    }
-    .tab-btn {
-      padding: 8px 20px;
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.05);
-      color: #999;
-      border: none;
-      font-size: 14px;
-      cursor: pointer;
-      transition: all 0.2s;
-      white-space: nowrap;
-      position: relative;
-    }
-    .tab-btn:hover {
-      background: rgba(255, 77, 79, 0.15);
-      color: #ff4d4f;
-      transform: translateY(-1px);
-    }
-    .tab-btn.active {
-      background: rgba(255, 77, 79, 0.18);
-      color: #ff4d4f;
-      font-weight: 600;
-      box-shadow: 0 0 12px rgba(255, 77, 79, 0.2);
-    }
-    .tab-btn:active {
-      transform: scale(0.95);
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-    }
-    .card {
-      background: #1a1a24;
-      border-radius: 16px;
-      overflow: hidden;
-      transition: transform 0.2s, box-shadow 0.2s;
-      cursor: pointer;
-      position: relative;
-    }
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
-    }
-    .card-img-box {
-      aspect-ratio: 16/10;
-      overflow: hidden;
-      background: #222;
-    }
-    .card-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s;
-    }
-    .card:hover .card-img {
-      transform: scale(1.05);
-    }
-    .card-info {
-      padding: 20px;
-    }
-    .card-title {
-      font-weight: 600;
-      font-size: 16px;
-      margin-bottom: 8px;
-      color: #fff;
-    }
-    .card-desc {
-      font-size: 14px;
-      color: #999;
-      margin-bottom: 12px;
-    }
-    .card-stats {
-      display: flex;
-      gap: 20px;
-      color: #666;
-      font-size: 13px;
-    }
-    .stat {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      user-select: none;
-    }
-    .like-stat {
-      cursor: pointer;
-      transition: color 0.2s, background 0.2s;
-      position: relative;
-      padding: 4px 8px;
-      margin: -4px -8px;
-      border-radius: 20px;
-      color: #666;
-    }
-    .like-stat:hover {
-      background: rgba(255, 77, 79, 0.08);
-      color: #ff4d4f;
-    }
-    .like-stat:active {
-      transform: scale(0.9);
-    }
-    .like-stat.liked {
-      color: #ff4d4f;
-      font-weight: 600;
-    }
-    .like-stat.liked:hover {
-      background: rgba(255, 77, 79, 0.12);
-    }
-    .like-heart {
-      display: inline-block;
-      transition: transform 0.2s;
-    }
-    .like-badge {
-      position: absolute;
-      top: -8px;
-      right: -10px;
-      color: #ff4d4f;
-      font-weight: 700;
-      font-size: 13px;
-      pointer-events: none;
-      animation: badgeUp 0.7s ease-out forwards;
-      z-index: 5;
-      line-height: 1;
-    }
-    @keyframes badgeUp {
-      0% { opacity: 1; transform: translateY(0) scale(1); }
-      100% { opacity: 0; transform: translateY(-22px) scale(1.6); }
-    }
+        .section {
+            padding: 60px 0;
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(135deg, #ff4d4f, #ff7875);
+            border-radius: 2px;
+        }
+        .view-all {
+            color: #999;
+            text-decoration: none;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+            cursor: pointer;
+        }
+        .view-all:hover {
+            color: #ff4d4f;
+        }
+        .works-tabs {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            padding: 8px 20px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #999;
+            border: none;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+            position: relative;
+        }
+        .tab-btn:hover {
+            background: rgba(255, 77, 79, 0.15);
+            color: #ff4d4f;
+            transform: translateY(-1px);
+        }
+        .tab-btn.active {
+            background: rgba(255, 77, 79, 0.18);
+            color: #ff4d4f;
+            font-weight: 600;
+            box-shadow: 0 0 12px rgba(255, 77, 79, 0.2);
+        }
+        .tab-btn:active {
+            transform: scale(0.95);
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .card {
+            background: #1a1a24;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            position: relative;
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+        .card-img-box {
+            aspect-ratio: 16/10;
+            overflow: hidden;
+            background: #222;
+        }
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .card:hover .card-img {
+            transform: scale(1.05);
+        }
+        .card-info {
+            padding: 20px;
+        }
+        .card-title {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+        .card-desc {
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 12px;
+        }
+        .card-stats {
+            display: flex;
+            gap: 20px;
+            color: #666;
+            font-size: 13px;
+        }
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            user-select: none;
+        }
+        .like-stat {
+            cursor: pointer;
+            transition: color 0.2s, background 0.2s;
+            position: relative;
+            padding: 4px 8px;
+            margin: -4px -8px;
+            border-radius: 20px;
+            color: #666;
+        }
+        .like-stat:hover {
+            background: rgba(255, 77, 79, 0.08);
+            color: #ff4d4f;
+        }
+        .like-stat:active {
+            transform: scale(0.9);
+        }
+        .like-stat.liked {
+            color: #ff4d4f;
+            font-weight: 600;
+        }
+        .like-stat.liked:hover {
+            background: rgba(255, 77, 79, 0.12);
+        }
+        .like-heart {
+            display: inline-block;
+            transition: transform 0.2s;
+        }
+        .like-badge {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            color: #ff4d4f;
+            font-weight: 700;
+            font-size: 13px;
+            pointer-events: none;
+            animation: badgeUp 0.7s ease-out forwards;
+            z-index: 5;
+            line-height: 1;
+        }
+        @keyframes badgeUp {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-22px) scale(1.6);
+            }
+        }
 
-    .video-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 24px;
-    }
-    .video-main {
-      aspect-ratio: 16/9;
-      border-radius: 16px;
-      overflow: hidden;
-      position: relative;
-      cursor: pointer;
-    }
-    .video-main img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .video-play-card {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: rgba(0, 0, 0, 0.6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-size: 16px;
-      transition: transform 0.2s;
-      z-index: 2;
-    }
-    .video-main .video-play-card {
-      width: 60px;
-      height: 60px;
-      font-size: 24px;
-    }
-    .video-side {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-    .video-small {
-      aspect-ratio: 16/10;
-      border-radius: 12px;
-      overflow: hidden;
-      position: relative;
-      cursor: pointer;
-    }
-    .video-small img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .video-duration-card {
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-      background: rgba(0, 0, 0, 0.7);
-      color: #fff;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-size: 12px;
-      z-index: 2;
-    }
-    .video-stats-mobile {
-      display: none;
-    }
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 24px;
-    }
-    .skill-card {
-      background: #1a1a24;
-      border-radius: 16px;
-      padding: 28px 24px;
-      text-align: center;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .skill-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      margin: 0 auto 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-    }
-    .skill-icon.orange { background: rgba(255, 153, 0, 0.1); color: #ff9900; }
-    .skill-icon.green { background: rgba(0, 200, 100, 0.1); color: #00c864; }
-    .skill-icon.blue { background: rgba(0, 120, 255, 0.1); color: #0078ff; }
-    .skill-icon.purple { background: rgba(150, 0, 255, 0.1); color: #9600ff; }
-    .skill-icon.red { background: rgba(255, 77, 79, 0.1); color: #ff4d4f; }
-    .skill-title {
-      font-weight: 600;
-      font-size: 16px;
-      margin-bottom: 8px;
-      color: #fff;
-    }
-    .skill-desc {
-      font-size: 13px;
-      color: #999;
-    }
+        .video-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+        }
+        .video-main {
+            aspect-ratio: 16/9;
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+        .video-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .video-play-card {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 16px;
+            transition: transform 0.2s;
+            z-index: 2;
+        }
+        .video-main .video-play-card {
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+        }
+        .video-side {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .video-small {
+            aspect-ratio: 16/10;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+        .video-small img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .video-duration-card {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            z-index: 2;
+        }
+        .video-stats-mobile {
+            display: none;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 24px;
+        }
+        .skill-card {
+            background: #1a1a24;
+            border-radius: 16px;
+            padding: 28px 24px;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .skill-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        .skill-icon.orange {
+            background: rgba(255, 153, 0, 0.1);
+            color: #ff9900;
+        }
+        .skill-icon.green {
+            background: rgba(0, 200, 100, 0.1);
+            color: #00c864;
+        }
+        .skill-icon.blue {
+            background: rgba(0, 120, 255, 0.1);
+            color: #0078ff;
+        }
+        .skill-icon.purple {
+            background: rgba(150, 0, 255, 0.1);
+            color: #9600ff;
+        }
+        .skill-icon.red {
+            background: rgba(255, 77, 79, 0.1);
+            color: #ff4d4f;
+        }
+        .skill-title {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+        .skill-desc {
+            font-size: 13px;
+            color: #999;
+        }
 
-    /* 工具卡片 */
-    .tool-card {
-      background: #1a1a24;
-      border-radius: 16px;
-      padding: 24px 20px;
-      text-align: center;
-      transition: transform 0.2s, box-shadow 0.2s;
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.04);
-    }
-    .tool-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
-    }
-    .tool-card .tool-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
-      margin: 0 auto 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      z-index: 1;
-    }
-    .tool-card .tool-icon img {
-      width: 32px;
-      height: 32px;
-      object-fit: contain;
-      filter: brightness(0) invert(1);
-    }
-    .tool-card .tool-icon.ps { background: rgba(0, 120, 255, 0.12); }
-    .tool-card .tool-icon.c4d { background: rgba(255, 153, 0, 0.12); }
-    .tool-card .tool-icon.ae { background: rgba(150, 0, 255, 0.12); }
-    .tool-card .tool-icon.pr { background: rgba(200, 100, 255, 0.12); }
-    .tool-card .tool-icon.ai-tool { background: rgba(0, 200, 180, 0.12); }
-    .tool-card .tool-name {
-      font-weight: 700;
-      font-size: 15px;
-      color: #fff;
-      margin-bottom: 6px;
-      position: relative;
-      z-index: 1;
-    }
-    .tool-card .tool-years {
-      display: inline-block;
-      font-weight: 800;
-      font-size: 28px;
-      color: #ff4d4f;
-      margin-bottom: 6px;
-      position: relative;
-      z-index: 1;
-      line-height: 1;
-    }
-    .tool-card .tool-years sub {
-      font-size: 13px;
-      font-weight: 500;
-      color: #999;
-      bottom: 0;
-    }
-    .tool-card .tool-tagline {
-      font-size: 12px;
-      color: #777;
-      position: relative;
-      z-index: 1;
-    }
-    .tool-card::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      border-radius: 0 0 16px 16px;
-      z-index: 0;
-    }
-    .tool-card.card-ps::after { background: linear-gradient(90deg, #0078ff, #4da6ff); }
-    .tool-card.card-c4d::after { background: linear-gradient(90deg, #ff9900, #ffb347); }
-    .tool-card.card-ae::after { background: linear-gradient(90deg, #9600ff, #c17dff); }
-    .tool-card.card-pr::after { background: linear-gradient(90deg, #7b2fff, #d49fff); }
-    .tool-card.card-ai::after { background: linear-gradient(90deg, #00c8b4, #00e6cc); }
+        /* 工具卡片 */
+        .tool-card {
+            background: #1a1a24;
+            border-radius: 16px;
+            padding: 24px 20px;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .tool-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+        }
+        .tool-card .tool-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            margin: 0 auto 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+        .tool-card .tool-icon img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+        }
+        .tool-card .tool-icon.ps {
+            background: rgba(0, 120, 255, 0.12);
+        }
+        .tool-card .tool-icon.c4d {
+            background: rgba(255, 153, 0, 0.12);
+        }
+        .tool-card .tool-icon.ae {
+            background: rgba(150, 0, 255, 0.12);
+        }
+        .tool-card .tool-icon.pr {
+            background: rgba(200, 100, 255, 0.12);
+        }
+        .tool-card .tool-icon.ai-tool {
+            background: rgba(0, 200, 180, 0.12);
+        }
+        .tool-card .tool-name {
+            font-weight: 700;
+            font-size: 15px;
+            color: #fff;
+            margin-bottom: 6px;
+            position: relative;
+            z-index: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .tool-card .tool-years {
+            display: inline-block;
+            font-weight: 800;
+            font-size: 28px;
+            color: #ff4d4f;
+            margin-bottom: 6px;
+            position: relative;
+            z-index: 1;
+            line-height: 1;
+        }
+        .tool-card .tool-years sub {
+            font-size: 13px;
+            font-weight: 500;
+            color: #999;
+            bottom: 0;
+        }
+        .tool-card .tool-tagline {
+            font-size: 12px;
+            color: #777;
+            position: relative;
+            z-index: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .tool-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            border-radius: 0 0 16px 16px;
+            z-index: 0;
+        }
+        .tool-card.card-ps::after {
+            background: linear-gradient(90deg, #0078ff, #4da6ff);
+        }
+        .tool-card.card-c4d::after {
+            background: linear-gradient(90deg, #ff9900, #ffb347);
+        }
+        .tool-card.card-ae::after {
+            background: linear-gradient(90deg, #9600ff, #c17dff);
+        }
+        .tool-card.card-pr::after {
+            background: linear-gradient(90deg, #7b2fff, #d49fff);
+        }
+        .tool-card.card-ai::after {
+            background: linear-gradient(90deg, #00c8b4, #00e6cc);
+        }
 
-    /* 百宝箱 */
-    .resource-section {
-      padding: 50px 0 60px;
-    }
-    .resource-section .section-subtitle {
-      font-size: 14px;
-      color: #888;
-      margin-bottom: 28px;
-      margin-top: -16px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-    .resource-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 28px;
-    }
-    .resource-tab-btn {
-      background: rgba(255, 255, 255, 0.05);
-      border: none;
-      color: #aaa;
-      padding: 10px 22px;
-      border-radius: 24px;
-      font-size: 13px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.2s;
-      white-space: nowrap;
-    }
-    .resource-tab-btn:hover {
-      background: rgba(255, 77, 79, 0.15);
-      color: #ff7875;
-    }
-    .resource-tab-btn.active {
-      background: rgba(255, 77, 79, 0.2);
-      color: #ff4d4f;
-      font-weight: 600;
-      box-shadow: 0 0 10px rgba(255, 77, 79, 0.2);
-    }
-    .resource-panel {
-      display: none;
-    }
-    .resource-panel.active {
-      display: block;
-    }
-    .resource-links {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 10px;
-    align-items: start;
-    }
-    .resource-link-card {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      background: #1a1a24;
-      border-radius: 14px;
-      padding: 18px 20px;
-      text-decoration: none;
-      transition: all 0.2s;
-      cursor: pointer;
-      border: 1px solid rgba(255, 255, 255, 0.04);
-    }
-    .resource-link-card:hover {
-      background: #222230;
-      transform: translateY(-4px);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
-      border-color: rgba(255, 77, 79, 0.2);
-    }
-    .resource-favicon-wrap {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
-      overflow: hidden;
-      flex-shrink: 0;
-      background: rgba(255, 255, 255, 0.06);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      margin-top: 2px;
-    }
-    .resource-favicon-wrap img {
-      width: 24px;
-      height: 24px;
-      object-fit: contain;
-      position: relative;
-      z-index: 1;
-    }
-    .resource-favicon-wrap .favicon-fallback {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 14px;
-      color: #aaa;
-      z-index: 0;
-      text-transform: uppercase;
-    }
-    .resource-link-info {
-      flex: 1;
-      min-width: 0;
-    }
-    .resource-link-name {
-      font-size: 14px;
-      color: #fff;
-      font-weight: 600;
-      margin-bottom: 4px;
-      transition: color 0.2s;
-    }
-    .resource-link-card:hover .resource-link-name {
-      color: #ff7875;
-    }
-    .resource-link-desc {
-      font-size: 12px;
-      color: #888;
-      line-height: 1.4;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      margin-bottom: 4px;
-    }
-    .resource-link-tag {
-      display: inline-block;
-      font-size: 10px;
-      color: #666;
-      background: rgba(255, 255, 255, 0.04);
-      padding: 2px 8px;
-      border-radius: 10px;
-      white-space: nowrap;
-      flex-shrink: 0;
-      align-self: center;
-    }
+        /* 百宝箱 */
+        .resource-section {
+            padding: 50px 0 60px;
+        }
+        .resource-section .section-subtitle {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 28px;
+            margin-top: -16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .resource-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 28px;
+        }
+        .resource-tab-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: none;
+            color: #aaa;
+            padding: 10px 22px;
+            border-radius: 24px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .resource-tab-btn:hover {
+            background: rgba(255, 77, 79, 0.15);
+            color: #ff7875;
+        }
+        .resource-tab-btn.active {
+            background: rgba(255, 77, 79, 0.2);
+            color: #ff4d4f;
+            font-weight: 600;
+            box-shadow: 0 0 10px rgba(255, 77, 79, 0.2);
+        }
+        .resource-panel {
+            display: none;
+        }
+        .resource-panel.active {
+            display: block;
+        }
+        .resource-links {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 10px;
+            align-items: start;
+            display: grid;
+        }
+        .resource-link-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            background: #1a1a24;
+            border-radius: 14px;
+            padding: 18px 20px;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .resource-link-card:hover {
+            background: #222230;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 77, 79, 0.2);
+        }
+        .resource-favicon-wrap {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-top: 2px;
+        }
+        .resource-favicon-wrap img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+            position: relative;
+            z-index: 1;
+        }
+        .resource-favicon-wrap .favicon-fallback {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            color: #aaa;
+            z-index: 0;
+            text-transform: uppercase;
+        }
+        .resource-link-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .resource-link-name {
+            font-size: 14px;
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 4px;
+            transition: color 0.2s;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .resource-link-card:hover .resource-link-name {
+            color: #ff7875;
+        }
+        .resource-link-desc {
+            font-size: 12px;
+            color: #888;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 4px;
+        }
+        .resource-link-tag {
+            display: inline-block;
+            font-size: 10px;
+            color: #666;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 2px 8px;
+            border-radius: 10px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            align-self: center;
+        }
 
-    footer {
-      background: #121218;
-      padding: 60px 0 30px;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 40px;
-      margin-bottom: 40px;
-    }
-    .footer-col h4 {
-      font-size: 16px;
-      font-weight: 600;
-      color: #fff;
-      margin-bottom: 20px;
-    }
-    .footer-col p {
-      color: #999;
-      font-size: 14px;
-      line-height: 1.8;
-      margin-bottom: 20px;
-    }
-    .footer-links {
-      list-style: none;
-    }
-    .footer-links li {
-      margin-bottom: 12px;
-    }
-    .footer-links a {
-      color: #999;
-      text-decoration: none;
-      font-size: 14px;
-      transition: color 0.2s;
-    }
-    .footer-links a:hover {
-      color: #ff4d4f;
-    }
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: #999;
-      font-size: 14px;
-      margin-bottom: 12px;
-    }
-    .contact-item i {
-      color: #ff4d4f;
-    }
-    .social-links {
-      display: flex;
-      gap: 16px;
-    }
-    .social-link {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      transition: all 0.2s;
-      overflow: hidden;
-    }
-    .social-link img {
-      width: 20px;
-      height: 20px;
-      transition: filter 0.2s;
-    }
-    .social-link:hover {
-      background: #ff4d4f;
-    }
-    .social-link:hover img {
-      filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
-    }
-    .footer-bottom {
-      text-align: center;
-      padding-top: 30px;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      color: #666;
-      font-size: 13px;
-    }
+        footer {
+            background: #121218;
+            padding: 60px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-col h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        .footer-col p {
+            color: #999;
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .footer-links {
+            list-style: none;
+        }
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        .footer-links a {
+            color: #999;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover {
+            color: #ff4d4f;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #999;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+        .contact-item i {
+            color: #ff4d4f;
+        }
+        .social-links {
+            display: flex;
+            gap: 16px;
+        }
+        .social-link {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.2s;
+            overflow: hidden;
+        }
+        .social-link img {
+            width: 20px;
+            height: 20px;
+            transition: filter 0.2s;
+        }
+        .social-link:hover {
+            background: #ff4d4f;
+        }
+        .social-link:hover img {
+            filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: #666;
+            font-size: 13px;
+        }
 
-    .modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.95);
-      z-index: 9999;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-    .modal.active {
-      opacity: 1;
-      visibility: visible;
-    }
-    .modal-close {
-      position: fixed;
-      top: 30px;
-      right: 30px;
-      color: #fff;
-      font-size: 40px;
-      cursor: pointer;
-      z-index: 10000;
-    }
-    .modal-close:hover {
-      color: #ff4d4f;
-    }
-    .modal-content {
-      max-width: 90%;
-      max-height: 85vh;
-      object-fit: contain;
-      border-radius: 8px;
-    }
-    .detail-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.95);
-      z-index: 9999;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s;
-      padding: 20px;
-      overflow-y: auto;
-    }
-    .detail-modal.active {
-      opacity: 1;
-      visibility: visible;
-    }
-    .detail-modal-content {
-      display: block;
-      margin: 100px auto 50px auto;
-      width: 750px;
-      max-width: 95%;
-      border-radius: 8px;
-    }
-    .small-modal .modal-content {
-      background: #1a1a24;
-      border-radius: 20px;
-      padding: 40px;
-      max-width: 400px;
-      width: 90%;
-      text-align: center;
-    }
-    .wx-qrcode {
-      width: 220px;
-      height: 220px;
-      margin: 0 auto 20px;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .wx-id {
-      font-size: 16px;
-      color: #999;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-    .copy-btn {
-      background: #ff4d4f;
-      color: #fff;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 14px;
-    }
-    .copy-success {
-      color: #00c864;
-      font-size: 14px;
-      margin-top: 10px;
-      display: none;
-    }
-    .video-modal {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .video-modal #bilibiliPlayer {
-      width: 90%;
-      max-width: 1200px;
-      aspect-ratio: 16/9;
-    }
-    .video-modal iframe {
-      width: 100% !important;
-      height: 100% !important;
-      border-radius: 12px;
-      border: none;
-    }
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-close {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            color: #fff;
+            font-size: 40px;
+            cursor: pointer;
+            z-index: 10000;
+        }
+        .modal-close:hover {
+            color: #ff4d4f;
+        }
+        .modal-content {
+            max-width: 90%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        .detail-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .detail-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .detail-modal-content {
+            display: block;
+            margin: 100px auto 50px auto;
+            width: 750px;
+            max-width: 95%;
+            border-radius: 8px;
+        }
+        .small-modal .modal-content {
+            background: #1a1a24;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+        }
+        .wx-qrcode {
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .wx-id {
+            font-size: 16px;
+            color: #999;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .copy-btn {
+            background: #ff4d4f;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .copy-success {
+            color: #00c864;
+            font-size: 14px;
+            margin-top: 10px;
+            display: none;
+        }
+        .video-modal {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .video-modal #bilibiliPlayer {
+            width: 90%;
+            max-width: 1200px;
+            aspect-ratio: 16/9;
+        }
+        .video-modal iframe {
+            width: 100% !important;
+            height: 100% !important;
+            border-radius: 12px;
+            border: none;
+        }
 
-    .price-modal-content {
-      background: #1a1a24;
-      border-radius: 24px;
-      padding: 40px 10px 30px;
-      max-width: 1000px;
-      width: 95%;
-      text-align: center;
-      overflow-y: auto;
-      max-height: 90vh;
-    }
-    .price-grid {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 30px;
-    }
-    .price-card {
-      background: #22222e;
-      border-radius: 20px;
-      padding: 28px 20px 24px;
-      flex: 1 1 200px;
-      min-width: 170px;
-      max-width: 220px;
-      transition: transform 0.2s, box-shadow 0.2s;
-      position: relative;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-    }
-    .price-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
-    }
-    .price-card.recommend {
-      border-color: rgba(255, 77, 79, 0.3);
-      background: #252534;
-    }
-    .price-card.recommend::before {
-      content: '🔥 热门推荐';
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: linear-gradient(135deg, #ff4d4f, #ff7875);
-      color: #fff;
-      font-size: 11px;
-      font-weight: 600;
-      padding: 4px 14px;
-      border-radius: 20px;
-      white-space: nowrap;
-    }
-    .price-icon {
-      font-size: 30px;
-      margin-bottom: 12px;
-    }
-    .price-title {
-      font-weight: 700;
-      font-size: 16px;
-      color: #fff;
-      margin-bottom: 10px;
-    }
-    .price-range {
-      font-size: 18px;
-      font-weight: 700;
-      color: #ff7875;
-      margin-bottom: 16px;
-    }
-    .price-desc {
-      font-size: 12px;
-      color: #aaa;
-      margin-bottom: 18px;
-      line-height: 1.5;
-    }
-    .price-features {
-      list-style: none;
-      text-align: left;
-      font-size: 12px;
-      color: #bbb;
-      margin-bottom: 20px;
-    }
-    .price-features li {
-      margin-bottom: 8px;
-      display: flex;
-      align-items: baseline;
-      gap: 6px;
-    }
-    .price-features li::before {
-      content: '✓';
-      color: #00c864;
-      font-weight: 700;
-    }
-    .price-note {
-      font-size: 12px;
-      color: #888;
-      margin-top: 8px;
-    }
-    .price-contact {
-      margin-top: 30px;
-      color: #999;
-      font-size: 14px;
-    }
-    .price-contact strong {
-      color: #ff4d4f;
-    }
+        .price-modal-content {
+            background: #1a1a24;
+            border-radius: 24px;
+            padding: 40px 10px 30px;
+            max-width: 1000px;
+            width: 95%;
+            text-align: center;
+            overflow-y: auto;
+            max-height: 90vh;
+        }
+        .price-grid {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .price-card {
+            background: #22222e;
+            border-radius: 20px;
+            padding: 28px 20px 24px;
+            flex: 1 1 200px;
+            min-width: 170px;
+            max-width: 220px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .price-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+        }
+        .price-card.recommend {
+            border-color: rgba(255, 77, 79, 0.3);
+            background: #252534;
+        }
+        .price-card.recommend::before {
+            content: '🔥 热门推荐';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #ff4d4f, #ff7875);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 14px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+        .price-icon {
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+        .price-title {
+            font-weight: 700;
+            font-size: 16px;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        .price-range {
+            font-size: 18px;
+            font-weight: 700;
+            color: #ff7875;
+            margin-bottom: 16px;
+        }
+        .price-desc {
+            font-size: 12px;
+            color: #aaa;
+            margin-bottom: 18px;
+            line-height: 1.5;
+        }
+        .price-features {
+            list-style: none;
+            text-align: left;
+            font-size: 12px;
+            color: #bbb;
+            margin-bottom: 20px;
+        }
+        .price-features li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+        }
+        .price-features li::before {
+            content: '✓';
+            color: #00c864;
+            font-weight: 700;
+        }
+        .price-note {
+            font-size: 12px;
+            color: #888;
+            margin-top: 8px;
+        }
+        .price-contact {
+            margin-top: 30px;
+            color: #999;
+            font-size: 14px;
+        }
+        .price-contact strong {
+            color: #ff4d4f;
+        }
 
-    .message-modal-content {
-      background: #1a1a24;
-      border-radius: 24px;
-      padding: 30px;
-      max-width: 450px;
-      width: 90%;
-      text-align: center;
-    }
-    .message-modal-content h3 {
-      color: #fff;
-      margin-bottom: 20px;
-      font-size: 20px;
-    }
-    .message-input {
-      width: 100%;
-      padding: 14px 18px;
-      border-radius: 16px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      background: rgba(255, 255, 255, 0.05);
-      color: #fff;
-      font-size: 14px;
-      outline: none;
-      transition: border 0.2s;
-      margin-bottom: 20px;
-    }
-    .message-input:focus {
-      border-color: #ff4d4f;
-    }
-    .message-send-btn {
-      background: linear-gradient(135deg, #ff4d4f, #ff7875);
-      color: #fff;
-      border: none;
-      padding: 12px 30px;
-      border-radius: 30px;
-      font-weight: 600;
-      font-size: 14px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .message-send-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(255, 77, 79, 0.4);
-    }
-    .message-send-btn:active {
-      transform: scale(0.96);
-    }
+        .message-modal-content {
+            background: #1a1a24;
+            border-radius: 24px;
+            padding: 30px;
+            max-width: 450px;
+            width: 90%;
+            text-align: center;
+        }
+        .message-modal-content h3 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        .message-input {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            font-size: 14px;
+            outline: none;
+            transition: border 0.2s;
+            margin-bottom: 20px;
+        }
+        .message-input:focus {
+            border-color: #ff4d4f;
+        }
+        .message-send-btn {
+            background: linear-gradient(135deg, #ff4d4f, #ff7875);
+            color: #fff;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .message-send-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 77, 79, 0.4);
+        }
+        .message-send-btn:active {
+            transform: scale(0.96);
+        }
 
-    .desktop-break {
-      flex-basis: 100%;
-      height: 0;
-      display: block;
-    }
+        .desktop-break {
+            flex-basis: 100%;
+            height: 0;
+            display: block;
+        }
 
-    @media(max-width:768px) {
-      .desktop-break { display: none; }
-      .price-grid { flex-direction: column; align-items: center; gap: 16px; }
-      .price-card { max-width: 300px; width: 100%; }
-      .price-modal-content { padding: 30px 14px 25px; }
-      html, body { overflow-x: hidden !important; width: 100% !important; }
-      .container { width: 92% !important; max-width: 100% !important; }
-      .nav { padding: 14px 0 !important; }
-      .logo { font-size: 16px !important; }
-      .nav-links { gap: 18px !important; }
-      .nav a { font-size: 13px !important; }
-      .hero { padding-top: 80px !important; }
-      .hero-buttons { flex-wrap: wrap !important; justify-content: flex-start !important; gap: 12px !important; }
-      .btn { padding: 8px 16px !important; font-size: 12px !important; white-space: nowrap !important; }
-      .btn-icon { width: 36px !important; height: 36px !important; font-size: 16px !important; }
-      .btn-text { font-size: 13px !important; white-space: nowrap !important; }
-      .works-tabs { flex-wrap: nowrap !important; overflow-x: auto !important; padding-bottom: 8px !important; gap: 8px !important; }
-      .tab-btn { padding: 6px 14px !important; font-size: 12px !important; flex-shrink: 0 !important; }
-      .grid { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; }
-      .video-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; }
-      .video-side { display: contents !important; }
-      .video-main, .video-small { aspect-ratio: 16/10 !important; width: 100% !important; border-radius: 16px !important; }
-      .video-small:nth-child(2) { display: none !important; }
-      .video-duration-card { display: none !important; }
-      .video-stats-mobile { display: flex !important; position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.7)); padding: 6px 10px; justify-content: space-between; font-size: 12px; color: #fff; z-index: 3; gap: 12px; }
-      .skills-grid { display: flex !important; overflow-x: auto; padding-bottom: 10px; gap: 16px; grid-template-columns: none !important; }
-      .skill-card { flex: 0 0 calc(20% - 12px); min-width: 120px; padding: 16px 12px; }
-      .skill-icon { width: 36px; height: 36px; font-size: 20px; }
-      .skill-title { font-size: 14px; }
-      .skill-desc { font-size: 12px; }
-      .footer-grid { grid-template-columns: 1fr !important; gap: 30px !important; text-align: center !important; }
-      .footer-col h4 { text-align: center !important; }
-      .contact-item { justify-content: center !important; }
-      .social-links { justify-content: center !important; }
-      .footer-links li { display: flex !important; justify-content: center !important; align-items: center !important; gap: 8px !important; }
-      .footer-links li::before { content: '•' !important; color: #fff !important; font-size: 16px !important; }
-      .hero-image { margin: 0 !important; padding: 0 !important; }
-      .hero-image img { margin: 0 !important; padding: 0 !important; }
-      .hero-content { flex-direction: column; gap: 40px; }
-      .hero-text { flex: none; width: 100%; }
-      .hero-text h1 { font-size: 36px; }
-      .danmaku-layer { top: 42%; height: 58%; }
-      .danmaku-item { font-size: 12px; padding: 5px 12px; border-radius: 16px; }
-      .video-modal #bilibiliPlayer { width: 95% !important; }
-      /* 移动端工具卡片 */
-      .tools-grid-mobile { display: flex !important; overflow-x: auto; padding-bottom: 10px; gap: 12px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
-      .tools-grid-mobile .tool-card { flex: 0 0 110px; min-width: 110px; padding: 14px 8px; scroll-snap-align: start; }
-      .tools-grid-mobile .tool-card .tool-years { font-size: 20px; }
-      .tools-grid-mobile .tool-card .tool-name { font-size: 11px; }
-      .tools-grid-mobile .tool-card .tool-tagline { font-size: 9px; }
-      /* 移动端百宝箱 */
-      .resource-tabs { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 6px; -webkit-overflow-scrolling: touch; }
-      .resource-tab-btn { flex-shrink: 0; padding: 8px 16px; font-size: 12px; }
-      .resource-links { grid-template-columns: repeat(2, 1fr) !important; gap: 10px; }
-      .resource-link-card {
-    padding: 10px 12px;
-    height: fit-content; }
-      .resource-favicon-wrap { width: 28px; height: 28px; }
-      .resource-favicon-wrap img { width: 18px; height: 18px; }
-      .resource-link-name { font-size: 12px; }
-      .resource-link-desc { font-size: 10px; }
-      .resource-link-tag { font-size: 8px; }
-    }
-    @media(min-width:769px) {
-      .grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important; }
-      .skills-grid { grid-template-columns: repeat(5, 1fr) !important; }
-      .video-grid { grid-template-columns: 2fr 1fr !important; align-items: stretch; }
-      .video-main { height: auto; }
-      .video-side { display: flex !important; flex-direction: column !important; gap: 24px !important; height: 100%; }
-      .video-small { flex: 1 1 0; min-height: 0; border-radius: 12px !important; display: block !important; overflow: hidden; position: relative; cursor: pointer; }
-      .video-small img { width: 100%; height: 100%; object-fit: cover; }
-      .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr !important; text-align: left !important; }
-      .footer-col h4 { text-align: left !important; }
-      .contact-item { justify-content: flex-start !important; }
-      .social-links { justify-content: flex-start !important; }
-      .hero-image { margin-right: 0px !important; margin-top: 0px !important; margin-bottom: 0px !important; margin-left: 0 !important; }
-      .hero { padding-top: 60px !important; }
-    }
-  </style>
+        @media(max-width:768px) {
+            .desktop-break {
+                display: none;
+            }
+            .price-grid {
+                flex-direction: column;
+                align-items: center;
+                gap: 16px;
+            }
+            .price-card {
+                max-width: 300px;
+                width: 100%;
+            }
+            .price-modal-content {
+                padding: 30px 14px 25px;
+            }
+            html,
+            body {
+                overflow-x: hidden !important;
+                width: 100% !important;
+            }
+            .container {
+                width: 92% !important;
+                max-width: 100% !important;
+            }
+            .nav {
+                padding: 14px 0 !important;
+            }
+            .logo {
+                font-size: 16px !important;
+            }
+            .nav-links {
+                gap: 18px !important;
+            }
+            .nav a {
+                font-size: 13px !important;
+            }
+            .hero {
+                padding-top: 80px !important;
+            }
+            .hero-buttons {
+                flex-wrap: wrap !important;
+                justify-content: flex-start !important;
+                gap: 12px !important;
+            }
+            .btn {
+                padding: 8px 16px !important;
+                font-size: 12px !important;
+                white-space: nowrap !important;
+            }
+            .btn-icon {
+                width: 36px !important;
+                height: 36px !important;
+                font-size: 16px !important;
+            }
+            .btn-text {
+                font-size: 13px !important;
+                white-space: nowrap !important;
+            }
+            .works-tabs {
+                flex-wrap: nowrap !important;
+                overflow-x: auto !important;
+                padding-bottom: 8px !important;
+                gap: 8px !important;
+            }
+            .tab-btn {
+                padding: 6px 14px !important;
+                font-size: 12px !important;
+                flex-shrink: 0 !important;
+            }
+            .grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 16px !important;
+            }
+            .video-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 16px !important;
+            }
+            .video-side {
+                display: contents !important;
+            }
+            .video-main,
+            .video-small {
+                aspect-ratio: 16/10 !important;
+                width: 100% !important;
+                border-radius: 16px !important;
+            }
+            .video-small:nth-child(2) {
+                display: none !important;
+            }
+            .video-duration-card {
+                display: none !important;
+            }
+            .video-stats-mobile {
+                display: flex !important;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+                padding: 6px 10px;
+                justify-content: space-between;
+                font-size: 12px;
+                color: #fff;
+                z-index: 3;
+                gap: 12px;
+            }
+            .skills-grid {
+                display: flex !important;
+                overflow-x: auto;
+                padding-bottom: 10px;
+                gap: 16px;
+                grid-template-columns: none !important;
+            }
+            .skill-card {
+                flex: 0 0 calc(20% - 12px);
+                min-width: 120px;
+                padding: 16px 12px;
+            }
+            .skill-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 20px;
+            }
+            .skill-title {
+                font-size: 14px;
+            }
+            .skill-desc {
+                font-size: 12px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr !important;
+                gap: 30px !important;
+                text-align: center !important;
+            }
+            .footer-col h4 {
+                text-align: center !important;
+            }
+            .contact-item {
+                justify-content: center !important;
+            }
+            .social-links {
+                justify-content: center !important;
+            }
+            .footer-links li {
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                gap: 8px !important;
+            }
+            .footer-links li::before {
+                content: '•' !important;
+                color: #fff !important;
+                font-size: 16px !important;
+            }
+            .hero-image {
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            .hero-image img {
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            .hero-content {
+                flex-direction: column;
+                gap: 40px;
+            }
+            .hero-text {
+                flex: none;
+                width: 100%;
+            }
+            .hero-text h1 {
+                font-size: 36px;
+            }
+            .danmaku-layer {
+                top: 42%;
+                height: 58%;
+            }
+            .danmaku-item {
+                font-size: 12px;
+                padding: 5px 12px;
+                border-radius: 16px;
+            }
+            .video-modal #bilibiliPlayer {
+                width: 95% !important;
+            }
+
+            /* 移动端工具卡片 - 一行五个全显示 */
+            #toolsGrid.tools-grid-mobile {
+                display: grid !important;
+                grid-template-columns: repeat(5, 1fr) !important;
+                gap: 6px !important;
+                overflow-x: visible !important;
+                padding-bottom: 0 !important;
+                scroll-snap-type: none !important;
+                -webkit-overflow-scrolling: auto !important;
+            }
+            #toolsGrid.tools-grid-mobile .tool-card {
+                flex: none !important;
+                min-width: auto !important;
+                padding: 10px 4px !important;
+                scroll-snap-align: none !important;
+                border-radius: 10px !important;
+            }
+            #toolsGrid.tools-grid-mobile .tool-card .tool-icon {
+                width: 28px !important;
+                height: 28px !important;
+                border-radius: 8px !important;
+                margin: 0 auto 6px !important;
+            }
+            #toolsGrid.tools-grid-mobile .tool-card .tool-icon img {
+                width: 16px !important;
+                height: 16px !important;
+            }
+            #toolsGrid.tools-grid-mobile .tool-card .tool-name {
+                font-size: 10px !important;
+                margin-bottom: 2px !important;
+            }
+            #toolsGrid.tools-grid-mobile .tool-card .tool-years {
+                font-size: 16px !important;
+                margin-bottom: 2px !important;
+            }
+            #toolsGrid.tools-grid-mobile .tool-card .tool-years sub {
+                font-size: 9px !important;
+            }
+            #toolsGrid.tools-grid-mobile .tool-card .tool-tagline {
+                display: none !important;
+            }
+            #toolsGrid.tools-grid-mobile .tool-card::after {
+                height: 2px !important;
+                border-radius: 0 0 10px 10px !important;
+            }
+
+            /* 移动端百宝箱 - 一行三个 */
+            .resource-tabs {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                padding-bottom: 6px;
+                -webkit-overflow-scrolling: touch;
+            }
+            .resource-tab-btn {
+                flex-shrink: 0;
+                padding: 8px 16px;
+                font-size: 12px;
+            }
+            .resource-links {
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 8px !important;
+            }
+            .resource-link-card {
+                padding: 10px 8px !important;
+                gap: 6px !important;
+                height: fit-content;
+                align-items: flex-start !important;
+                border-radius: 10px !important;
+            }
+            .resource-favicon-wrap {
+                width: 24px !important;
+                height: 24px !important;
+                flex-shrink: 0 !important;
+                border-radius: 6px !important;
+                margin-top: 1px !important;
+            }
+            .resource-favicon-wrap img {
+                width: 16px !important;
+                height: 16px !important;
+            }
+            .resource-link-info {
+                flex: 1 !important;
+                min-width: 0 !important;
+            }
+            .resource-link-name {
+                font-size: 11px !important;
+                white-space: nowrap !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+                margin-bottom: 2px !important;
+            }
+            .resource-link-desc {
+                font-size: 9px !important;
+                -webkit-line-clamp: 1 !important;
+                margin-bottom: 2px !important;
+                line-height: 1.2 !important;
+            }
+            .resource-link-tag {
+                display: none !important;
+            }
+        }
+        @media(min-width:769px) {
+            .grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+            }
+            .skills-grid {
+                grid-template-columns: repeat(5, 1fr) !important;
+            }
+            .video-grid {
+                grid-template-columns: 2fr 1fr !important;
+                align-items: stretch;
+            }
+            .video-main {
+                height: auto;
+            }
+            .video-side {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 24px !important;
+                height: 100%;
+            }
+            .video-small {
+                flex: 1 1 0;
+                min-height: 0;
+                border-radius: 12px !important;
+                display: block !important;
+                overflow: hidden;
+                position: relative;
+                cursor: pointer;
+            }
+            .video-small img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            .footer-grid {
+                grid-template-columns: 2fr 1fr 1fr 1fr !important;
+                text-align: left !important;
+            }
+            .footer-col h4 {
+                text-align: left !important;
+            }
+            .contact-item {
+                justify-content: flex-start !important;
+            }
+            .social-links {
+                justify-content: flex-start !important;
+            }
+            .hero-image {
+                margin-right: 0px !important;
+                margin-top: 0px !important;
+                margin-bottom: 0px !important;
+                margin-left: 0 !important;
+            }
+            .hero {
+                padding-top: 60px !important;
+            }
+        }
+    </style>
 </head>
 <body>
-  <nav>
-    <div class="container nav">
-      <div class="logo">龚著登 DESIGN</div>
-      <div class="nav-links">
-        <a href="#home" class="active" onclick="setActiveNav(this); scrollToHome(); return false;">首页</a>
-        <a href="#works" onclick="setActiveNav(this); filterWorks('all'); scrollToWorks(); return false;">作品</a>
-        <a href="#video" onclick="setActiveNav(this); scrollToVideo(); return false;">视频</a>
-        <a href="#tools" onclick="setActiveNav(this); scrollToTools(); return false;">工具</a>
-        <a href="#resources" onclick="setActiveNav(this); scrollToResources(); return false;">导航</a>
-        <a href="#" onclick="setActiveNav(this); openWxModal(); return false;">联系我</a>
-      </div>
+    <nav>
+        <div class="container nav">
+            <div class="logo">龚著登 DESIGN</div>
+            <div class="nav-links">
+                <a href="#home" class="active" onclick="setActiveNav(this); scrollToHome(); return false;">首页</a>
+                <a href="#works" onclick="setActiveNav(this); filterWorks('all'); scrollToWorks(); return false;">作品</a>
+                <a href="#video" onclick="setActiveNav(this); scrollToVideo(); return false;">视频</a>
+                <a href="#tools" onclick="setActiveNav(this); scrollToTools(); return false;">工具</a>
+                <a href="#resources" onclick="setActiveNav(this); scrollToResources(); return false;">导航</a>
+                <a href="#" onclick="setActiveNav(this); openWxModal(); return false;">联系我</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>龚著登<br><span>电商视觉设计师</span></h1>
+                    <p class="hero-desc">专注于电商视觉设计与视频制作，用创意提升产品价值，让视觉更有温度，让品牌更有力量。</p>
+                    <div class="hero-stats">
+                        <div class="stat-item"><i>⏱️</i> 5年电商视觉经验</div>
+                        <div class="stat-item"><i>👥</i> 服务客户 200+</div>
+                        <div class="stat-item"><i>📁</i> 项目完成 350+</div>
+                    </div>
+                    <div class="hero-buttons">
+                        <a href="#works" class="btn btn-primary" onclick="scrollToWorks(); return false;">🖼️ 查看作品</a>
+                        <button class="btn btn-secondary" onclick="openPriceModal()">💰 查看报价</button>
+                        <button class="btn btn-icon" onclick="scrollToAboutMe()">▶</button>
+                        <span class="btn-text">了解我</span>
+                        <div class="desktop-break"></div>
+                        <button class="btn btn-secondary" onclick="openWxModal()">💚 添加微信</button>
+                        <button class="btn btn-secondary" onclick="openMessageModal()">💬 说点什么</button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="glow-small"></div>
+                    <img src="https://i0.hdslb.com/bfs/new_dyn/b2a790c8dfea8df808ed3b3ae0ce0b93278021288.webp" alt="龚著登 个人形象照">
+                </div>
+            </div>
+        </div>
+        <div class="danmaku-layer" id="danmakuLayer" aria-hidden="true"></div>
+    </section>
+
+    <section id="works" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">精选作品</h2>
+                <div>
+                    <a href="#" class="view-all" id="showAllBtn" onclick="toggleWorks();return false;">查看全部作品 →</a>
+                    <a href="#" class="view-all" id="showLessBtn" onclick="toggleWorks();return false;">← 收起</a>
+                </div>
+            </div>
+            <div class="works-tabs" id="worksTabs">
+                <button class="tab-btn active" data-category="all" onclick="filterWorks('all')">全部</button>
+                <button class="tab-btn" data-category="detail" onclick="filterWorks('detail')">详情页设计</button>
+                <button class="tab-btn" data-category="main" onclick="filterWorks('main')">主图设计</button>
+                <button class="tab-btn" data-category="render" onclick="filterWorks('render')">C4D产品渲染</button>
+                <button class="tab-btn" data-category="ai" onclick="filterWorks('ai')">AIGC创意</button>
+            </div>
+            <div class="grid" id="worksGrid">
+                <div class="card work-item" data-category="detail" onclick="previewDetailImage(this)"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/0da08a20f178c7562c3efdfffc0bd56a278021288.webp" data-full-src="https://i0.hdslb.com/bfs/new_dyn/d5ebf7a9bdf271039dd19eae2f782169278021288.jpg" class="card-img"></div><div class="card-info"><div class="card-title">手持小风扇详情页</div><div class="card-stats"><div class="stat">👁️ 28.6w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 5.2w</div></div></div></div>
+                <div class="card work-item" data-category="detail" onclick="previewDetailImage(this)"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/039b0365f40dbe35e9b77703d314ee97278021288.webp" data-full-src="https://i0.hdslb.com/bfs/new_dyn/8fdf82fdba8f3ee62fbb215168eded7f278021288.jpg" class="card-img"></div><div class="card-info"><div class="card-title">三合一充电宝详情页</div><div class="card-stats"><div class="stat">👁️ 32.1w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 6.8w</div></div></div></div>
+                <div class="card work-item" data-category="detail" onclick="previewDetailImage(this)"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/a7d5c2e37220ae1d8935654fe2c92c92278021288.webp" data-full-src="https://i0.hdslb.com/bfs/new_dyn/f91ff70dee82bd3a3194cd7142d9e002278021288.jpg" class="card-img"></div><div class="card-info"><div class="card-title">便携胶囊充电宝详情页</div><div class="card-stats"><div class="stat">👁️ 25.7w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 4.9w</div></div></div></div>
+                <div class="card work-item" data-category="detail" onclick="previewDetailImage(this)"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/ff6287e2ce82402bbb214b76d59b015a278021288.webp" data-full-src="https://i0.hdslb.com/bfs/new_dyn/327d381566d1b3ed52b719032fba62ac278021288.jpg" class="card-img"></div><div class="card-info"><div class="card-title">多功能小音箱详情页</div><div class="card-stats"><div class="stat">👁️ 35.4w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 7.3w</div></div></div></div>
+                <div class="card work-item detail-more" data-category="detail" onclick="previewDetailImage(this)" style="display:none;"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/2c45eb5c0686d27d4742c074a5516692278021288.webp" data-full-src="https://i0.hdslb.com/bfs/new_dyn/a574f81758e0b6063dd2bee361429b42278021288.jpg" class="card-img"></div><div class="card-info"><div class="card-title">时尚靓丽剃须刀详情页</div><div class="card-stats"><div class="stat">👁️ 29.3w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 5.8w</div></div></div></div>
+                <div class="card work-item detail-more" data-category="detail" onclick="previewDetailImage(this)" style="display:none;"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/735f02124edbd6e635f12b353ac59d4b278021288.webp" data-full-src="https://i0.hdslb.com/bfs/new_dyn/25302008d515321e6ca0b252365cbddb278021288.jpg" class="card-img"></div><div class="card-info"><div class="card-title">四合一无线充电器详情页</div><div class="card-stats"><div class="stat">👁️ 22.8w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 4.1w</div></div></div></div>
+                <div class="card work-item" data-category="main" onclick="previewImage(this)"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/6dd5c7539bf887aa88b7941ac8b823d5278021288.jpg" data-full-src="https://i0.hdslb.com/bfs/new_dyn/b67bf58b29c45309edd0473c4e30fe69278021288.jpg" class="card-img"></div><div class="card-info"><div class="card-title">清凉小风扇主图</div><div class="card-stats"><div class="stat">👁️ 42.7w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 9.5w</div></div></div></div>
+                <div class="card work-item" data-category="main" onclick="previewImage(this)"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/7cbcc83938e8991ef93321a34c7bc70f278021288.jpg" data-full-src="https://i0.hdslb.com/bfs/new_dyn/dc667ba296cf891ff1040ab011fec556278021288.jpg" class="card-img"></div><div class="card-info"><div class="card-title">清新充电宝主图</div><div class="card-stats"><div class="stat">👁️ 56.3w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 12.4w</div></div></div></div>
+                <div class="card work-item" data-category="main" onclick="previewImage(this)"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/7f1dff4c9815829ede2ad9890598fe9b278021288.jpg" data-full-src="https://i0.hdslb.com/bfs/new_dyn/2ea95a8bd2221264d43f37d1e194f6a2278021288.jpg" class="card-img"></div><div class="card-info"><div class="card-title">MagSafe 磁吸充电宝</div><div class="card-stats"><div class="stat">👁️ 38.2w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 8.1w</div></div></div></div>
+                <div class="card work-item" data-category="main" onclick="previewImage(this)"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/a786d3ea459a9b45ac3d5be3619c0dfe278021288.jpg" data-full-src="https://i0.hdslb.com/bfs/new_dyn/ca4c15606fe8cfbfb1eebdbd49673230278021288.jpg" class="card-img"></div><div class="card-info"><div class="card-title">多功能小音箱主图</div><div class="card-stats"><div class="stat">👁️ 31.5w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 6.7w</div></div></div></div>
+                <div class="card work-item main-more" data-category="main" onclick="previewImage(this)" style="display:none;"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/87b9ee27fa46e7b19ed6f17b0eed8784278021288.jpg" data-full-src="https://i0.hdslb.com/bfs/new_dyn/53aebbde87f9a70d0d47da9da8299f8a278021288.jpg" class="card-img"></div><div class="card-info"><div class="card-title">亚马逊爆款U盘</div><div class="card-stats"><div class="stat">👁️ 27.9w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 5.3w</div></div></div></div>
+                <div class="card work-item main-more" data-category="main" onclick="previewImage(this)" style="display:none;"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/659b5184959a355b188de76f34841cd2278021288.jpg" data-full-src="https://i0.hdslb.com/bfs/new_dyn/df79b0e3187b45713b40a0cd73388020278021288.jpg" class="card-img"></div><div class="card-info"><div class="card-title">亚马逊爆款排插</div><div class="card-stats"><div class="stat">👁️ 34.6w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 7.9w</div></div></div></div>
+                <div class="card work-item main-more" data-category="main" onclick="previewImage(this)" style="display:none;"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/f2699f06e7ae0020ddc17c5b5f582156278021288.jpg" data-full-src="https://i0.hdslb.com/bfs/new_dyn/b69f25b4a76a5757b825f9dc2ad9755f278021288.jpg" class="card-img"></div><div class="card-info"><div class="card-title">小清新风格主图</div><div class="card-stats"><div class="stat">👁️ 30.2w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 6.3w</div></div></div></div>
+                <div class="card work-item main-more" data-category="main" onclick="previewImage(this)" style="display:none;"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/58735665c2fb0160eba615c2bc6c14a7278021288.jpg" data-full-src="https://i0.hdslb.com/bfs/new_dyn/d042d04218fd76a208fe4982c818bacc278021288.jpg" class="card-img"></div><div class="card-info"><div class="card-title">暖色调家居风格</div><div class="card-stats"><div class="stat">👁️ 28.8w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 5.7w</div></div></div></div>
+                <div class="card work-item main-more" data-category="main" onclick="previewImage(this)" style="display:none;"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/77d90fb5364a7550ffc7957d11cbaaa8278021288.jpg" data-full-src="https://i0.hdslb.com/bfs/new_dyn/5e7e76f50dbce8d94a268b92f00588ed278021288.jpg" class="card-img"></div><div class="card-info"><div class="card-title">暗色调金属充电宝</div><div class="card-stats"><div class="stat">👁️ 33.1w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 7.2w</div></div></div></div>
+                <div class="card work-item" data-category="render" onclick="previewImage(this)"><div class="card-img-box"><img src="images/render/1_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">智能手表渲染</div><div class="card-stats"><div class="stat">👁️ 39.8w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 8.7w</div></div></div></div>
+                <div class="card work-item" data-category="render" onclick="previewImage(this)"><div class="card-img-box"><img src="images/render/2_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">北欧风茶几渲染</div><div class="card-stats"><div class="stat">👁️ 26.4w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 5.6w</div></div></div></div>
+                <div class="card work-item" data-category="render" onclick="previewImage(this)"><div class="card-img-box"><img src="images/render/3_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">口红管体渲染</div><div class="card-stats"><div class="stat">👁️ 41.2w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 9.3w</div></div></div></div>
+                <div class="card work-item" data-category="render" onclick="previewImage(this)"><div class="card-img-box"><img src="images/render/4_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">电竞鼠标渲染</div><div class="card-stats"><div class="stat">👁️ 37.5w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 7.8w</div></div></div></div>
+                <div class="card work-item render-more" data-category="render" onclick="previewImage(this)" style="display:none;"><div class="card-img-box"><img src="images/render/5_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">保温杯渲染</div><div class="card-stats"><div class="stat">👁️ 24.9w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 4.8w</div></div></div></div>
+                <div class="card work-item render-more" data-category="render" onclick="previewImage(this)" style="display:none;"><div class="card-img-box"><img src="images/render/6_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">香水瓶渲染</div><div class="card-stats"><div class="stat">👁️ 33.7w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 6.9w</div></div></div></div>
+                <div class="card work-item" data-category="ai" onclick="previewImage(this)"><div class="card-img-box"><img src="images/ai/1_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">户外露营场景合成</div><div class="card-stats"><div class="stat">👁️ 48.9w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 11.6w</div></div></div></div>
+                <div class="card work-item" data-category="ai" onclick="previewImage(this)"><div class="card-img-box"><img src="images/ai/2_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">模特穿搭合成</div><div class="card-stats"><div class="stat">👁️ 52.3w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 13.2w</div></div></div></div>
+                <div class="card work-item" data-category="ai" onclick="previewImage(this)"><div class="card-img-box"><img src="images/ai/3_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">饮品创意合成</div><div class="card-stats"><div class="stat">👁️ 45.6w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 10.4w</div></div></div></div>
+                <div class="card work-item" data-category="ai" onclick="previewImage(this)"><div class="card-img-box"><img src="images/ai/4_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">智能家居场景合成</div><div class="card-stats"><div class="stat">👁️ 36.8w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 8.2w</div></div></div></div>
+                <div class="card work-item ai-more" data-category="ai" onclick="previewImage(this)" style="display:none;"><div class="card-img-box"><img src="images/ai/5_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">美妆产品场景合成</div><div class="card-stats"><div class="stat">👁️ 29.7w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 5.9w</div></div></div></div>
+                <div class="card work-item ai-more" data-category="ai" onclick="previewImage(this)" style="display:none;"><div class="card-img-box"><img src="images/ai/6_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">宠物用品场景合成</div><div class="card-stats"><div class="stat">👁️ 31.4w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 6.5w</div></div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="video" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">视频作品</h2>
+                <div>
+                    <a href="#" class="view-all" onclick="toggleVideos();return false;" id="video-show">查看全部视频 →</a>
+                    <a href="#" class="view-all" onclick="toggleVideos();return false;" id="video-hide" style="display:none;">← 收起</a>
+                </div>
+            </div>
+            <div id="videoPreview">
+                <div class="video-grid">
+                    <div class="video-main" onclick="openVideoModal('videos/1.mp4')"><img src="https://i0.hdslb.com/bfs/new_dyn/ebb381b681dc52227897d92eac5b28a4278021288.webp"><div class="video-play-card">▶</div><div class="video-duration-card">00:22</div><div class="video-stats-mobile"><span class="stat">👁️ 12.8w</span><span class="stat like-stat"><span class="like-heart">❤️</span> 3.6w</span></div></div>
+                    <div class="video-side">
+                        <div class="video-small" onclick="openVideoModal('videos/2.mp4')"><img src="https://i0.hdslb.com/bfs/new_dyn/6e607f5c6c15a492edb2022079f5536a278021288.webp"><div class="video-play-card">▶</div><div class="video-duration-card">00:15</div><div class="video-stats-mobile"><span class="stat">👁️ 9.5w</span><span class="stat like-stat"><span class="like-heart">❤️</span> 2.8w</span></div></div>
+                        <div class="video-small" onclick="openVideoModal('videos/3.mp4')"><img src="https://i0.hdslb.com/bfs/new_dyn/72af8903340c53e9c4b7eef2583aa843278021288.webp"><div class="video-play-card">▶</div><div class="video-duration-card">00:28</div><div class="video-stats-mobile"><span class="stat">👁️ 17.2w</span><span class="stat like-stat"><span class="like-heart">❤️</span> 5.1w</span></div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid" id="allVideos" style="display:none;">
+                <div class="card" onclick="openVideoModal('videos/1.mp4')"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/ebb381b681dc52227897d92eac5b28a4278021288.webp" class="card-img"></div><div class="video-play-card">▶</div><div class="video-duration-card">00:22</div><div class="card-info"><div class="card-title">超薄磁吸充电宝动画</div><div class="card-stats"><div class="stat">👁️ 12.8w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 3.6w</div></div></div></div>
+                <div class="card" onclick="openVideoModal('videos/2.mp4')"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/6e607f5c6c15a492edb2022079f5536a278021288.webp" class="card-img"></div><div class="video-play-card">▶</div><div class="video-duration-card">00:15</div><div class="card-info"><div class="card-title">创意小巧充电头动画</div><div class="card-stats"><div class="stat">👁️ 9.5w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 2.8w</div></div></div></div>
+                <div class="card" onclick="openVideoModal('videos/3.mp4')"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/72af8903340c53e9c4b7eef2583aa843278021288.webp" class="card-img"></div><div class="video-play-card">▶</div><div class="video-duration-card">00:28</div><div class="card-info"><div class="card-title">科幻带插头充电宝动画</div><div class="card-stats"><div class="stat">👁️ 17.2w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 5.1w</div></div></div></div>
+                <div class="card" onclick="openVideoModal('videos/4.mp4')"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/53abe5b2afda036e36183413817bfe01278021288.webp" class="card-img"></div><div class="video-play-card">▶</div><div class="video-duration-card">00:23</div><div class="card-info"><div class="card-title">暗黑充电宝动画</div><div class="card-stats"><div class="stat">👁️ 11.3w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 3.2w</div></div></div></div>
+                <div class="card" onclick="openVideoModal('videos/5.mp4')"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/40e12c6604863e5f6bceeae876cf0886278021288.webp" class="card-img"></div><div class="video-play-card">▶</div><div class="video-duration-card">00:33</div><div class="card-info"><div class="card-title">挂腰贴身小风扇动画</div><div class="card-stats"><div class="stat">👁️ 14.7w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 4.3w</div></div></div></div>
+                <div class="card" onclick="openVideoModal('videos/6.mp4')"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/20b6542fa01163e28c029ccee393460a278021288.webp" class="card-img"></div><div class="video-play-card">▶</div><div class="video-duration-card">00:26</div><div class="card-info"><div class="card-title">多彩充电宝动画</div><div class="card-stats"><div class="stat">👁️ 8.9w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 2.5w</div></div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tools" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">工具经验</h2>
+            </div>
+            <p style="color:#888;font-size:14px;margin-bottom:28px;margin-top:-16px;">
+                7年设计生涯，深耕以下工具<span class="badge-exp" style="display:inline-block;background:rgba(255,77,79,0.15);color:#ff7875;font-weight:600;padding:3px 12px;border-radius:20px;font-size:12px;margin-left:8px;">累计经验 22+ 年</span>
+            </p>
+            <div class="skills-grid tools-grid-desktop" id="toolsGrid">
+                <div class="tool-card card-ps">
+                    <div class="tool-icon ps"><img src="icons/ps.svg" alt="Photoshop" onerror="this.style.display='none';this.parentNode.innerHTML='🖼️'"></div>
+                    <div class="tool-name">Photoshop</div>
+                    <div class="tool-years">7<sub>年</sub></div>
+                    <div class="tool-tagline">图像合成·精修·排版</div>
+                </div>
+                <div class="tool-card card-c4d">
+                    <div class="tool-icon c4d"><img src="icons/c4d.svg" alt="Cinema 4D" onerror="this.style.display='none';this.parentNode.innerHTML='🧊'"></div>
+                    <div class="tool-name">Cinema 4D</div>
+                    <div class="tool-years">5<sub>年</sub></div>
+                    <div class="tool-tagline">产品建模·渲染·动画</div>
+                </div>
+                <div class="tool-card card-ae">
+                    <div class="tool-icon ae"><img src="icons/ae.svg" alt="After Effects" onerror="this.style.display='none';this.parentNode.innerHTML='✨'"></div>
+                    <div class="tool-name">After Effects</div>
+                    <div class="tool-years">4<sub>年</sub></div>
+                    <div class="tool-tagline">动效设计·视觉特效</div>
+                </div>
+                <div class="tool-card card-pr">
+                    <div class="tool-icon pr"><img src="icons/pr.svg" alt="Premiere Pro" onerror="this.style.display='none';this.parentNode.innerHTML='🎬'"></div>
+                    <div class="tool-name">Premiere Pro</div>
+                    <div class="tool-years">4<sub>年</sub></div>
+                    <div class="tool-tagline">视频剪辑·调色·输出</div>
+                </div>
+                <div class="tool-card card-ai">
+                    <div class="tool-icon ai-tool"><img src="icons/ai.svg" alt="AI工具" onerror="this.style.display='none';this.parentNode.innerHTML='🤖'"></div>
+                    <div class="tool-name">综合AI工具</div>
+                    <div class="tool-years">2<sub>年</sub></div>
+                    <div class="tool-tagline">Midjourney·SD·工作流</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="resources" class="resource-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">7年精选 · 设计百宝箱</h2>
+            </div>
+            <p class="section-subtitle">
+                <span class="badge-exp" style="display:inline-block;background:rgba(255,77,79,0.15);color:#ff7875;font-weight:600;padding:3px 12px;border-radius:20px;font-size:12px;">长期积累</span> 多年设计生涯中亲测好用的实用网站合集
+            </p>
+            <div id="resourceNavContainer">
+                <div class="resource-tabs" id="resourceTabs"></div>
+                <div class="resource-panels" id="resourcePanels"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="contact-section">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col"><h4>关于我</h4><p>7年电商视觉设计经验，擅长将创意与商业结合，为品牌打造有价值的视觉内容。</p></div>
+                <div class="footer-col"><h4>联系我</h4><div class="contact-item">📧 1711325061@qq.com</div><div class="contact-item">📍 广东省深圳市</div></div>
+                <div class="footer-col"><h4>快速导航</h4><ul class="footer-links"><li><a href="#home">首页</a></li><li><a href="#works">作品</a></li><li><a href="#video">视频</a></li><li><a href="#tools">工具</a></li><li><a href="#resources">导航</a></li></ul></div>
+                <div class="footer-col"><h4>关注我</h4><div class="social-links"><a href="https://www.zcool.com.cn/u/23450553" class="social-link" target="_blank"><img src="icons/zcool.svg" alt="站酷"></a><a href="#" class="social-link" onclick="openWxModal();return false;"><img src="icons/wechat.svg" alt="微信"></a><a href="#" class="social-link" onclick="openDouyinModal();return false;"><img src="icons/douyin.svg" alt="抖音"></a><a href="#" class="social-link" onclick="openXiaohongshuModal();return false;"><img src="icons/xiaohongshu.svg" alt="小红书"></a></div></div>
+            </div>
+            <div class="footer-bottom">© 2026 龚著登 DESIGN | 电商视觉设计全案服务</div>
+        </div>
+    </footer>
+
+    <div class="modal small-modal" id="wxModal"><span class="modal-close" onclick="closeWxModal()">&times;</span><div class="modal-content"><h3>扫码加我微信</h3><img src="https://i0.hdslb.com/bfs/new_dyn/2964ad759b1c8d01acf088e285125778278021288.webp" class="wx-qrcode"><div class="wx-id">微信号：gongshuai8 <button class="copy-btn" onclick="copyWxId()">复制</button></div><p class="copy-success" id="copySuccess">复制成功</p></div></div>
+    <div class="modal small-modal" id="douyinModal"><span class="modal-close" onclick="closeDouyinModal()">&times;</span><div class="modal-content"><h3>扫码加我抖音</h3><img src="https://i0.hdslb.com/bfs/new_dyn/a2b3a19fda9c4ab35128429e25663593278021288.webp" class="wx-qrcode"><div class="wx-id">抖音号：1711325061a <button class="copy-btn" onclick="copyDouyinId()">复制</button></div><p class="copy-success" id="copyDouyinSuccess">复制成功</p></div></div>
+    <div class="modal small-modal" id="xiaohongshuModal"><span class="modal-close" onclick="closeXiaohongshuModal()">&times;</span><div class="modal-content"><h3>扫码加我小红书</h3><img src="https://i0.hdslb.com/bfs/new_dyn/fa7c1d496af4d604299a06ca76123c81278021288.webp" class="wx-qrcode"><div class="wx-id">小红书号：gongzhudeng <button class="copy-btn" onclick="copyXiaohongshuId()">复制</button></div><p class="copy-success" id="copyXiaohongshuSuccess">复制成功</p></div></div>
+    <div class="modal" id="imageModal"><span class="modal-close" onclick="closeModal()">&times;</span><img src="" class="modal-content" id="modalImg"></div>
+    <div class="detail-modal" id="detailModal"><span class="modal-close" onclick="closeDetailModal()">&times;</span><img src="" class="detail-modal-content" id="detailModalImg"></div>
+    <div class="modal video-modal" id="videoModal"><span class="modal-close" onclick="closeVideoModal()">&times;</span><div id="bilibiliPlayer"></div></div>
+
+    <div class="modal" id="messageModal">
+        <span class="modal-close" onclick="closeMessageModal()">&times;</span>
+        <div class="message-modal-content">
+            <h3>💬 留个言吧</h3>
+            <input type="text" class="message-input" id="messageInput" placeholder="写一句夸我的话…" maxlength="50">
+            <button class="message-send-btn" onclick="sendMessage()">发送弹幕</button>
+        </div>
     </div>
-  </nav>
 
-  <section id="home" class="hero">
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-text">
-          <h1>龚著登<br><span>电商视觉设计师</span></h1>
-          <p class="hero-desc">专注于电商视觉设计与视频制作，用创意提升产品价值，让视觉更有温度，让品牌更有力量。</p>
-          <div class="hero-stats">
-            <div class="stat-item"><i>⏱️</i> 5年电商视觉经验</div>
-            <div class="stat-item"><i>👥</i> 服务客户 200+</div>
-            <div class="stat-item"><i>📁</i> 项目完成 350+</div>
-          </div>
-          <div class="hero-buttons">
-            <a href="#works" class="btn btn-primary" onclick="scrollToWorks(); return false;">🖼️ 查看作品</a>
-            <button class="btn btn-secondary" onclick="openPriceModal()">💰 查看报价</button>
-            <button class="btn btn-icon" onclick="scrollToAboutMe()">▶</button>
-            <span class="btn-text">了解我</span>
-            <div class="desktop-break"></div>
-            <button class="btn btn-secondary" onclick="openWxModal()">💚 添加微信</button>
-            <button class="btn btn-secondary" onclick="openMessageModal()">💬 说点什么</button>
-          </div>
+    <div class="modal" id="priceModal">
+        <span class="modal-close" onclick="closePriceModal()">&times;</span>
+        <div class="price-modal-content">
+            <h2 style="font-weight:700;font-size:24px;color:#fff;margin-bottom:8px;">设计服务报价</h2>
+            <p style="color:#aaa;font-size:14px;margin-bottom:5px;">透明阶梯定价 · 按需定制 · 长期合作更优惠</p>
+            <div class="price-grid">
+                <div class="price-card"><div class="price-icon">🖼️</div><div class="price-title">电商主图设计</div><div class="price-range">¥200 - 500<span style="font-size:13px;font-weight:400;">/张</span></div><div class="price-desc">突出卖点 · 高点击率 · 多平台适配</div><ul class="price-features"><li>精修+合成+文案排版</li><li>提供3张初稿选其一</li><li>支持淘宝/亚马逊/拼多多</li><li>交付JPG+PSD源文件</li></ul><div class="price-note">* 复杂合成/3D渲染主图另议</div></div>
+                <div class="price-card recommend"><div class="price-icon">📄</div><div class="price-title">详情页设计</div><div class="price-range">¥3,000 - 6,000<span style="font-size:13px;font-weight:400;">/套</span></div><div class="price-desc">逻辑策划 · 高转化 · 品牌调性统一</div><ul class="price-features"><li>8-12屏标准电商详情</li><li>竞品分析+卖点梳理</li><li>全端适配（无线+PC）</li><li>含主图/副图/场景图</li><li>修改至满意为止</li></ul><div class="price-note">* 含简单C4D渲染，复杂产品另计</div></div>
+                <div class="price-card"><div class="price-icon">🎬</div><div class="price-title">产品视频制作</div><div class="price-range">¥100 - 400<span style="font-size:13px;font-weight:400;">/秒</span></div><div class="price-desc">三维动画 · 实景拍摄 · 后期特效</div><ul class="price-features"><li>15s起做，提供脚本</li><li>C4D动画/实拍剪辑</li><li>背景音乐+音效</li><li>交付MP4/MOV</li></ul><div class="price-note">* 演员/场地费另计</div></div>
+                <div class="price-card"><div class="price-icon">🤖</div><div class="price-title">AI创意视频</div><div class="price-range">¥300 - 1,000<span style="font-size:13px;font-weight:400;">/个</span></div><div class="price-desc">15秒AI生成 · 创意无限 · 快速出片</div><ul class="price-features"><li>文生视频/图生视频</li><li>风格化创意脚本</li><li>3轮优化调整</li><li>15秒标准时长</li></ul><div class="price-note">* 超时或复杂特效另议</div></div>
+            </div>
+            <div class="price-contact">
+                📌 以上为基础参考价，<strong>详细定价请咨询微信：gongshuai8</strong><br>
+                <span style="font-size:12px;color:#888;">· 量大/长期合作可签年度协议 · 预付50%启动项目 · 发票另加税点 ·</span>
+            </div>
         </div>
-        <div class="hero-image">
-          <div class="glow-small"></div>
-          <img src="https://i0.hdslb.com/bfs/new_dyn/b2a790c8dfea8df808ed3b3ae0ce0b93278021288.webp" alt="龚著登 个人形象照">
-        </div>
-      </div>
     </div>
-    <div class="danmaku-layer" id="danmakuLayer" aria-hidden="true"></div>
-  </section>
 
-  <section id="works" class="section">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">精选作品</h2>
-        <div>
-          <a href="#" class="view-all" id="showAllBtn" onclick="toggleWorks();return false;">查看全部作品 →</a>
-          <a href="#" class="view-all" id="showLessBtn" onclick="toggleWorks();return false;">← 收起</a>
-        </div>
-      </div>
-      <div class="works-tabs" id="worksTabs">
-        <button class="tab-btn active" data-category="all" onclick="filterWorks('all')">全部</button>
-        <button class="tab-btn" data-category="detail" onclick="filterWorks('detail')">详情页设计</button>
-        <button class="tab-btn" data-category="main" onclick="filterWorks('main')">主图设计</button>
-        <button class="tab-btn" data-category="render" onclick="filterWorks('render')">C4D产品渲染</button>
-        <button class="tab-btn" data-category="ai" onclick="filterWorks('ai')">AIGC创意</button>
-      </div>
-      <div class="grid" id="worksGrid">
-        <div class="card work-item" data-category="detail" onclick="previewDetailImage(this)"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/0da08a20f178c7562c3efdfffc0bd56a278021288.webp" data-full-src="https://i0.hdslb.com/bfs/new_dyn/d5ebf7a9bdf271039dd19eae2f782169278021288.jpg" class="card-img"></div><div class="card-info"><div class="card-title">手持小风扇详情页</div><div class="card-stats"><div class="stat">👁️ 28.6w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 5.2w</div></div></div></div>
-        <div class="card work-item" data-category="detail" onclick="previewDetailImage(this)"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/039b0365f40dbe35e9b77703d314ee97278021288.webp" data-full-src="https://i0.hdslb.com/bfs/new_dyn/8fdf82fdba8f3ee62fbb215168eded7f278021288.jpg" class="card-img"></div><div class="card-info"><div class="card-title">三合一充电宝详情页</div><div class="card-stats"><div class="stat">👁️ 32.1w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 6.8w</div></div></div></div>
-        <div class="card work-item" data-category="detail" onclick="previewDetailImage(this)"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/a7d5c2e37220ae1d8935654fe2c92c92278021288.webp" data-full-src="https://i0.hdslb.com/bfs/new_dyn/f91ff70dee82bd3a3194cd7142d9e002278021288.jpg" class="card-img"></div><div class="card-info"><div class="card-title">便携胶囊充电宝详情页</div><div class="card-stats"><div class="stat">👁️ 25.7w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 4.9w</div></div></div></div>
-        <div class="card work-item" data-category="detail" onclick="previewDetailImage(this)"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/ff6287e2ce82402bbb214b76d59b015a278021288.webp" data-full-src="https://i0.hdslb.com/bfs/new_dyn/327d381566d1b3ed52b719032fba62ac278021288.jpg" class="card-img"></div><div class="card-info"><div class="card-title">多功能小音箱详情页</div><div class="card-stats"><div class="stat">👁️ 35.4w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 7.3w</div></div></div></div>
-        <div class="card work-item detail-more" data-category="detail" onclick="previewDetailImage(this)" style="display:none;"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/2c45eb5c0686d27d4742c074a5516692278021288.webp" data-full-src="https://i0.hdslb.com/bfs/new_dyn/a574f81758e0b6063dd2bee361429b42278021288.jpg" class="card-img"></div><div class="card-info"><div class="card-title">时尚靓丽剃须刀详情页</div><div class="card-stats"><div class="stat">👁️ 29.3w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 5.8w</div></div></div></div>
-        <div class="card work-item detail-more" data-category="detail" onclick="previewDetailImage(this)" style="display:none;"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/735f02124edbd6e635f12b353ac59d4b278021288.webp" data-full-src="https://i0.hdslb.com/bfs/new_dyn/25302008d515321e6ca0b252365cbddb278021288.jpg" class="card-img"></div><div class="card-info"><div class="card-title">四合一无线充电器详情页</div><div class="card-stats"><div class="stat">👁️ 22.8w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 4.1w</div></div></div></div>
-        <div class="card work-item" data-category="main" onclick="previewImage(this)"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/6dd5c7539bf887aa88b7941ac8b823d5278021288.jpg" data-full-src="https://i0.hdslb.com/bfs/new_dyn/b67bf58b29c45309edd0473c4e30fe69278021288.jpg" class="card-img"></div><div class="card-info"><div class="card-title">清凉小风扇主图</div><div class="card-stats"><div class="stat">👁️ 42.7w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 9.5w</div></div></div></div>
-        <div class="card work-item" data-category="main" onclick="previewImage(this)"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/7cbcc83938e8991ef93321a34c7bc70f278021288.jpg" data-full-src="https://i0.hdslb.com/bfs/new_dyn/dc667ba296cf891ff1040ab011fec556278021288.jpg" class="card-img"></div><div class="card-info"><div class="card-title">清新充电宝主图</div><div class="card-stats"><div class="stat">👁️ 56.3w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 12.4w</div></div></div></div>
-        <div class="card work-item" data-category="main" onclick="previewImage(this)"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/7f1dff4c9815829ede2ad9890598fe9b278021288.jpg" data-full-src="https://i0.hdslb.com/bfs/new_dyn/2ea95a8bd2221264d43f37d1e194f6a2278021288.jpg" class="card-img"></div><div class="card-info"><div class="card-title">MagSafe 磁吸充电宝</div><div class="card-stats"><div class="stat">👁️ 38.2w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 8.1w</div></div></div></div>
-        <div class="card work-item" data-category="main" onclick="previewImage(this)"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/a786d3ea459a9b45ac3d5be3619c0dfe278021288.jpg" data-full-src="https://i0.hdslb.com/bfs/new_dyn/ca4c15606fe8cfbfb1eebdbd49673230278021288.jpg" class="card-img"></div><div class="card-info"><div class="card-title">多功能小音箱主图</div><div class="card-stats"><div class="stat">👁️ 31.5w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 6.7w</div></div></div></div>
-        <div class="card work-item main-more" data-category="main" onclick="previewImage(this)" style="display:none;"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/87b9ee27fa46e7b19ed6f17b0eed8784278021288.jpg" data-full-src="https://i0.hdslb.com/bfs/new_dyn/53aebbde87f9a70d0d47da9da8299f8a278021288.jpg" class="card-img"></div><div class="card-info"><div class="card-title">亚马逊爆款U盘</div><div class="card-stats"><div class="stat">👁️ 27.9w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 5.3w</div></div></div></div>
-        <div class="card work-item main-more" data-category="main" onclick="previewImage(this)" style="display:none;"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/659b5184959a355b188de76f34841cd2278021288.jpg" data-full-src="https://i0.hdslb.com/bfs/new_dyn/df79b0e3187b45713b40a0cd73388020278021288.jpg" class="card-img"></div><div class="card-info"><div class="card-title">亚马逊爆款排插</div><div class="card-stats"><div class="stat">👁️ 34.6w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 7.9w</div></div></div></div>
-        <div class="card work-item main-more" data-category="main" onclick="previewImage(this)" style="display:none;"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/f2699f06e7ae0020ddc17c5b5f582156278021288.jpg" data-full-src="https://i0.hdslb.com/bfs/new_dyn/b69f25b4a76a5757b825f9dc2ad9755f278021288.jpg" class="card-img"></div><div class="card-info"><div class="card-title">小清新风格主图</div><div class="card-stats"><div class="stat">👁️ 30.2w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 6.3w</div></div></div></div>
-        <div class="card work-item main-more" data-category="main" onclick="previewImage(this)" style="display:none;"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/58735665c2fb0160eba615c2bc6c14a7278021288.jpg" data-full-src="https://i0.hdslb.com/bfs/new_dyn/d042d04218fd76a208fe4982c818bacc278021288.jpg" class="card-img"></div><div class="card-info"><div class="card-title">暖色调家居风格</div><div class="card-stats"><div class="stat">👁️ 28.8w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 5.7w</div></div></div></div>
-        <div class="card work-item main-more" data-category="main" onclick="previewImage(this)" style="display:none;"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/77d90fb5364a7550ffc7957d11cbaaa8278021288.jpg" data-full-src="https://i0.hdslb.com/bfs/new_dyn/5e7e76f50dbce8d94a268b92f00588ed278021288.jpg" class="card-img"></div><div class="card-info"><div class="card-title">暗色调金属充电宝</div><div class="card-stats"><div class="stat">👁️ 33.1w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 7.2w</div></div></div></div>
-        <div class="card work-item" data-category="render" onclick="previewImage(this)"><div class="card-img-box"><img src="images/render/1_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">智能手表渲染</div><div class="card-stats"><div class="stat">👁️ 39.8w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 8.7w</div></div></div></div>
-        <div class="card work-item" data-category="render" onclick="previewImage(this)"><div class="card-img-box"><img src="images/render/2_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">北欧风茶几渲染</div><div class="card-stats"><div class="stat">👁️ 26.4w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 5.6w</div></div></div></div>
-        <div class="card work-item" data-category="render" onclick="previewImage(this)"><div class="card-img-box"><img src="images/render/3_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">口红管体渲染</div><div class="card-stats"><div class="stat">👁️ 41.2w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 9.3w</div></div></div></div>
-        <div class="card work-item" data-category="render" onclick="previewImage(this)"><div class="card-img-box"><img src="images/render/4_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">电竞鼠标渲染</div><div class="card-stats"><div class="stat">👁️ 37.5w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 7.8w</div></div></div></div>
-        <div class="card work-item render-more" data-category="render" onclick="previewImage(this)" style="display:none;"><div class="card-img-box"><img src="images/render/5_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">保温杯渲染</div><div class="card-stats"><div class="stat">👁️ 24.9w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 4.8w</div></div></div></div>
-        <div class="card work-item render-more" data-category="render" onclick="previewImage(this)" style="display:none;"><div class="card-img-box"><img src="images/render/6_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">香水瓶渲染</div><div class="card-stats"><div class="stat">👁️ 33.7w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 6.9w</div></div></div></div>
-        <div class="card work-item" data-category="ai" onclick="previewImage(this)"><div class="card-img-box"><img src="images/ai/1_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">户外露营场景合成</div><div class="card-stats"><div class="stat">👁️ 48.9w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 11.6w</div></div></div></div>
-        <div class="card work-item" data-category="ai" onclick="previewImage(this)"><div class="card-img-box"><img src="images/ai/2_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">模特穿搭合成</div><div class="card-stats"><div class="stat">👁️ 52.3w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 13.2w</div></div></div></div>
-        <div class="card work-item" data-category="ai" onclick="previewImage(this)"><div class="card-img-box"><img src="images/ai/3_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">饮品创意合成</div><div class="card-stats"><div class="stat">👁️ 45.6w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 10.4w</div></div></div></div>
-        <div class="card work-item" data-category="ai" onclick="previewImage(this)"><div class="card-img-box"><img src="images/ai/4_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">智能家居场景合成</div><div class="card-stats"><div class="stat">👁️ 36.8w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 8.2w</div></div></div></div>
-        <div class="card work-item ai-more" data-category="ai" onclick="previewImage(this)" style="display:none;"><div class="card-img-box"><img src="images/ai/5_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">美妆产品场景合成</div><div class="card-stats"><div class="stat">👁️ 29.7w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 5.9w</div></div></div></div>
-        <div class="card work-item ai-more" data-category="ai" onclick="previewImage(this)" style="display:none;"><div class="card-img-box"><img src="images/ai/6_thumb.webp" data-full-src="https://img.zcool.cn/community/67e259d43877dklb1kxj2g297.jpg?x-oss-process=image/format,webp" class="card-img"></div><div class="card-info"><div class="card-title">宠物用品场景合成</div><div class="card-stats"><div class="stat">👁️ 31.4w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 6.5w</div></div></div></div>
-      </div>
-    </div>
-  </section>
+    <script>
+        const resourceData = [
+            { category: '灵感采集', emoji: '💡', desc: '国内外设计灵感平台，拓展审美边界', sites: [
+                { name: '站酷', url: 'https://www.zcool.com.cn', tag: '国内', desc: '本土设计师作品交流平台' },
+                { name: '花瓣', url: 'https://huaban.com', tag: '国内', desc: '图片采集与灵感整理工具' },
+                { name: 'Behance', url: 'https://www.behance.net', tag: '国际', desc: 'Adobe旗下全球创意作品社区' },
+                { name: 'Dribbble', url: 'https://dribbble.com', tag: '国际', desc: 'UI/视觉设计作品展示平台' },
+                { name: 'Pinterest', url: 'https://www.pinterest.com', tag: '国际', desc: '全球图片灵感搜索引擎' },
+                { name: 'Muzli', url: 'https://muz.li', tag: '灵感', desc: 'Chrome插件，每日设计灵感推送' }
+            ]},
+            { category: 'AIGC工具', emoji: '🤖', desc: 'AI赋能设计，提升创作效率', sites: [
+                { name: 'Midjourney', url: 'https://www.midjourney.com', tag: '生图', desc: 'AI艺术生成器，Discord内使用' },
+                { name: 'Stable Diffusion', url: 'https://stability.ai', tag: '开源', desc: '开源AI图像生成模型' },
+                { name: '文心一格', url: 'https://yige.baidu.com', tag: '国内', desc: '百度出品的AI艺术创作平台' },
+                { name: '通义万相', url: 'https://tongyi.aliyun.com', tag: '国内', desc: '阿里云AI图像生成工具' },
+                { name: 'ChatGPT', url: 'https://chatgpt.com', tag: '对话', desc: 'OpenAI对话式AI助手' },
+                { name: 'Runway', url: 'https://runwayml.com', tag: '视频', desc: 'AI视频生成与编辑平台' }
+            ]},
+            { category: '学习交流', emoji: '📚', desc: '设计教程与行业交流阵地', sites: [
+                { name: '优设', url: 'https://www.uisdc.com', tag: '教程', desc: '国内人气设计教程平台' },
+                { name: '虎课网', url: 'https://huke88.com', tag: '课程', desc: '设计职业技能在线学习' },
+                { name: 'B站设计区', url: 'https://www.bilibili.com/v/design', tag: '视频', desc: 'Bilibili设计类视频专区' },
+                { name: '站酷高高手', url: 'https://www.gogoup.com', tag: '进阶', desc: '站酷旗下设计教育品牌' },
+                { name: 'Design+Code', url: 'https://designcode.io', tag: '英文', desc: 'UI设计与代码融合教程' }
+            ]},
+            { category: '视频平台', emoji: '🎬', desc: '短视频与长视频发布平台', sites: [
+                { name: 'Bilibili', url: 'https://www.bilibili.com', tag: '国内', desc: '国内领先的视频弹幕网站' },
+                { name: '抖音', url: 'https://www.douyin.com', tag: '短视频', desc: '日活过亿的短视频平台' },
+                { name: '小红书', url: 'https://www.xiaohongshu.com', tag: '种草', desc: '生活方式分享与种草社区' },
+                { name: 'YouTube', url: 'https://www.youtube.com', tag: '国际', desc: '全球最大视频分享平台' },
+                { name: 'Vimeo', url: 'https://vimeo.com', tag: '专业', desc: '高品质视频创作社区' }
+            ]},
+            { category: '动态资源', emoji: '✨', desc: '免费视频素材与动态模板', sites: [
+                { name: 'Coverr', url: 'https://coverr.co', tag: '免费', desc: '免费商用视频背景素材' },
+                { name: 'Mixkit', url: 'https://mixkit.co', tag: '免费', desc: '免费视频与音效素材库' },
+                { name: 'Videvo', url: 'https://www.videvo.net', tag: '素材', desc: '免费与付费视频素材' },
+                { name: 'Motion Array', url: 'https://motionarray.com', tag: '模板', desc: 'After Effects模板与视频素材' }
+            ]},
+            { category: '三维资源', emoji: '🧊', desc: '3D模型与贴图资源站点', sites: [
+                { name: 'CG模型网', url: 'https://www.cgmodel.com', tag: '国内', desc: '国内大型3D模型交易平台' },
+                { name: '3D66', url: 'https://www.3d66.com', tag: '国内', desc: '3D溜溜网，模型素材丰富' },
+                { name: 'Sketchfab', url: 'https://sketchfab.com', tag: '展示', desc: '在线3D模型展示与下载' },
+                { name: 'Poliigon', url: 'https://www.poliigon.com', tag: '贴图', desc: '高品质PBR贴图与模型' },
+                { name: 'Quixel', url: 'https://quixel.com', tag: '扫描', desc: 'Megascans高精度扫描资源' }
+            ]},
+            { category: '实拍资源', emoji: '📷', desc: '免费高质量摄影图片库', sites: [
+                { name: 'Unsplash', url: 'https://unsplash.com', tag: '免费', desc: '免费高分辨率摄影图片' },
+                { name: 'Pexels', url: 'https://www.pexels.com', tag: '免费', desc: '免费商用图片与视频' },
+                { name: 'Pixabay', url: 'https://pixabay.com', tag: '免费', desc: '海量免费图片与插图' },
+                { name: '500px', url: 'https://500px.com', tag: '摄影', desc: '全球摄影师作品社区' }
+            ]},
+            { category: '平面资源', emoji: '🎨', desc: '矢量素材与平面设计资源', sites: [
+                { name: '千图网', url: 'https://www.58pic.com', tag: '国内', desc: '老牌国内设计素材网站' },
+                { name: '千库网', url: 'https://588ku.com', tag: '国内', desc: 'PNG元素与背景素材' },
+                { name: 'Freepik', url: 'https://www.freepik.com', tag: '矢量', desc: '海量免费矢量与PSD资源' },
+                { name: 'Vecteezy', url: 'https://www.vecteezy.com', tag: '免费', desc: '免费矢量图下载平台' },
+                { name: 'Flaticon', url: 'https://www.flaticon.com', tag: '图标', desc: '免费矢量图标库' }
+            ]},
+            { category: '音效资源', emoji: '🎵', desc: '免费与商用音效背景音乐', sites: [
+                { name: '爱给网', url: 'https://www.aigei.com', tag: '国内', desc: '国内音效配乐素材平台' },
+                { name: 'Freesound', url: 'https://freesound.org', tag: '免费', desc: '社区驱动的免费音效库' },
+                { name: 'Mixkit Sound', url: 'https://mixkit.co/free-sound-effects/', tag: '免费', desc: '免费商用音效下载' },
+                { name: 'Artlist', url: 'https://artlist.io', tag: '高级', desc: '高品质音乐与音效授权' },
+                { name: 'Epidemic Sound', url: 'https://www.epidemicsound.com', tag: '专业', desc: '专业级版权音乐平台' }
+            ]}
+        ];
 
-  <section id="video" class="section">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">视频作品</h2>
-        <div>
-          <a href="#" class="view-all" onclick="toggleVideos();return false;" id="video-show">查看全部视频 →</a>
-          <a href="#" class="view-all" onclick="toggleVideos();return false;" id="video-hide" style="display:none;">← 收起</a>
-        </div>
-      </div>
-      <div id="videoPreview">
-        <div class="video-grid">
-          <div class="video-main" onclick="openVideoModal('videos/1.mp4')"><img src="https://i0.hdslb.com/bfs/new_dyn/ebb381b681dc52227897d92eac5b28a4278021288.webp"><div class="video-play-card">▶</div><div class="video-duration-card">00:22</div><div class="video-stats-mobile"><span class="stat">👁️ 12.8w</span><span class="stat like-stat"><span class="like-heart">❤️</span> 3.6w</span></div></div>
-          <div class="video-side">
-            <div class="video-small" onclick="openVideoModal('videos/2.mp4')"><img src="https://i0.hdslb.com/bfs/new_dyn/6e607f5c6c15a492edb2022079f5536a278021288.webp"><div class="video-play-card">▶</div><div class="video-duration-card">00:15</div><div class="video-stats-mobile"><span class="stat">👁️ 9.5w</span><span class="stat like-stat"><span class="like-heart">❤️</span> 2.8w</span></div></div>
-            <div class="video-small" onclick="openVideoModal('videos/3.mp4')"><img src="https://i0.hdslb.com/bfs/new_dyn/72af8903340c53e9c4b7eef2583aa843278021288.webp"><div class="video-play-card">▶</div><div class="video-duration-card">00:28</div><div class="video-stats-mobile"><span class="stat">👁️ 17.2w</span><span class="stat like-stat"><span class="like-heart">❤️</span> 5.1w</span></div></div>
-          </div>
-        </div>
-      </div>
-      <div class="grid" id="allVideos" style="display:none;">
-        <div class="card" onclick="openVideoModal('videos/1.mp4')"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/ebb381b681dc52227897d92eac5b28a4278021288.webp" class="card-img"></div><div class="video-play-card">▶</div><div class="video-duration-card">00:22</div><div class="card-info"><div class="card-title">超薄磁吸充电宝动画</div><div class="card-stats"><div class="stat">👁️ 12.8w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 3.6w</div></div></div></div>
-        <div class="card" onclick="openVideoModal('videos/2.mp4')"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/6e607f5c6c15a492edb2022079f5536a278021288.webp" class="card-img"></div><div class="video-play-card">▶</div><div class="video-duration-card">00:15</div><div class="card-info"><div class="card-title">创意小巧充电头动画</div><div class="card-stats"><div class="stat">👁️ 9.5w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 2.8w</div></div></div></div>
-        <div class="card" onclick="openVideoModal('videos/3.mp4')"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/72af8903340c53e9c4b7eef2583aa843278021288.webp" class="card-img"></div><div class="video-play-card">▶</div><div class="video-duration-card">00:28</div><div class="card-info"><div class="card-title">科幻带插头充电宝动画</div><div class="card-stats"><div class="stat">👁️ 17.2w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 5.1w</div></div></div></div>
-        <div class="card" onclick="openVideoModal('videos/4.mp4')"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/53abe5b2afda036e36183413817bfe01278021288.webp" class="card-img"></div><div class="video-play-card">▶</div><div class="video-duration-card">00:23</div><div class="card-info"><div class="card-title">暗黑充电宝动画</div><div class="card-stats"><div class="stat">👁️ 11.3w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 3.2w</div></div></div></div>
-        <div class="card" onclick="openVideoModal('videos/5.mp4')"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/40e12c6604863e5f6bceeae876cf0886278021288.webp" class="card-img"></div><div class="video-play-card">▶</div><div class="video-duration-card">00:33</div><div class="card-info"><div class="card-title">挂腰贴身小风扇动画</div><div class="card-stats"><div class="stat">👁️ 14.7w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 4.3w</div></div></div></div>
-        <div class="card" onclick="openVideoModal('videos/6.mp4')"><div class="card-img-box"><img src="https://i0.hdslb.com/bfs/new_dyn/20b6542fa01163e28c029ccee393460a278021288.webp" class="card-img"></div><div class="video-play-card">▶</div><div class="video-duration-card">00:26</div><div class="card-info"><div class="card-title">多彩充电宝动画</div><div class="card-stats"><div class="stat">👁️ 8.9w</div><div class="stat like-stat"><span class="like-heart">❤️</span> 2.5w</div></div></div></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="tools" class="section">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">工具经验</h2>
-      </div>
-      <p style="color:#888;font-size:14px;margin-bottom:28px;margin-top:-16px;">
-        7年设计生涯，深耕以下工具<span class="badge-exp" style="display:inline-block;background:rgba(255,77,79,0.15);color:#ff7875;font-weight:600;padding:3px 12px;border-radius:20px;font-size:12px;margin-left:8px;">累计经验 22+ 年</span>
-      </p>
-      <div class="skills-grid tools-grid-desktop" id="toolsGrid">
-        <div class="tool-card card-ps">
-          <div class="tool-icon ps"><img src="icons/ps.svg" alt="Photoshop" onerror="this.style.display='none';this.parentNode.innerHTML='🖼️'"></div>
-          <div class="tool-name">Photoshop</div>
-          <div class="tool-years">7<sub>年</sub></div>
-          <div class="tool-tagline">图像合成·精修·排版</div>
-        </div>
-        <div class="tool-card card-c4d">
-          <div class="tool-icon c4d"><img src="icons/c4d.svg" alt="Cinema 4D" onerror="this.style.display='none';this.parentNode.innerHTML='🧊'"></div>
-          <div class="tool-name">Cinema 4D</div>
-          <div class="tool-years">5<sub>年</sub></div>
-          <div class="tool-tagline">产品建模·渲染·动画</div>
-        </div>
-        <div class="tool-card card-ae">
-          <div class="tool-icon ae"><img src="icons/ae.svg" alt="After Effects" onerror="this.style.display='none';this.parentNode.innerHTML='✨'"></div>
-          <div class="tool-name">After Effects</div>
-          <div class="tool-years">4<sub>年</sub></div>
-          <div class="tool-tagline">动效设计·视觉特效</div>
-        </div>
-        <div class="tool-card card-pr">
-          <div class="tool-icon pr"><img src="icons/pr.svg" alt="Premiere Pro" onerror="this.style.display='none';this.parentNode.innerHTML='🎬'"></div>
-          <div class="tool-name">Premiere Pro</div>
-          <div class="tool-years">4<sub>年</sub></div>
-          <div class="tool-tagline">视频剪辑·调色·输出</div>
-        </div>
-        <div class="tool-card card-ai">
-          <div class="tool-icon ai-tool"><img src="icons/ai.svg" alt="AI工具" onerror="this.style.display='none';this.parentNode.innerHTML='🤖'"></div>
-          <div class="tool-name">综合AI工具</div>
-          <div class="tool-years">2<sub>年</sub></div>
-          <div class="tool-tagline">Midjourney·SD·工作流</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="resources" class="resource-section">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">7年精选 · 设计百宝箱</h2>
-      </div>
-      <p class="section-subtitle">
-        <span class="badge-exp" style="display:inline-block;background:rgba(255,77,79,0.15);color:#ff7875;font-weight:600;padding:3px 12px;border-radius:20px;font-size:12px;">长期积累</span> 多年设计生涯中亲测好用的实用网站合集
-      </p>
-      <div id="resourceNavContainer">
-        <div class="resource-tabs" id="resourceTabs"></div>
-        <div class="resource-panels" id="resourcePanels"></div>
-      </div>
-    </div>
-  </section>
-
-  <footer id="contact" class="contact-section">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col"><h4>关于我</h4><p>7年电商视觉设计经验，擅长将创意与商业结合，为品牌打造有价值的视觉内容。</p></div>
-        <div class="footer-col"><h4>联系我</h4><div class="contact-item">📧 1711325061@qq.com</div><div class="contact-item">📍 广东省深圳市</div></div>
-        <div class="footer-col"><h4>快速导航</h4><ul class="footer-links"><li><a href="#home">首页</a></li><li><a href="#works">作品</a></li><li><a href="#video">视频</a></li><li><a href="#tools">工具</a></li><li><a href="#resources">导航</a></li></ul></div>
-        <div class="footer-col"><h4>关注我</h4><div class="social-links"><a href="https://www.zcool.com.cn/u/23450553" class="social-link" target="_blank"><img src="icons/zcool.svg" alt="站酷"></a><a href="#" class="social-link" onclick="openWxModal();return false;"><img src="icons/wechat.svg" alt="微信"></a><a href="#" class="social-link" onclick="openDouyinModal();return false;"><img src="icons/douyin.svg" alt="抖音"></a><a href="#" class="social-link" onclick="openXiaohongshuModal();return false;"><img src="icons/xiaohongshu.svg" alt="小红书"></a></div></div>
-      </div>
-      <div class="footer-bottom">© 2026 龚著登 DESIGN | 电商视觉设计全案服务</div>
-    </div>
-  </footer>
-
-  <div class="modal small-modal" id="wxModal"><span class="modal-close" onclick="closeWxModal()">&times;</span><div class="modal-content"><h3>扫码加我微信</h3><img src="https://i0.hdslb.com/bfs/new_dyn/2964ad759b1c8d01acf088e285125778278021288.webp" class="wx-qrcode"><div class="wx-id">微信号：gongshuai8 <button class="copy-btn" onclick="copyWxId()">复制</button></div><p class="copy-success" id="copySuccess">复制成功</p></div></div>
-  <div class="modal small-modal" id="douyinModal"><span class="modal-close" onclick="closeDouyinModal()">&times;</span><div class="modal-content"><h3>扫码加我抖音</h3><img src="https://i0.hdslb.com/bfs/new_dyn/a2b3a19fda9c4ab35128429e25663593278021288.webp" class="wx-qrcode"><div class="wx-id">抖音号：1711325061a <button class="copy-btn" onclick="copyDouyinId()">复制</button></div><p class="copy-success" id="copyDouyinSuccess">复制成功</p></div></div>
-  <div class="modal small-modal" id="xiaohongshuModal"><span class="modal-close" onclick="closeXiaohongshuModal()">&times;</span><div class="modal-content"><h3>扫码加我小红书</h3><img src="https://i0.hdslb.com/bfs/new_dyn/fa7c1d496af4d604299a06ca76123c81278021288.webp" class="wx-qrcode"><div class="wx-id">小红书号：gongzhudeng <button class="copy-btn" onclick="copyXiaohongshuId()">复制</button></div><p class="copy-success" id="copyXiaohongshuSuccess">复制成功</p></div></div>
-  <div class="modal" id="imageModal"><span class="modal-close" onclick="closeModal()">&times;</span><img src="" class="modal-content" id="modalImg"></div>
-  <div class="detail-modal" id="detailModal"><span class="modal-close" onclick="closeDetailModal()">&times;</span><img src="" class="detail-modal-content" id="detailModalImg"></div>
-  <div class="modal video-modal" id="videoModal"><span class="modal-close" onclick="closeVideoModal()">&times;</span><div id="bilibiliPlayer"></div></div>
-
-  <div class="modal" id="messageModal">
-    <span class="modal-close" onclick="closeMessageModal()">&times;</span>
-    <div class="message-modal-content">
-      <h3>💬 留个言吧</h3>
-      <input type="text" class="message-input" id="messageInput" placeholder="写一句夸我的话…" maxlength="50">
-      <button class="message-send-btn" onclick="sendMessage()">发送弹幕</button>
-    </div>
-  </div>
-
-  <div class="modal" id="priceModal">
-    <span class="modal-close" onclick="closePriceModal()">&times;</span>
-    <div class="price-modal-content">
-      <h2 style="font-weight:700;font-size:24px;color:#fff;margin-bottom:8px;">设计服务报价</h2>
-      <p style="color:#aaa;font-size:14px;margin-bottom:5px;">透明阶梯定价 · 按需定制 · 长期合作更优惠</p>
-      <div class="price-grid">
-        <div class="price-card"><div class="price-icon">🖼️</div><div class="price-title">电商主图设计</div><div class="price-range">¥200 - 500<span style="font-size:13px;font-weight:400;">/张</span></div><div class="price-desc">突出卖点 · 高点击率 · 多平台适配</div><ul class="price-features"><li>精修+合成+文案排版</li><li>提供3张初稿选其一</li><li>支持淘宝/亚马逊/拼多多</li><li>交付JPG+PSD源文件</li></ul><div class="price-note">* 复杂合成/3D渲染主图另议</div></div>
-        <div class="price-card recommend"><div class="price-icon">📄</div><div class="price-title">详情页设计</div><div class="price-range">¥3,000 - 6,000<span style="font-size:13px;font-weight:400;">/套</span></div><div class="price-desc">逻辑策划 · 高转化 · 品牌调性统一</div><ul class="price-features"><li>8-12屏标准电商详情</li><li>竞品分析+卖点梳理</li><li>全端适配（无线+PC）</li><li>含主图/副图/场景图</li><li>修改至满意为止</li></ul><div class="price-note">* 含简单C4D渲染，复杂产品另计</div></div>
-        <div class="price-card"><div class="price-icon">🎬</div><div class="price-title">产品视频制作</div><div class="price-range">¥100 - 400<span style="font-size:13px;font-weight:400;">/秒</span></div><div class="price-desc">三维动画 · 实景拍摄 · 后期特效</div><ul class="price-features"><li>15s起做，提供脚本</li><li>C4D动画/实拍剪辑</li><li>背景音乐+音效</li><li>交付MP4/MOV</li></ul><div class="price-note">* 演员/场地费另计</div></div>
-        <div class="price-card"><div class="price-icon">🤖</div><div class="price-title">AI创意视频</div><div class="price-range">¥300 - 1,000<span style="font-size:13px;font-weight:400;">/个</span></div><div class="price-desc">15秒AI生成 · 创意无限 · 快速出片</div><ul class="price-features"><li>文生视频/图生视频</li><li>风格化创意脚本</li><li>3轮优化调整</li><li>15秒标准时长</li></ul><div class="price-note">* 超时或复杂特效另议</div></div>
-      </div>
-      <div class="price-contact">
-        📌 以上为基础参考价，<strong>详细定价请咨询微信：gongshuai8</strong><br>
-        <span style="font-size:12px;color:#888;">· 量大/长期合作可签年度协议 · 预付50%启动项目 · 发票另加税点 ·</span>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    const resourceData = [
-      { category: '灵感采集', emoji: '💡', desc: '国内外设计灵感平台，拓展审美边界', sites: [
-        { name: '站酷', url: 'https://www.zcool.com.cn', tag: '国内', desc: '本土设计师作品交流平台' },
-        { name: '花瓣', url: 'https://huaban.com', tag: '国内', desc: '图片采集与灵感整理工具' },
-        { name: 'Behance', url: 'https://www.behance.net', tag: '国际', desc: 'Adobe旗下全球创意作品社区' },
-        { name: 'Dribbble', url: 'https://dribbble.com', tag: '国际', desc: 'UI/视觉设计作品展示平台' },
-        { name: 'Pinterest', url: 'https://www.pinterest.com', tag: '国际', desc: '全球图片灵感搜索引擎' },
-        { name: 'Muzli', url: 'https://muz.li', tag: '灵感', desc: 'Chrome插件，每日设计灵感推送' }
-      ]},
-      { category: 'AIGC工具', emoji: '🤖', desc: 'AI赋能设计，提升创作效率', sites: [
-        { name: 'Midjourney', url: 'https://www.midjourney.com', tag: '生图', desc: 'AI艺术生成器，Discord内使用' },
-        { name: 'Stable Diffusion', url: 'https://stability.ai', tag: '开源', desc: '开源AI图像生成模型' },
-        { name: '文心一格', url: 'https://yige.baidu.com', tag: '国内', desc: '百度出品的AI艺术创作平台' },
-        { name: '通义万相', url: 'https://tongyi.aliyun.com', tag: '国内', desc: '阿里云AI图像生成工具' },
-        { name: 'ChatGPT', url: 'https://chatgpt.com', tag: '对话', desc: 'OpenAI对话式AI助手' },
-        { name: 'Runway', url: 'https://runwayml.com', tag: '视频', desc: 'AI视频生成与编辑平台' }
-      ]},
-      { category: '学习交流', emoji: '📚', desc: '设计教程与行业交流阵地', sites: [
-        { name: '优设', url: 'https://www.uisdc.com', tag: '教程', desc: '国内人气设计教程平台' },
-        { name: '虎课网', url: 'https://huke88.com', tag: '课程', desc: '设计职业技能在线学习' },
-        { name: 'B站设计区', url: 'https://www.bilibili.com/v/design', tag: '视频', desc: 'Bilibili设计类视频专区' },
-        { name: '站酷高高手', url: 'https://www.gogoup.com', tag: '进阶', desc: '站酷旗下设计教育品牌' },
-        { name: 'Design+Code', url: 'https://designcode.io', tag: '英文', desc: 'UI设计与代码融合教程' }
-      ]},
-      { category: '视频平台', emoji: '🎬', desc: '短视频与长视频发布平台', sites: [
-        { name: 'Bilibili', url: 'https://www.bilibili.com', tag: '国内', desc: '国内领先的视频弹幕网站' },
-        { name: '抖音', url: 'https://www.douyin.com', tag: '短视频', desc: '日活过亿的短视频平台' },
-        { name: '小红书', url: 'https://www.xiaohongshu.com', tag: '种草', desc: '生活方式分享与种草社区' },
-        { name: 'YouTube', url: 'https://www.youtube.com', tag: '国际', desc: '全球最大视频分享平台' },
-        { name: 'Vimeo', url: 'https://vimeo.com', tag: '专业', desc: '高品质视频创作社区' }
-      ]},
-      { category: '动态资源', emoji: '✨', desc: '免费视频素材与动态模板', sites: [
-        { name: 'Coverr', url: 'https://coverr.co', tag: '免费', desc: '免费商用视频背景素材' },
-        { name: 'Mixkit', url: 'https://mixkit.co', tag: '免费', desc: '免费视频与音效素材库' },
-        { name: 'Videvo', url: 'https://www.videvo.net', tag: '素材', desc: '免费与付费视频素材' },
-        { name: 'Motion Array', url: 'https://motionarray.com', tag: '模板', desc: 'After Effects模板与视频素材' }
-      ]},
-      { category: '三维资源', emoji: '🧊', desc: '3D模型与贴图资源站点', sites: [
-        { name: 'CG模型网', url: 'https://www.cgmodel.com', tag: '国内', desc: '国内大型3D模型交易平台' },
-        { name: '3D66', url: 'https://www.3d66.com', tag: '国内', desc: '3D溜溜网，模型素材丰富' },
-        { name: 'Sketchfab', url: 'https://sketchfab.com', tag: '展示', desc: '在线3D模型展示与下载' },
-        { name: 'Poliigon', url: 'https://www.poliigon.com', tag: '贴图', desc: '高品质PBR贴图与模型' },
-        { name: 'Quixel', url: 'https://quixel.com', tag: '扫描', desc: 'Megascans高精度扫描资源' }
-      ]},
-      { category: '实拍资源', emoji: '📷', desc: '免费高质量摄影图片库', sites: [
-        { name: 'Unsplash', url: 'https://unsplash.com', tag: '免费', desc: '免费高分辨率摄影图片' },
-        { name: 'Pexels', url: 'https://www.pexels.com', tag: '免费', desc: '免费商用图片与视频' },
-        { name: 'Pixabay', url: 'https://pixabay.com', tag: '免费', desc: '海量免费图片与插图' },
-        { name: '500px', url: 'https://500px.com', tag: '摄影', desc: '全球摄影师作品社区' }
-      ]},
-      { category: '平面资源', emoji: '🎨', desc: '矢量素材与平面设计资源', sites: [
-        { name: '千图网', url: 'https://www.58pic.com', tag: '国内', desc: '老牌国内设计素材网站' },
-        { name: '千库网', url: 'https://588ku.com', tag: '国内', desc: 'PNG元素与背景素材' },
-        { name: 'Freepik', url: 'https://www.freepik.com', tag: '矢量', desc: '海量免费矢量与PSD资源' },
-        { name: 'Vecteezy', url: 'https://www.vecteezy.com', tag: '免费', desc: '免费矢量图下载平台' },
-        { name: 'Flaticon', url: 'https://www.flaticon.com', tag: '图标', desc: '免费矢量图标库' }
-      ]},
-      { category: '音效资源', emoji: '🎵', desc: '免费与商用音效背景音乐', sites: [
-        { name: '爱给网', url: 'https://www.aigei.com', tag: '国内', desc: '国内音效配乐素材平台' },
-        { name: 'Freesound', url: 'https://freesound.org', tag: '免费', desc: '社区驱动的免费音效库' },
-        { name: 'Mixkit Sound', url: 'https://mixkit.co/free-sound-effects/', tag: '免费', desc: '免费商用音效下载' },
-        { name: 'Artlist', url: 'https://artlist.io', tag: '高级', desc: '高品质音乐与音效授权' },
-        { name: 'Epidemic Sound', url: 'https://www.epidemicsound.com', tag: '专业', desc: '专业级版权音乐平台' }
-      ]}
-    ];
-
-    function getFaviconUrl(domain) {
-      return `https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://${domain}&size=32`;
-    }
-    function getSiteInitial(name) {
-      const ch = name.charAt(0);
-      return /[\u4e00-\u9fff]/.test(ch) ? ch : ch.toUpperCase();
-    }
-
-    function buildResourcePanel(categoryData) {
-      let html = '';
-      categoryData.sites.forEach(site => {
-        const domain = new URL(site.url).hostname;
-        const faviconSrc = getFaviconUrl(domain);
-        const initial = getSiteInitial(site.name);
-        html += `<a href="${site.url}" target="_blank" rel="noopener" class="resource-link-card" title="${site.name} - ${site.tag}">`;
-        html += `<span class="resource-favicon-wrap"><span class="favicon-fallback" style="display:none;">${initial}</span><img src="${faviconSrc}" alt="" loading="lazy" onerror="this.style.display='none';this.previousElementSibling.style.display='flex';"></span>`;
-        html += `<div class="resource-link-info">`;
-        html += `<div class="resource-link-name">${site.name}</div>`;
-        html += `<div class="resource-link-desc">${site.desc}</div>`;
-        html += `</div>`;
-        html += `<span class="resource-link-tag">${site.tag}</span>`;
-        html += `</a>`;
-      });
-      return html;
-    }
-
-    function initResourceTabs() {
-      const tabsContainer = document.getElementById('resourceTabs');
-      const panelsContainer = document.getElementById('resourcePanels');
-      if (!tabsContainer || !panelsContainer) return;
-      resourceData.forEach((cat, index) => {
-        const btn = document.createElement('button');
-        btn.className = 'resource-tab-btn';
-        btn.textContent = cat.emoji + ' ' + cat.category;
-        btn.dataset.index = index;
-        btn.addEventListener('click', () => switchResourceTab(index));
-        tabsContainer.appendChild(btn);
-        const panel = document.createElement('div');
-        panel.className = 'resource-panel';
-        panel.innerHTML = `<div class="resource-links">${buildResourcePanel(cat)}</div>`;
-        panelsContainer.appendChild(panel);
-      });
-      switchResourceTab(0);
-    }
-
-    function switchResourceTab(index) {
-      const tabs = document.querySelectorAll('.resource-tab-btn');
-      const panels = document.querySelectorAll('.resource-panel');
-      tabs.forEach((tab, i) => tab.classList.toggle('active', i === index));
-      panels.forEach((panel, i) => panel.classList.toggle('active', i === index));
-    }
-
-    function handleToolsGridResponsive() {
-      const grid = document.getElementById('toolsGrid');
-      if (!grid) return;
-      if (window.innerWidth <= 768) {
-        grid.classList.add('tools-grid-mobile');
-        grid.classList.remove('tools-grid-desktop');
-      } else {
-        grid.classList.add('tools-grid-desktop');
-        grid.classList.remove('tools-grid-mobile');
-      }
-    }
-    window.addEventListener('resize', handleToolsGridResponsive);
-
-    // 导航功能
-    function setActiveNav(el) {
-      document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
-      el.classList.add('active');
-    }
-    function scrollToHome() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
-    function scrollToService() { document.getElementById('service').scrollIntoView({ behavior: 'smooth' }); }
-    function scrollToAboutMe() { document.getElementById('contact').scrollIntoView({ behavior: 'smooth' }); }
-    function scrollToWorks() { document.getElementById('works').scrollIntoView({ behavior: 'smooth' }); }
-    function scrollToVideo() { document.getElementById('video').scrollIntoView({ behavior: 'smooth' }); }
-    function scrollToTools() { document.getElementById('tools').scrollIntoView({ behavior: 'smooth' }); }
-    function scrollToResources() { document.getElementById('resources').scrollIntoView({ behavior: 'smooth' }); }
-
-    let showAllWorks = false;
-    let currentCategory = 'all';
-
-    function filterWorks(category) {
-      currentCategory = category;
-      showAllWorks = false;
-      const items = document.querySelectorAll('.work-item');
-      const tabs = document.querySelectorAll('#worksTabs .tab-btn');
-      tabs.forEach(t => t.classList.remove('active'));
-      const activeTab = document.querySelector(`#worksTabs .tab-btn[data-category="${category}"]`);
-      if (activeTab) activeTab.classList.add('active');
-      items.forEach(i => i.style.display = 'none');
-      document.getElementById('showAllBtn').style.display = 'inline-flex';
-      document.getElementById('showLessBtn').style.display = 'none';
-      if (category === 'all') {
-        document.querySelectorAll('.work-item').forEach((item, index) => { if (index < 4) item.style.display = 'block'; });
-      } else {
-        document.querySelectorAll(`.work-item[data-category="${category}"]`).forEach((item, index) => { if (index < 4) item.style.display = 'block'; });
-      }
-    }
-
-    function toggleWorks() {
-      showAllWorks = !showAllWorks;
-      const showAllBtn = document.getElementById('showAllBtn');
-      const showLessBtn = document.getElementById('showLessBtn');
-      if (showAllWorks) {
-        showAllBtn.style.display = 'none';
-        showLessBtn.style.display = 'inline-flex';
-        if (currentCategory === 'all') {
-          document.querySelectorAll('.work-item').forEach(item => item.style.display = 'block');
-        } else {
-          document.querySelectorAll(`.work-item[data-category="${currentCategory}"]`).forEach(item => item.style.display = 'block');
+        function getFaviconUrl(domain) {
+            return `https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://${domain}&size=32`;
         }
-      } else {
-        showAllBtn.style.display = 'inline-flex';
-        showLessBtn.style.display = 'none';
-        filterWorks(currentCategory);
-      }
-    }
-
-    function toggleVideos() {
-      const videoPreview = document.getElementById('videoPreview');
-      const allVideos = document.getElementById('allVideos');
-      const videoShow = document.getElementById('video-show');
-      const videoHide = document.getElementById('video-hide');
-      if (allVideos.style.display === 'none') {
-        videoPreview.style.display = 'none';
-        allVideos.style.display = 'grid';
-        videoShow.style.display = 'none';
-        videoHide.style.display = 'inline-flex';
-      } else {
-        videoPreview.style.display = 'block';
-        allVideos.style.display = 'none';
-        videoShow.style.display = 'inline-flex';
-        videoHide.style.display = 'none';
-      }
-    }
-
-    function previewImage(el) {
-      const modal = document.getElementById('imageModal');
-      const img = document.getElementById('modalImg');
-      img.src = '';
-      img.src = el.querySelector('.card-img').dataset.fullSrc;
-      modal.classList.add('active');
-    }
-    function previewDetailImage(el) {
-      const modal = document.getElementById('detailModal');
-      const img = document.getElementById('detailModalImg');
-      img.src = '';
-      img.src = el.querySelector('.card-img').dataset.fullSrc;
-      modal.classList.add('active');
-    }
-    function closeModal() { document.getElementById('imageModal').classList.remove('active'); }
-    function closeDetailModal() { document.getElementById('detailModal').classList.remove('active'); }
-    function openWxModal() { document.getElementById('wxModal').classList.add('active'); }
-    function closeWxModal() { document.getElementById('wxModal').classList.remove('active'); }
-    function copyWxId() {
-      navigator.clipboard.writeText('gongshuai8').then(() => {
-        const s = document.getElementById('copySuccess');
-        s.style.display = 'block';
-        setTimeout(() => s.style.display = 'none', 2000);
-      });
-    }
-    function openDouyinModal() { document.getElementById('douyinModal').classList.add('active'); }
-    function closeDouyinModal() { document.getElementById('douyinModal').classList.remove('active'); }
-    function copyDouyinId() {
-      navigator.clipboard.writeText('1711325061').then(() => {
-        const s = document.getElementById('copyDouyinSuccess');
-        s.style.display = 'block';
-        setTimeout(() => s.style.display = 'none', 2000);
-      });
-    }
-    function openXiaohongshuModal() { document.getElementById('xiaohongshuModal').classList.add('active'); }
-    function closeXiaohongshuModal() { document.getElementById('xiaohongshuModal').classList.remove('active'); }
-    function copyXiaohongshuId() {
-      navigator.clipboard.writeText('xiaohongshu123').then(() => {
-        const s = document.getElementById('copyXiaohongshuSuccess');
-        s.style.display = 'block';
-        setTimeout(() => s.style.display = 'none', 2000);
-      });
-    }
-
-    const videoBilibiliLinks = {
-      'videos/1.mp4': '//player.bilibili.com/player.html?isOutside=true&aid=116548417165428&bvid=BV1UP576eEpL&cid=38229509704&p=1',
-      'videos/2.mp4': '//player.bilibili.com/player.html?isOutside=true&aid=116548400323464&bvid=BV1tK576AEpJ&cid=38229443088&p=1',
-      'videos/3.mp4': '//player.bilibili.com/player.html?isOutside=true&aid=116548433878455&bvid=BV1ao5j6uE5G&cid=38229639450&p=1',
-      'videos/4.mp4': '//player.bilibili.com/player.html?isOutside=true&aid=116548500983920&bvid=BV1mx5j68E4o&cid=38229904735&p=1',
-      'videos/5.mp4': '//player.bilibili.com/player.html?isOutside=true&aid=116548450652316&bvid=BV1YR5j66E22&cid=38229705040&p=1',
-      'videos/6.mp4': '//player.bilibili.com/player.html?isOutside=true&aid=116548500983867&bvid=BV1mx5j68EtQ&cid=38229903459&p=1'
-    };
-
-    function openVideoModal(videoKey) {
-      const modal = document.getElementById('videoModal');
-      const player = document.getElementById('bilibiliPlayer');
-      player.innerHTML = `<iframe src="${videoBilibiliLinks[videoKey]}" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>`;
-      modal.classList.add('active');
-    }
-    function closeVideoModal() {
-      document.getElementById('videoModal').classList.remove('active');
-      document.getElementById('bilibiliPlayer').innerHTML = '';
-    }
-    document.querySelectorAll('.modal, .detail-modal').forEach(modal => {
-      modal.addEventListener('click', function(e) {
-        if (e.target === this) {
-          this.classList.remove('active');
-          if (this.id === 'videoModal') document.getElementById('bilibiliPlayer').innerHTML = '';
+        function getSiteInitial(name) {
+            const ch = name.charAt(0);
+            return /[\u4e00-\u9fff]/.test(ch) ? ch : ch.toUpperCase();
         }
-      });
-    });
 
-    function openPriceModal() { document.getElementById('priceModal').classList.add('active'); }
-    function closePriceModal() { document.getElementById('priceModal').classList.remove('active'); }
-    document.getElementById('priceModal').addEventListener('click', function(e) { if (e.target === this) closePriceModal(); });
-
-    function openMessageModal() { document.getElementById('messageModal').classList.add('active'); }
-    function closeMessageModal() { document.getElementById('messageModal').classList.remove('active'); }
-    function sendMessage() {
-      const input = document.getElementById('messageInput');
-      const text = input.value.trim();
-      if (!text) return;
-      if (window.addCustomDanmaku) window.addCustomDanmaku(text);
-      input.value = '';
-      closeMessageModal();
-    }
-    document.getElementById('messageInput').addEventListener('keydown', function(e) { if (e.key === 'Enter') sendMessage(); });
-
-    const LIKES_KEY = 'gzd_likes';
-    function getLiked() { try { return new Set(JSON.parse(localStorage.getItem(LIKES_KEY))); } catch (e) { return new Set(); } }
-    function saveLiked(s) { try { localStorage.setItem(LIKES_KEY, JSON.stringify([...s])); } catch (e) {} }
-    function getCardId(el) {
-      const card = el.closest('.card') || el.closest('.video-main') || el.closest('.video-small');
-      if (!card) return null;
-      const title = card.querySelector('.card-title');
-      if (title) return title.textContent.trim();
-      const img = card.querySelector('img');
-      return img ? img.src : null;
-    }
-    function createBadge(el) {
-      const badge = document.createElement('span');
-      badge.className = 'like-badge';
-      badge.textContent = '+1';
-      el.appendChild(badge);
-      badge.addEventListener('animationend', () => badge.remove());
-    }
-    function handleLikeClick(e) {
-      e.stopPropagation();
-      e.preventDefault();
-      const likeStat = e.target.closest('.like-stat');
-      if (!likeStat) return;
-      const cardId = getCardId(likeStat);
-      if (!cardId) return;
-      const liked = getLiked();
-      if (liked.has(cardId)) {
-        liked.delete(cardId);
-        likeStat.classList.remove('liked');
-      } else {
-        liked.add(cardId);
-        likeStat.classList.add('liked');
-        createBadge(likeStat);
-      }
-      saveLiked(liked);
-    }
-    function initLikes() {
-      const liked = getLiked();
-      document.querySelectorAll('#worksGrid .like-stat, #allVideos .like-stat, .video-main .like-stat, .video-small .like-stat').forEach(el => {
-        const cardId = getCardId(el);
-        if (!cardId) return;
-        if (liked.has(cardId)) el.classList.add('liked');
-        else el.classList.remove('liked');
-        el.removeEventListener('click', handleLikeClick);
-        el.addEventListener('click', handleLikeClick);
-      });
-    }
-
-    (function() {
-      const danmakuLayer = document.getElementById('danmakuLayer');
-      if (!danmakuLayer) return;
-      const danmakuTexts = ['设计太棒了！', '细节处理完美', '视觉冲击力强', '创意满分', '专业！', '配色绝了', '每次合作都很愉快','效率超高', '作品质量一流', '值得信赖的设计师', '审美在线', '超越预期', '细节控', '交付速度飞快', '很懂客户需求', '设计感满满', '效果超好','太专业了', '无可挑剔', '品质保证', '回头客+1', '强烈推荐', '设计大神', '出图速度快', '改稿耐心', '服务态度好', '物超所值', '视觉表达精准','风格独特', '🔥 创意满分', '💯 专业水准', '✨ 设计太赞了', '🎨 配色大师', '👏 做得太好了', '⭐ 品质一流', '🚀 效率惊人', '💎 细节控本控','🌟 值得信赖', '🎯 精准表达', '🔥 爆款预定', '💯 满分设计', '⭐ 五星好评', '👑 设计王者', '💪 实力派', '💖 超喜欢这个风格', '🏆 行业标杆','🎉 每次都有惊喜', '👍 靠谱设计师'];
-      const accentClasses = ['', '', '', '', '', 'accent-warm', 'accent-warm', 'accent-gold', 'accent-cyan'];
-      const desktopTracks = [12, 24, 36, 50, 64, 78];
-      const mobileTracks = [8, 22, 38, 55, 72, 88];
-      let danmakuTimer = null;
-      let isMobile = window.innerWidth <= 768;
-      const MAX_DANMAKU = 18;
-      const STORAGE_KEY = 'gzd_danmaku_history';
-
-      function getSavedMessages() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch (e) { return []; } }
-      function saveMessage(text) {
-        const messages = getSavedMessages();
-        messages.push(text);
-        const trimmed = messages.slice(-200);
-        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(trimmed)); } catch (e) { localStorage.setItem(STORAGE_KEY, JSON.stringify(trimmed.slice(-100))); }
-      }
-
-      function getTracks() { return isMobile ? mobileTracks : desktopTracks; }
-      function getRandomDuration() { return isMobile ? (4 + Math.random() * 4) : (7 + Math.random() * 6); }
-      function getRandomText() { return danmakuTexts[Math.floor(Math.random() * danmakuTexts.length)]; }
-      function getRandomAccent() { return accentClasses[Math.floor(Math.random() * accentClasses.length)]; }
-
-      function createDanmakuItem(text, isUser = false) {
-        const tracks = getTracks();
-        const topPercent = tracks[Math.floor(Math.random() * tracks.length)];
-        const duration = getRandomDuration();
-        const el = document.createElement('span');
-        el.className = 'danmaku-item';
-        if (isUser) { el.classList.add('user-danmaku'); } else { const accent = getRandomAccent(); if (accent) el.classList.add(accent); }
-        el.textContent = text;
-        el.style.top = topPercent + '%';
-        el.style.animationDuration = duration + 's';
-        el.addEventListener('animationend', function() { if (el.parentNode) el.parentNode.removeChild(el); });
-        danmakuLayer.appendChild(el);
-        const allItems = danmakuLayer.querySelectorAll('.danmaku-item');
-        if (allItems.length > MAX_DANMAKU) { const oldest = allItems[0]; if (oldest && oldest.parentNode) oldest.parentNode.removeChild(oldest); }
-      }
-
-      window.addCustomDanmaku = function(text) {
-        if (!text) return;
-        createDanmakuItem(text, true);
-        saveMessage(text);
-      };
-
-      function loadHistory() {
-        const messages = getSavedMessages();
-        if (messages.length === 0) return;
-        const shuffled = messages.sort(() => Math.random() - 0.5);
-        shuffled.slice(0, 10).forEach((msg, index) => { setTimeout(() => { createDanmakuItem(msg, true); }, index * 300); });
-      }
-
-      function getRandomInterval() { return isMobile ? (1200 + Math.random() * 1800) : (900 + Math.random() * 1600); }
-      function scheduleNext() {
-        if (danmakuTimer) clearTimeout(danmakuTimer);
-        danmakuTimer = setTimeout(() => { createDanmakuItem(getRandomText()); scheduleNext(); }, getRandomInterval());
-      }
-      function startDanmaku() {
-        const initialCount = isMobile ? 4 : 6;
-        for (let i = 0; i < initialCount; i++) { setTimeout(() => { createDanmakuItem(getRandomText()); }, i * 250); }
-        loadHistory();
-        scheduleNext();
-      }
-      function stopDanmaku() { if (danmakuTimer) { clearTimeout(danmakuTimer); danmakuTimer = null; } }
-      function handleResize() {
-        const wasMobile = isMobile;
-        isMobile = window.innerWidth <= 768;
-        if (wasMobile !== isMobile) {
-          danmakuLayer.querySelectorAll('.danmaku-item').forEach(item => item.remove());
-          stopDanmaku();
-          startDanmaku();
+        function buildResourcePanel(categoryData) {
+            let html = '';
+            categoryData.sites.forEach(site => {
+                const domain = new URL(site.url).hostname;
+                const faviconSrc = getFaviconUrl(domain);
+                const initial = getSiteInitial(site.name);
+                html += `<a href="${site.url}" target="_blank" rel="noopener" class="resource-link-card" title="${site.name} - ${site.tag}">`;
+                html +=
+                    `<span class="resource-favicon-wrap"><span class="favicon-fallback" style="display:none;">${initial}</span><img src="${faviconSrc}" alt="" loading="lazy" onerror="this.style.display='none';this.previousElementSibling.style.display='flex';"></span>`;
+                html += `<div class="resource-link-info">`;
+                html += `<div class="resource-link-name">${site.name}</div>`;
+                html += `<div class="resource-link-desc">${site.desc}</div>`;
+                html += `</div>`;
+                html += `<span class="resource-link-tag">${site.tag}</span>`;
+                html += `</a>`;
+            });
+            return html;
         }
-      }
-      let resizeDebounce = null;
-      window.addEventListener('resize', function() {
-        if (resizeDebounce) clearTimeout(resizeDebounce);
-        resizeDebounce = setTimeout(handleResize, 300);
-      });
-      document.addEventListener('visibilitychange', function() {
-        if (document.hidden) stopDanmaku();
-        else { danmakuLayer.querySelectorAll('.danmaku-item').forEach(item => item.remove()); startDanmaku(); }
-      });
-      startDanmaku();
-    })();
 
-    // 初始化
-    initResourceTabs();
-    handleToolsGridResponsive();
-    initLikes();
-    filterWorks('all');
-  </script>
+        function initResourceTabs() {
+            const tabsContainer = document.getElementById('resourceTabs');
+            const panelsContainer = document.getElementById('resourcePanels');
+            if (!tabsContainer || !panelsContainer) return;
+            resourceData.forEach((cat, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'resource-tab-btn';
+                btn.textContent = cat.emoji + ' ' + cat.category;
+                btn.dataset.index = index;
+                btn.addEventListener('click', () => switchResourceTab(index));
+                tabsContainer.appendChild(btn);
+                const panel = document.createElement('div');
+                panel.className = 'resource-panel';
+                panel.innerHTML = `<div class="resource-links">${buildResourcePanel(cat)}</div>`;
+                panelsContainer.appendChild(panel);
+            });
+            switchResourceTab(0);
+        }
+
+        function switchResourceTab(index) {
+            const tabs = document.querySelectorAll('.resource-tab-btn');
+            const panels = document.querySelectorAll('.resource-panel');
+            tabs.forEach((tab, i) => tab.classList.toggle('active', i === index));
+            panels.forEach((panel, i) => panel.classList.toggle('active', i === index));
+        }
+
+        function handleToolsGridResponsive() {
+            const grid = document.getElementById('toolsGrid');
+            if (!grid) return;
+            if (window.innerWidth <= 768) {
+                grid.classList.add('tools-grid-mobile');
+                grid.classList.remove('tools-grid-desktop');
+            } else {
+                grid.classList.add('tools-grid-desktop');
+                grid.classList.remove('tools-grid-mobile');
+            }
+        }
+        window.addEventListener('resize', handleToolsGridResponsive);
+
+        function setActiveNav(el) {
+            document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
+            el.classList.add('active');
+        }
+        function scrollToHome() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+        function scrollToService() { document.getElementById('service').scrollIntoView({ behavior: 'smooth' }); }
+        function scrollToAboutMe() { document.getElementById('contact').scrollIntoView({ behavior: 'smooth' }); }
+        function scrollToWorks() { document.getElementById('works').scrollIntoView({ behavior: 'smooth' }); }
+        function scrollToVideo() { document.getElementById('video').scrollIntoView({ behavior: 'smooth' }); }
+        function scrollToTools() { document.getElementById('tools').scrollIntoView({ behavior: 'smooth' }); }
+        function scrollToResources() { document.getElementById('resources').scrollIntoView({ behavior: 'smooth' }); }
+
+        let showAllWorks = false;
+        let currentCategory = 'all';
+
+        function filterWorks(category) {
+            currentCategory = category;
+            showAllWorks = false;
+            const items = document.querySelectorAll('.work-item');
+            const tabs = document.querySelectorAll('#worksTabs .tab-btn');
+            tabs.forEach(t => t.classList.remove('active'));
+            const activeTab = document.querySelector(`#worksTabs .tab-btn[data-category="${category}"]`);
+            if (activeTab) activeTab.classList.add('active');
+            items.forEach(i => i.style.display = 'none');
+            document.getElementById('showAllBtn').style.display = 'inline-flex';
+            document.getElementById('showLessBtn').style.display = 'none';
+            if (category === 'all') {
+                document.querySelectorAll('.work-item').forEach((item, index) => { if (index < 4) item.style
+                        .display = 'block'; });
+            } else {
+                document.querySelectorAll(`.work-item[data-category="${category}"]`).forEach((item, index) => { if (index <
+                        4) item.style.display = 'block'; });
+            }
+        }
+
+        function toggleWorks() {
+            showAllWorks = !showAllWorks;
+            const showAllBtn = document.getElementById('showAllBtn');
+            const showLessBtn = document.getElementById('showLessBtn');
+            if (showAllWorks) {
+                showAllBtn.style.display = 'none';
+                showLessBtn.style.display = 'inline-flex';
+                if (currentCategory === 'all') {
+                    document.querySelectorAll('.work-item').forEach(item => item.style.display = 'block');
+                } else {
+                    document.querySelectorAll(`.work-item[data-category="${currentCategory}"]`).forEach(item => item.style
+                        .display = 'block');
+                }
+            } else {
+                showAllBtn.style.display = 'inline-flex';
+                showLessBtn.style.display = 'none';
+                filterWorks(currentCategory);
+            }
+        }
+
+        function toggleVideos() {
+            const videoPreview = document.getElementById('videoPreview');
+            const allVideos = document.getElementById('allVideos');
+            const videoShow = document.getElementById('video-show');
+            const videoHide = document.getElementById('video-hide');
+            if (allVideos.style.display === 'none') {
+                videoPreview.style.display = 'none';
+                allVideos.style.display = 'grid';
+                videoShow.style.display = 'none';
+                videoHide.style.display = 'inline-flex';
+            } else {
+                videoPreview.style.display = 'block';
+                allVideos.style.display = 'none';
+                videoShow.style.display = 'inline-flex';
+                videoHide.style.display = 'none';
+            }
+        }
+
+        function previewImage(el) {
+            const modal = document.getElementById('imageModal');
+            const img = document.getElementById('modalImg');
+            img.src = '';
+            img.src = el.querySelector('.card-img').dataset.fullSrc;
+            modal.classList.add('active');
+        }
+        function previewDetailImage(el) {
+            const modal = document.getElementById('detailModal');
+            const img = document.getElementById('detailModalImg');
+            img.src = '';
+            img.src = el.querySelector('.card-img').dataset.fullSrc;
+            modal.classList.add('active');
+        }
+        function closeModal() { document.getElementById('imageModal').classList.remove('active'); }
+        function closeDetailModal() { document.getElementById('detailModal').classList.remove('active'); }
+        function openWxModal() { document.getElementById('wxModal').classList.add('active'); }
+        function closeWxModal() { document.getElementById('wxModal').classList.remove('active'); }
+        function copyWxId() {
+            navigator.clipboard.writeText('gongshuai8').then(() => {
+                const s = document.getElementById('copySuccess');
+                s.style.display = 'block';
+                setTimeout(() => s.style.display = 'none', 2000);
+            });
+        }
+        function openDouyinModal() { document.getElementById('douyinModal').classList.add('active'); }
+        function closeDouyinModal() { document.getElementById('douyinModal').classList.remove('active'); }
+        function copyDouyinId() {
+            navigator.clipboard.writeText('1711325061').then(() => {
+                const s = document.getElementById('copyDouyinSuccess');
+                s.style.display = 'block';
+                setTimeout(() => s.style.display = 'none', 2000);
+            });
+        }
+        function openXiaohongshuModal() { document.getElementById('xiaohongshuModal').classList.add('active'); }
+        function closeXiaohongshuModal() { document.getElementById('xiaohongshuModal').classList.remove('active'); }
+        function copyXiaohongshuId() {
+            navigator.clipboard.writeText('xiaohongshu123').then(() => {
+                const s = document.getElementById('copyXiaohongshuSuccess');
+                s.style.display = 'block';
+                setTimeout(() => s.style.display = 'none', 2000);
+            });
+        }
+
+        const videoBilibiliLinks = {
+            'videos/1.mp4': '//player.bilibili.com/player.html?isOutside=true&aid=116548417165428&bvid=BV1UP576eEpL&cid=38229509704&p=1',
+            'videos/2.mp4': '//player.bilibili.com/player.html?isOutside=true&aid=116548400323464&bvid=BV1tK576AEpJ&cid=38229443088&p=1',
+            'videos/3.mp4': '//player.bilibili.com/player.html?isOutside=true&aid=116548433878455&bvid=BV1ao5j6uE5G&cid=38229639450&p=1',
+            'videos/4.mp4': '//player.bilibili.com/player.html?isOutside=true&aid=116548500983920&bvid=BV1mx5j68E4o&cid=38229904735&p=1',
+            'videos/5.mp4': '//player.bilibili.com/player.html?isOutside=true&aid=116548450652316&bvid=BV1YR5j66E22&cid=38229705040&p=1',
+            'videos/6.mp4': '//player.bilibili.com/player.html?isOutside=true&aid=116548500983867&bvid=BV1mx5j68EtQ&cid=38229903459&p=1'
+        };
+
+        function openVideoModal(videoKey) {
+            const modal = document.getElementById('videoModal');
+            const player = document.getElementById('bilibiliPlayer');
+            player.innerHTML =
+                `<iframe src="${videoBilibiliLinks[videoKey]}" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>`;
+            modal.classList.add('active');
+        }
+        function closeVideoModal() {
+            document.getElementById('videoModal').classList.remove('active');
+            document.getElementById('bilibiliPlayer').innerHTML = '';
+        }
+        document.querySelectorAll('.modal, .detail-modal').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                    if (this.id === 'videoModal') document.getElementById('bilibiliPlayer').innerHTML = '';
+                }
+            });
+        });
+
+        function openPriceModal() { document.getElementById('priceModal').classList.add('active'); }
+        function closePriceModal() { document.getElementById('priceModal').classList.remove('active'); }
+        document.getElementById('priceModal').addEventListener('click', function(e) { if (e.target === this)
+            closePriceModal(); });
+
+        function openMessageModal() { document.getElementById('messageModal').classList.add('active'); }
+        function closeMessageModal() { document.getElementById('messageModal').classList.remove('active'); }
+        function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const text = input.value.trim();
+            if (!text) return;
+            if (window.addCustomDanmaku) window.addCustomDanmaku(text);
+            input.value = '';
+            closeMessageModal();
+        }
+        document.getElementById('messageInput').addEventListener('keydown', function(e) { if (e.key === 'Enter')
+            sendMessage(); });
+
+        const LIKES_KEY = 'gzd_likes';
+        function getLiked() { try { return new Set(JSON.parse(localStorage.getItem(LIKES_KEY))); } catch (e) { return new Set(); } }
+        function saveLiked(s) { try { localStorage.setItem(LIKES_KEY, JSON.stringify([...s])); } catch (e) {} }
+        function getCardId(el) {
+            const card = el.closest('.card') || el.closest('.video-main') || el.closest('.video-small');
+            if (!card) return null;
+            const title = card.querySelector('.card-title');
+            if (title) return title.textContent.trim();
+            const img = card.querySelector('img');
+            return img ? img.src : null;
+        }
+        function createBadge(el) {
+            const badge = document.createElement('span');
+            badge.className = 'like-badge';
+            badge.textContent = '+1';
+            el.appendChild(badge);
+            badge.addEventListener('animationend', () => badge.remove());
+        }
+        function handleLikeClick(e) {
+            e.stopPropagation();
+            e.preventDefault();
+            const likeStat = e.target.closest('.like-stat');
+            if (!likeStat) return;
+            const cardId = getCardId(likeStat);
+            if (!cardId) return;
+            const liked = getLiked();
+            if (liked.has(cardId)) {
+                liked.delete(cardId);
+                likeStat.classList.remove('liked');
+            } else {
+                liked.add(cardId);
+                likeStat.classList.add('liked');
+                createBadge(likeStat);
+            }
+            saveLiked(liked);
+        }
+        function initLikes() {
+            const liked = getLiked();
+            document.querySelectorAll(
+                '#worksGrid .like-stat, #allVideos .like-stat, .video-main .like-stat, .video-small .like-stat'
+                ).forEach(el => {
+                const cardId = getCardId(el);
+                if (!cardId) return;
+                if (liked.has(cardId)) el.classList.add('liked');
+                else el.classList.remove('liked');
+                el.removeEventListener('click', handleLikeClick);
+                el.addEventListener('click', handleLikeClick);
+            });
+        }
+
+        (function() {
+            const danmakuLayer = document.getElementById('danmakuLayer');
+            if (!danmakuLayer) return;
+            const danmakuTexts = ['设计太棒了！', '细节处理完美', '视觉冲击力强', '创意满分', '专业！', '配色绝了',
+                '每次合作都很愉快', '效率超高', '作品质量一流', '值得信赖的设计师', '审美在线', '超越预期', '细节控',
+                '交付速度飞快', '很懂客户需求', '设计感满满', '效果超好', '太专业了', '无可挑剔', '品质保证', '回头客+1',
+                '强烈推荐', '设计大神', '出图速度快', '改稿耐心', '服务态度好', '物超所值', '视觉表达精准', '风格独特',
+                '🔥 创意满分', '💯 专业水准', '✨ 设计太赞了', '🎨 配色大师', '👏 做得太好了', '⭐ 品质一流', '🚀 效率惊人',
+                '💎 细节控本控', '🌟 值得信赖', '🎯 精准表达', '🔥 爆款预定', '💯 满分设计', '⭐ 五星好评', '👑 设计王者',
+                '💪 实力派', '💖 超喜欢这个风格', '🏆 行业标杆', '🎉 每次都有惊喜', '👍 靠谱设计师'
+            ];
+            const accentClasses = ['', '', '', '', '', 'accent-warm', 'accent-warm', 'accent-gold', 'accent-cyan'];
+            const desktopTracks = [12, 24, 36, 50, 64, 78];
+            const mobileTracks = [8, 22, 38, 55, 72, 88];
+            let danmakuTimer = null;
+            let isMobile = window.innerWidth <= 768;
+            const MAX_DANMAKU = 18;
+            const STORAGE_KEY = 'gzd_danmaku_history';
+
+            function getSavedMessages() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch (
+                e) { return []; } }
+
+            function saveMessage(text) {
+                const messages = getSavedMessages();
+                messages.push(text);
+                const trimmed = messages.slice(-200);
+                try { localStorage.setItem(STORAGE_KEY, JSON.stringify(trimmed)); } catch (e) { localStorage.setItem(
+                        STORAGE_KEY, JSON.stringify(trimmed.slice(-100))); }
+            }
+
+            function getTracks() { return isMobile ? mobileTracks : desktopTracks; }
+            function getRandomDuration() { return isMobile ? (4 + Math.random() * 4) : (7 + Math.random() * 6); }
+            function getRandomText() { return danmakuTexts[Math.floor(Math.random() * danmakuTexts.length)]; }
+            function getRandomAccent() { return accentClasses[Math.floor(Math.random() * accentClasses.length)]; }
+
+            function createDanmakuItem(text, isUser = false) {
+                const tracks = getTracks();
+                const topPercent = tracks[Math.floor(Math.random() * tracks.length)];
+                const duration = getRandomDuration();
+                const el = document.createElement('span');
+                el.className = 'danmaku-item';
+                if (isUser) { el.classList.add('user-danmaku'); } else { const accent = getRandomAccent(); if (accent) el
+                        .classList.add(accent); }
+                el.textContent = text;
+                el.style.top = topPercent + '%';
+                el.style.animationDuration = duration + 's';
+                el.addEventListener('animationend', function() { if (el.parentNode) el.parentNode.removeChild(
+                    el); });
+                danmakuLayer.appendChild(el);
+                const allItems = danmakuLayer.querySelectorAll('.danmaku-item');
+                if (allItems.length > MAX_DANMAKU) { const oldest = allItems[0]; if (oldest && oldest.parentNode) oldest
+                        .parentNode.removeChild(oldest); }
+            }
+
+            window.addCustomDanmaku = function(text) {
+                if (!text) return;
+                createDanmakuItem(text, true);
+                saveMessage(text);
+            };
+
+            function loadHistory() {
+                const messages = getSavedMessages();
+                if (messages.length === 0) return;
+                const shuffled = messages.sort(() => Math.random() - 0.5);
+                shuffled.slice(0, 10).forEach((msg, index) => { setTimeout(() => { createDanmakuItem(msg,
+                    true); }, index * 300); });
+            }
+
+            function getRandomInterval() { return isMobile ? (1200 + Math.random() * 1800) : (900 + Math.random() *
+                1600); }
+
+            function scheduleNext() {
+                if (danmakuTimer) clearTimeout(danmakuTimer);
+                danmakuTimer = setTimeout(() => { createDanmakuItem(getRandomText());
+                    scheduleNext(); }, getRandomInterval());
+            }
+
+            function startDanmaku() {
+                const initialCount = isMobile ? 4 : 6;
+                for (let i = 0; i < initialCount; i++) { setTimeout(() => { createDanmakuItem(
+                    getRandomText()); }, i * 250); }
+                loadHistory();
+                scheduleNext();
+            }
+
+            function stopDanmaku() { if (danmakuTimer) { clearTimeout(danmakuTimer);
+                    danmakuTimer = null; } }
+
+            function handleResize() {
+                const wasMobile = isMobile;
+                isMobile = window.innerWidth <= 768;
+                if (wasMobile !== isMobile) {
+                    danmakuLayer.querySelectorAll('.danmaku-item').forEach(item => item.remove());
+                    stopDanmaku();
+                    startDanmaku();
+                }
+            }
+            let resizeDebounce = null;
+            window.addEventListener('resize', function() {
+                if (resizeDebounce) clearTimeout(resizeDebounce);
+                resizeDebounce = setTimeout(handleResize, 300);
+            });
+            document.addEventListener('visibilitychange', function() {
+                if (document.hidden) stopDanmaku();
+                else { danmakuLayer.querySelectorAll('.danmaku-item').forEach(item => item.remove());
+                    startDanmaku(); }
+            });
+            startDanmaku();
+        })();
+
+        initResourceTabs();
+        handleToolsGridResponsive();
+        initLikes();
+        filterWorks('all');
+    </script>
 </body>
 </html>
