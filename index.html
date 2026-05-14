@@ -1471,26 +1471,36 @@
 
 /* ===== 移动端适配 ===== */
 @media(max-width:768px) {
-  .tools-grid-mobile {
+.tools-grid-mobile {
     display: flex !important;
     overflow-x: auto;
     padding-bottom: 10px;
-    gap: 14px;
+    gap: 12px;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-  }
-  .tools-grid-mobile .tool-card {
+}
+.tools-grid-mobile .tool-card {
     flex: 0 0 130px;
     min-width: 130px;
     padding: 16px 10px;
     scroll-snap-align: start;
-  }
-  .tools-grid-mobile .tool-card .tool-years {
+}
+.tools-grid-mobile .tool-card .tool-years {
     font-size: 22px;
-  }
-  .tools-grid-mobile .tool-card .tool-name {
+}
+.tools-grid-mobile .tool-card .tool-name {
     font-size: 12px;
-  }
+}
+.tools-grid-mobile .tool-card .tool-tagline {
+    font-size: 10px;
+}
+.resource-links {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+.resource-link-card {
+    padding: 12px 14px;
+}
   .resource-tabs {
     flex-wrap: nowrap;
     overflow-x: auto;
