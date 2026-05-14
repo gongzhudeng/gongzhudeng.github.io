@@ -776,12 +776,27 @@
         .resource-panel.active {
             display: block;
         }
-        .resource-links {
-            grid-template-columns: repeat(2, 1fr) !important;
-            gap: 10px;
-            align-items: start;
-            display: grid;
-        }
+/* 电脑端一行四个，手机端一行三个 */
+.resource-links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) !important; /* 默认备用 */
+    gap: 10px;
+    align-items: start;
+}
+
+@media (max-width: 768px) {
+    .resource-links {
+        grid-template-columns: repeat(3, 1fr) !important; /* 手机端一行三个 */
+        gap: 8px;
+    }
+    /* ... 其他手机端卡片微调（名称不换行等）保持不变 */
+}
+
+@media (min-width: 769px) {
+    .resource-links {
+        grid-template-columns: repeat(4, 1fr) !important; /* 电脑端一行四个 */
+    }
+}
         .resource-link-card {
             display: flex;
             align-items: flex-start;
